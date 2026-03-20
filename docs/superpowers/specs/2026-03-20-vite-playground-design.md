@@ -83,13 +83,27 @@ vite-playgournd/
 
 ### vite-server（React 19 + shadcn/ui）
 - **定位**: 学习 Vite 开发服务器 - proxy、CORS、HMR 配置、中间件等
-- **技术栈**: React 19 + SWC + Jotai + React Router + TailwindCSS + shadcn/ui + SCSS
+- **技术栈**: React 19 + SWC (@vitejs/plugin-react-swc) + Jotai + React Router + TailwindCSS + shadcn/ui + SCSS
 - **关键特性**: 自定义 hooks、路由配置、shadcn/ui 组件、Jotai 状态管理
+- **学习内容示例**:
+  - 配置开发服务器端口、host、https
+  - 配置 proxy 代理后端 API
+  - 配置 CORS 和自定义响应头
+  - 使用 configureServer 中间件
+  - 配置 HMR 行为
 
 ### vite-build（React 19 + Ant Design）
 - **定位**: 学习 Vite 构建优化 - code splitting、treeshaking、压缩、chunk 策略等
-- **技术栈**: React 19 + SWC + Zustand + React Router + TailwindCSS + Ant Design + SCSS
+- **技术栈**: React 19 + SWC (@vitejs/plugin-react-swc) + Zustand + React Router + TailwindCSS + Ant Design + SCSS
 - **关键特性**: 自定义 hooks、路由配置、Zustand 状态管理、各种构建优化配置
+- **学习内容示例**:
+  - 配置手动和自动 code splitting
+  - 配置 chunk 分割策略 (manualChunks)
+  - 配置压缩工具 (terser/esbuild) 和选项
+  - 使用 vite-bundle-analyzer 分析包大小
+  - 配置 treeshaking 和副作用标记
+  - 配置预加载和预获取
+  - 配置外部依赖 (external)
 
 ## 依赖管理策略
 
@@ -100,21 +114,26 @@ vite-playgournd/
 
 ### 子 package 依赖
 - 各自安装自己的业务依赖（vue、react、antd 等）
-- 通过 pnpm workspace 继承根目录的 vite、typescript 等工具依赖
+- 各子 package 在自己的 package.json 中显式声明 vite、typescript 等工具依赖（pnpm workspace 会进行依赖提升）
 - 子 package 之间互不引用，保持独立
+
+### TypeScript 配置
+- 各子 package 使用独立的 tsconfig.json，互不引用
+- tsconfig.node.json 用于 Vite 配置文件的类型检查
+- 不使用 TypeScript Project References
 
 ## 脚本配置
 
 ### 根目录脚本
 - `dev:basic` - 启动 vite-basic 开发服务器
 - `dev:server` - 启动 vite-server 开发服务器
-- `dev:build` - 启动 vite-build 开发服务器
+- `dev:optimize` - 启动 vite-build 开发服务器
 - `build:basic` - 构建 vite-basic
 - `build:server` - 构建 vite-server
-- `build:build` - 构建 vite-build
+- `build:optimize` - 构建 vite-build
 - `preview:basic` - 预览 vite-basic 构建结果
 - `preview:server` - 预览 vite-server 构建结果
-- `preview:build` - 预览 vite-build 构建结果
+- `preview:optimize` - 预览 vite-build 构建结果
 - `build` - 构建所有子 package
 - `type-check` - 运行所有子 package 的类型检查
 
