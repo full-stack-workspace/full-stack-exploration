@@ -7,7 +7,7 @@
 
 这是一个用于学习 Vite 的 monorepo 项目，使用 TypeScript 和 pnpm workspace 进行管理。项目包含三个独立的子 package，分别侧重 Vite 的不同方面。
 
-> 注意：仓库目录名为 `vite-playgournd`（现有 git 仓库名称），npm scope 为 `@vite-playground`。
+> 注意：仓库目录名为 `vite-playgournd`（现有 git 仓库名称，保持不变），npm scope 为 `@vite-playground`。
 
 ### 环境要求
 - Node.js: >= 18.0.0（Vite 6 和 React 19 的最低要求）
@@ -140,7 +140,8 @@ packages:
 
 ### TypeScript 配置
 - 各子 package 使用独立的 tsconfig.json，互不引用
-- tsconfig.node.json 用于 Vite 配置文件的类型检查
+- **vite-basic**：同时包含 `tsconfig.json`（项目代码）和 `tsconfig.node.json`（Vite 配置类型检查）
+- **vite-server** 和 **vite-build**：仅包含 `tsconfig.json`
 - 不使用 TypeScript Project References
 
 ## 脚本配置
@@ -148,13 +149,13 @@ packages:
 ### 根目录脚本
 - `dev:basic` - 启动 vite-basic 开发服务器 (端口 5173)
 - `dev:server` - 启动 vite-server 开发服务器 (端口 5174)
-- `dev:build` - 启动 vite-build 开发服务器 (端口 5175)
+- `dev:vite-build` - 启动 vite-build 开发服务器 (端口 5175)
 - `build:basic` - 构建 vite-basic
 - `build:server` - 构建 vite-server
-- `build:vite-build` - 构建 vite-build（避免与 "build" 动词歧义）
+- `build:vite-build` - 构建 vite-build
 - `preview:basic` - 预览 vite-basic 构建结果
 - `preview:server` - 预览 vite-server 构建结果
-- `preview:build` - 预览 vite-build 构建结果
+- `preview:vite-build` - 预览 vite-build 构建结果
 - `build` - 构建所有子 package
 - `type-check` - 运行所有子 package 的类型检查
 
@@ -185,7 +186,7 @@ packages:
 - 安装后 package.json 中会自动写入具体的版本号，保证构建可复现
 
 ### 构建配置
-- 各子 package 使用 Vite 默认的 `dist` 作为构建输出目录
+- 各子 package 使用 Vite 默认的 `dist` 作为构建输出目录（如 `packages/vite-basic/dist`、`packages/vite-server/dist`、`packages/vite-build/dist`）
 - `.gitignore` 中忽略所有 `dist` 目录、`node_modules` 目录和 `.env*.local` 文件
 
 ### Linting & Formatting（可选）
