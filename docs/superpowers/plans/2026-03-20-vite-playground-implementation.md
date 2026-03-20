@@ -708,16 +708,16 @@ export default function App() {
 
 ```tsx
 import { RouteObject } from 'react-router-dom'
-import { HomeView, AboutView } from './lazy'
+import { HomeViewLazy, AboutViewLazy } from './lazy'
 
 export const routes: RouteObject[] = [
   {
     path: '/',
-    element: <HomeView />
+    element: <HomeViewLazy />
   },
   {
     path: '/about',
-    element: <AboutView />
+    element: <AboutViewLazy />
   }
 ]
 ```
@@ -803,7 +803,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 
 ```typescript
 export { counterAtom } from './counterAtom'
-export { themeAtom } from './themeAtom'
+export { themeAtom, themeWithPersistenceAtom } from './themeAtom'
 ```
 
 - [ ] **Step 15: 创建 store/counterAtom.ts**
@@ -1091,7 +1091,8 @@ mkdir -p packages/vite-build/src/{components,hooks,routes,store,styles,views}
     "react-dom": "^19.0.0",
     "react-router-dom": "^6.0.0",
     "zustand": "^4.0.0",
-    "antd": "^5.0.0"
+    "antd": "^5.0.0",
+    "@ant-design/icons": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
@@ -1140,10 +1141,11 @@ mkdir -p packages/vite-build/src/{components,hooks,routes,store,styles,views}
 ```typescript
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import { analyzer } from 'vite-bundle-analyzer'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), analyzer()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -1416,7 +1418,7 @@ export default function HomeView() {
 
   useEffect(() => {
     setDebouncedCount(count)
-  }, [debouncedSearch])
+  }, [count, debouncedSearch])
 
   return (
     <div className="home">
@@ -1542,7 +1544,7 @@ export default {
 - [ ] **Step 20: 安装依赖**
 
 ```bash
-cd packages/vite-build && pnpm add react@latest react-dom@latest react-router-dom@latest zustand@latest antd@latest && pnpm add -D @types/react@latest @types/react-dom@latest @vitejs/plugin-react-swc@latest tailwindcss@latest postcss@latest autoprefixer@latest sass@latest vite-bundle-analyzer@latest
+cd packages/vite-build && pnpm add react@latest react-dom@latest react-router-dom@latest zustand@latest antd@latest @ant-design/icons@latest && pnpm add -D @types/react@latest @types/react-dom@latest @vitejs/plugin-react-swc@latest tailwindcss@latest postcss@latest autoprefixer@latest sass@latest vite-bundle-analyzer@latest
 ```
 
 - [ ] **Step 21: 提交**
