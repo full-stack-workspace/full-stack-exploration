@@ -14,7 +14,7 @@ export const themeAtom = atom<Theme>(getInitialTheme())
 
 export const themeWithPersistenceAtom = atom(
   (get) => get(themeAtom),
-  (get, set, newTheme: Theme) => {
+  (_get, set, newTheme: Theme) => {
     set(themeAtom, newTheme)
     if (typeof window !== 'undefined') {
       localStorage.setItem('theme', newTheme)

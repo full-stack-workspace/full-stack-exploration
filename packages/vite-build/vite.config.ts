@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import tailwindcss from '@tailwindcss/vite'
 import { analyzer } from 'vite-bundle-analyzer'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [react(), analyzer()],
+  plugins: [react(), tailwindcss(), analyzer()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -17,16 +18,6 @@ export default defineConfig({
     target: 'es2020',
     minify: 'esbuild',
     sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          antd: ['antd'],
-          router: ['react-router-dom'],
-          store: ['zustand']
-        }
-      }
-    },
     chunkSizeWarningLimit: 1000
   }
 })

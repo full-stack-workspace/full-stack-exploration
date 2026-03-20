@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button, Card, Typography, Input, Switch, Space } from 'antd'
 import { PlusOutlined, MinusOutlined, ReloadOutlined } from '@ant-design/icons'
 import { useCounterStore } from '@/store'
@@ -11,11 +11,6 @@ export default function HomeView() {
   const { value: isDark, toggle: toggleTheme } = useToggle(false)
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 500)
-  const [debouncedCount, setDebouncedCount] = useState(0)
-
-  useEffect(() => {
-    setDebouncedCount(count)
-  }, [count, debouncedSearch])
 
   return (
     <div className="home">
