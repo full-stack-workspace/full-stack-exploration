@@ -10,7 +10,7 @@
 > 注意：仓库目录名为 `vite-playgournd`（现有 git 仓库名称，保持不变），npm scope 为 `@vite-playground`。
 
 ### 环境要求
-- Node.js: >= 18.0.0（Vite 6 和 React 19 的最低要求）
+- Node.js: >= 18.0.0（Vite 7 和 React 19 的最低要求）
 - pnpm: >= 9.0.0
 
 ## 目录结构
