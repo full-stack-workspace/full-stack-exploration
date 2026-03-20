@@ -8,26 +8,37 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
+// SCSS Variables
+$primary-color: #42b983;
+$text-color: #2c3e50;
+$font-stack: Avenir, Helvetica, Arial, sans-serif;
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $font-stack;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $text-color;
   margin-top: 60px;
 }
 
 nav {
   padding: 30px;
-}
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  a {
+    font-weight: bold;
+    color: $text-color;
+    text-decoration: none;
+    transition: color 0.3s ease;
 
-nav a.router-link-exact-active {
-  color: #42b983;
+    &:hover {
+      color: darken($text-color, 10%);
+    }
+
+    &.router-link-exact-active {
+      color: $primary-color;
+    }
+  }
 }
 </style>

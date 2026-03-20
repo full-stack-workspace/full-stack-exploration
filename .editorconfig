@@ -1,0 +1,13 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+# 配置换行符，默认值为 'lf'
+# 可选值：'lf', 'cr', 'crlf'
+end_of_line = lf
+charset = utf-8
+# 移除尾随空格
+trim_trailing_whitespace = true
+# 插入最终换行符
+insert_final_newline = true
