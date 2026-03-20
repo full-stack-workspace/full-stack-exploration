@@ -73,7 +73,7 @@ vite-playgournd/
 │       ├── tailwind.config.js
 │       └── postcss.config.js
 │
-├── package.json                        # 根目录：pnpm workspace 配置和公共脚本
+├── package.json                        # 根目录：vite、typescript 等基础依赖和公共脚本
 ├── pnpm-workspace.yaml                 # pnpm workspace 配置
 ├── .gitignore
 ├── README.md
@@ -128,15 +128,15 @@ packages:
 
 ## 依赖管理策略
 
-### 根目录
-- **不声明任何依赖** - 仅用于 pnpm workspace 配置和公共脚本
+### 根目录依赖
+- **声明基础公用开发依赖** - vite、typescript、@types/node
 - 提供便捷的脚本命令来运行子 package
 
 ### 子 package 依赖
-- 各自在自己的 package.json 中安装所有需要的依赖
-- 包括业务依赖（vue、react、antd 等）和工具依赖（vite、typescript 等）
+- 各自在自己的 package.json 中安装业务依赖（vue、react、antd 等）
+- 安装各自特有的工具依赖（如 @vitejs/plugin-vue、@vitejs/plugin-react-swc、tailwindcss 等）
+- vite、typescript、@types/node 通过 pnpm workspace 从根目录共享
 - 子 package 之间互不引用，保持独立
-- pnpm workspace 会自动进行依赖提升以节省磁盘空间
 
 ### TypeScript 配置
 - 各子 package 使用独立的 tsconfig.json，互不引用
