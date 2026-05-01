@@ -9,7 +9,8 @@
 </template>
 
 <style lang="scss">
-// SCSS Variables
+@use "sass:color";
+
 $primary-color: #42b983;
 $text-color: #2c3e50;
 $font-stack: Avenir, Helvetica, Arial, sans-serif;
@@ -33,7 +34,7 @@ nav {
     transition: color 0.3s ease;
 
     &:hover {
-      color: darken($text-color, 10%);
+      color: color.adjust($text-color, $lightness: -10%);
     }
 
     &.router-link-exact-active {

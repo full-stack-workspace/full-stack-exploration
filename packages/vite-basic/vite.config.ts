@@ -19,5 +19,15 @@ export default defineConfig({
   },
   server: {
     port: 5173
+  },
+  build: {
+    // 配置静态资源目录，默认值为 'assets'
+    assetsDir: 'static',
+    // 静态资源内联为 base64 编码的阈值，以字节为单位，默认值为 1024 * 4
+    assetsInlineLimit: 1024 * 4,
+    // 配置是否生成 manifest.json，默认值为 false
+    manifest: true,
+    // 若输出目录在根目录外，强制清空输出目录
+    // emptyOutDir: true,
   }
-})
+});

@@ -1,12 +1,22 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/**
+ * Design Tokens - 设计系统的数据源
+ * 必须在 Tailwind 之前导入，确保 CSS 变量可用
+ */
+@import "./tokens.css";
+
+/**
+ * Tailwind CSS - 原子化 CSS 框架
+ * 使用 tokens.css 中定义的 CSS 变量作为数据源
+ */
+@import "tailwindcss";
+
+/**
+ * 全局样式重置与基础配置
+ */
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,4 +37,47 @@ body {
   background: #fff;
   padding: 24px;
   min-height: 280px;
+}
+
+/**
+ * ============================================
+ * 动画关键帧 (Animation Keyframes)
+ * ============================================
+ * 这些关键帧在 Tailwind config 中定义，
+ * 但在此处声明以确保 CSS 变量正确解析
+ */
+
+/* fadeIn 关键帧 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* slideUp 关键帧 */
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/**
+ * ============================================
+ * 运行时主题切换支持
+ * ============================================
+ * 通过 JavaScript 修改 data-theme 属性切换主题
+ * 主题变量覆盖定义在 tokens.css 的 [data-theme="dark"] 中
+ *
+ * 使用示例:
+ *   document.documentElement.setAttribute('data-theme', 'dark')
+ *   document.documentElement.setAttribute('data-theme', 'light')
+ */
+
+[data-theme="dark"] body {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }

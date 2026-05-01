@@ -28,7 +28,8 @@ const { theme, toggleTheme } = useTheme()
 </script>
 
 <style lang="scss" scoped>
-// SCSS Variables
+@use "sass:color";
+
 $primary-color: #42b983;
 $success-color: #4caf50;
 $warning-color: #ff9800;
@@ -78,7 +79,7 @@ $text-muted: #666;
       color: white;
 
       &:hover {
-        background-color: darken($success-color, 10%);
+        background-color: color.adjust($success-color, $lightness: -10%);
         transform: translateY(-2px);
       }
     }
@@ -89,7 +90,7 @@ $text-muted: #666;
       color: white;
 
       &:hover {
-        background-color: darken($warning-color, 10%);
+        background-color: color.adjust($warning-color, $lightness: -10%);
         transform: translateY(-2px);
       }
     }
@@ -100,7 +101,7 @@ $text-muted: #666;
       color: white;
 
       &:hover {
-        background-color: darken($info-color, 10%);
+        background-color: color.adjust($info-color, $lightness: -10%);
         transform: translateY(-2px);
       }
     }
@@ -127,7 +128,7 @@ $text-muted: #666;
     margin-top: 10px;
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: color.adjust($primary-color, $lightness: -10%);
       transform: translateY(-2px);
     }
   }

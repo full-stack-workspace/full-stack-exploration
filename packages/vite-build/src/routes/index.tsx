@@ -1,6 +1,9 @@
-import { RouteObject } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { RouteObject } from 'react-router-dom';
 import HomeView from '@/views/HomeView'
-import AboutView from '@/views/AboutView'
+// import AboutView from '@/views/AboutView'
+
+const AboutView = lazy(() => import('@/views/AboutView'));
 
 export const routes: RouteObject[] = [
   {
@@ -9,6 +12,10 @@ export const routes: RouteObject[] = [
   },
   {
     path: '/about',
-    element: <AboutView />
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AboutView />
+      </Suspense>
+    )
   }
 ]

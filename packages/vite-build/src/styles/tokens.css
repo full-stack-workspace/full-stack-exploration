@@ -1,0 +1,206 @@
+/**
+ * ============================================
+ * Design Tokens - CSS 自定义属性 (Custom Properties)
+ * ============================================
+ *
+ * 设计系统的基础数据层，采用 CSS 自定义变量实现。
+ *
+ * 层级架构:
+ * ┌─────────────────────────────────────────┐
+ * │  Primitives (原始值)                     │  ← 不可变基础值
+ * │  --color-sky-500: #0ea5e9               │
+ * │  --spacing-4: 1rem                      │
+ * └─────────────────────────────────────────┘
+ *           ↓ 引用
+ * ┌─────────────────────────────────────────┐
+ * │  Semantic Tokens (语义化变量)            │  ← 业务含义的变量
+ * │  --color-brand-500: var(--color-sky-500)│
+ * │  --color-accent: var(--color-amber-600) │
+ * └─────────────────────────────────────────┘
+ *           ↓ 引用
+ * ┌─────────────────────────────────────────┐
+ * │  Component Tokens (组件变量)              │  ← 组件级别的变量
+ * │  --button-bg: var(--color-brand-500)    │
+ * │  --card-shadow: var(--shadow-card)      │
+ * └─────────────────────────────────────────┘
+ *
+ * 优势:
+ * 1. 单一数据源 - 避免配置重复
+ * 2. 运行时可修改 - 支持主题切换
+ * 3. 跨框架复用 - CSS 变量是原生能力
+ * 4. 更好的 Tree-shaking - Tailwind v4 支持 variable 变体
+ */
+
+:root {
+  /* ============================================
+   * 1. Primitive Colors - 原始颜色
+   * ============================================
+   * 不带语义的纯色值，作为基础构建块
+   * 使用 HSL 格式便于后期主题修改
+   */
+
+  /* Brand Colors - 品牌蓝色系 */
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-300: #7dd3fc;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;  /* 主品牌色 */
+  --color-sky-600: #0284c7;
+  --color-sky-700: #0369a1;
+  --color-sky-800: #075985;
+  --color-sky-900: #0c4a6e;
+
+  /* Accent Colors - 强调琥珀色系 */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;  /* accent-DEFAULT */
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+
+  /* ============================================
+   * 2. Semantic Colors - 语义化颜色
+   * ============================================
+   * 带有业务含义的颜色变量，引用 primitive colors
+   * 修改这些变量即可实现主题切换
+   */
+
+  /* Brand Semantic - 品牌语义色 */
+  --color-brand-50: var(--color-sky-50);
+  --color-brand-100: var(--color-sky-100);
+  --color-brand-200: var(--color-sky-200);
+  --color-brand-300: var(--color-sky-300);
+  --color-brand-400: var(--color-sky-400);
+  --color-brand-500: var(--color-sky-500);
+  --color-brand-600: var(--color-sky-600);
+  --color-brand-700: var(--color-sky-700);
+  --color-brand-800: var(--color-sky-800);
+  --color-brand-900: var(--color-sky-900);
+
+  /* Accent Semantic - 强调语义色 */
+  --color-accent-light: var(--color-amber-500);
+  --color-accent: var(--color-amber-600);
+  --color-accent-dark: var(--color-amber-700);
+
+  /* ============================================
+   * 3. Spacing Tokens - 间距
+   * ============================================
+   * 基于 4px 基准网格的间距系统
+   * Tailwind 默认 spacing + 自定义扩展
+   */
+
+  --spacing-18: 4.5rem;   /* 72px */
+  --spacing-22: 5.5rem;   /* 88px */
+  --spacing-128: 32rem;   /* 512px */
+
+  /* ============================================
+   * 4. Border Radius Tokens - 圆角
+   * ============================================
+   * 语义化的圆角变量
+   */
+
+  --radius-4xl: 2rem;
+
+  /* ============================================
+   * 5. Font Family Tokens - 字体
+   * ============================================
+   * 字体栈定义
+   */
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Poppins', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* ============================================
+   * 6. Font Size Tokens - 字号
+   * ============================================
+   * 字号与行高配对 (font-size / line-height)
+   */
+
+  --text-2xs: 0.625rem / 0.875rem;
+  --text-7xl: 4.5rem / 1.1;
+
+  /* ============================================
+   * 7. Shadow Tokens - 阴影
+   * ============================================
+   * 语义化阴影系统
+   */
+
+  --shadow-inner-lg: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* ============================================
+   * 8. Animation Tokens - 动画
+   * ============================================
+   * 动画时间与缓动函数
+   */
+
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-fade: 500ms;
+  --duration-pulse-slow: 3s;
+  --duration-bounce-slow: 2s;
+
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-bounce-in: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ============================================
+   * 9. Component Tokens - 组件变量
+   * ============================================
+   * 组件级别的设计决策，引用其他 tokens
+   * 便于组件化管理和主题覆盖
+   */
+
+  /* Button Component */
+  --button-font-weight: 600;
+  --button-border-radius: 0.5rem;
+  --button-padding-x: 1rem;
+  --button-padding-y: 0.5rem;
+
+  /* Card Component */
+  --card-border-radius: 1rem;
+  --card-padding: 1.5rem;
+  --card-shadow: var(--shadow-card);
+  --card-shadow-hover: var(--shadow-card-hover);
+
+  /* Glass Effect */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+  --glass-blur: 10px;
+}
+
+/**
+ * ============================================
+ * 暗色主题 (Dark Theme)
+ * ============================================
+ * 通过覆盖语义化变量实现主题切换
+ * 只覆盖语义层，primitive 层保持不变
+ *
+ * 使用方式: document.documentElement.setAttribute('data-theme', 'dark')
+ */
+
+[data-theme="dark"] {
+  /* 暗色主题的品牌色 - 可以调整饱和度/亮度 */
+  --color-brand-500: var(--color-sky-400);
+  --color-brand-600: var(--color-sky-500);
+
+  /* 暗色主题的强调色 */
+  --color-accent: var(--color-amber-500);
+  --color-accent-light: var(--color-amber-400);
+
+  /* 暗色主题的卡片 */
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+
+  /* 暗色主题的玻璃效果 */
+  --glass-bg: rgba(0, 0, 0, 0.3);
+}
