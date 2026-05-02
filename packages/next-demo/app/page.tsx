@@ -160,10 +160,10 @@ export default function Home() {
        * - 背景装饰性模糊圆形
        * - 动画效果增强视觉吸引力
        */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50 via-white to-neutral-50 py-20 sm:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50 via-white to-neutral-50 py-20 sm:py-32 dark:from-neutral-900 dark:via-neutral-950 dark:to-neutral-900">
         {/* 背景装饰 - 渐变模糊圆形 */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-primary-100/30 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-primary-100/30 to-transparent rounded-full blur-3xl dark:from-primary-900/20 dark:to-transparent" />
         </div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -179,9 +179,9 @@ export default function Home() {
             </div>
 
             {/* 主标题 - 渐变色文字 */}
-            <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-6xl lg:text-7xl mb-6">
+            <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-6xl lg:text-7xl mb-6 dark:text-neutral-50">
               <span className="block">构建现代</span>
-              <span className="bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-600 bg-clip-text text-transparent dark:from-primary-400 dark:via-primary-300 dark:to-secondary-400">
                 Web 应用
               </span>
             </h1>
@@ -197,7 +197,7 @@ export default function Home() {
               {/* 主按钮 - 渐变阴影 */}
               <Link
                 href="/blog"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary-600 px-8 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-200 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary-600 px-8 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-200 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5 dark:bg-primary-500 dark:hover:bg-primary-600"
               >
                 快速开始
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -268,26 +268,26 @@ export default function Home() {
               <Link
                 key={card.href}
                 href={card.href}
-                className={`animate-slide-up stagger-${index + 1} group relative overflow-hidden rounded-2xl border ${card.borderLight} ${card.bgLight} p-8 transition-all duration-300 ${card.hoverBgLight} ${card.hoverBorderLight} hover:shadow-xl hover:-translate-y-1`}
+                className={`animate-slide-up stagger-${index + 1} group relative overflow-hidden rounded-2xl border ${card.borderLight} ${card.bgLight} p-8 transition-all duration-300 ${card.hoverBgLight} ${card.hoverBorderLight} hover:shadow-xl hover:-translate-y-1 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800`}
               >
                 {/* 右上角装饰渐变圆形 */}
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${card.gradient} opacity-10 blur-2xl rounded-full transition-opacity duration-300 group-hover:opacity-20`} />
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${card.gradient} opacity-10 blur-2xl rounded-full transition-opacity duration-300 group-hover:opacity-20 dark:opacity-5 dark:group-hover:opacity-10`} />
 
                 <div className="relative">
                   {/* Emoji 大图标 */}
                   <div className="text-5xl mb-4">{card.icon}</div>
                   {/* 卡片标题 */}
-                  <h3 className={`text-xl font-semibold ${card.textLight} mb-2`}>
+                  <h3 className={`text-xl font-semibold ${card.textLight} mb-2 dark:text-neutral-50`}>
                     {card.title}
                   </h3>
                   {/* 卡片描述 */}
-                  <p className={`text-sm ${card.textMutedLight}`}>
+                  <p className={`text-sm ${card.textMutedLight} dark:text-neutral-400`}>
                     {card.description}
                   </p>
                 </div>
 
                 {/* 访问链接 - 带箭头动画 */}
-                <div className={`mt-6 inline-flex items-center gap-2 text-sm font-medium ${card.textLight} transition-transform duration-200 group-hover:gap-3`}>
+                <div className={`mt-6 inline-flex items-center gap-2 text-sm font-medium ${card.textLight} transition-transform duration-200 group-hover:gap-3 dark:text-neutral-400`}>
                   访问
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

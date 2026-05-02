@@ -53,16 +53,16 @@ export default function UserListPage() {
              * Header Section - 页面标题区域
              * ================================================================
              */}
-            <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50 to-white py-16 sm:py-24">
+            <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50 to-white py-16 sm:py-24 dark:from-neutral-900 dark:to-neutral-950">
                 {/* 背景装饰 - 使用 success 色系的渐变 */}
                 <div className="absolute inset-0 -z-10">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-success-100/30 to-transparent rounded-full blur-3xl" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-success-100/30 to-transparent rounded-full blur-3xl dark:from-success-900/20 dark:to-transparent" />
                 </div>
 
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl text-center">
                         {/* 页面标题 */}
-                        <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl mb-4">
+                        <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl mb-4 dark:text-neutral-50">
                             团队成员
                         </h1>
                         {/* 页面描述 */}

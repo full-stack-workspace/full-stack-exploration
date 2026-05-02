@@ -16,6 +16,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /**
  * ============================================================================
  * 自定义主题配置 (@theme)
@@ -271,13 +273,11 @@
   color-scheme: light;
 }
 
-/* 暗色模式：通过 prefers-color-scheme 媒体查询自动检测 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-background-dark);
-    --foreground: var(--color-foreground-dark);
-    color-scheme: dark;
-  }
+/* 暗色模式：通过 .dark class 切换 */
+:root.dark {
+  --background: var(--color-background-dark);
+  --foreground: var(--color-foreground-dark);
+  color-scheme: dark;
 }
 
 /**
@@ -324,11 +324,9 @@ body {
 }
 
 /* 暗色模式下的选中文本样式 */
-@media (prefers-color-scheme: dark) {
-  ::selection {
-    background-color: var(--color-primary-800);
-    color: var(--color-primary-100);
-  }
+:root.dark ::selection {
+  background-color: var(--color-primary-800);
+  color: var(--color-primary-100);
 }
 
 /**
@@ -365,14 +363,12 @@ body {
 }
 
 /* 暗色模式下的滚动条样式 */
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-neutral-600);
-  }
+:root.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-600);
+}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-neutral-500);
-  }
+:root.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500);
 }
 
 /**

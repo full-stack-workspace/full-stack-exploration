@@ -24,6 +24,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "./ThemeProvider";
 import { cn } from "@/lib/utils";
 
 /**
@@ -31,11 +32,11 @@ import { cn } from "@/lib/utils";
  * 定义应用中主要页面的导航信息
  */
 const navItems = [
-    { href: "/", label: "首页" },
-    { href: "/ai-models", label: "AI 模型" },
-    { href: "/blog", label: "博客" },
-    { href: "/user", label: "用户" },
-    { href: "/about", label: "关于" },
+  { href: "/", label: "首页" },
+  { href: "/ai-models", label: "AI 模型" },
+  { href: "/blog", label: "博客" },
+  { href: "/user", label: "用户" },
+  { href: "/about", label: "关于" },
 ];
 
 /**
@@ -49,6 +50,7 @@ const navItems = [
  */
 export default function Header() {
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
 
   /**
    * 判断当前路径是否为指定路由
@@ -105,10 +107,41 @@ export default function Header() {
               )}
             </Link>
           ))}
+          {/* 主题切换按钮 - 桌面端 */}
+          <button
+            onClick={toggleTheme}
+            className="ml-2 flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 text-neutral-600 transition-colors hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700"
+            aria-label={theme === "light" ? "切换到暗色模式" : "切换到亮色模式"}
+          >
+            {theme === "light" ? (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            )}
+          </button>
         </nav>
 
         {/* 移动端菜单按钮 */}
         <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleTheme}
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 text-neutral-600 transition-colors hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700"
+            aria-label={theme === "light" ? "切换到暗色模式" : "切换到亮色模式"}
+          >
+            {theme === "light" ? (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            )}
+          </button>
           <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 text-neutral-600 transition-colors hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700">
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />

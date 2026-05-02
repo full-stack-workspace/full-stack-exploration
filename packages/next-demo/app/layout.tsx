@@ -19,6 +19,7 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { ThemeProvider } from "../components/ThemeProvider";
 import "./globals.css";
 
 /**
@@ -47,11 +48,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className="h-full antialiased">
+    <html lang="zh-CN" className="h-full antialiased" suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');var p=window.matchMedia('(prefers-color-scheme: dark)').matches;var e=t||(p?'dark':'light');document.documentElement.classList.add(e)})()`,
+          }}
+        />
+        <ThemeProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

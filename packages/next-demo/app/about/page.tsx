@@ -26,14 +26,14 @@ export default function AboutPage() {
 
     return (
         <div className="flex flex-col">
-            <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50 to-white py-20 sm:py-32">
+            <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50 to-white py-20 sm:py-32 dark:from-neutral-900 dark:to-neutral-950">
                 <div className="absolute inset-0 -z-10">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-secondary-100/30 via-primary-100/20 to-transparent rounded-full blur-3xl" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-secondary-100/30 via-primary-100/20 to-transparent rounded-full blur-3xl dark:from-secondary-900/20 dark:via-primary-900/10 dark:to-transparent" />
                 </div>
 
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-3xl text-center">
-                        <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl mb-6">
+                        <h1 className="animate-slide-up text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl mb-6 dark:text-neutral-50">
                             关于我们
                         </h1>
                         <p className="animate-slide-up stagger-1 text-lg text-neutral-600 sm:text-xl dark:text-neutral-400 mb-8">
@@ -43,7 +43,7 @@ export default function AboutPage() {
                         <div className="animate-slide-up stagger-2 flex justify-center gap-4">
                             <Link
                                 href="/blog"
-                                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-primary-600 px-8 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-200 hover:bg-primary-700 hover:shadow-xl hover:-translate-y-0.5"
+                                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-primary-600 px-8 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-200 hover:bg-primary-700 hover:shadow-xl hover:-translate-y-0.5 dark:bg-primary-500 dark:hover:bg-primary-600"
                             >
                                 浏览博客
                             </Link>
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="grid gap-12 lg:grid-cols-2 items-center">
                         <div className="relative">
-                            <div className="aspect-w-16 aspect-h-10 rounded-2xl overflow-hidden shadow-2xl shadow-neutral-500/20">
+                            <div className="aspect-w-16 aspect-h-10 rounded-2xl overflow-hidden shadow-2xl shadow-neutral-500/20 dark:shadow-neutral-950/50">
                                 <Image
                                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                     alt="团队协作"
@@ -71,7 +71,7 @@ export default function AboutPage() {
                                     height={500}
                                 />
                             </div>
-                            <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-primary-500 to-primary-700 text-white p-6 rounded-2xl shadow-xl hidden sm:block">
+                            <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-primary-500 to-primary-700 text-white p-6 rounded-2xl shadow-xl hidden sm:block dark:bg-primary-600">
                                 <p className="text-4xl font-bold">10+</p>
                                 <p className="text-sm opacity-90">年行业经验</p>
                             </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <section className="bg-gradient-to-r from-primary-600 to-secondary-600 py-20">
+            <section className="bg-gradient-to-r from-primary-600 to-secondary-600 py-20 dark:from-primary-700 dark:to-secondary-700">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
                         准备好开始你的项目了吗？
@@ -168,7 +168,7 @@ export default function AboutPage() {
                     </p>
                     <Link
                         href="/user"
-                        className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-8 text-sm font-semibold text-primary-600 shadow-lg transition-all duration-200 hover:bg-neutral-50 hover:shadow-xl hover:-translate-y-0.5"
+                        className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-8 text-sm font-semibold text-primary-600 shadow-lg transition-all duration-200 hover:bg-neutral-50 hover:shadow-xl hover:-translate-y-0.5 dark:text-primary-700"
                     >
                         联系我们
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

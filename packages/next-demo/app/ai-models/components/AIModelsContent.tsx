@@ -269,18 +269,18 @@ export function AIModelsContent() {
              * 这部分内容在 Server Component 中直接渲染，
              * 随页面首次请求立即返回，不经过 Suspense。
              */}
-            <section className="relative overflow-hidden bg-gradient-to-b from-primary-50/50 to-white py-16 sm:py-24">
+            <section className="relative overflow-hidden bg-gradient-to-b from-primary-50/50 to-white py-16 sm:py-24 dark:from-primary-900/20 dark:to-neutral-950">
                 {/*
                  * 背景装饰
                  * - 绝对定位，z-10 -1
                  * - 渐变模糊圆形，营造光晕效果
                  */}
                 <div className="absolute inset-0 -z-10">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary-100/30 to-transparent rounded-full blur-3xl" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary-100/30 to-transparent rounded-full blur-3xl dark:from-primary-900/20 dark:to-transparent" />
                 </div>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl text-center">
-                        <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl mb-4">AI 模型广场</h1>
+                        <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl mb-4 dark:text-neutral-50">AI 模型广场</h1>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400">探索最新的人工智能模型，比较它们的性能和特点</p>
                     </div>
                 </div>

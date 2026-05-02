@@ -40,12 +40,12 @@ export interface Article {
  */
 const getCategoryColor = (id: number) => {
     const colors = [
-        { bg: "bg-blue-50", text: "text-blue-600" },
-        { bg: "bg-violet-50", text: "text-violet-600" },
-        { bg: "bg-emerald-50", text: "text-emerald-600" },
-        { bg: "bg-amber-50", text: "text-amber-600" },
-        { bg: "bg-rose-50", text: "text-rose-600" },
-        { bg: "bg-cyan-50", text: "text-cyan-600" },
+        { bg: "bg-blue-50", text: "text-blue-600", darkBg: "dark:bg-blue-900/30", darkText: "dark:text-blue-400" },
+        { bg: "bg-violet-50", text: "text-violet-600", darkBg: "dark:bg-violet-900/30", darkText: "dark:text-violet-400" },
+        { bg: "bg-emerald-50", text: "text-emerald-600", darkBg: "dark:bg-emerald-900/30", darkText: "dark:text-emerald-400" },
+        { bg: "bg-amber-50", text: "text-amber-600", darkBg: "dark:bg-amber-900/30", darkText: "dark:text-amber-400" },
+        { bg: "bg-rose-50", text: "text-rose-600", darkBg: "dark:bg-rose-900/30", darkText: "dark:text-rose-400" },
+        { bg: "bg-cyan-50", text: "text-cyan-600", darkBg: "dark:bg-cyan-900/30", darkText: "dark:text-cyan-400" },
     ];
     return colors[id % colors.length];
 };
@@ -84,10 +84,10 @@ const ArticleCard = memo(function ArticleCard({
 
             {/* 文章标签和编号 */}
             <div className="mb-4 flex items-center justify-between">
-                <span className={cn("inline-flex items-center rounded-full px-3 py-1 text-xs font-medium", category.bg, category.text)}>
+                <span className={cn("inline-flex items-center rounded-full px-3 py-1 text-xs font-medium", category.bg, category.text, category.darkBg, category.darkText)}>
                     文章
                 </span>
-                <time className="text-xs text-neutral-400">
+                <time className="text-xs text-neutral-400 dark:text-neutral-500">
                     #{article.id.toString().padStart(3, "0")}
                 </time>
             </div>
