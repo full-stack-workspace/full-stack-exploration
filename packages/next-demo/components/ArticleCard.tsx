@@ -21,6 +21,7 @@
 
 import Link from "next/link";
 import { memo } from "react";
+import { cn } from "@/lib/utils";
 
 /**
  * 文章数据结构接口
@@ -83,7 +84,7 @@ const ArticleCard = memo(function ArticleCard({
 
             {/* 文章标签和编号 */}
             <div className="mb-4 flex items-center justify-between">
-                <span className={`inline-flex items-center rounded-full ${category.bg} px-3 py-1 text-xs font-medium ${category.text}`}>
+                <span className={cn("inline-flex items-center rounded-full px-3 py-1 text-xs font-medium", category.bg, category.text)}>
                     文章
                 </span>
                 <time className="text-xs text-neutral-400">

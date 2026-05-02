@@ -34,7 +34,8 @@
 
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
+import { Suspense } from "react";
+import useSWR from "swr";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { getUserById } from "@/data/user";
@@ -70,6 +71,15 @@ const statusConfig = {
 
 /**
  * ============================================================================
+ * SWR fetcher 函数
+ * ============================================================================
+ * 用于 SWR 请求的通用 fetcher
+ * 基于 fetch API 实现
+ */
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+/**
+ * ============================================================================
  * 用户详情内容组件
  * ============================================================================
  *
@@ -77,7 +87,7 @@ const statusConfig = {
  * 1. 从 URL 参数获取用户 ID
  * 2. 调用 getUserById 获取用户数据
  * 3. 用户不存在时显示友好提示
- * 4. 使用 useEffect 副作用获取文章数据
+ * 4. 使用 useSWR 获取文章数据（自动缓存、重新验证）
  * 5. 根据加载状态显示骨架屏或实际内容
  */
 function UserDetailContent() {
@@ -91,33 +101,18 @@ function UserDetailContent() {
     const user = getUserById(userId);
 
     /**
-     * 文章数据状态
-     * 初始为 null，加载完成后设置为 API 返回的数据
-     */
-    const [post, setPost] = useState<Post | null>(null);
-
-    /**
-     * 加载状态
-     * 用于显示骨架屏加载动画
-     */
-    const [loading, setLoading] = useState(true);
-
-    /**
-     * 副作用：获取文章数据
+     * 使用 SWR 获取文章数据
      *
-     * 每次 userId 变化时重新获取对应的文章
-     * 使用 jsonplaceholder API 作为模拟数据源
+     * SWR 特性：
+     * - 自动缓存请求结果
+     * - 页面重新聚焦时自动重新验证
+     * - 快速切换时使用缓存数据
+     * - 错误时自动重试
      */
-    useEffect(() => {
-        setLoading(true);
-        fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setPost(data);
-                setLoading(false);
-            })
-            .catch(() => setLoading(false));
-    }, [userId]);
+    const { data: post, isLoading: loading } = useSWR<Post>(
+        `https://jsonplaceholder.typicode.com/posts/${userId}`,
+        fetcher
+    );
 
     /**
      * 用户不存在时的降级处理
@@ -277,6 +272,22 @@ function UserDetailContent() {
                                     {user.bio}
                                 </p>
                             </div>
+                            {/* 技能标签 */}
+                            <div className="rounded-2xl border border-neutral-200/60 bg-white p-6 shadow-lg dark:border-neutral-800/60 dark:bg-neutral-900">
+                                <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
+                                    技能标签
+                                </h2>
+                                <div className="flex flex-wrap gap-2">
+                                    {["React", "TypeScript", "Node.js", "Python", "UI/UX", "Git", "Docker", "AWS", "GraphQL", "Tailwind CSS"].map((skill) => (
+                                        <span
+                                            key={skill}
+                                            className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-600 transition-colors hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
 
                             {/* 发布的文章 */}
                             <div className="rounded-2xl border border-neutral-200/60 bg-white p-6 shadow-lg dark:border-neutral-800/60 dark:bg-neutral-900">
@@ -347,22 +358,6 @@ function UserDetailContent() {
                                 )}
                             </div>
 
-                            {/* 技能标签 */}
-                            <div className="rounded-2xl border border-neutral-200/60 bg-white p-6 shadow-lg dark:border-neutral-800/60 dark:bg-neutral-900">
-                                <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
-                                    技能标签
-                                </h2>
-                                <div className="flex flex-wrap gap-2">
-                                    {["React", "TypeScript", "Node.js", "Python", "UI/UX", "Git", "Docker", "AWS", "GraphQL", "Tailwind CSS"].map((skill) => (
-                                        <span
-                                            key={skill}
-                                            className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-600 transition-colors hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
-                                        >
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

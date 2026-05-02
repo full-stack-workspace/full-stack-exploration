@@ -23,6 +23,24 @@ import { Metadata } from "next";
 import ArticleCard, { Article } from "../../components/ArticleCard";
 
 /**
+ * ============================================================================
+ * ISR (Incremental Static Regeneration) 配置
+ * ============================================================================
+ *
+ * 设置页面静态生成后的重新验证间隔。
+ *
+ * 作用：
+ * - 页面最初以静态 HTML 形式被预渲染和缓存
+ * - 在 revalidate 秒后，下次请求会触发后台重新生成
+ * - 用户会先看到缓存的旧页面，同时后台更新数据
+ *
+ * 与 getStaticProps + revalidate 等效（Pages Router 时代的功能）
+ *
+ * @see https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration
+ */
+export const revalidate = 60;
+
+/**
  * 页面 Metadata 配置
  * 定义页面的标题和描述，用于 SEO
  */
@@ -41,14 +59,30 @@ export const metadata: Metadata = {
  * - 最多显示 12 篇文章
  * - 每张卡片都是可点击的链接
  *
+ * 数据获取：
+ * - 直接从外部 API (jsonplaceholder) 获取数据
+ * - 不依赖本地 /api/blog route，避免构建时 ECONNREFUSED 错误
+ * - ISR (revalidate=60) 实现增量静态再生
+ *   - 页面被预渲染为静态 HTML 并缓存
+ *   - 60 秒后下次请求触发后台重新生成
+ *   - 用户始终快速加载，同时数据保持相对新鲜
+ *
  * 性能优化：
  * - 文章卡片已使用 React.memo 包装，避免不必要的重渲染
  * - 服务端渲染减少客户端 JavaScript 体积
  */
 export default async function BlogPage() {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
-    const res = await fetch(`${baseUrl}/api/blog`, { cache: "no-store" });
+    /**
+     * 直接从外部 API 获取文章数据
+     *
+     * 为什么不使用本地 /api/blog？
+     * - 构建时预渲染需要请求 API，但此时没有开发服务器运行
+     * - 会导致 ECONNREFUSED 错误：fetch failed at 127.0.0.1:3000
+     * - 直接调用外部 API 可以确保构建时也能正常获取数据
+     */
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        next: { revalidate: 60 },
+    });
     const posts: Article[] = await res.json();
 
     return (

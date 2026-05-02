@@ -24,16 +24,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 /**
  * 导航项配置
  * 定义应用中主要页面的导航信息
  */
 const navItems = [
-  { href: "/", label: "首页" },
-  { href: "/blog", label: "博客" },
-  { href: "/user", label: "用户" },
-  { href: "/about", label: "关于" },
+    { href: "/", label: "首页" },
+    { href: "/ai-models", label: "AI 模型" },
+    { href: "/blog", label: "博客" },
+    { href: "/user", label: "用户" },
+    { href: "/about", label: "关于" },
 ];
 
 /**
@@ -89,11 +91,12 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`relative px-5 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
+              className={cn(
+                "relative px-5 py-2 text-sm font-medium transition-all duration-200 rounded-lg",
                 isActiveRoute(item.href)
                   ? "text-primary-600 dark:text-primary-400"
                   : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50"
-              }`}
+              )}
             >
               {item.label}
               {/* 当前页面指示器 - 底部短条 */}

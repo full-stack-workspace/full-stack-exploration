@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { memo } from "react";
 import type { User } from "@/types/user";
+import { cn } from "@/lib/utils";
 
 interface UserCardProps {
     user: User;
@@ -33,7 +34,7 @@ const UserCard = memo(function UserCard({
                             className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                         />
                     </div>
-                    <div className={`absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-white ${statusColors[user.status]}`}>
+                    <div className={cn("absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-white", statusColors[user.status])}>
                         <span className="sr-only">{user.status}</span>
                     </div>
                 </div>

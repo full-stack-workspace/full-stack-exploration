@@ -11,17 +11,23 @@
  * - 在线状态指示器（在线/离开/离线）
  * - 搜索功能（UI 预留）
  * - 可导航到用户详情页
+ * - 支持客户端添加新成员（模拟）
  *
  * 页面结构：
  * 1. Header Section - 页面标题区域
- * 2. Toolbar Section - 搜索和操作栏
- * 3. User Grid Section - 用户卡片网格
+ * 2. Toolbar Section - 搜索和操作栏（UserListClient）
+ * 3. User Grid Section - 用户卡片网格（UserListClient）
+ *
+ * 架构说明：
+ * - page.tsx 保持为 Server Component，可被 Next.js 预渲染
+ * - 交互逻辑（搜索、添加）封装在 UserListClient Client Component 中
+ * - 水合后 UserListClient 接管搜索和添加功能
  *
  * @module user/page
  */
 
 import { Metadata } from "next";
-import UserCard from "@/components/UserCard";
+import UserListClient from "@/components/UserListClient";
 import { users } from "@/data/user";
 
 /**
@@ -36,6 +42,9 @@ export const metadata: Metadata = {
  * ============================================================================
  * 用户列表页面组件
  * ============================================================================
+ *
+ * 作为 Server Component，可以被 Next.js 预渲染为静态 HTML。
+ * 将初始用户数据传递给 UserListClient 进行交互管理。
  */
 export default function UserListPage() {
     return (
@@ -65,59 +74,12 @@ export default function UserListPage() {
             </section>
 
             {/* =================================================================
-             * Toolbar Section - 工具栏区域
+             * User List Client Section - 用户列表交互区域
              * ================================================================
-             * 包含搜索框和操作按钮
+             * 包含搜索框、添加按钮和用户卡片网格
+             * 由 UserListClient Client Component 渲染，支持水合后交互
              */}
-            <section className="bg-white py-8 border-b border-neutral-200/60 dark:bg-neutral-950 dark:border-neutral-800/60">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                        {/* 搜索框 */}
-                        <div className="flex items-center gap-4">
-                            <div className="relative">
-                                <input
-                                    type="search"
-                                    placeholder="搜索成员..."
-                                    className="h-10 w-64 rounded-xl border border-neutral-200 bg-neutral-50 pl-10 pr-4 text-sm focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-neutral-800 dark:bg-neutral-900 dark:focus:border-primary-600"
-                                />
-                                {/* 搜索图标 */}
-                                <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                        </div>
-
-                        {/* 操作按钮 */}
-                        <div className="flex items-center gap-2">
-                            <button className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary-600 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700">
-                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                                </svg>
-                                添加成员
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* =================================================================
-             * User Grid Section - 用户卡片网格区域
-             * ================================================================
-             */}
-            <section className="bg-neutral-50 py-12 dark:bg-neutral-900">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    {/* 响应式网格：移动端 1 列，平板 2 列，桌面 3/4 列 */}
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {users.map((user, index) => (
-                            <UserCard
-                                key={user.id}
-                                user={user}
-                                animationDelay={index * 50}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <UserListClient initialUsers={users} />
         </div>
     );
 }
