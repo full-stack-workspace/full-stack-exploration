@@ -7,4 +7,8 @@ export interface User {
     status: "online" | "away" | "offline";
     projects: number;
     bio: string;
+    location?: string;
+    joinedDate?: string;
+    followers?: number;
+    following?: number;
 }

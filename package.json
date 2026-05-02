@@ -1,12 +1,13 @@
 {
-  "name": "vite-playground",
+  "name": "full-stack-exploration",
   "private": true,
   "version": "1.0.0",
-  "description": "Vite learning playground with monorepo structure",
+  "description": "Monorepo playground for learning Vite, Tailwind CSS, React, and Next.js",
   "scripts": {
     "dev:basic": "pnpm -C packages/vite-basic dev",
     "dev:server": "pnpm -C packages/vite-server dev",
     "dev:vite-build": "pnpm -C packages/vite-build dev",
+    "dev:next": "pnpm -C packages/next-demo dev",
     "build:basic": "pnpm -C packages/vite-basic build",
     "build:server": "pnpm -C packages/vite-server build",
     "build:vite-build": "pnpm -C packages/vite-build build",
