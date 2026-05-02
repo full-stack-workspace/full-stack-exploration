@@ -8,6 +8,117 @@ import { PerformanceMonitor } from "./PerformanceMonitor";
 
 /**
  * ============================================================================
+ * Suspense Fallback Components - Suspense 骨架屏组件
+ * ============================================================================
+ *
+ * 【功能说明】
+ * 为 Suspense 边界提供骨架屏占位内容，在异步数据加载期间展示。
+ * 骨架屏与实际组件结构相似，确保布局稳定，减少布局跳动。
+ *
+ * 【设计原则】
+ * 1. 结构相似：骨架屏结构与实际渲染内容保持一致
+ * 2. 动画效果：使用 animate-pulse 提供加载中视觉反馈
+ * 3. 布局稳定：占位空间与实际内容相同，避免页面跳动
+ *
+ * 【组件列表】
+ * - ModelListSkeleton：ModelList 的骨架屏
+ * - ModelDetailSkeleton：ModelDetail 的骨架屏
+ */
+
+/**
+ * ModelListSkeleton - 模型列表骨架屏
+ *
+ * 【用途】
+ * 在 ModelList 组件数据加载期间显示占位符。
+ *
+ * 【结构设计】
+ * - 6 个卡片网格布局（与 ModelList 实际布局一致）
+ * - 每个卡片包含：
+ *   - 图标占位（w-12 h-12 灰色方块）
+ *   - 标题占位（h-5 w-24 灰色条）
+ *   - 副标题占位（h-4 w-16 灰色条）
+ *
+ * 【样式】
+ * - 使用 animate-pulse 脉冲动画模拟加载效果
+ * - 响应式布局：1列 → 2列 → 3列
+ */
+function ModelListSkeleton() {
+    return (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                    key={i}
+                    className="p-4 rounded-xl border border-neutral-200/60 bg-white dark:border-neutral-800/60 dark:bg-neutral-900 animate-pulse"
+                >
+                    <div className="flex items-start gap-3">
+                        {/*
+                         * 图标占位
+                         * - 尺寸：w-12 h-12（48x48）
+                         * - 圆角：rounded-xl
+                         * - 颜色：bg-neutral-200 / bg-neutral-800（暗色）
+                         */}
+                        <div className="w-12 h-12 rounded-xl bg-neutral-200 dark:bg-neutral-800" />
+                        <div className="flex-1">
+                            {/*
+                             * 标题占位
+                             * - 宽度：w-24（约 96px）
+                             * - 高度：h-5（约 20px）
+                             */}
+                            <div className="h-5 w-24 rounded bg-neutral-200 dark:bg-neutral-800 mb-2" />
+                            {/*
+                             * 副标题占位
+                             * - 宽度：w-16（约 64px）
+                             * - 高度：h-4（约 16px）
+                             */}
+                            <div className="h-4 w-16 rounded bg-neutral-200 dark:bg-neutral-800" />
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+/**
+ * ModelDetailSkeleton - 模型详情骨架屏
+ *
+ * 【用途】
+ * 在 ModelDetail 组件数据加载期间显示占位符。
+ *
+ * 【结构设计】
+ * - 与 ModelDetail 实际布局结构相似
+ * - 包含：
+ *   - 头部：图标占位 + 标题占位
+ *   - 内容区：多行列占位
+ *
+ * 【样式】
+ * - 使用 animate-pulse 脉冲动画
+ * - 容器样式与 ModelDetail 实际容器一致
+ */
+function ModelDetailSkeleton() {
+    return (
+        <div className="p-6 rounded-2xl border border-neutral-200/60 bg-white dark:border-neutral-800/60 dark:bg-neutral-900 animate-pulse">
+            <div className="space-y-4">
+                {/*
+                 * 头部区域
+                 * - 图标：w-16 h-16 圆形占位
+                 * - 标题：h-6 w-32 占位
+                 * - 副标题：h-4 w-20 占位
+                 */}
+                <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-2xl bg-neutral-200 dark:bg-neutral-800" />
+                    <div>
+                        <div className="h-6 w-32 rounded bg-neutral-200 dark:bg-neutral-800 mb-2" />
+                        <div className="h-4 w-20 rounded bg-neutral-200 dark:bg-neutral-800" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+/**
+ * ============================================================================
  * AIModelsContent Component - AI 模型广场主容器组件
  * ============================================================================
  *
@@ -68,11 +179,11 @@ import { PerformanceMonitor } from "./PerformanceMonitor";
  * 【Suspense 边界配置】
  *
  * 边界 1：ModelList
- * - fallback：骨架屏（6 个占位卡片）
- * - 作用：数据加载期间显示占位符
+ * - fallback：ModelListSkeleton（6 个占位卡片）
+ * - 作用：数据加载期间显示占位符，保持布局稳定
  *
  * 边界 2：ModelDetail
- * - fallback：骨架屏（详情区域占位符）
+ * - fallback：ModelDetailSkeleton（详情区域占位符）
  * - 作用：详情加载时保持布局稳定
  *
  * 【Streaming 机制关联】
@@ -86,7 +197,7 @@ import { PerformanceMonitor } from "./PerformanceMonitor";
  * │    │                                                       │
  * │    └── 异步：Suspense 边界内的内容                          │
  * │            │                                               │
- * │            ├── ModelList 加载中 → 显示骨架屏                 │
+ * │            ├── ModelList 加载中 → 显示 ModelListSkeleton    │
  * │            │                                               │
  * │            └── ModelList 数据就绪 → 显示实际列表              │
  * └──────────────────────────────────────────────────────────────┘
@@ -185,11 +296,11 @@ export function AIModelsContent() {
              * - 响应式：小屏幕下单列显示
              *
              * 【Suspense 边界 1：ModelList】
-             * fallback：骨架屏（6 个灰色卡片占位）
+             * fallback：ModelListSkeleton（6 个占位卡片）
              * content：ModelList 组件（带流式加载）
              *
              * 【Suspense 边界 2：ModelDetail】
-             * fallback：骨架屏（详情区域占位）
+             * fallback：ModelDetailSkeleton（详情区域占位符）
              * content：ModelDetail 组件（带延迟加载）
              */}
             <section className="bg-white py-12 dark:bg-neutral-900">
@@ -199,7 +310,7 @@ export function AIModelsContent() {
                          * 模型列表区域（左侧，跨 3 列）
                          *
                          * Suspense 边界作用：
-                         * - 当 ModelList 组件加载时，显示 fallback
+                         * - 当 ModelList 组件加载时，显示 ModelListSkeleton
                          * - 当 ModelList 数据逐步加载时，逐步更新
                          */}
                         <div className="lg:col-span-3">
@@ -207,12 +318,12 @@ export function AIModelsContent() {
                             {/*
                              * Suspense 边界
                              *
-                             * fallback 骨架屏：
-                             * - 6 个占位卡片
+                             * fallback：
+                             * - 使用 ModelListSkeleton 组件
+                             * - 6 个占位卡片，模拟 ModelCard 布局
                              * - animate-pulse 脉冲动画
-                             * - 模拟 ModelCard 的布局结构
                              */}
-                            <Suspense fallback={<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">{Array.from({ length: 6 }).map((_, i) => (<div key={i} className="p-4 rounded-xl border border-neutral-200/60 bg-white dark:border-neutral-800/60 dark:bg-neutral-900 animate-pulse"><div className="flex items-start gap-3"><div className="w-12 h-12 rounded-xl bg-neutral-200 dark:bg-neutral-800" /><div className="flex-1"><div className="h-5 w-24 rounded bg-neutral-200 dark:bg-neutral-800 mb-2" /><div className="h-4 w-16 rounded bg-neutral-200 dark:bg-neutral-800" /></div></div></div>))}</div>}>
+                            <Suspense fallback={<ModelListSkeleton />}>
                                 <ModelList selectedModelId={selectedModel?.id} onSelectModel={handleSelectModel} />
                             </Suspense>
                         </div>
@@ -226,7 +337,15 @@ export function AIModelsContent() {
                          */}
                         <div className="lg:col-span-2">
                             <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-4">模型详情</h2>
-                            <Suspense fallback={<div className="p-6 rounded-2xl border border-neutral-200/60 bg-white dark:border-neutral-800/60 dark:bg-neutral-900 animate-pulse"><div className="space-y-4"><div className="flex items-center gap-4"><div className="w-16 h-16 rounded-2xl bg-neutral-200 dark:bg-neutral-800" /><div><div className="h-6 w-32 rounded bg-neutral-200 dark:bg-neutral-800 mb-2" /><div className="h-4 w-20 rounded bg-neutral-200 dark:bg-neutral-800" /></div></div></div></div>}>
+                            {/*
+                             * Suspense 边界
+                             *
+                             * fallback：
+                             * - 使用 ModelDetailSkeleton 组件
+                             * - 模拟 ModelDetail 头部布局
+                             * - animate-pulse 脉冲动画
+                             */}
+                            <Suspense fallback={<ModelDetailSkeleton />}>
                                 {/*
                                  * key 属性用于强制刷新
                                  * 当 detailKey 变化时，React 会认为这是一个"新"组件
