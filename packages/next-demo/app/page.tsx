@@ -14,6 +14,23 @@
  */
 
 import Link from "next/link";
+import type { Metadata } from "next";
+
+/**
+ * 首页 SEO 元数据
+ *
+ * 使用 layout 提供的 title.template，自动拼接为 "首页 | Next.js Demo"。
+ */
+export const metadata: Metadata = {
+  title: "首页",
+  description:
+    "Next.js 16 + React 19 + Tailwind CSS 4 全栈示例项目，展示服务端渲染、流式传输、API 路由等现代 Web 开发核心技术。",
+  openGraph: {
+    title: "Next.js Demo — 构建现代 Web 应用",
+    description:
+      "一个展示 Next.js 16、React 19 和 Tailwind CSS 4 强大功能的示例项目。包含服务端组件、路由系统、API 路由等核心功能。",
+  },
+};
 
 /**
  * ============================================================================

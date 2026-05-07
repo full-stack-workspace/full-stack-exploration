@@ -20,34 +20,44 @@
  */
 
 import { Metadata } from "next";
-import ArticleCard, { Article } from "../../components/ArticleCard";
+import ArticleCard from "../../components/ArticleCard";
+import { getPosts, Post } from "@/data/blog";
 
 /**
  * ============================================================================
  * ISR (Incremental Static Regeneration) 配置
  * ============================================================================
  *
- * 设置页面静态生成后的重新验证间隔。
- *
- * 作用：
- * - 页面最初以静态 HTML 形式被预渲染和缓存
- * - 在 revalidate 秒后，下次请求会触发后台重新生成
- * - 用户会先看到缓存的旧页面，同时后台更新数据
- *
- * 与 getStaticProps + revalidate 等效（Pages Router 时代的功能）
- *
- * @see https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration
+ * 页面级 revalidate 控制：60 秒后触发后台重新生成。
  */
 export const revalidate = 60;
 
 /**
- * 页面 Metadata 配置
- * 定义页面的标题和描述，用于 SEO
+ * ============================================================================
+ * 动态生成 SEO Metadata（记忆化数据请求）
+ * ============================================================================
+ *
+ * generateMetadata 和 BlogPage 都调用 getPosts()。
+ * 得益于 React cache() 的记忆化，同一请求周期内只发起一次 HTTP 请求。
+ *
+ * 这对 SEO 很重要：
+ * - 搜索引擎爬虫会读取 <title> 和 <meta name="description">
+ * - 动态文章数量让描述更精确
+ * - Open Graph 确保社交分享时显示富媒体预览
  */
-export const metadata: Metadata = {
-    title: "博客 - Blog",
-    description: "浏览最新的技术文章和最新资讯",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const posts = await getPosts();
+
+  return {
+    title: "博客",
+    description: `浏览最新的技术文章和最新资讯，当前共 ${posts.length} 篇文章。涵盖前端、后端、架构等多个领域。`,
+    openGraph: {
+      title: "博客 | Next.js Demo",
+      description: `浏览 ${posts.length} 篇技术文章，涵盖前端、后端、架构等主题。`,
+      type: "website",
+    },
+  };
+}
 
 /**
  * ============================================================================
@@ -72,18 +82,7 @@ export const metadata: Metadata = {
  * - 服务端渲染减少客户端 JavaScript 体积
  */
 export default async function BlogPage() {
-    /**
-     * 直接从外部 API 获取文章数据
-     *
-     * 为什么不使用本地 /api/blog？
-     * - 构建时预渲染需要请求 API，但此时没有开发服务器运行
-     * - 会导致 ECONNREFUSED 错误：fetch failed at 127.0.0.1:3000
-     * - 直接调用外部 API 可以确保构建时也能正常获取数据
-     */
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-        next: { revalidate: 60 },
-    });
-    const posts: Article[] = await res.json();
+    const posts: Post[] = await getPosts();
 
     return (
         <div className="flex flex-col min-h-screen">

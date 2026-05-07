@@ -25,12 +25,73 @@ import "./globals.css";
 /**
  * 全局元数据配置
  *
- * 定义所有页面的默认 metadata，会被子页面继承或覆盖。
- * 用于 SEO 优化和浏览器标签页显示。
+ * 定义所有页面的默认 metadata，子页面通过 metadata 或 generateMetadata 继承、覆盖。
+ *
+ * 设计要点：
+ * - title.template 提供统一的标题后缀，子页面只需提供标题主体
+ * - Open Graph 确保社交分享时显示富媒体卡片
+ * - Twitter Card 兼容 Twitter/X 分享预览
+ * - robots 控制搜索引擎索引行为
+ * - metadataBase 为所有相对路径的 metadata 提供基础 URL
  */
 export const metadata: Metadata = {
-  title: "Next.js Demo",
-  description: "A modern Next.js application with Tailwind CSS",
+  metadataBase: new URL("http://localhost:3000"),
+  title: {
+    default: "Next.js Demo — 现代 Web 应用示例",
+    template: "%s | Next.js Demo",
+  },
+  description:
+    "基于 Next.js 16、React 19 和 Tailwind CSS 4 构建的全栈示例项目，展示服务端渲染、流式传输、API 路由等现代 Web 开发核心技术。",
+  keywords: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "全栈开发",
+    "TypeScript",
+    "Web 开发",
+    "前端",
+  ],
+  authors: [{ name: "Next.js Demo Team" }],
+  creator: "Next.js Demo Team",
+  publisher: "Next.js Demo",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "zh_CN",
+    siteName: "Next.js Demo",
+    title: "Next.js Demo — 现代 Web 应用示例",
+    description:
+      "基于 Next.js 16、React 19 和 Tailwind CSS 4 构建的全栈示例项目。",
+    images: [
+      {
+        url: "/next.svg",
+        width: 1200,
+        height: 630,
+        alt: "Next.js Demo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Next.js Demo — 现代 Web 应用示例",
+    description:
+      "基于 Next.js 16、React 19 和 Tailwind CSS 4 构建的全栈示例项目。",
+    images: ["/next.svg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
 };
 
 /**

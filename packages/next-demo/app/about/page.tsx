@@ -17,9 +17,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { aboutPageData } from "@/data/about";
 import ValueCard from "@/components/ValueCard";
 import TeamMemberCard from "@/components/TeamMemberCard";
+
+/**
+ * 关于页面 SEO 元数据
+ */
+export const metadata: Metadata = {
+  title: "关于我们",
+  description:
+    "了解我们的团队、核心价值观和使命。我们致力于构建卓越的数字产品，为客户创造有影响力的解决方案。",
+  openGraph: {
+    title: "关于我们 | Next.js Demo",
+    description:
+      "了解我们的团队、核心价值观和使命。从概念到实现，我们与客户紧密合作。",
+  },
+};
 
 export default function AboutPage() {
     const { stats, values, team } = aboutPageData;

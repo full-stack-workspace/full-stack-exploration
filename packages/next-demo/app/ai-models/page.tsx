@@ -77,7 +77,22 @@
  * ============================================================================
  */
 
+import type { Metadata } from "next";
 import { AIModelsContent } from "./components/AIModelsContent";
+
+/**
+ * AI 模型广场页 SEO 元数据
+ */
+export const metadata: Metadata = {
+  title: "AI 模型广场",
+  description:
+    "探索和比较最新的 AI 大语言模型，包括 GPT、Claude、Gemini 等。支持流式加载和性能指标对比。",
+  openGraph: {
+    title: "AI 模型广场 | Next.js Demo",
+    description:
+      "探索和比较最新的 AI 大语言模型。体验 Next.js Streaming + Suspense 的流式渲染能力。",
+  },
+};
 
 /**
  * ============================================================================

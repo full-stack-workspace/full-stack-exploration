@@ -31,11 +31,17 @@ import UserListClient from "@/components/UserListClient";
 import { users } from "@/data/user";
 
 /**
- * 页面 Metadata 配置
+ * 用户列表页 SEO 元数据
  */
 export const metadata: Metadata = {
-    title: "用户列表 - Users",
-    description: "浏览我们的团队成员和用户",
+  title: "团队成员",
+  description:
+    "认识我们才华横溢的团队成员，包含创始人、技术总监、设计师等核心成员介绍。",
+  openGraph: {
+    title: "团队成员 | Next.js Demo",
+    description:
+      "认识我们才华横溢的团队。浏览团队成员的个人资料、技能和联系方式。",
+  },
 };
 
 /**
