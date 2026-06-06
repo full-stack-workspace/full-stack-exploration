@@ -1,18 +1,39 @@
 /**
  * ============================================================================
- * 主页（占位） — next-upload
+ * 主页 — next-upload
  * ============================================================================
  *
- * 当前为占位页，仅用于验证 dev server 能起。
- * Task H2 会替换为真正的上传任务面板。
+ * 布局：
+ * - 标题 + 简介
+ * - UploadDropzone
+ * - ConcurrencyControl
+ * - TaskList（Tabs）
+ *
+ * 注意：主页是 Server Component，但所有子组件都是 client（"use client"）；
+ * 这是符合 App Router 范式的——server 仅负责输出静态 HTML，交互在 client 接管。
  *
  * @module app/page
  */
+
+import UploadDropzone from "@/components/UploadDropzone";
+import ConcurrencyControl from "@/components/ConcurrencyControl";
+import TaskList from "@/components/TaskList";
+
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-2xl p-8">
-      <h1 className="text-2xl font-bold">next-upload — 大文件分片上传 Demo</h1>
-      <p className="mt-4 text-sm text-muted-foreground">脚手架占位页。Phase H 会替换为完整 UI。</p>
-    </main>
+    <div className="mx-auto flex max-w-5xl flex-col gap-6 p-4 sm:p-6">
+      <header>
+        <h1 className="text-2xl font-semibold tracking-tight">大文件分片上传</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          演示 Next.js 16 Route Handlers + Web Worker MD5 + Zustand 状态机 + shadcn/ui。
+        </p>
+      </header>
+
+      <UploadDropzone />
+
+      <ConcurrencyControl />
+
+      <TaskList />
+    </div>
   );
 }
