@@ -187,3 +187,11 @@ function sleep(ms: number, signal: AbortSignal): Promise<void> {
     signal.addEventListener("abort", onAbort, { once: true });
   });
 }
+
+/* =================================================================
+ * Dev: 把 runTask 挂到 window 方便自动化测试驱动 resume / retry
+ * 仅在 NODE_ENV !== 'production' 时暴露
+ * ================================================================ */
+if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
+  (window as unknown as { __runTask?: typeof runTask }).__runTask = runTask;
+}
