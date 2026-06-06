@@ -1,0 +1,16 @@
+# Next.js
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Local
+.env*.local
+
+# IDE
+.idea/
+.vscode/
+
+# Runtime data + test fixtures
+.uploads/
+fixture/

@@ -64,6 +64,27 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 - **Manual code splitting** via `rolldownOptions.output.manualChunks` (react, react-dom)
 - **Design Tokens system** in `src/styles/tokens.css` — CSS custom properties in three layers: Primitive → Semantic → Component, with `[data-theme="dark"]` overrides
 
+### next-upload — Next.js 16 全栈分片上传
+
+**Tech stack:** Next.js 16, React 19, Tailwind CSS 4, shadcn/ui (12 components), Zustand, SparkMD5 (Web Worker)
+
+**Directory conventions:**
+- `app/` — App Router pages and Route Handlers
+- `app/api/upload/{check,chunk,merge}/route.ts` — three upload endpoints
+- `app/api/files/[hash]/route.ts` — streaming download
+- `data/uploads.ts` — server-side filesystem data access layer (atomic write + streaming merge)
+- `lib/upload/` — client-side upload logic (Zustand store / pipeline / api client / hash worker client / constants / status-style)
+- `types/upload.ts` — shared protocol DTOs and state machine types
+- `workers/hash.worker.ts` — SparkMD5 incremental hashing in a Web Worker
+
+**Key patterns:**
+- Server state model is **convention-based**: filesystem layout `.uploads/chunks/<hash>/<index>.part` + `.uploads/merged/<hash>.bin` IS the upload session state — no manifest, no DB
+- Client state is a single Zustand store with 8-state task machine; per-task pipeline (`runTask`) does hash → check → concurrent chunk pool → merge with exponential-backoff retry
+- AbortController on each task enables clean pause/resume/cancel — `pauseTask` aborts, `resumeTask` swaps in a new controller and re-runs pipeline from check
+- Hash worker is a singleton serializing multi-file hash (avoid memory contention); upload phase remains parallel
+- shadcn/ui + Tailwind v4: uses `@custom-variant dark (&:where(.dark, .dark *));` and `tw-animate-css` (the v4 replacement for `tailwindcss-animate`)
+- Dark mode shares the next-demo pattern: hand-rolled `ThemeProvider` Context with `.dark` class on `<html>` (no `next-themes`)
+
 ## Design Tokens Philosophy
 
 Both `vite-build` and `next-demo` implement design tokens, but differently:
