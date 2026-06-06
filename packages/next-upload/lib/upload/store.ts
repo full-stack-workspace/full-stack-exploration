@@ -131,7 +131,7 @@ function buildTask(file: File, now: number): UploadTask {
  * Store
  * ================================================================ */
 
-export const useUploadStore = create<UploadStore>((set, _get) => ({
+export const useUploadStore = create<UploadStore>((set) => ({
   tasks: new Map(),
   concurrency: DEFAULT_CONCURRENCY,
 
