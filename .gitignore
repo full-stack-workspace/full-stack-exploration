@@ -23,3 +23,7 @@ dist-ssr
 
 # Environment variables
 .env*.local
+
+# next-upload runtime storage
+.uploads/
+packages/next-upload/fixture/
