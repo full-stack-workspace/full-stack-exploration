@@ -288,3 +288,11 @@ export const selectBuckets = (s: UploadStore) => {
   const failed = all.filter((t) => t.status === "failed");
   return { all, uploading, completed, failed };
 };
+
+/* =================================================================
+ * Dev: 把 store 挂到 window，方便 Playwright 等自动化测试直接驱动
+ * 仅在 NODE_ENV !== 'production' 时暴露
+ * ================================================================ */
+if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
+  (window as unknown as { __uploadStore?: typeof useUploadStore }).__uploadStore = useUploadStore;
+}
