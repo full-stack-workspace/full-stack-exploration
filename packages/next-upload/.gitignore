@@ -10,3 +10,7 @@ build/
 # IDE
 .idea/
 .vscode/
+
+# Runtime data + test fixtures
+.uploads/
+fixture/
