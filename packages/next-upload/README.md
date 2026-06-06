@@ -82,6 +82,23 @@ echo "tiny" > /tmp/tiny.txt   # 然后浏览器拖 /tmp/tiny.txt
 5. chunk size 写死 5 MiB；并发数 UI 可调（1–8）
 6. hash worker 单实例，多文件 hash 串行排队
 
+## Dev / 自动化测试用环境变量
+
+`packages/next-upload/app/api/upload/chunk/route.ts` 读这两个环境变量。生产部署不设即零开销。
+
+| 环境变量 | 说明 |
+|---|---|
+| `NEXT_UPLOAD_DEV_THROTTLE_MS=N` | 每个分片落盘前 sleep N 毫秒，模拟慢网络。用于在 localhost 上能稳定演示 pause/resume 与续传场景（默认网络太快上传几秒就结束，没法在中间触发 UI 动作）。 |
+| `NEXT_UPLOAD_DEV_FAIL_INDEX=3,7` | 指定的 chunk index 在 server 永远返回 500，触发指数退避重试（1s→2s→4s）+ MAX_RETRY 耗尽后整任务转 failed。用于演示 V6 重试逻辑。 |
+
+dev 模式下 `useUploadStore` 和 `runTask` 也会挂到 `window.__uploadStore` / `window.__runTask`，方便 DevTools / Playwright 直接驱动状态机做自动化验证。生产构建（NODE_ENV=production）不暴露。
+
+示例：模拟慢网络 + chunk 3 永远失败：
+
+```bash
+NEXT_UPLOAD_DEV_THROTTLE_MS=500 NEXT_UPLOAD_DEV_FAIL_INDEX=3 pnpm dev:upload
+```
+
 ## 脚本
 
 | 脚本 | 用途 |
