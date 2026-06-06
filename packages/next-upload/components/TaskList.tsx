@@ -15,12 +15,16 @@
  */
 "use client";
 
+import { useShallow } from "zustand/react/shallow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useUploadStore, selectBuckets } from "@/lib/upload/store";
 import TaskCard from "./TaskCard";
 
 export default function TaskList() {
-  const buckets = useUploadStore(selectBuckets);
+  // useShallow 让 selectBuckets 的返回对象按 4 个字段浅比较，
+  // 避免每次渲染都拿到新引用导致 useSyncExternalStore 抛
+  // "getServerSnapshot should be cached to avoid an infinite loop"。
+  const buckets = useUploadStore(useShallow(selectBuckets));
   const { all, uploading, completed, failed } = buckets;
 
   if (all.length === 0) {
