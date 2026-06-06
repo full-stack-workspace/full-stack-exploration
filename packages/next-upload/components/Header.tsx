@@ -20,6 +20,7 @@ import { Moon, Sun, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "./ThemeProvider";
+import { useUploadStore, selectActiveCount } from "@/lib/upload/store";
 
 /**
  * Header — 顶部 sticky 导航栏
@@ -28,8 +29,8 @@ import { useTheme } from "./ThemeProvider";
  */
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
-  // TODO(F-phase): 替换为 useUploadStore((s) => 活跃任务数)
-  const activeCount = 0;
+  // 从 store 读活跃任务数（hashing/checking/uploading/merging）
+  const activeCount = useUploadStore(selectActiveCount);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
