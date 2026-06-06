@@ -13,6 +13,11 @@
  *
  * 错误：
  *   400 — 缺字段 / index 非法 / hash 非法
+ *   500 — 由 NEXT_UPLOAD_DEV_FAIL_INDEX 环境变量触发（用于本地测试重试逻辑）
+ *
+ * 开发用环境变量（生产无影响）：
+ *   NEXT_UPLOAD_DEV_THROTTLE_MS — 每个分片写盘前 sleep N 毫秒，模拟慢网络（pause/resume 测试需要慢一点才能在中间点暂停）
+ *   NEXT_UPLOAD_DEV_FAIL_INDEX — 形如 "3" 或 "3,7"：列出的 index 永远返回 500，触发指数退避 + MAX_RETRY → failed
  *
  * @module app/api/upload/chunk
  */
@@ -20,6 +25,14 @@
 import { NextResponse } from "next/server";
 import type { ChunkResponse } from "@/types/upload";
 import { writeChunkAtomic } from "@/data/uploads";
+
+const DEV_THROTTLE_MS = Number(process.env.NEXT_UPLOAD_DEV_THROTTLE_MS) || 0;
+const DEV_FAIL_INDICES = new Set(
+  (process.env.NEXT_UPLOAD_DEV_FAIL_INDEX ?? "")
+    .split(",")
+    .map((s) => Number(s.trim()))
+    .filter((n) => Number.isInteger(n) && n >= 0),
+);
 
 export async function POST(req: Request) {
   // === 解析 multipart ===
@@ -40,6 +53,16 @@ export async function POST(req: Request) {
   const index = Number(indexRaw);
   if (!Number.isInteger(index) || index < 0) {
     return NextResponse.json({ error: "Invalid index" }, { status: 400 });
+  }
+
+  // === [DEV] 慢网络模拟 ===
+  if (DEV_THROTTLE_MS > 0) {
+    await new Promise((r) => setTimeout(r, DEV_THROTTLE_MS));
+  }
+
+  // === [DEV] 强制失败某些 index 用于测试重试逻辑 ===
+  if (DEV_FAIL_INDICES.has(index)) {
+    return NextResponse.json({ error: `dev-injected 500 on index=${index}` }, { status: 500 });
   }
 
   // === 原子写入 ===
