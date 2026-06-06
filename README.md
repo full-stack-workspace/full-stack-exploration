@@ -20,11 +20,13 @@
 | `vite-server` | Vite Dev Server 架构：proxy、CORS、中间件 — 探索 AI 对开发服务器配置的驾驭 | 5174 |
 | `vite-build` | 构建优化与设计系统：code splitting、bundle analysis、三层 Design Tokens 架构 — 考验 AI 对复杂样式工程和性能优化的处理 | 5175 |
 | `next-demo` | Next.js 16 全栈实践：App Router、Server Components、ISR、暗色模式 — 验证 AI 在现代全栈框架中的代码生成上限 | 3000 |
+| `next-upload` | Next.js 16 全栈分片上传：Route Handlers + Web Worker hash + Zustand 状态机 + shadcn/ui — 验证 AI 在"复杂客户端状态机 + 协议设计"题型下的产出 | 3001 |
 
 ### AI Coding 亮点 · Key Highlights
 
 - **vite-build** 中的 [Design Tokens](packages/vite-build/src/styles/tokens.css) 系统完全由 AI 设计实现，采用 Primitive → Semantic → Component 三层架构，支持 `data-theme` 亮暗切换。
 - **next-demo** 展示了 AI 对 Next.js App Router 范式的理解：Server Components 优先、metadata/Open Graph API、文件系统路由、`prefers-color-scheme` 暗色模式。
+- **next-upload** 演示 Next.js 16 Route Handlers 处理 `multipart/form-data` + Web Worker hash + Zustand 状态机 + shadcn/ui 完整集成，验证 AI 在"复杂客户端状态机 + 协议设计"题型下的产出。
 - 所有 package 的 ESLint、TypeScript、Tailwind CSS、路径别名等工程化配置均由 AI 生成并保持一致。
 
 ## 快速开始 · Getting Started
@@ -50,6 +52,7 @@ pnpm dev:vite-build # React 19 + Vite 构建优化
 
 # Next.js 全栈探索
 pnpm dev:next
+pnpm dev:upload     # 大文件分片上传
 
 # 构建 & 类型检查
 pnpm build
