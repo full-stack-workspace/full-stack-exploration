@@ -15,16 +15,18 @@
  */
 "use client";
 
-import { useShallow } from "zustand/react/shallow";
+import { useMemo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useUploadStore, selectBuckets } from "@/lib/upload/store";
+import { useUploadStore } from "@/lib/upload/store";
+import type { UploadTask } from "@/types/upload";
 import TaskCard from "./TaskCard";
 
 export default function TaskList() {
-  // useShallow 让 selectBuckets 的返回对象按 4 个字段浅比较，
-  // 避免每次渲染都拿到新引用导致 useSyncExternalStore 抛
-  // "getServerSnapshot should be cached to avoid an infinite loop"。
-  const buckets = useUploadStore(useShallow(selectBuckets));
+  // 直接订阅 tasks Map 的引用（每次 set 时 store 会生成新 Map）；
+  // 派生 buckets 用 useMemo 缓存——避免 inline 计算每渲染都生成新数组，
+  // 触发 useSyncExternalStore 的 "getServerSnapshot should be cached" 无限循环。
+  const tasks = useUploadStore((s) => s.tasks);
+  const buckets = useMemo(() => deriveBuckets(tasks), [tasks]);
   const { all, uploading, completed, failed } = buckets;
 
   if (all.length === 0) {
@@ -76,4 +78,23 @@ export default function TaskList() {
 
 function EmptyHint({ text }: { text: string }) {
   return <p className="py-6 text-center text-xs text-muted-foreground">{text}</p>;
+}
+
+/**
+ * deriveBuckets — 把 tasks Map 按状态分桶
+ * 提到组件外，避免 React closure 每渲染重建函数。
+ */
+function deriveBuckets(tasks: Map<string, UploadTask>) {
+  const all = [...tasks.values()].sort((a, b) => b.createdAt - a.createdAt);
+  const uploading = all.filter(
+    (t) =>
+      t.status === "hashing" ||
+      t.status === "checking" ||
+      t.status === "uploading" ||
+      t.status === "merging" ||
+      t.status === "paused",
+  );
+  const completed = all.filter((t) => t.status === "completed" || t.status === "instant");
+  const failed = all.filter((t) => t.status === "failed");
+  return { all, uploading, completed, failed };
 }
