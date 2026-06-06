@@ -30,7 +30,9 @@ const DEV_THROTTLE_MS = Number(process.env.NEXT_UPLOAD_DEV_THROTTLE_MS) || 0;
 const DEV_FAIL_INDICES = new Set(
   (process.env.NEXT_UPLOAD_DEV_FAIL_INDEX ?? "")
     .split(",")
-    .map((s) => Number(s.trim()))
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0)
+    .map((s) => Number(s))
     .filter((n) => Number.isInteger(n) && n >= 0),
 );
 
