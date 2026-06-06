@@ -82,7 +82,11 @@ export default function UploadDropzone() {
         type="file"
         multiple
         className="hidden"
-        onChange={(e) => handleFiles(e.target.files)}
+        onChange={(e) => {
+          handleFiles(e.target.files);
+          // 重置 value，否则用户连续选同一文件第二次不会触发 onChange
+          e.target.value = "";
+        }}
       />
     </div>
   );
