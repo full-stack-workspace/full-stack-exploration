@@ -1,0 +1,11 @@
+# Next.js
+.next/
+out/
+build/
+
+# Local
+.env*.local
+
+# IDE
+.idea/
+.vscode/
