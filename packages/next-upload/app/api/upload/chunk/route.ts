@@ -23,8 +23,9 @@
  */
 
 import { NextResponse } from "next/server";
-import type { ChunkResponse } from "@/types/upload";
+
 import { writeChunkAtomic } from "@/data/uploads";
+import type { ChunkResponse } from "@/types/upload";
 
 const DEV_THROTTLE_MS = Number(process.env.NEXT_UPLOAD_DEV_THROTTLE_MS) || 0;
 const DEV_FAIL_INDICES = new Set(

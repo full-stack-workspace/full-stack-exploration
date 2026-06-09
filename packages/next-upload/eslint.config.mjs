@@ -1,11 +1,5 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
-]);
-
-export default eslintConfig;
+/**
+ * next-upload ESLint 配置 — 继承根级共享配置
+ * 如需包级规则扩展，替换为 spread + override 模式
+ */
+export { default } from "../../eslint.config.mjs";

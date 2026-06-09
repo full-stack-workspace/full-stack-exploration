@@ -16,29 +16,20 @@
  */
 "use client";
 
-import { useState } from "react";
 import {
+  Copy,
+  Download,
   FileIcon,
+  Loader2,
   MoreVertical,
   Pause,
   Play,
   RotateCcw,
   Trash2,
-  Download,
-  Copy,
-  Loader2,
 } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
+import { useState } from "react";
+import { toast } from "sonner";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -49,14 +40,23 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Badge } from "@/components/ui/badge";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Progress } from "@/components/ui/progress";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { toast } from "sonner";
-
-import type { UploadTask } from "@/types/upload";
-import { cn } from "@/lib/utils";
-import { useUploadStore } from "@/lib/upload/store";
 import { runTask } from "@/lib/upload/pipeline";
 import { statusStyle } from "@/lib/upload/status-style";
+import { useUploadStore } from "@/lib/upload/store";
+import { cn } from "@/lib/utils";
+import type { UploadTask } from "@/types/upload";
 
 interface TaskCardProps {
   task: UploadTask;
@@ -103,7 +103,7 @@ export default function TaskCard({ task }: TaskCardProps) {
     setConfirmOpen(false);
   };
   const copyUrl = () => {
-    if (!task.url) return;
+    if (!task.url) {return;}
     void navigator.clipboard.writeText(window.location.origin + task.url);
     toast.success("下载链接已复制");
   };
@@ -297,7 +297,7 @@ function formatBytes(n: number): string {
 
 function formatDuration(ms: number): string {
   const s = Math.round(ms / 1000);
-  if (s < 60) return `完成于 ${s}s`;
+  if (s < 60) {return `完成于 ${s}s`;}
   const m = Math.floor(s / 60);
   return `完成于 ${m}m${s % 60}s`;
 }

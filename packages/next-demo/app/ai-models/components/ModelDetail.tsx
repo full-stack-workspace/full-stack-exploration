@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
+
 import { cn } from "@/lib/utils";
 import type { AIModel, ModelMetrics } from "@/types/ai-models";
+
 import { MetricBar } from "./MetricBar";
 
 /**
@@ -115,8 +117,13 @@ export function ModelDetail({ model }: { model: AIModel | null }) {
      * 清除定时器，防止组件卸载后设置状态（内存泄漏防护）
      */
     useEffect(() => {
-        if (!model) { setMetrics(null); return; }
+        if (!model) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- 模型清空时重置指标，为有意设计
+            setMetrics(null);
+            return;
+        }
         setIsLoading(true);
+         
         setMetrics(null);
         const timer = setTimeout(() => {
             // 根据模型属性生成不同的基础值
@@ -209,7 +216,7 @@ export function ModelDetail({ model }: { model: AIModel | null }) {
                         {["延迟", "吞吐量", "准确性", "性价比"].map((label, i) => (
                             <div key={label} className="space-y-1">
                                 <div className="h-4 w-12 rounded bg-neutral-200 dark:bg-neutral-700" />
-                                <div className="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800"><div className="h-full rounded-full bg-neutral-200 dark:bg-neutral-700" style={{ width: (20 + i * 20) + "%" }} /></div>
+                                <div className="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800"><div className="h-full rounded-full bg-neutral-200 dark:bg-neutral-700" style={{ width: `${20 + i * 20  }%` }} /></div>
                             </div>
                         ))}
                     </div>

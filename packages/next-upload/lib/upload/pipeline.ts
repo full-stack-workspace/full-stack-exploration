@@ -23,11 +23,12 @@
 
 "use client";
 
-import { apiCheck, apiUploadChunk, apiMerge } from "./api";
-import { useUploadStore } from "./store";
+import { HttpError } from "@/types/upload";
+
+import { apiCheck, apiMerge,apiUploadChunk } from "./api";
 import { MAX_RETRY, RETRY_BASE_MS } from "./constants";
 import { hashWorkerClient } from "./hash-worker-client";
-import { HttpError } from "@/types/upload";
+import { useUploadStore } from "./store";
 
 /**
  * runTask — 启动 / 续跑某个 task 的 pipeline
@@ -40,7 +41,7 @@ import { HttpError } from "@/types/upload";
 export async function runTask(taskId: string): Promise<void> {
   const store = useUploadStore.getState();
   const task = store.tasks.get(taskId);
-  if (!task) return;
+  if (!task) {return;}
 
   const signal = task.abortController.signal;
 
@@ -54,7 +55,7 @@ export async function runTask(taskId: string): Promise<void> {
       });
       store._setHash(taskId, hash);
     }
-    if (signal.aborted) return;
+    if (signal.aborted) {return;}
 
     /* ---- Phase 2: Check ---- */
     store._setStatus(taskId, "checking");
@@ -85,10 +86,10 @@ export async function runTask(taskId: string): Promise<void> {
     store._setStatus(taskId, "uploading");
     const todo: number[] = [];
     for (let i = 0; i < task.totalChunks; i++) {
-      if (!uploaded.has(i)) todo.push(i);
+      if (!uploaded.has(i)) {todo.push(i);}
     }
     await runChunkPool(taskId, todo, signal);
-    if (signal.aborted) return;
+    if (signal.aborted) {return;}
 
     /* ---- Phase 4: 合并 ---- */
     store._setStatus(taskId, "merging");
@@ -124,12 +125,12 @@ async function runChunkPool(taskId: string, todo: number[], signal: AbortSignal)
   const workers = Array.from({ length: Math.max(1, Math.min(queue.length, concurrency)) }, async () => {
     while (queue.length > 0 && !signal.aborted) {
       const index = queue.shift();
-      if (index === undefined) return;
+      if (index === undefined) {return;}
       try {
         await uploadWithRetry(taskId, index, signal);
         useUploadStore.getState()._markUploaded(taskId, index);
       } catch (err) {
-        if ((err as Error).name === "AbortError") return;
+        if ((err as Error).name === "AbortError") {return;}
         throw err;
       }
     }
@@ -152,16 +153,16 @@ async function uploadWithRetry(taskId: string, index: number, signal: AbortSigna
   const blob = task.file.slice(start, end);
 
   for (let attempt = 0; attempt <= MAX_RETRY; attempt++) {
-    if (signal.aborted) throw new DOMException("aborted", "AbortError");
+    if (signal.aborted) {throw new DOMException("aborted", "AbortError");}
     try {
       useUploadStore.getState()._addInflight(taskId, index);
       await apiUploadChunk({ fileHash: task.fileHash!, index, chunk: blob }, { signal });
       return;
     } catch (err) {
       useUploadStore.getState()._removeInflight(taskId, index);
-      if ((err as Error).name === "AbortError") throw err;
-      if (err instanceof HttpError && err.status >= 400 && err.status < 500) throw err;
-      if (attempt === MAX_RETRY) throw err;
+      if ((err as Error).name === "AbortError") {throw err;}
+      if (err instanceof HttpError && err.status >= 400 && err.status < 500) {throw err;}
+      if (attempt === MAX_RETRY) {throw err;}
       await sleep(RETRY_BASE_MS * 2 ** attempt, signal);
     }
   }
@@ -176,14 +177,16 @@ function sleep(ms: number, signal: AbortSignal): Promise<void> {
       reject(new DOMException("aborted", "AbortError"));
       return;
     }
-    const t = setTimeout(() => {
-      signal.removeEventListener("abort", onAbort);
-      resolve();
-    }, ms);
+    // eslint-disable-next-line prefer-const -- t 与 onAbort 互相引用，必须先声明后赋值
+    let t: ReturnType<typeof setTimeout>;
     const onAbort = () => {
       clearTimeout(t);
       reject(new DOMException("aborted", "AbortError"));
     };
+    t = setTimeout(() => {
+      signal.removeEventListener("abort", onAbort);
+      resolve();
+    }, ms);
     signal.addEventListener("abort", onAbort, { once: true });
   });
 }

@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef,useState } from "react";
+
+import { aiModels,modelCategories } from "@/data/ai-models";
 import { cn } from "@/lib/utils";
 import type { AIModel, ModelCategory } from "@/types/ai-models";
-import { modelCategories, aiModels } from "@/data/ai-models";
+
 import { ModelCard } from "./ModelCard";
 
 /**
@@ -184,7 +186,7 @@ export function ModelList({ selectedModelId, onSelectModel }: { selectedModelId?
         const delay = 200;
 
         const loadNextChunk = () => {
-            if (!isMountedRef.current) return;
+            if (!isMountedRef.current) {return;}
 
             const start = chunkIndex * chunkSize;
             const end = start + chunkSize;
@@ -192,7 +194,7 @@ export function ModelList({ selectedModelId, onSelectModel }: { selectedModelId?
 
             if (chunk.length > 0) {
                 setModels((prev) => {
-                    if (!isMountedRef.current) return prev;
+                    if (!isMountedRef.current) {return prev;}
                     const existingIds = new Set(prev.map((m) => m.id));
                     const newItems = chunk.filter((m) => !existingIds.has(m.id));
                     return [...prev, ...newItems];

@@ -18,6 +18,7 @@
  */
 
 import type { Metadata } from "next";
+
 import { getUserById } from "@/data/user";
 
 /**

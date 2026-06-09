@@ -15,9 +15,9 @@
  * @module app/page
  */
 
-import UploadDropzone from "@/components/UploadDropzone";
 import ConcurrencyControl from "@/components/ConcurrencyControl";
 import TaskList from "@/components/TaskList";
+import UploadDropzone from "@/components/UploadDropzone";
 
 export default function HomePage() {
   return (

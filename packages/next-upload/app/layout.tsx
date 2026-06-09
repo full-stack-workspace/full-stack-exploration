@@ -11,11 +11,13 @@
  *
  * @module app/layout
  */
+import "./globals.css";
+
 import type { Metadata } from "next";
-import { Toaster } from "@/components/ui/sonner";
+
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3001"),

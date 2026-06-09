@@ -1,9 +1,11 @@
 "use client";
 
 import { Suspense, useState } from "react";
+
 import type { AIModel } from "@/types/ai-models";
-import { ModelList } from "./ModelList";
+
 import { ModelDetail } from "./ModelDetail";
+import { ModelList } from "./ModelList";
 import { PerformanceMonitor } from "./PerformanceMonitor";
 
 /**

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { memo } from "react";
+
 import type { TeamMember } from "@/types/about";
 
 interface TeamMemberCardProps {
@@ -7,11 +8,10 @@ interface TeamMemberCardProps {
     animationDelay?: number;
 }
 
-const TeamMemberCard = memo(function TeamMemberCard({
+const TeamMemberCard = memo(({
     member,
     animationDelay = 0,
-}: TeamMemberCardProps) {
-    return (
+}: TeamMemberCardProps) => (
         <div
             className={`animate-slide-up group text-center`}
             style={{ animationDelay: `${animationDelay}ms` }}
@@ -32,7 +32,7 @@ const TeamMemberCard = memo(function TeamMemberCard({
             </h3>
             <p className="text-sm text-neutral-500 dark:text-neutral-500">{member.role}</p>
         </div>
-    );
-});
+    ));
+TeamMemberCard.displayName = "TeamMemberCard";
 
 export default TeamMemberCard;

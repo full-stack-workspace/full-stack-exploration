@@ -16,7 +16,8 @@
  */
 
 import { NextResponse } from "next/server";
-import { openMergedStream, getMergedSize, getOriginalName } from "@/data/uploads";
+
+import { getMergedSize, getOriginalName,openMergedStream } from "@/data/uploads";
 
 interface RouteContext {
   params: Promise<{ hash: string }>;

@@ -11,10 +11,10 @@
  */
 "use client";
 
-import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
+import { CONCURRENCY_MAX,CONCURRENCY_MIN } from "@/lib/upload/constants";
 import { useUploadStore } from "@/lib/upload/store";
-import { CONCURRENCY_MIN, CONCURRENCY_MAX } from "@/lib/upload/constants";
 
 export default function ConcurrencyControl() {
   const concurrency = useUploadStore((s) => s.concurrency);

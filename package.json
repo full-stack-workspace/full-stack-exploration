@@ -9,21 +9,38 @@
     "dev:vite-build": "pnpm -C packages/vite-build dev",
     "dev:next": "pnpm -C packages/next-demo dev",
     "dev:upload": "pnpm -C packages/next-upload dev",
+    "dev:infra-fe": "pnpm -C packages/infra-fe dev",
     "build:basic": "pnpm -C packages/vite-basic build",
     "build:server": "pnpm -C packages/vite-server build",
     "build:vite-build": "pnpm -C packages/vite-build build",
     "build:upload": "pnpm -C packages/next-upload build",
+    "build:infra-fe": "pnpm -C packages/infra-fe build",
     "preview:basic": "pnpm -C packages/vite-basic preview",
     "preview:server": "pnpm -C packages/vite-server preview",
     "preview:vite-build": "pnpm -C packages/vite-build preview",
+    "lint": "pnpm -r lint",
+    "fix": "pnpm -r fix",
     "build": "pnpm -r build",
-    "type-check": "pnpm -r type-check"
+    "type-check": "pnpm -r type-check",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
     "@types/node": "^25.5.0",
     "esbuild": "^0.27.4",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
     "typescript": "^5.9.3",
     "vite": "^8.0.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,mjs,cjs}": [
+      "eslint --fix --no-warn-ignored"
+    ]
   },
   "engines": {
     "node": ">=18.0.0",

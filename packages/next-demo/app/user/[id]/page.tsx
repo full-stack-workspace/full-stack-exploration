@@ -34,12 +34,12 @@
 
 "use client";
 
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { Suspense } from "react";
 import useSWR from "swr";
-import { useParams } from "next/navigation";
-import Link from "next/link";
+
 import { getUserById } from "@/data/user";
-import type { User } from "@/types/user";
 
 /**
  * ============================================================================
