@@ -10,7 +10,8 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
+
 import { cn } from "@/lib/utils";
 import type { AIModel, ModelMetrics } from "@/types/ai-models";
 
@@ -38,25 +39,7 @@ function MetricBar({ label, value, maxValue = 100, color }: { label: string; val
                 <span className="font-medium text-neutral-900 dark:text-neutral-50">{value}</span>
             </div>
             <div className="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
-                <div className={cn("h-full rounded-full transition-all duration-500", color)} style={{ width: percentage + "%" }} />
-            </div>
-        </div>
-    );
-}
-
-function DetailSkeleton() {
-    return (
-        <div className="space-y-6 animate-pulse">
-            <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-neutral-200 dark:bg-neutral-800" />
-                <div>
-                    <div className="h-6 w-32 rounded bg-neutral-200 dark:bg-neutral-800 mb-2" />
-                    <div className="h-4 w-20 rounded bg-neutral-200 dark:bg-neutral-800" />
-                </div>
-            </div>
-            <div className="space-y-2">
-                <div className="h-4 w-full rounded bg-neutral-200 dark:bg-neutral-800" />
-                <div className="h-4 w-4/5 rounded bg-neutral-200 dark:bg-neutral-800" />
+                <div className={cn("h-full rounded-full transition-all duration-500", color)} style={{ width: `${percentage  }%` }} />
             </div>
         </div>
     );
@@ -67,8 +50,13 @@ export default function ModelDetail({ model }: ModelDetailProps) {
     const [metrics, setMetrics] = useState<ModelMetrics | null>(null);
 
     useEffect(() => {
-        if (!model) { setMetrics(null); return; }
+        if (!model) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- 模型清空时重置指标，为有意设计
+            setMetrics(null);
+            return;
+        }
         setIsLoading(true);
+         
         setMetrics(null);
         const timer = setTimeout(() => {
             setMetrics(generateMetrics(model));
@@ -118,7 +106,7 @@ export default function ModelDetail({ model }: ModelDetailProps) {
                                     <div className="h-4 w-12 rounded bg-neutral-200 dark:bg-neutral-800" />
                                     <div className="h-4 w-8 rounded bg-neutral-200 dark:bg-neutral-800" />
                                 </div>
-                                <div className="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800"><div className="h-full rounded-full bg-neutral-200 dark:bg-neutral-700" style={{ width: (20 + i * 20) + "%" }} /></div>
+                                <div className="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800"><div className="h-full rounded-full bg-neutral-200 dark:bg-neutral-700" style={{ width: `${20 + i * 20  }%` }} /></div>
                             </div>
                         ))}
                     </div>

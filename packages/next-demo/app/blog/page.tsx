@@ -19,9 +19,12 @@
  * @module blog/page
  */
 
-import { Metadata } from "next";
+import type { Metadata } from "next";
+
+import type { Post } from "@/data/blog";
+import { getPosts } from "@/data/blog";
+
 import ArticleCard from "../../components/ArticleCard";
-import { getPosts, Post } from "@/data/blog";
 
 /**
  * ============================================================================

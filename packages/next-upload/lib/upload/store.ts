@@ -44,10 +44,11 @@
 
 "use client";
 
-import { create } from "zustand";
 import { nanoid } from "nanoid";
+import { create } from "zustand";
 
 import type { TaskStatus, UploadTask } from "@/types/upload";
+
 import { CHUNK_SIZE, DEFAULT_CONCURRENCY } from "./constants";
 
 interface UploadStore {
@@ -96,7 +97,7 @@ function patchTask(
   patch: (t: UploadTask) => UploadTask | void,
 ): Map<string, UploadTask> {
   const t = tasks.get(id);
-  if (!t) return tasks;
+  if (!t) {return tasks;}
   const draft = { ...t };
   const out = patch(draft) ?? draft;
   const next = new Map(tasks);
@@ -152,10 +153,10 @@ export const useUploadStore = create<UploadStore>((set) => ({
   pauseTask: (id) =>
     set((state) => {
       const t = state.tasks.get(id);
-      if (!t) return state;
+      if (!t) {return state;}
       // 仅在可暂停状态生效
       const pausable: TaskStatus[] = ["hashing", "checking", "uploading", "merging"];
-      if (!pausable.includes(t.status)) return state;
+      if (!pausable.includes(t.status)) {return state;}
       t.abortController.abort();
       return {
         tasks: patchTask(state.tasks, id, (d) => {
@@ -271,7 +272,7 @@ export const useUploadStore = create<UploadStore>((set) => ({
 export const selectActiveCount = (s: UploadStore): number => {
   let c = 0;
   for (const t of s.tasks.values()) {
-    if (t.status === "hashing" || t.status === "checking" || t.status === "uploading" || t.status === "merging") c++;
+    if (t.status === "hashing" || t.status === "checking" || t.status === "uploading" || t.status === "merging") {c++;}
   }
   return c;
 };

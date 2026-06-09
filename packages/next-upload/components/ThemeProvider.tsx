@@ -14,7 +14,7 @@
  */
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useCallback,useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -32,7 +32,7 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
  */
 export function useTheme(): ThemeContextValue {
   const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error("useTheme must be used within a ThemeProvider");
+  if (!ctx) {throw new Error("useTheme must be used within a ThemeProvider");}
   return ctx;
 }
 
@@ -40,9 +40,9 @@ export function useTheme(): ThemeContextValue {
  * getInitialTheme — 客户端首次渲染时同步读 localStorage / prefers-color-scheme
  */
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") {return "light";}
   const stored = localStorage.getItem("theme") as Theme | null;
-  if (stored === "light" || stored === "dark") return stored;
+  if (stored === "light" || stored === "dark") {return stored;}
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 

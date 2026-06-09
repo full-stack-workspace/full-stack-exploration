@@ -1,4 +1,4 @@
-import type { Stat, Value, TeamMember, AboutPageData } from "@/types/about";
+import type { AboutPageData,Stat, TeamMember, Value } from "@/types/about";
 
 export const stats: Stat[] = [
     { value: "10+", label: "年经验" },

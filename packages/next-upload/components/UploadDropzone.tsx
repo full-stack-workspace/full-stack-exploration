@@ -16,12 +16,13 @@
  */
 "use client";
 
-import { useRef, useState, useCallback } from "react";
 import { Upload as UploadIcon } from "lucide-react";
+import { useCallback,useRef, useState } from "react";
+
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useUploadStore } from "@/lib/upload/store";
 import { runTask } from "@/lib/upload/pipeline";
+import { useUploadStore } from "@/lib/upload/store";
+import { cn } from "@/lib/utils";
 
 export default function UploadDropzone() {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -29,7 +30,7 @@ export default function UploadDropzone() {
   const [hovering, setHovering] = useState(false);
 
   const handleFiles = useCallback((files: FileList | null) => {
-    if (!files || files.length === 0) return;
+    if (!files || files.length === 0) {return;}
     const list = Array.from(files);
     const ids = useUploadStore.getState().addFiles(list, Date.now());
     ids.forEach((id) => void runTask(id));
@@ -40,12 +41,12 @@ export default function UploadDropzone() {
       onDragEnter={(e) => {
         e.preventDefault();
         dragCounter.current++;
-        if (dragCounter.current === 1) setHovering(true);
+        if (dragCounter.current === 1) {setHovering(true);}
       }}
       onDragLeave={(e) => {
         e.preventDefault();
         dragCounter.current = Math.max(0, dragCounter.current - 1);
-        if (dragCounter.current === 0) setHovering(false);
+        if (dragCounter.current === 0) {setHovering(false);}
       }}
       onDragOver={(e) => {
         e.preventDefault();

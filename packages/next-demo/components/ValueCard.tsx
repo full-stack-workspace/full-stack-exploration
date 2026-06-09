@@ -1,4 +1,5 @@
 import { memo } from "react";
+
 import type { Value } from "@/types/about";
 
 interface ValueCardProps {
@@ -29,10 +30,10 @@ const valueIcons: Record<string, React.ReactNode> = {
     ),
 };
 
-const ValueCard = memo(function ValueCard({
+const ValueCard = memo(({
     value,
     animationDelay = 0,
-}: ValueCardProps) {
+}: ValueCardProps) => {
     const icon = valueIcons[value.id] || valueIcons.innovation;
 
     return (
@@ -52,5 +53,6 @@ const ValueCard = memo(function ValueCard({
         </div>
     );
 });
+ValueCard.displayName = "ValueCard";
 
 export default ValueCard;

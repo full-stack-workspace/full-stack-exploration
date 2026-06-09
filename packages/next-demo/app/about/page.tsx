@@ -15,12 +15,13 @@
  * @module about/page
  */
 
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
-import { aboutPageData } from "@/data/about";
-import ValueCard from "@/components/ValueCard";
+
 import TeamMemberCard from "@/components/TeamMemberCard";
+import ValueCard from "@/components/ValueCard";
+import { aboutPageData } from "@/data/about";
 
 /**
  * 关于页面 SEO 元数据

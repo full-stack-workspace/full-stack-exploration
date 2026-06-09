@@ -24,8 +24,9 @@
  */
 
 import { NextResponse } from "next/server";
-import type { CheckRequest, CheckResponse } from "@/types/upload";
+
 import { hasMerged, listChunkIndices } from "@/data/uploads";
+import type { CheckRequest, CheckResponse } from "@/types/upload";
 
 export async function POST(req: Request) {
   // === 解析 + 校验请求体 ===

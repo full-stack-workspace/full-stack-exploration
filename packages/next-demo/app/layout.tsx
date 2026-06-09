@@ -16,11 +16,13 @@
  * @description 应用程序的根布局，定义全局结构和元数据
  */
 
-import type { Metadata } from "next";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { ThemeProvider } from "../components/ThemeProvider";
 import "./globals.css";
+
+import type { Metadata } from "next";
+
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 /**
  * 全局元数据配置

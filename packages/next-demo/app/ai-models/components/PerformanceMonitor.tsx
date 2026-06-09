@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 import type { PerformanceEvent } from "@/types/ai-models";
 
@@ -92,21 +93,19 @@ export function PerformanceMonitor() {
     const [elapsedTime, setElapsedTime] = useState(0);
 
     /*
-     * startTimeRef：记录开始时间
+     * startTime：记录组件首次渲染时刻
      *
-     * 为什么使用 ref：
-     * - ref 变化不会触发重新渲染
-     * - setInterval 回调中需要读取但不需要追踪变化
-     * - 使用 Date.now() 记录组件首次渲染时刻
+     * 使用 useState 惰性初始化器确保 Date.now() 仅在首次渲染时调用一次，
+     * 后续重渲染复用初始值，满足 React 纯函数渲染规则。
      */
-    const startTimeRef = useRef(Date.now());
+    const [startTime] = useState(() => Date.now());
 
     /*
      * useEffect 1：定时更新已用时间
      *
      * 机制：
      * - setInterval 每 100ms 执行一次
-     * - 计算当前时间与 startTimeRef 的差值
+     * - 计算当前时间与 startTime 的差值
      * - 更新 elapsedTime 触发重新渲染
      *
      * 清理函数：
@@ -114,7 +113,7 @@ export function PerformanceMonitor() {
      * - 防止组件卸载后继续执行
      */
     useEffect(() => {
-        const interval = setInterval(() => { setElapsedTime(Date.now() - startTimeRef.current); }, 100);
+        const interval = setInterval(() => { setElapsedTime(Date.now() - startTime); }, 100);
         return () => clearInterval(interval);
     }, []);
 
@@ -139,7 +138,7 @@ export function PerformanceMonitor() {
      * - 防止组件卸载后事件继续触发
      */
     useEffect(() => {
-        const timers: ReturnType<typeof setTimeout>[] = [];
+        const timers: Array<ReturnType<typeof setTimeout>> = [];
 
         // 0ms: 组件挂载事件
         timers.push(setTimeout(() => setEvents((prev) => [...prev, { type: "component_mount", component: "Header", timestamp: 0 }]), 0));

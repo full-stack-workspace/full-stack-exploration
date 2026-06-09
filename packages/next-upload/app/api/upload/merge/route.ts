@@ -20,8 +20,9 @@
  */
 
 import { NextResponse } from "next/server";
-import type { MergeRequest, MergeResponse } from "@/types/upload";
+
 import { mergeChunks } from "@/data/uploads";
+import type { MergeRequest, MergeResponse } from "@/types/upload";
 
 export async function POST(req: Request) {
   // === 解析 ===

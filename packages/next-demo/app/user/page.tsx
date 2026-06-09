@@ -26,7 +26,8 @@
  * @module user/page
  */
 
-import { Metadata } from "next";
+import type { Metadata } from "next";
+
 import UserListClient from "@/components/UserListClient";
 import { users } from "@/data/user";
 

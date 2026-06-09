@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { memo } from "react";
-import type { User } from "@/types/user";
+
 import { cn } from "@/lib/utils";
+import type { User } from "@/types/user";
 
 interface UserCardProps {
     user: User;
@@ -14,11 +15,10 @@ const statusColors = {
     offline: "bg-neutral-400",
 };
 
-const UserCard = memo(function UserCard({
+const UserCard = memo(({
     user,
     animationDelay = 0,
-}: UserCardProps) {
-    return (
+}: UserCardProps) => (
         <Link
             key={user.id}
             href={`/user/${user.id}`}
@@ -59,7 +59,7 @@ const UserCard = memo(function UserCard({
                 </span>
             </div>
         </Link>
-    );
-});
+    ));
+UserCard.displayName = "UserCard";
 
 export default UserCard;

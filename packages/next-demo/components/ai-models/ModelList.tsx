@@ -22,10 +22,11 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
+
+import { aiModels,modelCategories } from "@/data/ai-models";
 import { cn } from "@/lib/utils";
 import type { AIModel, ModelCategory } from "@/types/ai-models";
-import { modelCategories, aiModels } from "@/data/ai-models";
 
 interface ModelListProps {
     selectedModelId?: string;

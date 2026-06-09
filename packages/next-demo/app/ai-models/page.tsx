@@ -78,6 +78,7 @@
  */
 
 import type { Metadata } from "next";
+
 import { AIModelsContent } from "./components/AIModelsContent";
 
 /**

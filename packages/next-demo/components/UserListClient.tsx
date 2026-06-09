@@ -20,9 +20,11 @@
 
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
-import UserCard from "./UserCard";
+import { useCallback,useMemo, useState } from "react";
+
 import type { User } from "@/types/user";
+
+import UserCard from "./UserCard";
 
 interface UserListClientProps {
     initialUsers: User[];
@@ -55,7 +57,7 @@ export default function UserListClient({ initialUsers }: UserListClientProps) {
     const [isAdding, setIsAdding] = useState(false);
 
     const filteredUsers = useMemo(() => {
-        if (!searchQuery.trim()) return users;
+        if (!searchQuery.trim()) {return users;}
         const query = searchQuery.toLowerCase();
         return users.filter(
             (user) =>
@@ -65,7 +67,7 @@ export default function UserListClient({ initialUsers }: UserListClientProps) {
     }, [users, searchQuery]);
 
     const handleAddMember = useCallback(() => {
-        if (isAdding) return;
+        if (isAdding) {return;}
         setIsAdding(true);
 
         const newUser: User = {

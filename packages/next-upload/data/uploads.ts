@@ -19,7 +19,7 @@
  * @module data/uploads
  */
 
-import { promises as fs, createReadStream, createWriteStream } from "node:fs";
+import { createReadStream, createWriteStream,promises as fs } from "node:fs";
 import { join, resolve } from "node:path";
 import { Readable } from "node:stream";
 
@@ -166,7 +166,7 @@ export async function mergeChunks(
   const have = new Set(await listChunkIndices(hash));
   const missing: number[] = [];
   for (let i = 0; i < totalChunks; i++) {
-    if (!have.has(i)) missing.push(i);
+    if (!have.has(i)) {missing.push(i);}
   }
   if (missing.length > 0) {
     const err = new Error(`Missing chunks: ${missing.slice(0, 10).join(",")}${missing.length > 10 ? "..." : ""}`);

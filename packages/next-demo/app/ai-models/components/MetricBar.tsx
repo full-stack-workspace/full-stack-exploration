@@ -48,7 +48,7 @@ export function MetricBar({ label, value, maxValue = 100, color }: { label: stri
                 <span className="font-medium text-neutral-900 dark:text-neutral-50">{value}</span>
             </div>
             <div className="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
-                <div className={cn("h-full rounded-full transition-all duration-500", color)} style={{ width: percentage + "%" }} />
+                <div className={cn("h-full rounded-full transition-all duration-500", color)} style={{ width: `${percentage  }%` }} />
             </div>
         </div>
     );

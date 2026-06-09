@@ -13,8 +13,8 @@
  * @module page
  */
 
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 /**
  * 首页 SEO 元数据
