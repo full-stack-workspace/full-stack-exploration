@@ -7,12 +7,13 @@
  *
  * 职责：
  * - 站点 Logo
- * - 「关于」页面链接
+ * - 「工作原理」页面链接（协议 / 状态机 / 目录布局）
  * - 主题切换按钮
  * - 显示活跃任务数 badge（Phase F 之后，从 useUploadStore 读 in-progress 任务数）
  *
  * @module components/Header
  */
+
 "use client";
 
 import { Moon, Sun, Upload } from "lucide-react";
@@ -53,7 +54,7 @@ export default function Header() {
             </Badge>
           )}
           <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            About
+            工作原理
           </Link>
           <Button
             variant="ghost"

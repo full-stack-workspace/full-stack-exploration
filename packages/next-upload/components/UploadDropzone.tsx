@@ -14,6 +14,8 @@
  *
  * @module components/UploadDropzone
  */
+
+// 使用 use client 确保组件在客户端渲染
 "use client";
 
 import { Upload as UploadIcon } from "lucide-react";
@@ -25,14 +27,27 @@ import { useUploadStore } from "@/lib/upload/store";
 import { cn } from "@/lib/utils";
 
 export default function UploadDropzone() {
+  // 实用 useRef 创建一个 ref 对象，用于存储 input 元素
   const inputRef = useRef<HTMLInputElement | null>(null);
+  // 使用 useRef 创建一个 ref 对象，用于存储拖拽计数器
   const dragCounter = useRef(0);
+
+  // 使用 useState 创建一个状态，用于存储是否悬停
   const [hovering, setHovering] = useState(false);
 
+  // 使用 useCallback 创建一个回调函数，用于处理文件选择
   const handleFiles = useCallback((files: FileList | null) => {
-    if (!files || files.length === 0) {return;}
+    if (!files || files.length === 0) {
+      return;
+    }
+
+    // 将文件列表转换为数组
     const list = Array.from(files);
+    // 调用 useUploadStore 的 action 方法 addFiles ，添加文件，返回任务 ID 列表
+    // 这里只在事件回调里使用命令调用方式写到 store 里新值，并不要求更新当前 UI 组件
+    // 所以使用命令调用方式，不用写进 hooks 里
     const ids = useUploadStore.getState().addFiles(list, Date.now());
+    // 针对每个任务，调用 runTask 方法，启动文件上传 pipline
     ids.forEach((id) => void runTask(id));
   }, []);
 
@@ -84,6 +99,7 @@ export default function UploadDropzone() {
         multiple
         className="hidden"
         onChange={(e) => {
+          // 处理文件选择
           handleFiles(e.target.files);
           // 重置 value，否则用户连续选同一文件第二次不会触发 onChange
           e.target.value = "";

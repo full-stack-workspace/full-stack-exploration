@@ -17,12 +17,16 @@ import { CONCURRENCY_MAX,CONCURRENCY_MIN } from "@/lib/upload/constants";
 import { useUploadStore } from "@/lib/upload/store";
 
 export default function ConcurrencyControl() {
+  // store 使用场景1: 读出来要渲染在 UI 界面中
+  // 订阅全局并发数状态，用于渲染 UI，store 发生变化时，会自动重新渲染组件
   const concurrency = useUploadStore((s) => s.concurrency);
+  // 稳定的 action，由于当前组件要根据并发数更新 UI，因此这里写进了 hook。
+  // 另一种写法是：在回调函数中直接调用 useUploadStore.getState().setConcurrency(value);
   const setConcurrency = useUploadStore((s) => s.setConcurrency);
 
   return (
-    <div className="flex items-center gap-4">
-      <Label htmlFor="concurrency-slider" className="whitespace-nowrap text-sm">
+    <div className="flex items-center gap-3 sm:gap-4">
+      <Label htmlFor="concurrency-slider" className="shrink-0 whitespace-nowrap text-sm">
         并发数
       </Label>
       <Slider
@@ -34,11 +38,13 @@ export default function ConcurrencyControl() {
         onValueChange={(v) =>
           setConcurrency(typeof v === "number" ? v : (v[0] ?? concurrency))
         }
-        className="w-64"
+        className="min-w-0 flex-1 sm:max-w-64"
       />
-      <span className="w-8 text-right font-mono text-sm tabular-nums">{concurrency}</span>
-      <span className="text-xs text-muted-foreground">
-        ({CONCURRENCY_MIN}–{CONCURRENCY_MAX})
+      <span className="shrink-0 whitespace-nowrap font-mono text-sm tabular-nums">
+        {concurrency}
+        <span className="ml-1 text-xs text-muted-foreground">
+          ({CONCURRENCY_MIN}–{CONCURRENCY_MAX})
+        </span>
       </span>
     </div>
   );

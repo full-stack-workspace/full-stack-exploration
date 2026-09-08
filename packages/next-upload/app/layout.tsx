@@ -11,6 +11,7 @@
  *
  * @module app/layout
  */
+
 import "./globals.css";
 
 import type { Metadata } from "next";

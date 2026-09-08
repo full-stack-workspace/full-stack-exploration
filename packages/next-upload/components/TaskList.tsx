@@ -13,6 +13,8 @@
  *
  * @module components/TaskList
  */
+
+
 "use client";
 
 import { useMemo } from "react";
@@ -23,12 +25,44 @@ import type { UploadTask } from "@/types/upload";
 
 import TaskCard from "./TaskCard";
 
+
+function EmptyHint({ text }: { text: string }) {
+  return <p className="py-6 text-center text-xs text-muted-foreground">{text}</p>;
+}
+
+/**
+ * deriveBuckets — 把 tasks Map 按状态分桶
+ * 提到组件外，避免 React closure 每渲染重建函数。
+ */
+function deriveBuckets(tasks: Map<string, UploadTask>) {
+  // 按创建时间排序
+  const all = [...tasks.values()].sort((a, b) => b.createdAt - a.createdAt);
+
+  // 过滤出正在上传中的任务
+  const uploading = all.filter(
+    (t) =>
+      t.status === "hashing" ||
+      t.status === "checking" ||
+      t.status === "uploading" ||
+      t.status === "merging" ||
+      t.status === "paused",
+  );
+  // 过滤出已完成任务
+  const completed = all.filter((t) => t.status === "completed" || t.status === "instant");
+  // 过滤出失败任务
+  const failed = all.filter((t) => t.status === "failed");
+  // 返回所有任务、正在上传中的任务、已完成任务、失败任务
+  return { all, uploading, completed, failed };
+}
+
 export default function TaskList() {
   // 直接订阅 tasks Map 的引用（每次 set 时 store 会生成新 Map）；
   // 派生 buckets 用 useMemo 缓存——避免 inline 计算每渲染都生成新数组，
   // 触发 useSyncExternalStore 的 "getServerSnapshot should be cached" 无限循环。
   const tasks = useUploadStore((s) => s.tasks);
+  // 使用 useMemo 缓存分桶结果，避免每次渲染都重新计算
   const buckets = useMemo(() => deriveBuckets(tasks), [tasks]);
+  // 解构赋值，方便使用
   const { all, uploading, completed, failed } = buckets;
 
   if (all.length === 0) {
@@ -49,10 +83,12 @@ export default function TaskList() {
       </TabsList>
 
       <TabsContent value="all" className="mt-4 flex flex-col gap-3">
+        {/* 遍历所有任务，显示 TaskCard */}
         {all.map((t) => (
           <TaskCard key={t.id} task={t} />
         ))}
       </TabsContent>
+
       <TabsContent value="uploading" className="mt-4 flex flex-col gap-3">
         {uploading.length === 0 ? (
           <EmptyHint text="目前没有上传中的任务" />
@@ -60,6 +96,8 @@ export default function TaskList() {
           uploading.map((t) => <TaskCard key={t.id} task={t} />)
         )}
       </TabsContent>
+
+
       <TabsContent value="completed" className="mt-4 flex flex-col gap-3">
         {completed.length === 0 ? (
           <EmptyHint text="还没有完成的任务" />
@@ -67,6 +105,7 @@ export default function TaskList() {
           completed.map((t) => <TaskCard key={t.id} task={t} />)
         )}
       </TabsContent>
+
       <TabsContent value="failed" className="mt-4 flex flex-col gap-3">
         {failed.length === 0 ? (
           <EmptyHint text="没有失败的任务" />
@@ -76,27 +115,4 @@ export default function TaskList() {
       </TabsContent>
     </Tabs>
   );
-}
-
-function EmptyHint({ text }: { text: string }) {
-  return <p className="py-6 text-center text-xs text-muted-foreground">{text}</p>;
-}
-
-/**
- * deriveBuckets — 把 tasks Map 按状态分桶
- * 提到组件外，避免 React closure 每渲染重建函数。
- */
-function deriveBuckets(tasks: Map<string, UploadTask>) {
-  const all = [...tasks.values()].sort((a, b) => b.createdAt - a.createdAt);
-  const uploading = all.filter(
-    (t) =>
-      t.status === "hashing" ||
-      t.status === "checking" ||
-      t.status === "uploading" ||
-      t.status === "merging" ||
-      t.status === "paused",
-  );
-  const completed = all.filter((t) => t.status === "completed" || t.status === "instant");
-  const failed = all.filter((t) => t.status === "failed");
-  return { all, uploading, completed, failed };
 }
