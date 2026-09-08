@@ -4,7 +4,7 @@
  * ============================================================================
  *
  * 调整 store 的 concurrency 字段。生效范围：所有 *新启动的* 分片调度器；
- * 已经在跑的 worker 数量不会动态变化（pipeline.runChunkPool 在启动时读快照）。
+ * 已经在跑的上传槽位数不会动态变化（pipeline.runChunkPool 在启动时读快照）。
  * 调整对下一次 resume / retry 立即生效。
  *
  * @module components/ConcurrencyControl
@@ -25,27 +25,34 @@ export default function ConcurrencyControl() {
   const setConcurrency = useUploadStore((s) => s.setConcurrency);
 
   return (
-    <div className="flex items-center gap-3 sm:gap-4">
-      <Label htmlFor="concurrency-slider" className="shrink-0 whitespace-nowrap text-sm">
-        并发数
-      </Label>
-      <Slider
-        id="concurrency-slider"
-        min={CONCURRENCY_MIN}
-        max={CONCURRENCY_MAX}
-        step={1}
-        value={[concurrency]}
-        onValueChange={(v) =>
-          setConcurrency(typeof v === "number" ? v : (v[0] ?? concurrency))
-        }
-        className="min-w-0 flex-1 sm:max-w-64"
-      />
-      <span className="shrink-0 whitespace-nowrap font-mono text-sm tabular-nums">
-        {concurrency}
-        <span className="ml-1 text-xs text-muted-foreground">
-          ({CONCURRENCY_MIN}–{CONCURRENCY_MAX})
+    <div className="w-full lg:w-auto lg:min-w-96">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <Label htmlFor="concurrency-slider" className="shrink-0 whitespace-nowrap text-sm">
+          并发数
+        </Label>
+        <Slider
+          id="concurrency-slider"
+          min={CONCURRENCY_MIN}
+          max={CONCURRENCY_MAX}
+          step={1}
+          value={[concurrency]}
+          onValueChange={(v) =>
+            setConcurrency(typeof v === "number" ? v : (v[0] ?? concurrency))
+          }
+          className="min-w-0 flex-1 sm:max-w-64"
+          aria-describedby="concurrency-hint"
+        />
+        <span className="shrink-0 whitespace-nowrap font-mono text-sm tabular-nums">
+          {concurrency}
+          <span className="ml-1 text-xs text-muted-foreground">
+            ({CONCURRENCY_MIN}–{CONCURRENCY_MAX})
+          </span>
         </span>
-      </span>
+      </div>
+      {/* 生效时机说明：新任务立即生效；进行中的槽位不变，恢复 / 重试时按新值调度 */}
+      <p id="concurrency-hint" className="mt-2 text-xs leading-relaxed text-muted-foreground">
+        对新任务立即生效；进行中的上传槽位不变，「恢复 / 重试」时按新值调度。
+      </p>
     </div>
   );
 }

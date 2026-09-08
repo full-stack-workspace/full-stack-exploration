@@ -16,6 +16,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
+import HashScroller from "@/components/HashScroller";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
@@ -23,16 +24,16 @@ import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3001"),
   title: {
-    default: "next-upload — 大文件分片上传 Demo",
+    default: "next-upload — 分片上传实验室",
     template: "%s | next-upload",
   },
-  description: "演示 Next.js 16 Route Handlers + Web Worker hash + Zustand 状态机 + shadcn/ui 的大文件分片上传 e2e 闭环。",
+  description: "分片上传实验室：演示 Next.js 16 Route Handlers + Web Worker hash + Zustand 状态机的大文件分片上传 e2e 闭环，数据流动全程可见。",
   openGraph: {
     type: "website",
     locale: "zh_CN",
     siteName: "next-upload",
-    title: "next-upload — 大文件分片上传 Demo",
-    description: "演示 Next.js 16 Route Handlers + Web Worker hash + Zustand 状态机 + shadcn/ui 的大文件分片上传 e2e 闭环。",
+    title: "next-upload — 分片上传实验室",
+    description: "分片上传实验室：演示 Next.js 16 Route Handlers + Web Worker hash + Zustand 状态机的大文件分片上传 e2e 闭环，数据流动全程可见。",
   },
 };
 
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ThemeProvider>
           <Header />
           <main className="flex-1">{children}</main>
+          <HashScroller />
           <Toaster position="bottom-right" richColors />
         </ThemeProvider>
       </body>

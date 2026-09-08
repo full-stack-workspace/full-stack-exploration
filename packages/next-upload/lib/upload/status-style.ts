@@ -6,7 +6,7 @@
  * 集中维护每个 TaskStatus 对应的：
  * - 文案（中文短标签）
  * - shadcn Badge 的 variant（"default" | "secondary" | "destructive" | "outline"）
- * - 自定义辅助 class（用于状态机特殊配色，如蓝色"上传中"、紫色"合并中"）
+ * - 自定义辅助 class（用于状态机特殊配色：协议蓝"上传中"、数据青"合并中"、状态橙"已暂停"）
  *
  * 设计原则：
  * - TaskCard 直接调 statusStyle(status) 拿全部展示信息
@@ -62,14 +62,14 @@ export function statusStyle(status: TaskStatus): StatusStyle {
       return {
         label: "合并中",
         variant: "outline",
-        className: "border-purple-500/30 bg-purple-500/15 text-purple-700 dark:text-purple-300",
+        className: "border-data-500/30 bg-data-500/15 text-data-700 dark:text-data-400",
         spinning: true,
       };
     case "paused":
       return {
         label: "已暂停",
         variant: "outline",
-        className: "border-amber-500/30 bg-amber-500/15 text-amber-700 dark:text-amber-300",
+        className: "border-signal-500/30 bg-signal-500/15 text-signal-700 dark:text-signal-400",
       };
     case "completed":
       return {
@@ -79,7 +79,7 @@ export function statusStyle(status: TaskStatus): StatusStyle {
       };
     case "instant":
       return {
-        label: "⭐ 秒传命中",
+        label: "秒传命中",
         variant: "outline",
         className: "border-emerald-500/30 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
       };
