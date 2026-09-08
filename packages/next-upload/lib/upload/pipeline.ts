@@ -41,13 +41,16 @@ import { useUploadStore } from "./store";
 export async function runTask(taskId: string): Promise<void> {
   const store = useUploadStore.getState();
   const task = store.tasks.get(taskId);
-  if (!task) {return;}
+  if (!task) {
+    return;
+  }
 
   const signal = task.abortController.signal;
 
   try {
     /* ---- Phase 1: Hash（如果尚未算过） ---- */
     let hash = task.fileHash;
+
     if (!hash) {
       store._setStatus(taskId, "hashing");
       hash = await hashWorkerClient.compute(task.file, (p) => {
@@ -55,10 +58,14 @@ export async function runTask(taskId: string): Promise<void> {
       });
       store._setHash(taskId, hash);
     }
-    if (signal.aborted) {return;}
+
+    if (signal.aborted) {
+      return;
+    }
 
     /* ---- Phase 2: Check ---- */
     store._setStatus(taskId, "checking");
+    // 调用 apiCheck 方法，检查文件是否已经上传过
     const check = await apiCheck(
       {
         fileHash: hash,

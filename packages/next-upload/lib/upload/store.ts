@@ -136,20 +136,29 @@ export const useUploadStore = create<UploadStore>((set) => ({
   tasks: new Map(),
   concurrency: DEFAULT_CONCURRENCY,
 
+  // 添加文件
   addFiles: (files, now) => {
     const ids: string[] = [];
+    // 更新状态
     set((state) => {
+      // 创建新的任务 Map
       const next = new Map(state.tasks);
+      // 遍历文件，创建任务
       for (const f of files) {
+        // 创建任务
         const task = buildTask(f, now);
+        // 添加到任务 Map
         next.set(task.id, task);
+        // 添加到 ID 列表
         ids.push(task.id);
       }
+      // 返回新的任务 Map
       return { tasks: next };
     });
     return ids;
   },
 
+  // 暂停任务
   pauseTask: (id) =>
     set((state) => {
       const t = state.tasks.get(id);
@@ -166,6 +175,7 @@ export const useUploadStore = create<UploadStore>((set) => ({
       };
     }),
 
+  // 恢复任务
   resumeTask: (id) =>
     set((state) => ({
       tasks: patchTask(state.tasks, id, (d) => {
@@ -176,6 +186,7 @@ export const useUploadStore = create<UploadStore>((set) => ({
       }),
     })),
 
+  // 失败 → 重试（等同 resume，仅入口状态不同）
   retryTask: (id) =>
     set((state) => ({
       tasks: patchTask(state.tasks, id, (d) => {
@@ -186,6 +197,7 @@ export const useUploadStore = create<UploadStore>((set) => ({
       }),
     })),
 
+  // 移除任务
   removeTask: (id) =>
     set((state) => {
       const t = state.tasks.get(id);
@@ -195,6 +207,7 @@ export const useUploadStore = create<UploadStore>((set) => ({
       return { tasks: next };
     }),
 
+  // 设置全局并发数
   setConcurrency: (n) => set({ concurrency: Math.max(1, Math.min(8, n)) }),
 
   /* ---- 内部 dispatch（仅供 pipeline 使用） ---------------------- */

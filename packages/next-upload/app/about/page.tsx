@@ -12,14 +12,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "工作原理",
   description: "next-upload 的协议、状态机与设计取舍说明。",
 };
 
 export default function AboutPage() {
   return (
     <article className="prose prose-neutral mx-auto max-w-3xl p-4 dark:prose-invert sm:p-6">
-      <h1>关于 next-upload</h1>
+      <h1>工作原理</h1>
+      <p className="lead">
+        这份说明覆盖上传协议、客户端 8 状态机、服务端目录约定，以及当前实现的设计取舍。
+      </p>
 
       <h2>核心能力</h2>
       <ul>

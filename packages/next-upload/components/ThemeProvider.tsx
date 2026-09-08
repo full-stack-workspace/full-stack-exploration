@@ -12,6 +12,7 @@
  *
  * @module components/ThemeProvider
  */
+
 "use client";
 
 import { createContext, useCallback,useContext, useEffect, useState } from "react";
@@ -40,9 +41,18 @@ export function useTheme(): ThemeContextValue {
  * getInitialTheme — 客户端首次渲染时同步读 localStorage / prefers-color-scheme
  */
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") {return "light";}
+  // 异常处理
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  // 从 localStorage 获取用户已经选择的主题
   const stored = localStorage.getItem("theme") as Theme | null;
-  if (stored === "light" || stored === "dark") {return stored;}
+  if (stored === "light" || stored === "dark") {
+    return stored;
+  }
+
+  // 最后的兜底，如果用户没有选择主题，则根据系统偏好设置
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
@@ -51,9 +61,11 @@ function getInitialTheme(): Theme {
  */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(getInitialTheme);
+
   const setTheme = useCallback((t: Theme) => setThemeState(t), []);
   const toggleTheme = useCallback(() => setThemeState((p) => (p === "light" ? "dark" : "light")), []);
 
+  // 监听主题变化，应用到 <html> 上
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove("light", "dark");
