@@ -6,10 +6,14 @@
  * 本文件包含：
  * - Tailwind CSS v4 入口
  * - 暗色模式 @custom-variant 声明（shadcn 在 v4 下官方推荐写法）
- * - @theme 自定义 token（primary 色阶 + 其他工程色）
+ * - @theme 自定义 token（分片上传实验室色板 + 工程字体栈）
  * - shadcn 组件用的 CSS 变量（:root / .dark）
+ * - 数据块流动动画（首页 Hero 数据通道的唯一动态记忆点）
  *
- * 设计说明：
+ * 设计说明（分片上传实验室色板）：
+ * - 深墨蓝 #08111F：暗色背景；纸面蓝白 #F5F8FC：亮色背景
+ * - 协议蓝 #2563EB = primary-600；数据青 #06B6D4 = data-500；状态橙 #F59E0B = signal-500
+ * - 正文走 font-sans 工程阅读栈；仅代码 / 哈希值使用 font-mono
  * - 与 next-demo 一致：用 class 策略（.dark 加到 <html>）
  * - shadcn 的 --background / --primary 等变量与我们的 --color-primary-* 共存，互不冲突
  *
@@ -37,33 +41,41 @@
   --color-primary-700: #1d4ed8;
   --color-primary-800: #1e40af;
   --color-primary-900: #1e3a8a;
+  --color-data-400: #22d3ee;
+  --color-data-500: #06b6d4;
+  --color-data-600: #0891b2;
+  --color-data-700: #0e7490;
+  --color-signal-400: #fbbf24;
+  --color-signal-500: #f59e0b;
+  --color-signal-600: #d97706;
+  --color-signal-700: #b45309;
+  --font-sans: "Avenir Next", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "SFMono-Regular", "Cascadia Code", "Roboto Mono", monospace;
 }
 
 /* =================================================================
- * shadcn CSS 变量（亮色）
- * 注意：实际值由 shadcn CLI 在 Task B1 注入；这里仅占位避免编译错
- * 等 Task B1 跑 `shadcn init` 后，本段会被覆盖
+ * shadcn CSS 变量（亮色）— 纸面蓝白 #F5F8FC 基底
  * ================================================================ */
 :root {
   --radius: 0.625rem;
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.2 0.025 255);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.2 0.025 255);
+  --primary: oklch(0.55 0.2 257);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.955 0.012 250);
+  --secondary-foreground: oklch(0.28 0.045 255);
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.5 0.035 255);
+  --accent: oklch(0.94 0.025 245);
+  --accent-foreground: oklch(0.25 0.06 255);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --border: oklch(0.89 0.018 250);
+  --input: oklch(0.89 0.018 250);
+  --ring: oklch(0.62 0.17 255);
+  --background: #f5f8fc;
+  --foreground: oklch(0.2 0.025 255);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -80,24 +92,25 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  /* 深墨蓝 #08111F 基底；card/popover/secondary 在其上逐级抬亮 */
+  --background: #08111f;
+  --foreground: oklch(0.94 0.012 250);
+  --card: #0c1929;
+  --card-foreground: oklch(0.94 0.012 250);
+  --popover: #0c1929;
+  --popover-foreground: oklch(0.94 0.012 250);
+  --primary: oklch(0.68 0.16 252);
+  --primary-foreground: oklch(0.14 0.025 255);
+  --secondary: #122540;
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
+  --muted: #10233c;
+  --muted-foreground: oklch(0.7 0.03 250);
+  --accent: #16304e;
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --border: oklch(0.42 0.04 255 / 45%);
+  --input: oklch(0.42 0.04 255 / 55%);
+  --ring: oklch(0.68 0.16 252);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -163,9 +176,47 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground selection:bg-primary-500/25;
   }
   html {
-    @apply font-sans;
+    @apply scroll-smooth font-sans motion-reduce:scroll-auto;
   }
+}
+
+/* =================================================================
+ * Blueprint Grid — 上传原理区复用的工程网格背景
+ * ================================================================ */
+@utility blueprint-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--border), transparent 45%) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--border), transparent 45%) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* =================================================================
+ * Data Flow — 「数据块流动」动画（全站唯一动态记忆点）
+ *
+ * 小方块沿连接线匀速下移，首尾淡入淡出模拟数据块持续通过。
+ * 位移按 48px（h-12）连接轨道设计；使用时必须包 motion-safe，
+ * 并为 prefers-reduced-motion 提供 motion-reduce:hidden 兜底。
+ * ================================================================ */
+@keyframes data-flow {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(52px);
+    opacity: 0;
+  }
+}
+
+@utility animate-data-flow {
+  animation: data-flow 1.8s linear infinite;
 }

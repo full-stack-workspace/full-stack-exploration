@@ -6,7 +6,8 @@
  * 职责：
  * - 接收用户拖拽 / 选择的多文件
  * - 调用 addFiles + runTask 启动 pipeline
- * - 高亮 dragover 视觉反馈（用 Tailwind class 切换）
+ * - 明确反馈当前动作：拖拽悬停时切换文案 / 图标 / 边框色，
+ *   让用户知道「松开就会开始上传」，松开后立即进入 Hash 阶段
  *
  * 实现要点：
  * - 用原生 HTML5 DnD API（dragenter / dragover / dragleave / drop），不引外部库
@@ -18,7 +19,7 @@
 // 使用 use client 确保组件在客户端渲染
 "use client";
 
-import { Upload as UploadIcon } from "lucide-react";
+import { ArrowDownToLine, Upload as UploadIcon } from "lucide-react";
 import { useCallback,useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -75,24 +76,50 @@ export default function UploadDropzone() {
       className={cn(
         "flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed p-12 transition-all",
         hovering
-          ? "border-primary-500 bg-primary-500/5 scale-[1.01]"
+          ? "scale-[1.01] border-data-500 bg-data-500/5"
           : "border-border bg-muted/30 hover:bg-muted/50",
       )}
     >
-      <UploadIcon className="h-10 w-10 text-muted-foreground" />
+      {hovering ? (
+        <ArrowDownToLine className="h-10 w-10 text-data-500" aria-hidden="true" />
+      ) : (
+        <UploadIcon className="h-10 w-10 text-muted-foreground" aria-hidden="true" />
+      )}
       <div className="text-center">
-        <p className="text-sm">
-          <span className="font-medium">拖拽文件到此处</span>，或
-        </p>
-        <Button
-          variant="link"
-          className="mt-1 h-auto p-0 text-primary-600 dark:text-primary-400"
-          onClick={() => inputRef.current?.click()}
-        >
-          点击选择文件
-        </Button>
+        {hovering ? (
+          <>
+            <p className="text-sm font-medium text-data-600 dark:text-data-400">
+              松开鼠标，开始上传
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              文件将立即进入 Hash 计算
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="text-sm">
+              <span className="font-medium">拖拽文件到此处</span>，或
+            </p>
+            <Button
+              variant="link"
+              className="mt-1 h-auto p-0 text-primary-600 dark:text-primary-400"
+              onClick={() => inputRef.current?.click()}
+            >
+              点击选择文件
+            </Button>
+          </>
+        )}
       </div>
-      <p className="text-xs text-muted-foreground">支持多文件 · 单文件无大小限制</p>
+      <p className="text-xs text-muted-foreground">
+        {hovering ? (
+          "上传中可随时暂停 / 恢复"
+        ) : (
+          <>
+            支持多文件 · 单文件无大小限制 · 进入管道：
+            <span className="font-mono">Hash → 切片 → 并发上传 → 合并</span>
+          </>
+        )}
+      </p>
       <input
         ref={inputRef}
         type="file"
