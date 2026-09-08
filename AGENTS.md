@@ -14,6 +14,7 @@ pnpm dev:basic                                        # Vite + Vue 3 (port 5173)
 pnpm dev:server                                       # Vite + React 19 + shadcn/ui (port 5174)
 pnpm dev:vite-build                                   # Vite + React 19 + Ant Design (port 5175)
 pnpm dev:next                                         # Next.js 16 (port 3000)
+pnpm dev:upload                                       # Next.js 16 chunked upload (port 3001)
 pnpm build                                            # Build all packages
 pnpm type-check                                       # Type-check all packages
 ```
@@ -131,3 +132,7 @@ Commits follow conventional commit format: `type(scope): description`
 - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 - Scope is typically the package name (e.g., `next-demo`, `vite-basic`)
 - Descriptions are in Chinese or English, describing the "why" over the "what"
+
+## Agent Skills
+
+Project skills for AI coding assistants are maintained **only** in `.claude/skills/`. `.agents/skills` is a git-tracked symbolic link pointing to `../.claude/skills`, so it stays in sync automatically — never edit or add files under `.agents/skills` directly. After pulling, macOS/Linux developers get the link automatically; on Windows, clone with `git config core.symlinks true` (Developer Mode enabled) for the link to materialize.
