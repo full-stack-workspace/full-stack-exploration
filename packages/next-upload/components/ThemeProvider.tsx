@@ -15,7 +15,7 @@
 
 "use client";
 
-import { createContext, useCallback,useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -33,7 +33,9 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
  */
 export function useTheme(): ThemeContextValue {
   const ctx = useContext(ThemeContext);
-  if (!ctx) {throw new Error("useTheme must be used within a ThemeProvider");}
+  if (!ctx) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
   return ctx;
 }
 
@@ -60,18 +62,37 @@ function getInitialTheme(): Theme {
  * ThemeProvider — 包裹整个应用
  */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
+  // 服务端和首次客户端渲染都使用 light，避免主题按钮发生 hydration mismatch。
+  // layout 中的 beforeInteractive 脚本已经提前把正确 class 加到 <html>，所以页面不会闪烁。
+  const [theme, setThemeState] = useState<Theme>("light");
 
-  const setTheme = useCallback((t: Theme) => setThemeState(t), []);
-  const toggleTheme = useCallback(() => setThemeState((p) => (p === "light" ? "dark" : "light")), []);
-
-  // 监听主题变化，应用到 <html> 上
   useEffect(() => {
+    // 下一微任务同步按钮状态，避免在 Effect 内触发同步级联渲染。
+    queueMicrotask(() => setThemeState(getInitialTheme()));
+  }, []);
+
+  const applyTheme = useCallback((nextTheme: Theme) => {
     const root = document.documentElement;
     root.classList.remove("light", "dark");
-    root.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    root.classList.add(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+  }, []);
+
+  const setTheme = useCallback(
+    (nextTheme: Theme) => {
+      setThemeState(nextTheme);
+      applyTheme(nextTheme);
+    },
+    [applyTheme],
+  );
+
+  const toggleTheme = useCallback(() => {
+    setThemeState((previousTheme) => {
+      const nextTheme = previousTheme === "light" ? "dark" : "light";
+      applyTheme(nextTheme);
+      return nextTheme;
+    });
+  }, [applyTheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>

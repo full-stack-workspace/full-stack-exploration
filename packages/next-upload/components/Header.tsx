@@ -16,7 +16,7 @@
 
 "use client";
 
-import { BookOpen, Layers3, Moon, Sun } from "lucide-react";
+import { BookOpen, CloudUpload, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
@@ -44,12 +44,20 @@ export default function Header() {
           className="group flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <div className="relative flex size-9 items-center justify-center overflow-hidden rounded-lg bg-primary-600 text-white shadow-sm shadow-primary-900/20 dark:bg-primary-500 dark:text-slate-950">
-            <Layers3 className="size-5 transition-transform duration-200 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
-            <span className="absolute inset-x-1.5 bottom-1 h-px bg-data-400" />
+            <CloudUpload className="size-5 transition-transform duration-200 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
+            <span className="absolute inset-x-1.5 bottom-1 flex gap-0.5" aria-hidden="true">
+              <span className="h-px flex-1 bg-data-400" />
+              <span className="h-px flex-1 bg-data-400" />
+              <span className="h-px flex-1 bg-signal-400" />
+            </span>
           </div>
           <div className="leading-none">
-            <span className="block text-[15px] font-semibold tracking-[-0.02em]">next-upload</span>
-            <span className="mt-1 hidden text-[10px] text-muted-foreground sm:block">分片上传实验室</span>
+            <span className="block text-[15px] font-semibold tracking-[-0.02em]">
+              Chunked Upload Lab
+            </span>
+            <span className="mt-1 hidden text-[10px] text-muted-foreground sm:block">
+              大文件分片上传实验室
+            </span>
           </div>
         </Link>
 
