@@ -79,7 +79,7 @@ echo "tiny" > /tmp/tiny.txt   # 然后浏览器拖 /tmp/tiny.txt
 2. 单实例 server，未引入文件锁
 3. 无清理机制（孤儿 chunks 不会自动 GC）
 4. 无鉴权（任何人持 hash 即可下载）
-5. chunk size 写死 5 MiB；并发数 UI 可调（1–8）
+5. chunk size 写死 4 MiB（受 Vercel Functions 请求体 4.5 MB 硬上限约束）；并发数 UI 可调（1–8）
 6. hash worker 单实例，多文件 hash 串行排队
 
 ## Dev / 自动化测试用环境变量

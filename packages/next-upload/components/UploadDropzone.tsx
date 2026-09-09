@@ -124,7 +124,7 @@ export default function UploadDropzone() {
           "上传中可随时暂停 / 恢复"
         ) : (
           <>
-            支持多文件 · 5 MiB 分片 · 可暂停与恢复
+            支持多文件 · 4 MiB 分片 · 可暂停与恢复
             <span className="mt-1 block font-mono text-[11px]">
               Hash → Check → Upload chunks → Merge
             </span>
