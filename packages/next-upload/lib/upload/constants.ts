@@ -9,14 +9,15 @@
  */
 
 /**
- * 分片大小：5 MiB
+ * 分片大小：4 MiB
  *
  * 为什么是这个值：
- * - Cloudflare / CloudFront / S3 multipart 默认分片范围内最常用挡位
+ * - Vercel Functions 请求体硬上限 4.5 MB（超限直接 413，不可配置），
+ *   4 MiB 为 multipart 信封留出余量，保证 serverless 部署可用
  * - 太小（如 256 KiB）→ 1 GB 文件会切出 4000+ 个 HTTP 请求，握手开销暴涨
  * - 太大（如 50 MiB）→ 暂停 / 重试粒度太粗，单次失败重传太贵
  */
-export const CHUNK_SIZE = 5 * 1024 * 1024;
+export const CHUNK_SIZE = 4 * 1024 * 1024;
 
 /**
  * 默认并发分片数：4

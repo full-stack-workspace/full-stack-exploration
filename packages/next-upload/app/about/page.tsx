@@ -136,18 +136,19 @@ export default function AboutPage() {
           <Section id="hash" index="01" title="切片与哈希">
             <p>
               文件进入工作台后先被{" "}
-              <code className="font-mono text-[13px]">Blob.slice</code> 切成 5 MiB
+              <code className="font-mono text-[13px]">Blob.slice</code> 切成 4 MiB
               的分片——切割是惰性的，只有真正发送的那一片才会进内存。同时，SparkMD5 在 Web
               Worker 里按 2 MiB 的切片增量计算整文件 MD5，作为后续所有判定的唯一身份。
             </p>
-            <Detail title="为什么分片是 5 MiB？">
+            <Detail title="为什么分片是 4 MiB？">
               太小（如 256 KiB）时 1 GB 文件会切出 4000+ 个 HTTP 请求，握手开销暴涨；
               太大（如 50 MiB）时暂停 / 重试粒度太粗，单次失败重传太贵。
-              5 MiB 是 Cloudflare / S3 multipart 体系里最常用的挡位。常量在{" "}
+              上限则由部署平台决定：Vercel Functions 请求体硬上限 4.5 MB（超限直接 413，
+              不可配置），4 MiB 为 multipart 信封留出余量。常量在{" "}
               <code className="font-mono">lib/upload/constants.ts</code>，每个值都附了理由。
             </Detail>
             <Detail title="Hash 为什么另用 2 MiB 的切片？">
-              Hash 切片只影响内存占用与 FileReader 调用次数，与上传协议无关，所以与 5 MiB
+              Hash 切片只影响内存占用与 FileReader 调用次数，与上传协议无关，所以与 4 MiB
               解耦：2 MiB 足够大（1 GB 文件只读 512 次），又足够小（Worker 内不会一次分配过大的
               ArrayBuffer）。
             </Detail>
@@ -270,7 +271,7 @@ export default function AboutPage() {
               <li>无清理机制（孤儿 chunks 不会自动 GC）</li>
               <li>无鉴权（任何人持 hash 即可下载）</li>
               <li>
-                chunk size 写死 5 MiB（
+                chunk size 写死 4 MiB（
                 <code className="font-mono text-[13px]">lib/upload/constants.ts</code>
                 里改）；并发数 UI 可调
               </li>

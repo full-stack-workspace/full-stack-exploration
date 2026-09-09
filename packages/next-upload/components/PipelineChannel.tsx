@@ -20,8 +20,8 @@ import { cn } from "@/lib/utils";
  * 示例快照数据（仅示意，不参与真实上传逻辑）
  * ================================================================ */
 
-/** 示例文件的总分片数（128 MB / 5 MiB ≈ 26） */
-const TOTAL_CHUNKS = 26;
+/** 示例文件的总分片数（128 MB / 4 MiB = 32） */
+const TOTAL_CHUNKS = 32;
 /** 已上传完成的分片数 */
 const UPLOADED_CHUNKS = 17;
 /** 正在传输中的分片数（并发槽位） */
@@ -145,7 +145,7 @@ export default function PipelineChannel() {
           ))}
         </div>
         <p className="mt-1.5 text-xs text-muted-foreground">
-          5 MiB / 片 · 原子写入 <span className="font-mono">chunks/&lt;hash&gt;/&lt;index&gt;.part</span>
+          4 MiB / 片 · 原子写入 <span className="font-mono">chunks/&lt;hash&gt;/&lt;index&gt;.part</span>
         </p>
       </ChannelNode>
 

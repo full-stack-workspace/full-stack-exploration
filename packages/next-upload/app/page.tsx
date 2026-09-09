@@ -31,7 +31,7 @@ const PIPELINE_STEPS = [
   {
     index: "01",
     title: "切片与哈希",
-    body: "Blob.slice 切成 5 MiB 分片；SparkMD5 在 Web Worker 里增量算出整文件 MD5。",
+    body: "Blob.slice 切成 4 MiB 分片；SparkMD5 在 Web Worker 里增量算出整文件 MD5。",
     href: "/about#hash",
   },
   {
@@ -55,7 +55,7 @@ const PIPELINE_STEPS = [
 ] as const;
 
 const CAPABILITIES = [
-  "5 MiB 智能分片",
+  "4 MiB 智能分片",
   "秒传与断点续传",
   "1–8 路并发",
   "Web Worker 哈希",
