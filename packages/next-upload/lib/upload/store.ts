@@ -97,11 +97,18 @@ function patchTask(
   patch: (t: UploadTask) => UploadTask | void,
 ): Map<string, UploadTask> {
   const t = tasks.get(id);
-  if (!t) {return tasks;}
+  if (!t) {
+    return tasks;
+  }
+  // 创建一个任务的副本
   const draft = { ...t };
+  // 应用 patch 函数，返回新的任务
   const out = patch(draft) ?? draft;
+  // 创建新的任务 Map
   const next = new Map(tasks);
+  // 设置新的任务
   next.set(id, out);
+  // 返回新的任务 Map
   return next;
 }
 
@@ -115,8 +122,11 @@ function buildTask(file: File, now: number): UploadTask {
     fileHash: null,
     chunkSize: CHUNK_SIZE,
     totalChunks,
+    // uploadedIndices 表示已上传的分片索引集合
     uploadedIndices: new Set<number>(),
+    // inflightIndices 表示正在上传的分片索引集合
     inflightIndices: new Set<number>(),
+    //
     status: "hashing",
     error: null,
     hashProgress: 0,
