@@ -6,10 +6,16 @@
  * 路线 A：文件系统作状态。本文件封装所有读写 .uploads/ 的纯函数。
  *
  * 目录布局（spec §4.2）：
- *   .uploads/
+ *   <uploadsRoot>/
  *   ├── chunks/<fileHash>/<index>.part
  *   ├── merged/<fileHash>.bin
  *   └── merged/<fileHash>.name        ← 原文件名（文本）
+ *
+ * uploadsRoot 选址：
+ * - 本地开发：process.cwd()/.uploads（package 目录内，隔离运行时数据）
+ * - Vercel serverless：os.tmpdir()/.uploads（/var/task 只读，仅 /tmp 可写）
+ *   注意：serverless 实例间 /tmp 不共享且会被回收，跨实例的秒传/断点续传
+ *   可能失效，但同实例内单次上传完整链路（check → chunk → merge）可用。
  *
  * 设计原则：
  * - 所有路径通过 getXxx() 函数获得，禁止在 Route Handler 里手拼
@@ -20,6 +26,7 @@
  */
 
 import { createReadStream, createWriteStream,promises as fs } from "node:fs";
+import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { Readable } from "node:stream";
 
@@ -28,13 +35,19 @@ import { Readable } from "node:stream";
  * ================================================================ */
 
 /**
- * .uploads/ 根目录绝对路径（相对仓库根 process.cwd()）
+ * .uploads/ 根目录绝对路径
  *
- * 注意：Next.js dev server 在 packages/next-upload/ 下启动时，
+ * 本地开发：Next.js dev server 在 packages/next-upload/ 下启动时，
  * process.cwd() = 该 package 目录，所以 .uploads/ 会落在 package 内。
  * 这是预期行为：把 demo 的运行时数据隔离在 package 内不污染仓库根。
+ *
+ * Vercel serverless（VERCEL=1）：函数文件系统只读（仅 /tmp 可写），
+ * 写 cwd 下的 .uploads 会抛 ENOENT，因此降级到 os.tmpdir()。
  */
 export function getUploadsRoot(): string {
+  if (process.env.VERCEL) {
+    return resolve(tmpdir(), ".uploads");
+  }
   return resolve(process.cwd(), ".uploads");
 }
 
