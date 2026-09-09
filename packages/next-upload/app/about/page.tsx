@@ -17,7 +17,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "原理拆解",
-  description: "next-upload 的上传协议、客户端状态机、目录布局与设计取舍。",
+  description: "Chunked Upload Lab 的上传协议、客户端状态机、目录布局与设计取舍。",
 };
 
 /* =================================================================
@@ -98,8 +98,8 @@ export default function AboutPage() {
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
       {/* 页头 */}
       <header className="max-w-2xl">
-        <p className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground uppercase">
-          Protocol & Design
+        <p className="text-xs font-medium text-data-700 dark:text-data-400">
+          Chunked Upload Lab
         </p>
         <h1 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">原理拆解</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 主页 — next-upload（分片上传实验室）
+ * 主页 — Chunked Upload Lab（大文件分片上传实验室）
  * ============================================================================
  *
  * 布局（自上而下三段）：
@@ -14,7 +14,7 @@
  * @module app/page
  */
 
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, FlaskConical } from "lucide-react";
 import Link from "next/link";
 
 import ConcurrencyControl from "@/components/ConcurrencyControl";
@@ -54,6 +54,13 @@ const PIPELINE_STEPS = [
   },
 ] as const;
 
+const CAPABILITIES = [
+  "5 MiB 智能分片",
+  "秒传与断点续传",
+  "1–8 路并发",
+  "Web Worker 哈希",
+] as const;
+
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -61,34 +68,36 @@ export default function HomePage() {
        * Hero — 不对称双栏：左文案 / 右数据通道
        * ============================================================ */}
       <section className="grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-        <div>
-          <p className="font-mono text-[11px] tracking-[0.2em] text-data-600 uppercase dark:text-data-400">
-            Chunked Upload Lab — Next.js 16
+        <div className="min-w-0">
+          <p className="flex items-center gap-2 text-xs font-medium text-data-700 dark:text-data-400">
+            <FlaskConical className="size-4" aria-hidden="true" />
+            可交互的大文件上传实验站
           </p>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-            大文件分片上传，
+          <h1 className="mt-5 max-w-2xl text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-balance sm:text-6xl lg:text-[4.6rem]">
+            Chunked
             <br />
-            看得见的数据流动
+            Upload Lab
           </h1>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            一个可实操的分片上传实验室：文件在这里被切开、算出哈希、并发传输、
-            再在服务端流式合并。每一步的状态都摊在工作台上，而不是藏在进度条后面。
+          <p className="mt-6 max-w-xl text-lg font-medium leading-snug text-foreground sm:text-xl">
+            把大文件拆成小块，稳定、并发、可恢复地传到服务端。
+          </p>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            拖入文件即可观察 Hash、切片、并发传输和流式合并。暂停后继续、失败后重试，
+            已上传的分片不会重复发送。
           </p>
 
-          {/* 关键参数（等宽字体，工程读数感） */}
-          <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted-foreground">
-            <span>5 MiB / 片</span>
-            <span aria-hidden="true" className="text-border">|</span>
-            <span>并发 1–8</span>
-            <span aria-hidden="true" className="text-border">|</span>
-            <span>8 态状态机</span>
-            <span aria-hidden="true" className="text-border">|</span>
-            <span>秒传 + 断点续传</span>
-          </p>
+          <ul className="mt-6 grid max-w-xl grid-cols-1 gap-x-5 gap-y-2 text-sm text-muted-foreground sm:grid-cols-2">
+            {CAPABILITIES.map((capability) => (
+              <li key={capability} className="flex items-center gap-2">
+                <Check className="size-3.5 text-data-600 dark:text-data-400" aria-hidden="true" />
+                {capability}
+              </li>
+            ))}
+          </ul>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a href="#workbench" className={cn(buttonVariants({ size: "lg" }), "gap-2")}>
-              进入上传工作台
+              立即体验分片上传
               <ArrowDown className="size-4" aria-hidden="true" />
             </a>
             <Link
@@ -108,13 +117,18 @@ export default function HomePage() {
       {/* ============================================================
        * 上传工作台 — 功能主区
        * ============================================================ */}
-      <section id="workbench" className="scroll-mt-20 border-t border-border/70 py-10 sm:py-12">
+      <section id="workbench" className="scroll-mt-20 border-t border-border/70 py-10 sm:py-14">
         <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground uppercase">
-              01 — Workbench
+            <p className="text-xs font-medium text-data-700 dark:text-data-400">
+              上传工作区
             </p>
-            <h2 className="mt-2 text-xl font-semibold tracking-tight">上传工作台</h2>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+              选择一个文件，看看分片如何流动
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              文件只在需要时读取为分片；Hash 在独立线程计算，上传过程不会阻塞页面交互。
+            </p>
           </div>
           <ConcurrencyControl />
         </div>
@@ -132,10 +146,12 @@ export default function HomePage() {
       <section id="how-it-works" className="scroll-mt-20 border-t border-border/70 py-10 sm:py-12">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground uppercase">
-              02 — How It Works
+            <p className="text-xs font-medium text-data-700 dark:text-data-400">
+              一次上传的完整旅程
             </p>
-            <h2 className="mt-2 text-xl font-semibold tracking-tight">数据怎么流动</h2>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+              从一个文件，到一组可恢复的分片
+            </h2>
           </div>
           <Link
             href="/about"

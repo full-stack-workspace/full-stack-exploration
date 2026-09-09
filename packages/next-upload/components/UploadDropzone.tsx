@@ -19,8 +19,8 @@
 // 使用 use client 确保组件在客户端渲染
 "use client";
 
-import { ArrowDownToLine, Upload as UploadIcon } from "lucide-react";
-import { useCallback,useRef, useState } from "react";
+import { ArrowDownToLine, FileUp } from "lucide-react";
+import { useCallback, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { runTask } from "@/lib/upload/pipeline";
@@ -74,18 +74,27 @@ export default function UploadDropzone() {
         handleFiles(e.dataTransfer.files);
       }}
       className={cn(
-        "flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed p-12 transition-all",
+        "group relative flex min-h-72 flex-col items-center justify-center gap-4 overflow-hidden rounded-xl border-2 border-dashed p-6 text-center transition-colors sm:p-12",
         hovering
-          ? "scale-[1.01] border-data-500 bg-data-500/5"
-          : "border-border bg-muted/30 hover:bg-muted/50",
+          ? "border-data-500 bg-data-500/8"
+          : "border-border bg-muted/25 hover:border-primary-400/60 hover:bg-muted/45",
       )}
     >
+      <div
+        aria-hidden="true"
+        className="blueprint-grid pointer-events-none absolute inset-0 opacity-35 [mask-image:linear-gradient(to_bottom,transparent,black_35%,black_65%,transparent)]"
+      />
       {hovering ? (
-        <ArrowDownToLine className="h-10 w-10 text-data-500" aria-hidden="true" />
+        <ArrowDownToLine className="relative size-11 text-data-500" aria-hidden="true" />
       ) : (
-        <UploadIcon className="h-10 w-10 text-muted-foreground" aria-hidden="true" />
+        <div className="relative flex size-14 items-center justify-center rounded-xl border border-border bg-background shadow-sm">
+          <FileUp className="size-6 text-primary-600 dark:text-primary-400" aria-hidden="true" />
+          <span className="absolute -right-1.5 -bottom-1.5 flex size-5 items-center justify-center rounded-md bg-data-500 text-[10px] font-semibold text-slate-950">
+            5M
+          </span>
+        </div>
       )}
-      <div className="text-center">
+      <div className="relative">
         {hovering ? (
           <>
             <p className="text-sm font-medium text-data-600 dark:text-data-400">
@@ -97,26 +106,28 @@ export default function UploadDropzone() {
           </>
         ) : (
           <>
-            <p className="text-sm">
-              <span className="font-medium">拖拽文件到此处</span>，或
+            <p className="text-base font-medium sm:text-lg">
+              把大文件拖到这里
             </p>
             <Button
               variant="link"
-              className="mt-1 h-auto p-0 text-primary-600 dark:text-primary-400"
+              className="mt-1 h-auto p-0 text-sm text-primary-600 dark:text-primary-400"
               onClick={() => inputRef.current?.click()}
             >
-              点击选择文件
+              或从设备中选择文件
             </Button>
           </>
         )}
       </div>
-      <p className="text-xs text-muted-foreground">
+      <p className="relative text-xs leading-relaxed text-muted-foreground">
         {hovering ? (
           "上传中可随时暂停 / 恢复"
         ) : (
           <>
-            支持多文件 · 单文件无大小限制 · 进入管道：
-            <span className="font-mono">Hash → 切片 → 并发上传 → 合并</span>
+            支持多文件 · 5 MiB 分片 · 可暂停与恢复
+            <span className="mt-1 block font-mono text-[11px]">
+              Hash → Check → Upload chunks → Merge
+            </span>
           </>
         )}
       </p>
