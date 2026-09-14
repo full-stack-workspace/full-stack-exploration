@@ -30,3 +30,6 @@ packages/next-upload/fixture/
 
 # Playwright MCP test session storage
 .playwright-mcp/
+
+# Test coverage
+coverage/
