@@ -153,6 +153,9 @@ const rootConfig = defineConfig([
     "**/next-env.d.ts",
     "**/.claude/**",
     "**/.playwright-mcp/**",
+    // react-playround 使用包级独立 eslint.config.js(react 规则,非 Next 技术栈),
+    // 根配置仅面向 Next.js 包,此处排除避免规则冲突
+    "packages/react-playround/**",
   ]),
 ]);
 

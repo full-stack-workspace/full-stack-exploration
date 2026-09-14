@@ -15,6 +15,7 @@ pnpm dev:server                                       # Vite + React 19 + shadcn
 pnpm dev:vite-build                                   # Vite + React 19 + Ant Design (port 5175)
 pnpm dev:next                                         # Next.js 16 (port 3000)
 pnpm dev:upload                                       # Next.js 16 chunked upload (port 3001)
+pnpm dev:playround                                    # Rsbuild + React 19 playground (port 3002)
 pnpm build                                            # Build all packages
 pnpm type-check                                       # Type-check all packages
 ```
@@ -64,6 +65,25 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Jotai state management, and sh
 React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state management, and `vite-bundle-analyzer`. Vite config demonstrates:
 - **Manual code splitting** via `rolldownOptions.output.manualChunks` (react, react-dom)
 - **Design Tokens system** in `src/styles/tokens.css` — CSS custom properties in three layers: Primitive → Semantic → Component, with `[data-theme="dark"]` overrides
+
+### react-playround — Rsbuild + React 19 练习场
+
+**Tech stack:** Rsbuild 1 (Rspack), React 19, TypeScript strict, React Relay 19 (GraphQL), Ant Design 6, Tailwind CSS 3 + SCSS, React Router 6, Vitest 2 + React Testing Library
+
+**Directory conventions:**
+- `src/components/` — reusable components, `React.FC` + `React.memo()` + `displayName` pattern, tests co-located (`*.test.tsx`)
+- `src/pages/` — route-level pages; feature modules (ShoppingCart, Todo, Bookkeeping) co-locate components/types/mock data
+- `src/relay/` — Relay Environment setup; `fetchQueryWithMock` for dev, exported `fetchQuery` for production
+- `src/__generated__/` — Relay compiler artifacts (NEVER edit manually; regenerate with `pnpm relay`)
+- `src/test/` — shared test infra: `setupTests.ts` (jsdom mocks), `utils.tsx` (custom render with BrowserRouter)
+
+**Key patterns:**
+- Build via Rsbuild + Babel (`babel-plugin-relay` compiles `graphql` tags, artifacts → `src/__generated__/`)
+- Port **3002** (configured in `rsbuild.config.ts`; 3000/3001 are taken by next-demo/next-upload)
+- Styling: Tailwind v3 utilities primary (note: **v3**, unlike other packages on v4), SCSS for complex cases, antd for form controls
+- Tests: jsdom environment, 70% coverage thresholds (lines/functions/branches/statements), `pnpm test:run` for CI mode
+- Standalone package-level `eslint.config.js` (eslint-plugin-react + react-hooks); does NOT extend the root Next-oriented config
+- Git hooks (husky/commitlint/lint-staged) are inherited from the workspace root — the package has none of its own
 
 ### next-upload — Next.js 16 全栈分片上传
 

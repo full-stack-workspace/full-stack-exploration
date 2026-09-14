@@ -1,0 +1,38 @@
+{
+  // see more detail compilerOptions: https://www.typescriptlang.org/tsconfig
+  "compilerOptions": {
+    "lib": ["DOM", "ES2020"],
+    "jsx": "react-jsx",
+    "target": "ES2020",
+    // 不生成编译文件，仅仅进行类型检查，查看是否存在编译错误
+    "noEmit": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+
+    /* modules */
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "noUncheckedSideEffectImports": true,
+
+    /* type checking 启用了严格类型检查 */
+    "strict": true,
+    // 用于检查是否存在未使用的变量，可以配合 eslint 做提示
+    "noUnusedLocals": true,
+    // 用于检查是否存在未使用的参数，可以配合 eslint 做提示
+    "noUnusedParameters": true
+  },
+  "include": [
+    "src",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.tsx",
+    "vitest.config.ts",
+    "src/vitest.d.ts"
+  ],
+  "exclude": ["node_modules", "dist", "**/__generated__/**"]
+}
