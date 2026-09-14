@@ -1,7 +1,9 @@
+/* antd 样式重置必须位于最顶部,避免覆盖 Tailwind  utilities */
+@import '~antd/dist/reset.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import '~antd/dist/reset.css';
 
 body {
     margin: 0;

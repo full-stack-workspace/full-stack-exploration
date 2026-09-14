@@ -71,17 +71,22 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 **Tech stack:** Rsbuild 1 (Rspack), React 19, TypeScript strict, React Relay 19 (GraphQL), Ant Design 6, Tailwind CSS 3 + SCSS, React Router 6, Vitest 2 + React Testing Library
 
 **Directory conventions:**
-- `src/components/` — reusable components, `React.FC` + `React.memo()` + `displayName` pattern, tests co-located (`*.test.tsx`)
-- `src/pages/` — route-level pages; feature modules (ShoppingCart, Todo, Bookkeeping) co-locate components/types/mock data
-- `src/relay/` — Relay Environment setup; `fetchQueryWithMock` for dev, exported `fetchQuery` for production
+- `src/config/topics.tsx` — **专题注册表(全站单一数据源)**:路由、顶部导航、侧边栏、首页卡片全部从 `TOPICS` 派生;新增专题 = 新建目录 + 注册一行(详见包 README)
+- `src/topics/<category>/<name>/` — 专题演示页;category 为 `basics` / `hooks` / `advanced` / `apps`(综合应用如 todo/bookkeeping/shopping-cart 也在此,co-locate 组件/类型/mock 数据)
+- `src/pages/Home/` — 首页(分类分组的专题导航 Hub,注册表驱动)
+- `src/components/` — 共享组件(`TopicPage`/`TopicSection` 专题页骨架、`TopicCard` 导航卡、`Loading`),`React.FC`/`memo` + `displayName` 模式,测试 co-located
+- `src/relay/` — Relay Environment setup;`fetchQueryWithMock` for dev, exported `fetchQuery` for production
 - `src/__generated__/` — Relay compiler artifacts (NEVER edit manually; regenerate with `pnpm relay`)
 - `src/test/` — shared test infra: `setupTests.ts` (jsdom mocks), `utils.tsx` (custom render with BrowserRouter)
 
 **Key patterns:**
 - Build via Rsbuild + Babel (`babel-plugin-relay` compiles `graphql` tags, artifacts → `src/__generated__/`)
 - Port **3002** (configured in `rsbuild.config.ts`; 3000/3001 are taken by next-demo/next-upload)
-- Styling: Tailwind v3 utilities primary (note: **v3**, unlike other packages on v4), SCSS for complex cases, antd for form controls
-- Tests: jsdom environment, 70% coverage thresholds (lines/functions/branches/statements), `pnpm test:run` for CI mode
+- 设计 token:`tailwind.config.js` 定义 `primary` 色阶 / `rounded-card` / `shadow-card`,与 `App.tsx` 中 antd `ConfigProvider` 的 `theme.token`(colorPrimary `#4f46e5`)对齐
+- 专题页布局统一使用 `TopicPage` + `TopicSection`;导航一律用 react-router(`useNavigate`/`Link`),禁止 `<a href>` 站内跳转
+- 旧路径(`/todo`、`/bookkeeping` 等)由 `App.tsx` 的 `LEGACY_REDIRECTS` 重定向到新路径
+- Styling: Tailwind v3 utilities primary (note: **v3**, unlike other packages on v4), antd for form controls
+- Tests: jsdom environment, 70% coverage thresholds, `pnpm test:run` for CI mode;`src/config/topics.test.ts` 校验注册表完整性
 - Standalone package-level `eslint.config.js` (eslint-plugin-react + react-hooks); does NOT extend the root Next-oriented config
 - Git hooks (husky/commitlint/lint-staged) are inherited from the workspace root — the package has none of its own
 
