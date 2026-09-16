@@ -29,7 +29,7 @@ pnpm test:ui
 ## 项目结构
 
 ```
-react-playround/
+react-playground/
 ├── vitest.config.ts          # Vitest 配置文件
 ├── src/
 │   ├── vitest.d.ts           # Vitest 类型定义

@@ -177,7 +177,7 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
 
-  packages/react-playround:
+  packages/react-playground:
     dependencies:
       '@ant-design/icons':
         specifier: ^6.1.0
