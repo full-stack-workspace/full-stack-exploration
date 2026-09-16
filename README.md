@@ -21,6 +21,7 @@
 | `vite-build` | 构建优化与设计系统：code splitting、bundle analysis、三层 Design Tokens 架构 — 考验 AI 对复杂样式工程和性能优化的处理 | 5175 |
 | `next-demo` | Next.js 16 全栈实践：App Router、Server Components、ISR、暗色模式 — 验证 AI 在现代全栈框架中的代码生成上限 | 3000 |
 | `next-upload` | Next.js 16 全栈分片上传：Route Handlers + Web Worker hash + Zustand 状态机 + shadcn/ui — 验证 AI 在"复杂客户端状态机 + 协议设计"题型下的产出 | 3001 |
+| `react-playground` | Rsbuild + React 19 练习场：专题注册表驱动的 Hooks / 进阶 / 综合应用演示 | 3002 |
 
 ### AI Coding 亮点 · Key Highlights
 
@@ -53,6 +54,7 @@ pnpm dev:vite-build # React 19 + Vite 构建优化
 # Next.js 全栈探索
 pnpm dev:next
 pnpm dev:upload     # 大文件分片上传
+pnpm dev:playground # Rsbuild React 练习场
 
 # 构建 & 类型检查
 pnpm build

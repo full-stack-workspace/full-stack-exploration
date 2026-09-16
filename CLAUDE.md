@@ -14,6 +14,7 @@ pnpm dev:basic                                        # Vite + Vue 3 (port 5173)
 pnpm dev:server                                       # Vite + React 19 + shadcn/ui (port 5174)
 pnpm dev:vite-build                                   # Vite + React 19 + Ant Design (port 5175)
 pnpm dev:next                                         # Next.js 16 (port 3000)
+pnpm dev:playground                                   # Rsbuild + React 19 playground (port 3002)
 pnpm build                                            # Build all packages
 pnpm type-check                                       # Type-check all packages
 ```
