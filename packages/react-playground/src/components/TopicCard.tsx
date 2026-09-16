@@ -19,14 +19,17 @@ import { getCategoryMeta } from '../config/topics';
 
 /** 完成度徽标的文案与配色 */
 const STATUS_STYLE: Record<TopicStatus, { label: string; className: string }> = {
-    done: { label: '已完成', className: 'bg-emerald-50 text-emerald-600' },
-    wip: { label: '进行中', className: 'bg-amber-50 text-amber-600' },
-    planned: { label: '计划中', className: 'bg-gray-100 text-gray-400' },
+    done: { label: '已完成', className: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400' },
+    wip: { label: '进行中', className: 'bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-400' },
+    planned: { label: '计划中', className: 'bg-gray-100 text-gray-400 dark:bg-slate-800 dark:text-slate-500' },
 };
 
 interface TopicCardProps {
     topic: TopicMeta;
 }
+
+const CARD_CLASS =
+    'group flex flex-col rounded-card border border-gray-100 bg-white p-5 shadow-card transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover dark:border-slate-800 dark:bg-slate-900';
 
 /**
  * @example
@@ -37,14 +40,11 @@ export const TopicCard = memo(({ topic }: TopicCardProps) => {
     const theme = getCategoryMeta(topic.category).theme;
 
     return (
-        <Link
-            to={topic.path}
-            className={`group flex flex-col rounded-card border border-gray-100 bg-white p-5 shadow-card transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover ${theme.hoverBorder}`}
-        >
+        <Link to={topic.path} className={`${CARD_CLASS} ${theme.hoverBorder}`}>
             <div className="flex items-center gap-2">
                 {/* 分类标识点 */}
                 <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${theme.dot}`} />
-                <h3 className="font-semibold text-gray-800">{topic.title}</h3>
+                <h3 className="font-semibold text-gray-800 dark:text-slate-100">{topic.title}</h3>
                 <span
                     className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-xs ${status.className}`}
                 >
@@ -52,7 +52,7 @@ export const TopicCard = memo(({ topic }: TopicCardProps) => {
                 </span>
             </div>
 
-            <p className="mt-2.5 flex-1 text-sm leading-relaxed text-gray-500">
+            <p className="mt-2.5 flex-1 text-sm leading-relaxed text-gray-500 dark:text-slate-400">
                 {topic.description}
             </p>
 

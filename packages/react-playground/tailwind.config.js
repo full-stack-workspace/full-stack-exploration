@@ -5,6 +5,7 @@
  * 与 App.tsx 中 antd ConfigProvider 的 theme.token 保持一致
  */
 module.exports = {
+    darkMode: 'class',
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",

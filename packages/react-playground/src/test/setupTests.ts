@@ -14,6 +14,7 @@ expect.extend(matchers);
 // 每个测试后清理 DOM
 afterEach(() => {
   cleanup();
+  document.documentElement.classList.remove('light', 'dark');
 });
 
 // Mock window.matchMedia（某些组件库如 Ant Design 需要）
