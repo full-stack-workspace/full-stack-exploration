@@ -42,7 +42,7 @@ pnpm run preview
 首页卡片全部从 `TOPICS` 派生。新增一个演示专题只需两步:
 
 1. 新建 `src/topics/<category>/<name>/index.tsx`,默认导出演示组件
-   - `<category>` 为 `basics` / `hooks` / `advanced` / `apps` 之一
+   - `<category>` 为 `basics` / `hooks` / `advanced` / `apps` / `agent` / `performance` 之一
    - 页面骨架使用 `TopicPage` / `TopicSection`(见 `src/components/TopicPage.tsx`),
      参考现有专题如 `src/topics/basics/event/index.tsx`
 2. 在 `src/config/topics.tsx` 的 `TOPICS` 数组中注册一行

@@ -15,7 +15,7 @@ pnpm dev:server                                       # Vite + React 19 + shadcn
 pnpm dev:vite-build                                   # Vite + React 19 + Ant Design (port 5175)
 pnpm dev:next                                         # Next.js 16 (port 3000)
 pnpm dev:upload                                       # Next.js 16 chunked upload (port 3001)
-pnpm dev:playround                                    # Rsbuild + React 19 playground (port 3002)
+pnpm dev:playground                                   # Rsbuild + React 19 playground (port 3002)
 pnpm build                                            # Build all packages
 pnpm type-check                                       # Type-check all packages
 ```
@@ -66,15 +66,18 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 - **Manual code splitting** via `rolldownOptions.output.manualChunks` (react, react-dom)
 - **Design Tokens system** in `src/styles/tokens.css` — CSS custom properties in three layers: Primitive → Semantic → Component, with `[data-theme="dark"]` overrides
 
-### react-playround — Rsbuild + React 19 练习场
+### react-playground — Rsbuild + React 19 练习场
 
 **Tech stack:** Rsbuild 1 (Rspack), React 19, TypeScript strict, React Relay 19 (GraphQL), Ant Design 6, Tailwind CSS 3 + SCSS, React Router 6, Vitest 2 + React Testing Library
 
 **Directory conventions:**
 - `src/config/topics.tsx` — **专题注册表(全站单一数据源)**:路由、顶部导航、侧边栏、首页卡片全部从 `TOPICS` 派生;新增专题 = 新建目录 + 注册一行(详见包 README)
-- `src/topics/<category>/<name>/` — 专题演示页;category 为 `basics` / `hooks` / `advanced` / `apps`(综合应用如 todo/bookkeeping/shopping-cart 也在此,co-locate 组件/类型/mock 数据)
+- `src/topics/<category>/<name>/` — 专题演示页;category 为 `basics` / `hooks` / `advanced` / `apps` / `agent` / `performance`(综合应用如 todo/bookkeeping/shopping-cart 也在此,co-locate 组件/类型/mock 数据)
+- `src/topics/agent/` — 「Agent 实战」分类(basePath `/agent`):演示「SSE 事件流 → React 之外的 Runtime Store → useSyncExternalStore → UI」链路;`runtime/` 为不 import React 的纯 TS 核心(types/reducer/RuntimeStore/script/MockSseClient),`react-adapter/` 为 Provider + 手写 Selector 的 hooks,`agent-chat/` 为演示页,`sync-store-guide/` 为 useSyncExternalStore 梳理页
+- `src/topics/hooks/custom-hooks/` — 「自定义 Hooks」三页专题(hooks 分类):`lib/` 为 8 个生产级原子 Hook + renderHook 契约测试 + barrel 导出,`playground/` 原子演练页、`composition/` 组合实战页(原子 Hook 分层组合成领域 Hook useUserSearch + mock 接口)、`guide/` 深入梳理页;三页页头互链(violet 系 NavBanner)
+- `src/topics/performance/` — 「性能优化」分类(basePath `/performance`,渲染调度专题):`lab/` 为演练工具层(busyWork/SlowList/useFrameStats/FrameMeter/wrapPromise/mockSearchApi + 测试),`transition-deferred/` 与 `suspense-ui/` 为渲染竞态场景演示页(对照开关 + 帧条图),`render-scheduling-guide/` 为梳理页;旧 `/topics/advanced/suspense` 已下线并入 suspense-ui(App.tsx 有重定向)
 - `src/pages/Home/` — 首页(分类分组的专题导航 Hub,注册表驱动)
-- `src/components/` — 共享组件(`TopicPage`/`TopicSection` 专题页骨架、`TopicCard` 导航卡、`Loading`),`React.FC`/`memo` + `displayName` 模式,测试 co-located
+- `src/components/` — 共享组件(`TopicPage`/`TopicSection` 专题页骨架、`TopicCard` 导航卡、`Loading`、`CodeBlock`/`Diagram` 梳理页展示块),`React.FC`/`memo` + `displayName` 模式,测试 co-located
 - `src/relay/` — Relay Environment setup;`fetchQueryWithMock` for dev, exported `fetchQuery` for production
 - `src/__generated__/` — Relay compiler artifacts (NEVER edit manually; regenerate with `pnpm relay`)
 - `src/test/` — shared test infra: `setupTests.ts` (jsdom mocks), `utils.tsx` (custom render with BrowserRouter)
