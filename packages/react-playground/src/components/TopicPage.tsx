@@ -37,8 +37,8 @@ export const TopicPage = memo(({ title, description, children }: TopicPageProps)
         <div className="max-w-7xl mx-auto">
             {/* 页头:品牌色竖条 + 标题 + 描述 */}
             <header className="mb-8 border-l-4 border-primary-500 pl-4">
-                <h1 className="text-2xl font-bold text-gray-800">{title}</h1>
-                <p className="mt-1 text-sm text-gray-500">{description}</p>
+                <h1 className="text-2xl font-bold text-gray-800 dark:text-slate-100">{title}</h1>
+                <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">{description}</p>
             </header>
             <div className="space-y-6">{children}</div>
         </div>
@@ -57,9 +57,9 @@ interface TopicSectionProps {
 
 export const TopicSection = memo(({ title, note, children }: TopicSectionProps) => {
     return (
-        <section className="rounded-card border border-gray-100 bg-white p-6 shadow-card">
-            <h2 className="text-base font-semibold text-gray-700">{title}</h2>
-            {note && <p className="mt-1 text-xs leading-relaxed text-gray-400">{note}</p>}
+        <section className="rounded-card border border-gray-100 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+            <h2 className="text-base font-semibold text-gray-700 dark:text-slate-200">{title}</h2>
+            {note && <p className="mt-1 text-xs leading-relaxed text-gray-400 dark:text-slate-500">{note}</p>}
             <div className="mt-4">{children}</div>
         </section>
     );

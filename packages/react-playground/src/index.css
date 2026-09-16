@@ -13,3 +13,22 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+html.dark {
+    color-scheme: dark;
+}
+
+html.dark body {
+    background: #020617;
+    color: #e2e8f0;
+}
+
+/*
+ * Tailwind 的 sr-only 是 position:absolute,但没有 top/left。
+ * 未定位的绝对元素会按「静态位置」落到文档流深处,把 html 撑出一截空白滚动。
+ * 专题正文越长(如 useMemo)越明显。钉在包含块原点,读屏仍能读到,页面不再被撑开。
+ */
+.sr-only {
+    top: 0;
+    left: 0;
+}

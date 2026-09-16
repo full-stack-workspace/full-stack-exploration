@@ -10,6 +10,9 @@ import type { RenderOptions } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
+import { ThemeProvider } from '../context/ThemeProvider';
+import { UserProvider } from '../context/UserProvider';
+
 /**
  * 自定义渲染函数，包含常用的 Provider
  * @param ui - 要渲染的 React 组件
@@ -17,7 +20,13 @@ import { vi } from 'vitest';
  * @returns 渲染结果和工具函数
  */
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
-  return <BrowserRouter>{children}</BrowserRouter>;
+  return (
+    <ThemeProvider>
+      <UserProvider>
+        <BrowserRouter>{children}</BrowserRouter>
+      </UserProvider>
+    </ThemeProvider>
+  );
 };
 
 const customRender = (

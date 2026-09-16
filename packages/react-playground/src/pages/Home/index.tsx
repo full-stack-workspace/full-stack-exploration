@@ -35,7 +35,7 @@ const Hero = memo(() => {
     ];
 
     return (
-        <section className="relative overflow-hidden rounded-3xl border border-gray-100 bg-gradient-to-br from-primary-50/80 via-white to-violet-50/60 px-8 py-12 shadow-card sm:px-12">
+        <section className="relative overflow-hidden rounded-3xl border border-gray-100 bg-gradient-to-br from-primary-50/80 via-white to-violet-50/60 px-8 py-12 shadow-card sm:px-12 dark:border-slate-800 dark:from-slate-900 dark:via-slate-950 dark:to-violet-950/40">
             {/* 装饰层:浅色柔光斑 + 淡点阵纹理,保持画面轻盈 */}
             <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary-200/40 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-violet-200/40 blur-3xl" />
@@ -52,13 +52,13 @@ const Hero = memo(() => {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-500">
                     React Playground
                 </p>
-                <h1 className="mt-3 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
+                <h1 className="mt-3 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl dark:text-slate-50">
                     React{' '}
                     <span className="bg-gradient-to-r from-primary-600 to-violet-500 bg-clip-text text-transparent">
                         专题练习场
                     </span>
                 </h1>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-500 sm:text-base">
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-500 sm:text-base dark:text-slate-400">
                     按专题组织的 React 学习与演练站点:从核心语法、Hooks 到进阶能力,
                     再到贴近业务的综合应用,每个专题都可交互、可对照源码。
                 </p>
@@ -67,10 +67,10 @@ const Hero = memo(() => {
                 <div className="mt-8 flex gap-8">
                     {stats.map((s) => (
                         <div key={s.label}>
-                            <div className="text-2xl font-bold text-gray-900 sm:text-3xl">
+                            <div className="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-slate-50">
                                 {s.value}
                             </div>
-                            <div className="mt-1 text-xs text-gray-400">{s.label}</div>
+                            <div className="mt-1 text-xs text-gray-400 dark:text-slate-500">{s.label}</div>
                         </div>
                     ))}
                 </div>
@@ -83,7 +83,7 @@ const Hero = memo(() => {
                             <Link
                                 key={c.key}
                                 to={first.path}
-                                className="group flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/80 px-4 py-1.5 text-xs font-medium text-gray-600 backdrop-blur-sm transition-colors hover:border-primary-300 hover:text-primary-600"
+                                className="group flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/80 px-4 py-1.5 text-xs font-medium text-gray-600 backdrop-blur-sm transition-colors hover:border-primary-300 hover:text-primary-600 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-primary-500 dark:hover:text-primary-400"
                             >
                                 {c.title}
                                 <ArrowRightOutlined className="text-[10px] transition-transform group-hover:translate-x-0.5" />
@@ -123,12 +123,12 @@ const Home = memo(() => {
                                     {category.theme.icon}
                                 </span>
                                 <div>
-                                    <h2 className="text-lg font-semibold leading-tight text-gray-800">
+                                    <h2 className="text-lg font-semibold leading-tight text-gray-800 dark:text-slate-100">
                                         {category.title}
                                     </h2>
-                                    <p className="text-xs text-gray-400">{category.subtitle}</p>
+                                    <p className="text-xs text-gray-400 dark:text-slate-500">{category.subtitle}</p>
                                 </div>
-                                <span className="ml-auto rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-500">
+                                <span className="ml-auto rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-500 dark:bg-slate-800 dark:text-slate-400">
                                     {topics.length} 个专题
                                 </span>
                             </div>
