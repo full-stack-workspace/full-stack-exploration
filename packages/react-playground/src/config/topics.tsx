@@ -22,6 +22,8 @@ import {
     AppstoreOutlined,
     CodeOutlined,
     ExperimentOutlined,
+    RobotOutlined,
+    ThunderboltOutlined,
 } from '@ant-design/icons';
 
 /* =================================================================
@@ -29,7 +31,7 @@ import {
  * ================================================================ */
 
 /** 分类 key,决定专题在信息架构中的归属 */
-export type CategoryKey = 'basics' | 'hooks' | 'advanced' | 'apps';
+export type CategoryKey = 'basics' | 'hooks' | 'advanced' | 'apps' | 'agent' | 'performance';
 
 /** 专题完成度,在首页卡片上以徽标形式展示 */
 export type TopicStatus = 'done' | 'wip' | 'planned';
@@ -87,10 +89,10 @@ export const CATEGORIES: CategoryMeta[] = [
         subtitle: 'JSX、渲染、事件、列表等核心语法专题',
         theme: {
             icon: <CodeOutlined />,
-            iconChip: 'bg-indigo-50 text-indigo-600',
+            iconChip: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-300',
             dot: 'bg-indigo-500',
-            text: 'text-indigo-600',
-            hoverBorder: 'hover:border-indigo-200',
+            text: 'text-indigo-600 dark:text-indigo-400',
+            hoverBorder: 'hover:border-indigo-200 dark:hover:border-indigo-700',
         },
     },
     {
@@ -100,23 +102,23 @@ export const CATEGORIES: CategoryMeta[] = [
         subtitle: '内置 Hook 与自定义 Hook 逐个击破',
         theme: {
             icon: <ApiOutlined />,
-            iconChip: 'bg-violet-50 text-violet-600',
+            iconChip: 'bg-violet-50 text-violet-600 dark:bg-violet-950 dark:text-violet-300',
             dot: 'bg-violet-500',
-            text: 'text-violet-600',
-            hoverBorder: 'hover:border-violet-200',
+            text: 'text-violet-600 dark:text-violet-400',
+            hoverBorder: 'hover:border-violet-200 dark:hover:border-violet-700',
         },
     },
     {
         key: 'advanced',
         basePath: '/topics/advanced',
         title: '进阶专题',
-        subtitle: 'Suspense、错误边界、数据流等进阶能力',
+        subtitle: 'Context、错误边界与数据流',
         theme: {
             icon: <ExperimentOutlined />,
-            iconChip: 'bg-sky-50 text-sky-600',
+            iconChip: 'bg-sky-50 text-sky-600 dark:bg-sky-950 dark:text-sky-300',
             dot: 'bg-sky-500',
-            text: 'text-sky-600',
-            hoverBorder: 'hover:border-sky-200',
+            text: 'text-sky-600 dark:text-sky-400',
+            hoverBorder: 'hover:border-sky-200 dark:hover:border-sky-700',
         },
     },
     {
@@ -126,10 +128,36 @@ export const CATEGORIES: CategoryMeta[] = [
         subtitle: '贴近真实业务的完整功能演练',
         theme: {
             icon: <AppstoreOutlined />,
-            iconChip: 'bg-emerald-50 text-emerald-600',
+            iconChip: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-300',
             dot: 'bg-emerald-500',
-            text: 'text-emerald-600',
-            hoverBorder: 'hover:border-emerald-200',
+            text: 'text-emerald-600 dark:text-emerald-400',
+            hoverBorder: 'hover:border-emerald-200 dark:hover:border-emerald-700',
+        },
+    },
+    {
+        key: 'agent',
+        basePath: '/agent',
+        title: 'Agent 实战',
+        subtitle: '客户端 Agent Runtime Store 与 React 的衔接演练',
+        theme: {
+            icon: <RobotOutlined />,
+            iconChip: 'bg-rose-50 text-rose-600 dark:bg-rose-950 dark:text-rose-300',
+            dot: 'bg-rose-500',
+            text: 'text-rose-600 dark:text-rose-400',
+            hoverBorder: 'hover:border-rose-200 dark:hover:border-rose-700',
+        },
+    },
+    {
+        key: 'performance',
+        basePath: '/performance',
+        title: '性能优化',
+        subtitle: '渲染优先级与任务调度演练',
+        theme: {
+            icon: <ThunderboltOutlined />,
+            iconChip: 'bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-300',
+            dot: 'bg-amber-500',
+            text: 'text-amber-600 dark:text-amber-400',
+            hoverBorder: 'hover:border-amber-200 dark:hover:border-amber-700',
         },
     },
 ];
@@ -178,8 +206,29 @@ export const TOPICS: TopicMeta[] = [
         path: '/topics/hooks/use-state',
         title: 'useState',
         category: 'hooks',
-        description: '函数组件的状态声明与函数式更新',
+        description: 'state 是一次渲染的快照;setState 排队下一次渲染,并对照惰性初始与不可变更新',
         element: lazy(() => import('../topics/hooks/use-state')),
+    },
+    {
+        path: '/topics/hooks/use-reducer',
+        title: 'useReducer',
+        category: 'hooks',
+        description: 'dispatch 描述发生了什么,reducer 纯函数算出下一份 state;适合多字段关联变化',
+        element: lazy(() => import('../topics/hooks/use-reducer')),
+    },
+    {
+        path: '/topics/hooks/use-ref',
+        title: 'useRef',
+        category: 'hooks',
+        description: '改 current 不触发渲染;盒子身份稳定,适合 DOM、定时器 ID,以及让事件/effect 读到最新值',
+        element: lazy(() => import('../topics/hooks/use-ref')),
+    },
+    {
+        path: '/topics/hooks/use-imperative-handle',
+        title: 'useImperativeHandle',
+        category: 'hooks',
+        description: '定制父组件经 ref 拿到的命令面:只暴露 focus/clear 这类方法,不把整棵 DOM 交出去',
+        element: lazy(() => import('../topics/hooks/use-imperative-handle')),
     },
     {
         path: '/topics/hooks/use-effect',
@@ -188,14 +237,56 @@ export const TOPICS: TopicMeta[] = [
         description: '副作用的执行时机、依赖数组与清理函数',
         element: lazy(() => import('../topics/hooks/use-effect')),
     },
+    {
+        path: '/topics/hooks/use-layout-effect',
+        title: 'useLayoutEffect',
+        category: 'hooks',
+        description: '在浏览器绘制前同步读取/调整 DOM,并对照 useEffect 的执行时机',
+        element: lazy(() => import('../topics/hooks/use-layout-effect')),
+    },
+    {
+        path: '/topics/hooks/use-callback',
+        title: 'useCallback',
+        category: 'hooks',
+        description: '缓存函数身份,让 memo 子组件和 effect 依赖认得出「还是同一个函数」',
+        element: lazy(() => import('../topics/hooks/use-callback')),
+    },
+    {
+        path: '/topics/hooks/use-memo',
+        title: 'useMemo 与 memo',
+        category: 'hooks',
+        description: 'memo 跳过子组件函数,useMemo 跳过这次 render 里的重算;两者都比 Object.is,要配对才有收益',
+        element: lazy(() => import('../topics/hooks/use-memo')),
+    },
+    {
+        path: '/topics/hooks/custom-hooks-guide',
+        title: '自定义 Hooks 深入梳理',
+        category: 'hooks',
+        description: '设计原则、组合设计思路与落地实践指南',
+        element: lazy(() => import('../topics/hooks/custom-hooks/guide')),
+    },
+    {
+        path: '/topics/hooks/custom-hooks-playground',
+        title: '自定义 Hooks 原子演练',
+        category: 'hooks',
+        description: '8 个生产级基础 Hooks 逐个交互演示',
+        element: lazy(() => import('../topics/hooks/custom-hooks/playground')),
+    },
+    {
+        path: '/topics/hooks/custom-hooks-composition',
+        title: '自定义 Hooks 组合实战',
+        category: 'hooks',
+        description: '原子 Hook 分层组合成领域 Hook 的搜索实战',
+        element: lazy(() => import('../topics/hooks/custom-hooks/composition')),
+    },
 
     /* ---- 进阶专题 ---- */
     {
-        path: '/topics/advanced/suspense',
-        title: 'Suspense',
+        path: '/topics/advanced/context',
+        title: 'Context API',
         category: 'advanced',
-        description: '用 Suspense 声明式处理异步加载态',
-        element: lazy(() => import('../topics/advanced/suspense')),
+        description: 'createContext 开通道,Provider 供数,use() 读最近一层;并对照如何拆 Context 避免连坐重渲染',
+        element: lazy(() => import('../topics/advanced/context')),
     },
     {
         path: '/topics/advanced/error-boundary',
@@ -237,6 +328,45 @@ export const TOPICS: TopicMeta[] = [
                 default: m.ShoppingCart,
             })),
         ),
+    },
+
+    /* ---- Agent 实战 ---- */
+    {
+        path: '/agent/agent-chat',
+        title: 'Agent 对话运行时',
+        category: 'agent',
+        description: '模拟 SSE 事件流驱动外部 Runtime Store,UI 经 useSyncExternalStore 精准订阅',
+        element: lazy(() => import('../topics/agent/agent-chat')),
+    },
+    {
+        path: '/agent/use-sync-external-store',
+        title: 'useSyncExternalStore 深入梳理',
+        category: 'agent',
+        description: '外部 Store 订阅协议、并发一致性、Selector 与本演练架构设计说明',
+        element: lazy(() => import('../topics/agent/sync-store-guide')),
+    },
+
+    /* ---- 性能优化 ---- */
+    {
+        path: '/performance/transition-deferred',
+        title: 'useTransition × useDeferredValue',
+        category: 'performance',
+        description: '渲染竞态场景演练:输入阻塞、Tab 切换三件套协作、stale 结果',
+        element: lazy(() => import('../topics/performance/transition-deferred')),
+    },
+    {
+        path: '/performance/suspense-ui',
+        title: 'Suspense 骨架与状态 UI',
+        category: 'performance',
+        description: '初始骨架、回退闪烁消除与边界粒度的 Suspense × transition 协作演练',
+        element: lazy(() => import('../topics/performance/suspense-ui')),
+    },
+    {
+        path: '/performance/render-scheduling-guide',
+        title: '渲染调度深入梳理',
+        category: 'performance',
+        description: '并发渲染心智模型、三件套分工矩阵与工程实践细节',
+        element: lazy(() => import('../topics/performance/render-scheduling-guide')),
     },
 ];
 
