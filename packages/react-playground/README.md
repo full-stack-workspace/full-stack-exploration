@@ -51,3 +51,5 @@ pnpm run preview
 注册后路由、侧边栏、首页卡片自动生效;`pnpm test:run` 中的注册表完整性测试
 会校验 path 唯一性、分类合法性等约束。综合应用(完整业务功能)放在 `apps`
 分类下,同样通过注册表登记。
+
+<!-- deployment: retrigger after Vercel project root directory fix -->
