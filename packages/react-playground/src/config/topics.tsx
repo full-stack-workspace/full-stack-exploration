@@ -176,7 +176,7 @@ export const TOPICS: TopicMeta[] = [
         path: '/topics/basics/jsx-render',
         title: 'JSX 与渲染',
         category: 'basics',
-        description: 'JSX 表达式插值、条件渲染与元素的本质',
+        description: 'JSX 本质与表达式插值、条件/列表渲染,及四态/权限/配置驱动等生产渲染范式',
         element: lazy(() => import('../topics/basics/jsx-render')),
     },
     {
@@ -190,7 +190,7 @@ export const TOPICS: TopicMeta[] = [
         path: '/topics/basics/event',
         title: '事件与合成事件',
         category: 'basics',
-        description: 'SyntheticEvent 的跨浏览器封装与事件委托',
+        description: 'SyntheticEvent 委托机制、原生混用高频坑、批处理与面试经典 Case',
         element: lazy(() => import('../topics/basics/event')),
     },
     {
