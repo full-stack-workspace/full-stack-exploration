@@ -197,7 +197,7 @@ export const TOPICS: TopicMeta[] = [
         path: '/topics/basics/list-key',
         title: '列表与 key',
         category: 'basics',
-        description: 'key 如何影响列表的 Diff 与组件状态保持',
+        description: 'key 决定 Diff 身份:双栏错位实验、三条规则、key 重置状态与渲染期生成 key 的坑',
         element: lazy(() => import('../topics/basics/list-key')),
     },
 
