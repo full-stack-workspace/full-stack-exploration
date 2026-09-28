@@ -10,11 +10,13 @@ Next.js 文档告诉你 API **能做什么**。这个站点练的是另一件事
 
 | 分类 | 你能练到什么 |
 |------|----------------|
-| **渲染策略** `/rendering` | ISR 静态再生;SSG⇄SSR⇄Streaming⇄PPR 的选择(后续阶段补齐) |
-| **Server/Client 边界** `/rsc-boundary` | RSC 优先;交互下沉到 Client 叶子、props 跨边界序列化 |
-| **路由机制** `/router` | 动态段与「Client 页面用 layout 出动态 metadata」的兜底模式 |
-| **数据与缓存** `/data` | Route Handler 的存在理由;四层缓存心智模型(后续阶段) |
-| **AI-Native 与 Agent** `/ai-native` | 流式加载体验基线;真实 SSE 端点与 Generative UI(后续阶段) |
+| **渲染策略** `/rendering` | SSG⇄ISR⇄SSR⇄Streaming⇄PPR 光谱决策;真实流式 Suspense 粒度对照;Cache Components 讲解 |
+| **Server/Client 边界** `/rsc-boundary` | RSC 心智模型、边界下沉、Server Actions 渐进增强留言板 |
+| **路由机制** `/router` | 动态段与动态 metadata 兜底、七个约定文件对照(本站自带 loading.tsx 活演示)、Link prefetch 与 Router Cache |
+| **数据与缓存** `/data` | 四层缓存对照台(最大难点)、Route Handler 的存在理由、SWR 的合理场景 |
+| **Metadata 与 SEO** `/metadata` | 静态/动态/约定文件三条通道与合并顺序,全部引用本站真实代码 |
+| **工程化** `/engineering` | 真实 middleware.ts 响应头演示、缓存策略三问决策表、Image/Font/包体治理 |
+| **AI-Native 与 Agent** `/ai-native` | 真实 SSE 流式端点(含取消=省计费)、Generative UI 组件映射、Agent 多步时间线串并行对照 |
 
 ## 如何新增一个专题
 

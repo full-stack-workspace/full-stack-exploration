@@ -36,8 +36,9 @@ pnpm -C packages/next-playground fix                         # ESLint --fix
 **Directory conventions:**
 - `config/topics.tsx` — **专题注册表(全站单一数据源)**:顶栏、侧边栏、首页卡片、页面 metadata 全部从 `TOPICS`/`CATEGORIES` 派生;新增专题 = topics/ 内容 + app/ 薄壳 + 注册一行(详见包 README)
 - `app/` — App Router **薄壳路由**(只导出 metadata 与渲染约定如 `revalidate`,内容在 `topics/`)与 Route Handler(`app/api/`)
-- `topics/<category>/<name>/` — 专题真实内容;category 为 `rendering` / `rsc-boundary` / `router` / `data` / `ai-native`(后续阶段增加 `metadata` / `engineering`),co-locate 演示组件
+- `topics/<category>/<name>/` — 专题真实内容;category 为 `rendering` / `rsc-boundary` / `router` / `data` / `metadata` / `engineering` / `ai-native` 七类,co-locate 演示组件
 - `components/` — 共享组件:`shell/SiteShell`(Client,注册表驱动的顶栏+侧边栏壳层)、`topic/TopicPage`(TopicPage/TopicSection 专题骨架)、`ThemeProvider`
+- `middleware.ts` — 包根中间件演示(matcher 只命中 `/engineering/middleware`,加自定义响应头;Next 16 已将约定更名为 proxy,本站保留旧名并在专题页说明)
 - `data/` — Static mock data and data access functions (e.g., `getUserById`;`getPosts` 用 React `cache()` 记忆化)
 - `types/` — TypeScript interfaces (no runtime code)
 - `lib/` — `utils.ts` 的 `cn()`;`topic-meta.ts` 的 `getTopicMetadata()` / `SITE_NAME`
