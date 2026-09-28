@@ -20,16 +20,16 @@ pnpm build                                            # Build all packages
 pnpm type-check                                       # Type-check all packages
 ```
 
-Within `packages/next-demo`:
+Within `packages/next-playground`:
 ```bash
-pnpm -C packages/next-demo dev                         # Next.js dev server
-pnpm -C packages/next-demo lint                        # ESLint
-pnpm -C packages/next-demo fix                         # ESLint --fix
+pnpm -C packages/next-playground dev                         # Next.js dev server
+pnpm -C packages/next-playground lint                        # ESLint
+pnpm -C packages/next-playground fix                         # ESLint --fix
 ```
 
 ## Package Architecture
 
-### next-demo — Next.js 16 App Router
+### next-playground — Next.js 16 App Router
 
 **Tech stack:** Next.js 16, React 19, Tailwind CSS 4, SWR, clsx + tailwind-merge
 
@@ -87,7 +87,7 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 
 **Key patterns:**
 - Build via Rsbuild + Babel (`babel-plugin-relay` compiles `graphql` tags, artifacts → `src/__generated__/`)
-- Port **3002** (configured in `rsbuild.config.ts`; 3000/3001 are taken by next-demo/next-upload)
+- Port **3002** (configured in `rsbuild.config.ts`; 3000/3001 are taken by next-playground/next-upload)
 - 设计 token:`tailwind.config.js` 定义 `primary` 色阶 / `rounded-card` / `shadow-card`,与 `App.tsx` 中 antd `ConfigProvider` 的 `theme.token`(colorPrimary `#4f46e5`)对齐
 - 专题页布局统一使用 `TopicPage` + `TopicSection`;导航一律用 react-router(`useNavigate`/`Link`),禁止 `<a href>` 站内跳转
 - 旧路径(`/todo`、`/bookkeeping` 等)由 `App.tsx` 的 `LEGACY_REDIRECTS` 重定向到新路径
@@ -115,13 +115,13 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 - AbortController on each task enables clean pause/resume/cancel — `pauseTask` aborts, `resumeTask` swaps in a new controller and re-runs pipeline from check
 - Hash worker is a singleton serializing multi-file hash (avoid memory contention); upload phase remains parallel
 - shadcn/ui + Tailwind v4: uses `@custom-variant dark (&:where(.dark, .dark *));` and `tw-animate-css` (the v4 replacement for `tailwindcss-animate`)
-- Dark mode shares the next-demo pattern: hand-rolled `ThemeProvider` Context with `.dark` class on `<html>` (no `next-themes`)
+- Dark mode shares the next-playground pattern: hand-rolled `ThemeProvider` Context with `.dark` class on `<html>` (no `next-themes`)
 
 ## Design Tokens Philosophy
 
-Both `vite-build` and `next-demo` implement design tokens, but differently:
+Both `vite-build` and `next-playground` implement design tokens, but differently:
 - **vite-build** (`tokens.css`): Pure CSS custom properties with a three-layer architecture (Primitive → Semantic → Component); theme switching via `data-theme` attribute on `<html>`
-- **next-demo** (`globals.css`): Tailwind CSS v4 `@theme` directive, which auto-generates utility classes; theme switching via `prefers-color-scheme` media query
+- **next-playground** (`globals.css`): Tailwind CSS v4 `@theme` directive, which auto-generates utility classes; theme switching via `prefers-color-scheme` media query
 
 ## Code Commenting Standards
 
@@ -161,7 +161,7 @@ When generating code, add structured comments following these conventions:
 
 Commits follow conventional commit format: `type(scope): description`
 - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
-- Scope is typically the package name (e.g., `next-demo`, `vite-basic`)
+- Scope is typically the package name (e.g., `next-playground`, `vite-basic`)
 - Descriptions are in Chinese or English, describing the "why" over the "what"
 
 ## Agent Skills

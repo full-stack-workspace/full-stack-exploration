@@ -3,7 +3,7 @@
  * ThemeProvider — next-upload
  * ============================================================================
  *
- * 与 next-demo 同款手写 Context（不引入 next-themes）。
+ * 与 next-playground 同款手写 Context（不引入 next-themes）。
  *
  * 职责：
  * - 管理 light/dark 主题状态
