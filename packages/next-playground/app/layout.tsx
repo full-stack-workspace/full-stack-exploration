@@ -17,6 +17,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
+import Footer from "../components/Footer";
 import { SiteShell } from "../components/shell/SiteShell";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { HOME_TITLE, SITE_NAME } from "../lib/topic-meta";
@@ -89,6 +90,7 @@ export default function RootLayout({
         />
         <ThemeProvider>
           <SiteShell>{children}</SiteShell>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
