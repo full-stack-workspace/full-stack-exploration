@@ -123,8 +123,8 @@ function UserDetailContent() {
             <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 flex items-center justify-center">
                 <div className="text-center">
                     <p className="text-neutral-600 dark:text-neutral-400">用户不存在</p>
-                    <Link href="/user" className="text-primary-600 hover:underline mt-2 inline-block">
-                        返回团队列表
+                    <Link href="/router/dynamic-routes" className="text-primary-600 hover:underline mt-2 inline-block">
+                        返回动态路由专题
                     </Link>
                 </div>
             </div>
@@ -147,13 +147,13 @@ function UserDetailContent() {
                      */}
                     <div className="mb-6">
                         <Link
-                            href="/user"
+                            href="/router/dynamic-routes"
                             className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-primary-600 transition-colors dark:text-neutral-400 dark:hover:text-primary-400"
                         >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
-                            返回团队列表
+                            返回动态路由专题
                         </Link>
                     </div>
 

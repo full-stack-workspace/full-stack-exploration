@@ -29,25 +29,29 @@ pnpm -C packages/next-playground fix                         # ESLint --fix
 
 ## Package Architecture
 
-### next-playground — Next.js 16 App Router
+### next-playground — Next.js 16 工程实践演示站
 
 **Tech stack:** Next.js 16, React 19, Tailwind CSS 4, SWR, clsx + tailwind-merge
 
 **Directory conventions:**
-- `app/` — App Router pages and API routes; each route is a folder with `page.tsx`
-- `app/api/` — Route handlers (Next.js API routes)
-- `components/` — Shared React components (both server and client components)
-- `data/` — Static mock data and data access functions (e.g., `getUserById`)
+- `config/topics.tsx` — **专题注册表(全站单一数据源)**:顶栏、侧边栏、首页卡片、页面 metadata 全部从 `TOPICS`/`CATEGORIES` 派生;新增专题 = topics/ 内容 + app/ 薄壳 + 注册一行(详见包 README)
+- `app/` — App Router **薄壳路由**(只导出 metadata 与渲染约定如 `revalidate`,内容在 `topics/`)与 Route Handler(`app/api/`)
+- `topics/<category>/<name>/` — 专题真实内容;category 为 `rendering` / `rsc-boundary` / `router` / `data` / `ai-native`(后续阶段增加 `metadata` / `engineering`),co-locate 演示组件
+- `components/` — 共享组件:`shell/SiteShell`(Client,注册表驱动的顶栏+侧边栏壳层)、`topic/TopicPage`(TopicPage/TopicSection 专题骨架)、`ThemeProvider`
+- `data/` — Static mock data and data access functions (e.g., `getUserById`;`getPosts` 用 React `cache()` 记忆化)
 - `types/` — TypeScript interfaces (no runtime code)
-- `lib/` — Utility functions; notably `utils.ts` exports the `cn()` classname helper
+- `lib/` — `utils.ts` 的 `cn()`;`topic-meta.ts` 的 `getTopicMetadata()` / `SITE_NAME`
 
 **Key patterns:**
 - Pages default to **Server Components**; opt into client with `"use client"` only when using state/effects/browser APIs
-- Data fetching uses **SWR** for client-side (User detail page) or direct `fetch` in async Server Components (Blog page with ISR `revalidate = 60`)
+- **注册表 ≠ 路由**:App Router 路由由文件系统决定,注册表只驱动导航与元信息;不做 catch-all 查表渲染
+- 页面标题用 metadata API:薄壳页 `export const metadata = getTopicMetadata(path)` 读注册表,套根 layout 的 `title.template`;无 react-playground 的 DocumentTitle 机制
+- 旧路径(`/blog`、`/user`、`/ai-models`、`/about`)由 `next.config.ts` 的 `redirects()` 301 到新专题路由
+- Data fetching uses **SWR** for client-side or direct `fetch` in async Server Components (ISR page with `revalidate = 60`)
 - The `cn()` function from `lib/utils.ts` combines `clsx` (conditional classes) + `tailwind-merge` (conflict resolution); always prefer `cn()` over template literals for className
 - `@/` path alias maps to the package root (configured in `tsconfig.json` paths)
 - Tailwind CSS v4 uses `@theme` in `globals.css` to define design tokens (colors, radii, shadows, animations) — do not use `tailwind.config.js`
-- Dark mode uses `prefers-color-scheme` media query with CSS custom properties; no JS toggle
+- Dark mode: 手写 `ThemeProvider`(class 策略,localStorage → prefers-color-scheme,body 内联脚本防闪烁)
 - ESLint uses flat config format (`eslint.config.mjs`) with `eslint-config-next` presets
 
 **API routes** call external services (jsonplaceholder) and return `NextResponse.json()`. They are independent from page data fetching — pages that need the same data call the external API directly to avoid build-time ECONNREFUSED errors.

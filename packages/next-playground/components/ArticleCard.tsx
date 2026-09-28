@@ -65,14 +65,14 @@ interface ArticleCardProps {
  * ============================================================================
  *
  * @param props.article - 文章数据
- * @param props.href - 跳转链接，默认值为 /user/${article.id}
+ * @param props.href - 跳转链接，默认值为 /router/dynamic-routes/${article.id}
  */
 const ArticleCard = memo(({
     article,
     href
 }: ArticleCardProps) => {
     const category = getCategoryColor(article.id);
-    const linkHref = href || `/user/${article.id}`;
+    const linkHref = href || `/router/dynamic-routes/${article.id}`;
 
     return (
         <Link
