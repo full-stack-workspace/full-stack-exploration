@@ -24,6 +24,7 @@ import { Layout, Menu } from 'antd';
 
 import './index.css';
 
+import { DocumentTitle } from './components/DocumentTitle';
 import { HeaderActions } from './components/HeaderActions';
 import { Loading } from './components/Loading';
 import { AppProviders } from './context/AppProviders';
@@ -117,6 +118,7 @@ const AppContent = () => {
 
     return (
         <Layout className="h-screen overflow-hidden dark:bg-slate-950">
+            <DocumentTitle />
             {/* 顶部 Header:品牌 + 分类导航;壳层锁死视口后不再随内容滚走 */}
             <Header className="z-50 flex shrink-0 items-center gap-8 border-b border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/90">
                 <Brand />
