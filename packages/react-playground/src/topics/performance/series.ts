@@ -4,7 +4,7 @@
  * ============================================================================
  *
  * 性能优化不再只有「渲染调度操作」,而是三条互链的系列:
- * 治理全链路(原则→指标→架构→实现→排查)、AI-Native(金字塔/流式/工具链)、已有渲染调度演练。
+ * 治理全链路(原则→指标→架构→实现→排查)、渲染调度(梳理→演练→Suspense)、AI-Native(金字塔/流式/工具链)。
  * SeriesNav 与注册表共用这份目录,避免路径写散。
  *
  * @module topics/performance/series
@@ -49,21 +49,21 @@ export const PERFORMANCE_SERIES: readonly PerformanceSeries[] = [
         ],
     },
     {
+        id: 'scheduling',
+        title: '渲染调度',
+        links: [
+            { key: 'render-scheduling-guide', to: '/performance/render-scheduling-guide', label: '调度梳理' },
+            { key: 'transition-deferred', to: '/performance/transition-deferred', label: 'transition × deferred' },
+            { key: 'suspense-ui', to: '/performance/suspense-ui', label: 'Suspense 骨架' },
+        ],
+    },
+    {
         id: 'ai-native',
         title: 'AI-Native 性能',
         links: [
             { key: 'ai-native-guide', to: '/performance/ai-native-guide', label: '指标金字塔' },
             { key: 'ai-native-lab', to: '/performance/ai-native-lab', label: '流式体验演练' },
             { key: 'ai-native-agent', to: '/performance/ai-native-agent', label: 'Agent 工具链' },
-        ],
-    },
-    {
-        id: 'scheduling',
-        title: '渲染调度(已有)',
-        links: [
-            { key: 'transition-deferred', to: '/performance/transition-deferred', label: 'transition × deferred' },
-            { key: 'suspense-ui', to: '/performance/suspense-ui', label: 'Suspense 骨架' },
-            { key: 'render-scheduling-guide', to: '/performance/render-scheduling-guide', label: '调度梳理' },
         ],
     },
 ];

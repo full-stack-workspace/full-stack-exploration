@@ -24,6 +24,7 @@ import { Layout, Menu } from 'antd';
 
 import './index.css';
 
+import { BrandMark } from './components/BrandMark';
 import { DocumentTitle } from './components/DocumentTitle';
 import { HeaderActions } from './components/HeaderActions';
 import { Loading } from './components/Loading';
@@ -59,16 +60,12 @@ const LEGACY_REDIRECTS: Record<string, string> = {
 
 const Brand = () => (
     <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-md shadow-primary-200">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-        </div>
+        <BrandMark />
         <div className="hidden sm:block">
             <h1 className="text-lg font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent leading-tight">
                 React Playground
             </h1>
-            <p className="text-xs text-gray-400 leading-tight dark:text-slate-500">专题练习场</p>
+            <p className="text-xs text-gray-400 leading-tight dark:text-slate-500">生产级工程决策</p>
         </div>
     </div>
 );

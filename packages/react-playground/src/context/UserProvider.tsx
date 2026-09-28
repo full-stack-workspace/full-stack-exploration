@@ -25,8 +25,8 @@ export interface MockUser {
 
 /** 演示用账号,不接真实登录 */
 export const MOCK_USERS: MockUser[] = [
-    { id: 'u-lin', name: '林晓', role: '学习者', email: 'linxiao@playground.dev' },
-    { id: 'u-chen', name: '陈默', role: '导师', email: 'chenmo@playground.dev' },
+    { id: 'u-lin', name: 'Alex Chen', role: 'Staff Engineer', email: 'alex.chen@playground.dev' },
+    { id: 'u-chen', name: 'Maya Zhou', role: 'Tech Lead', email: 'maya.zhou@playground.dev' },
 ];
 
 interface UserActions {

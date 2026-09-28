@@ -3,8 +3,8 @@
 性能优化不是渲染调度 API 清单。本分类三条系列互链:
 
 1. **性能治理全链路** — 原则与约定 → 指标实验室 → 架构关键路径 → 实现六规则 → 排查演练
-2. **AI-Native 性能** — 指标金字塔 + 流式时间轴 + Agent 工具链(并行/取消/快但错)
-3. **渲染调度(已有)** — transition × deferred、Suspense 骨架、调度梳理
+2. **渲染调度** — 调度梳理 → transition × deferred → Suspense 骨架
+3. **AI-Native 性能** — 指标金字塔 + 流式时间轴 + Agent 工具链(并行/取消/快但错)
 
 页头一律用 `components/SeriesNav.tsx`(amber)。新增子专题:改 `series.ts` + `config/topics.tsx`。
 

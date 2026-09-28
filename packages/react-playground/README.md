@@ -20,9 +20,9 @@ React 文档告诉你 API **能做什么**。这个站点练的是另一件事:*
 | **React 基础** | JSX 渲染、事件、列表 key、函数组件如何覆盖类组件能力,以及 RSC 与 Client Component 的边界(练习场内只做规则示意) |
 | **Hooks** | 内置 Hook 逐个击破,再组合成领域 Hook(`useUserSearch` 等) |
 | **进阶专题** | Context、Error Boundary、组件通信决策、Relay 数据层 |
-| **综合应用** | Todo / 记账 / 购物车 — 把上面的判断落到一块完整 UI |
-| **Agent 实战** | SSE → Runtime Store(不依赖 React)→ `useSyncExternalStore` → UI |
 | **性能优化** | 原则约定、指标(含 AI-Native / Agent)、架构分区、实现规则、排查与上线档案;渲染调度仍是实现阶段的一块 |
+| **Agent 实战** | SSE → Runtime Store(不依赖 React)→ `useSyncExternalStore` → UI |
+| **综合应用** | Todo / 购物车 / 记账 — 把上面的判断落到一块完整 UI |
 
 三页系列(梳理 → 对照演练 → 实战)是这个站点的默认深度,例如:
 

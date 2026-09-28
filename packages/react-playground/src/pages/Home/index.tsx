@@ -15,23 +15,16 @@ import { Link } from 'react-router-dom';
 import { ArrowRightOutlined } from '@ant-design/icons';
 
 import { TopicCard } from '../../components/TopicCard';
-import {
-    CATEGORIES,
-    getTopicsByCategory,
-    TOPICS,
-} from '../../config/topics';
+import { CATEGORIES, getTopicsByCategory, TOPICS } from '../../config/topics';
 
 /* =================================================================
  * Hero 区
  * ================================================================ */
 
 const Hero = memo(() => {
-    const doneCount = TOPICS.filter((t) => (t.status ?? 'done') === 'done').length;
-
     const stats = [
-        { value: CATEGORIES.length, label: '专题分类' },
-        { value: TOPICS.length, label: '演示专题' },
-        { value: doneCount, label: '已完成' },
+        { value: CATEGORIES.length, label: '知识领域' },
+        { value: TOPICS.length, label: '工程专题' },
     ];
 
     return (
@@ -52,15 +45,14 @@ const Hero = memo(() => {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-500">
                     React Playground
                 </p>
-                <h1 className="mt-3 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl dark:text-slate-50">
-                    React{' '}
-                    <span className="bg-gradient-to-r from-primary-600 to-violet-500 bg-clip-text text-transparent">
-                        专题练习场
+                <h1 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-gray-900 sm:text-4xl dark:text-slate-50">
+                    把生产里的判断
+                    <span className="mt-1 block bg-gradient-to-r from-primary-600 to-violet-500 bg-clip-text text-transparent">
+                        写成可运行的对照
                     </span>
                 </h1>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-500 sm:text-base dark:text-slate-400">
-                    按专题组织的 React 学习与演练站点:从核心语法、Hooks 到进阶能力,
-                    再到贴近业务的综合应用,每个专题都可交互、可对照源码。
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-500 sm:text-base dark:text-slate-400">
+                    渲染模型、状态与通信、性能治理、RSC 与 AI-Native。专题只是目录：每一页回答的是生产该选哪条路，以及这条路的边界在哪里。
                 </p>
 
                 {/* 数据概览 */}
