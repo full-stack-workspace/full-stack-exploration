@@ -7,7 +7,7 @@
  * 导航数据 100% 派生自 config/topics.tsx 注册表:
  *
  * - 顶栏:品牌 + 分类导航(数组顺序即注册顺序)+ 主题切换
- * - 侧边栏:当前路径所属分类的专题列表(首页不渲染)
+ * - 侧边栏:贴视口左缘、通高吸附,展示当前分类的专题列表(首页不渲染)
  * - 内容区:{children} 以 RSC 载荷传入,不被客户端边界拦截
  *
  * 本组件是 Client Component(需要 usePathname 高亮与主题切换),
@@ -23,6 +23,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { BrandMark } from "@/components/BrandMark";
 import {
     CATEGORIES,
     getCategoryByPath,
@@ -39,13 +40,9 @@ import { useTheme } from "../ThemeProvider";
 
 const Brand = () => (
     <Link href="/" className="group flex shrink-0 items-center gap-3">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-md shadow-primary-500/20 transition-transform duration-200 group-hover:scale-105">
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-        </div>
+        <BrandMark className="h-9 w-9 transition-transform duration-200 group-hover:scale-105" />
         <div className="hidden sm:block">
-            <h1 className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-lg leading-tight font-bold text-transparent">
+            <h1 className="bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-lg leading-tight font-bold text-transparent">
                 Next Playground
             </h1>
             <p className="text-xs leading-tight text-neutral-400 dark:text-neutral-500">
@@ -94,9 +91,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
     return (
         <div className="flex min-h-full flex-1 flex-col">
-            {/* 顶栏:品牌 + 分类导航 + 主题切换;毛玻璃粘性定位 */}
+            {/* 顶栏:品牌贴左缘(与侧边栏对齐)+ 分类导航 + 主题切换 */}
             <header className="sticky top-0 z-50 w-full border-b border-neutral-200/60 bg-white/80 backdrop-blur-md dark:border-neutral-800/60 dark:bg-neutral-950/80">
-                <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+                <div className="flex h-16 items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
                     <Brand />
                     <nav className="flex items-center gap-1 overflow-x-auto">
                         <Link
@@ -135,47 +132,45 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 </div>
             </header>
 
-            {/* 主体:侧边栏(分类内专题)+ 内容区 */}
-            <div className="mx-auto flex w-full max-w-7xl flex-1 gap-8 px-4 py-8 sm:px-6 lg:px-8">
+            {/* 主体:侧边栏贴视口左缘通高吸附,内容区占满剩余宽度 */}
+            <div className="flex flex-1">
                 {currentCategory && (
-                    <aside className="hidden w-56 shrink-0 lg:block">
-                        <div className="sticky top-24">
-                            {/* 分类标题区 */}
-                            <div className="mb-4 flex items-center gap-2">
-                                <span className={cn("h-2 w-2 rounded-full", currentCategory.theme.dot)} />
-                                <h2 className={cn("text-sm font-semibold", currentCategory.theme.text)}>
-                                    {currentCategory.title}
-                                </h2>
-                            </div>
-                            <p className="mb-4 text-xs leading-relaxed text-neutral-400 dark:text-neutral-500">
-                                {currentCategory.subtitle}
-                            </p>
-                            {/* 专题列表 */}
-                            <nav className="space-y-1">
-                                {getTopicsByCategory(currentCategory.key).map((t) => {
-                                    const active =
-                                        pathname === t.path ||
-                                        pathname.startsWith(`${t.path}/`);
-                                    return (
-                                        <Link
-                                            key={t.path}
-                                            href={t.path}
-                                            className={cn(
-                                                "block rounded-lg px-3 py-2 text-sm transition-colors",
-                                                active
-                                                    ? "bg-primary-50 font-medium text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
-                                                    : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
-                                            )}
-                                        >
-                                            {t.title}
-                                        </Link>
-                                    );
-                                })}
-                            </nav>
+                    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-60 shrink-0 overflow-y-auto border-r border-neutral-200/60 py-8 pr-4 pl-4 sm:pl-6 lg:block lg:pl-8 dark:border-neutral-800/60">
+                        {/* 分类标题区 */}
+                        <div className="mb-4 flex items-center gap-2">
+                            <span className={cn("h-2 w-2 rounded-full", currentCategory.theme.dot)} />
+                            <h2 className={cn("text-sm font-semibold", currentCategory.theme.text)}>
+                                {currentCategory.title}
+                            </h2>
                         </div>
+                        <p className="mb-4 text-xs leading-relaxed text-neutral-400 dark:text-neutral-500">
+                            {currentCategory.subtitle}
+                        </p>
+                        {/* 专题列表 */}
+                        <nav className="space-y-1">
+                            {getTopicsByCategory(currentCategory.key).map((t) => {
+                                const active =
+                                    pathname === t.path ||
+                                    pathname.startsWith(`${t.path}/`);
+                                return (
+                                    <Link
+                                        key={t.path}
+                                        href={t.path}
+                                        className={cn(
+                                            "block rounded-lg px-3 py-2 text-sm transition-colors",
+                                            active
+                                                ? "bg-primary-50 font-medium text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
+                                                : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
+                                        )}
+                                    >
+                                        {t.title}
+                                    </Link>
+                                );
+                            })}
+                        </nav>
                     </aside>
                 )}
-                <main className="min-w-0 flex-1">{children}</main>
+                <main className="min-w-0 flex-1 px-4 py-8 sm:px-8 lg:px-12">{children}</main>
             </div>
         </div>
     );

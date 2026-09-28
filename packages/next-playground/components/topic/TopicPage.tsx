@@ -32,7 +32,7 @@ interface TopicPageProps {
  */
 export function TopicPage({ title, description, children }: TopicPageProps) {
     return (
-        <div className="mx-auto w-full max-w-5xl">
+        <div className="mx-auto w-full max-w-6xl">
             {/* 页头:品牌色竖条 + 标题 + 描述 */}
             <header className="mb-8 border-l-4 border-primary-500 pl-4">
                 <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-50">
