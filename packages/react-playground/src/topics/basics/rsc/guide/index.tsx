@@ -78,7 +78,7 @@ Client Component
   'use client' 的意思是「从此进入客户端模块图」,不是「只在浏览器跑」。`}
                     </Diagram>
                     <P>
-                        本仓库里真正能跑这套模型的是 <code className="font-mono text-[11px]">packages/next-demo</code>
+                        本仓库里真正能跑这套模型的是 <code className="font-mono text-[11px]">packages/next-playground</code>
                         (Next.js App Router:没有指令的模块默认是 Server Component)。
                         react-playground 只有 <code className="font-mono text-[11px]">react-dom/client</code> 的{' '}
                         <code className="font-mono text-[11px]">createRoot</code>,所有专题页都是 Client Component。

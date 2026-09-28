@@ -4,7 +4,7 @@ import { pluginBabel } from '@rsbuild/plugin-babel';
 
 // Docs: https://rsbuild.rs/config/
 export default defineConfig({
-  // monorepo 内端口分配:3000=next-demo,3001=next-upload,此处使用 3002 避免冲突
+  // monorepo 内端口分配:3000=next-playground,3001=next-upload,此处使用 3002 避免冲突
   server: {
     port: 3002,
   },

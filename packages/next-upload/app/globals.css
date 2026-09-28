@@ -14,7 +14,7 @@
  * - 深墨蓝 #08111F：暗色背景；纸面蓝白 #F5F8FC：亮色背景
  * - 协议蓝 #2563EB = primary-600；数据青 #06B6D4 = data-500；状态橙 #F59E0B = signal-500
  * - 正文走 font-sans 工程阅读栈；仅代码 / 哈希值使用 font-mono
- * - 与 next-demo 一致：用 class 策略（.dark 加到 <html>）
+ * - 与 next-playground 一致：用 class 策略（.dark 加到 <html>）
  * - shadcn 的 --background / --primary 等变量与我们的 --color-primary-* 共存，互不冲突
  *
  * @module globals.css
@@ -28,7 +28,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* =================================================================
- * Tailwind @theme — 工程色（与 next-demo 对齐）
+ * Tailwind @theme — 工程色（与 next-playground 对齐）
  * ================================================================ */
 @theme {
   --color-primary-50: #eff6ff;

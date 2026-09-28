@@ -1,5 +1,5 @@
 /**
- * next-demo ESLint 配置 — 继承根级共享配置
+ * next-playground ESLint 配置 — 继承根级共享配置
  *
  * 如需包级规则扩展（如放宽特定规则、追加自定义 ignore），
  * 使用以下模式：
