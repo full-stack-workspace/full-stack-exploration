@@ -8,6 +8,11 @@ export default defineConfig({
   server: {
     port: 3002,
   },
+  // Rsbuild 默认 html.title 是 「Rsbuild App」,必须显式覆盖,否则会盖掉 index.html 里的 <title>
+  html: {
+    template: './index.html',
+    title: 'React Playground · 专题练习场',
+  },
   plugins: [
     // 启用 React 插件，自动为当前工程配置 React 支持，包括 JSX/JSX transform、HMR、Fast Refresh 等特性
     pluginReact(),
