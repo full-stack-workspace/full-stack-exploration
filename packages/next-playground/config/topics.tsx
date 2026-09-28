@@ -183,6 +183,14 @@ export const TOPICS: TopicMeta[] = [
         keywords: ["ISR", "revalidate", "SSG", "React cache"],
     },
     {
+        path: "/rendering/ssr",
+        title: "SSR 请求时整页渲染",
+        category: "rendering",
+        description:
+            "force-dynamic 的整页:每次请求都在服务器现算完再发出。刷新后时刻和请求号都会变;只有整页都必须实时时才落在这一格",
+        keywords: ["SSR", "force-dynamic", "动态渲染"],
+    },
+    {
         path: "/rendering/streaming",
         title: "Streaming SSR 与 Suspense 粒度",
         category: "rendering",
@@ -227,8 +235,8 @@ export const TOPICS: TopicMeta[] = [
         title: "动态路由与动态 metadata",
         category: "router",
         description:
-            "[id] 动态段 + useParams 客户端取参;Client 页面无法导出 metadata 时,用同级 layout 的 generateMetadata 兜底",
-        keywords: ["动态路由", "generateMetadata", "useParams"],
+            "[id] 动态段保持 Server Component:generateStaticParams 预生成已知 id,generateMetadata 与页面同文件;不存在的 id 走 notFound()",
+        keywords: ["动态路由", "generateMetadata", "generateStaticParams", "notFound"],
     },
     {
         path: "/router/conventions",
@@ -237,6 +245,22 @@ export const TOPICS: TopicMeta[] = [
         description:
             "page / layout / loading / error / not-found / template / default 各管什么:一张对照表 + 嵌套层级示意;本页自带真实 loading.tsx 演示 Suspense 边界",
         keywords: ["约定文件", "loading", "error", "template", "Suspense"],
+    },
+    {
+        path: "/router/errors",
+        title: "错误与未找到",
+        category: "router",
+        description:
+            "error.tsx 接渲染失败并提供重试,not-found.tsx 接 notFound()。两套边界互不接管;global-error 才会换掉根布局",
+        keywords: ["error.tsx", "not-found", "notFound", "Error Boundary"],
+    },
+    {
+        path: "/router/parallel",
+        title: "平行路由与拦截",
+        category: "router",
+        description:
+            "同一条 URL 两种渲染:从列表点进去是弹层且列表不卸载,刷新则是完整页。@modal 是槽,(.) 是拦截,default.tsx 让槽在列表页为空",
+        keywords: ["平行路由", "拦截路由", "modal", "default.tsx"],
     },
     {
         path: "/router/navigation",
@@ -279,11 +303,19 @@ export const TOPICS: TopicMeta[] = [
         keywords: ["metadata", "generateMetadata", "title.template", "SEO", "Open Graph"],
     },
     {
+        path: "/metadata/crawl",
+        title: "爬虫文件与结构化数据",
+        category: "metadata",
+        description:
+            "sitemap.ts 与 robots.ts 是给爬虫的文件,JSON-LD 是给富结果的。三件事都不走 metadata 对象;本站 sitemap 直接读专题注册表",
+        keywords: ["sitemap", "robots", "JSON-LD", "SEO"],
+    },
+    {
         path: "/engineering/middleware",
-        title: "中间件边界与代价",
+        title: "Proxy 与中间件",
         category: "engineering",
         description:
-            "middleware 的执行位置与 matcher 配置:本站真实的 middleware.ts 给本页加自定义响应头,curl 可验证;读 body / 重计算别放这里",
+            "Next 16 的 proxy.ts 固定跑在 Node;本站仍用 middleware.ts 做边缘改头演示,页面能读到同一枚请求头。matcher 之外的路由不会经过它",
         keywords: ["middleware", "matcher", "NextResponse", "边缘"],
     },
     {

@@ -3,12 +3,9 @@
  * Home Page — 首页(注册表驱动的专题导航 Hub)
  * ============================================================================
  *
- * 数据 100% 来自 config/topics.tsx 注册表:
- * - Hero 统计 = CATEGORIES / TOPICS 数量
- * - 分类快捷入口 = 各类第一个专题
- * - 分组区 = CATEGORIES × getTopicsByCategory 的卡片网格
- *
- * 新专题注册后首页自动出现,本文件零改动。
+ * 数据来自 config/topics.tsx:
+ * - 英雄区的尺子链到渲染光谱上已有对照页的那几格
+ * - 下方目录 = CATEGORIES × getTopicsByCategory,每行仍是标题加完整说明
  *
  * @module page
  */
@@ -17,145 +14,126 @@ import Link from "next/link";
 
 import {
     CATEGORIES,
-    getCategoryFirstPath,
     getTopicsByCategory,
     TOPICS,
 } from "@/config/topics";
+import { SITE_THESIS } from "@/lib/topic-meta";
 import { cn } from "@/lib/utils";
 
 /* =================================================================
- * Hero 区
+ * 渲染尺子
  * ================================================================ */
 
-const Hero = () => {
-    const stats = [
-        { value: CATEGORIES.length, label: "知识领域" },
-        { value: TOPICS.length, label: "工程专题" },
-    ];
+/**
+ * 首页尺子只链到「这一格有独立对照页」的策略。
+ * SSG 没有单独一页,它留在光谱梳理里,不在尺子上占一格空链。
+ */
+const RULER = [
+    { key: "ISR", href: "/rendering/isr", hint: "过期再换", bars: 2 },
+    { key: "SSR", href: "/rendering/ssr", hint: "请求时整页", bars: 3 },
+    { key: "Stream", href: "/rendering/streaming", hint: "分段到达", bars: 4 },
+    { key: "PPR", href: "/rendering/ppr", hint: "壳静洞动", bars: 5 },
+] as const;
 
-    return (
-        <section className="relative overflow-hidden py-20 sm:py-24">
-            {/* 背景:点阵网格 + 蓝紫双层辉光,营造「工程图纸」质感 */}
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,theme(colors.neutral.200)_1px,transparent_0)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)] dark:bg-[radial-gradient(circle_at_1px_1px,theme(colors.neutral.800)_1px,transparent_0)]" />
-                <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-primary-400/25 blur-3xl dark:bg-primary-600/20" />
-                <div className="absolute top-10 right-1/5 h-72 w-72 rounded-full bg-secondary-400/25 blur-3xl dark:bg-secondary-600/20" />
-            </div>
-
-            {/* 徽章:技术栈 + 脉冲点 */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary-200/70 bg-white/70 px-4 py-1.5 text-xs font-medium text-primary-700 backdrop-blur dark:border-primary-800/60 dark:bg-neutral-900/70 dark:text-primary-300">
-                <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
-                </span>
-                Next.js 16 · React 19 · App Router
-            </div>
-
-            <h1 className="mt-6 max-w-3xl text-4xl leading-[1.15] font-bold tracking-tight text-neutral-900 sm:text-5xl dark:text-neutral-50">
-                把生产里的 Next.js 判断,
-                <br />
-                写成
-                <span className="bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500 bg-clip-text text-transparent dark:from-primary-400 dark:to-secondary-400">
-                    可运行的对照
-                </span>
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg dark:text-neutral-400">
-                渲染光谱上选哪一格、Server/Client 边界画在哪、四层缓存谁说了算、
-                AI 流式体验怎么落地——每个专题都是可点的对照实验,而不是一页说明书。
-            </p>
-
-            {/* 统计:大号数字 + 分隔线 */}
-            <div className="mt-10 flex items-center gap-8">
-                {stats.map((s, i) => (
-                    <div key={s.label} className={cn("flex items-baseline gap-2", i > 0 && "border-l border-neutral-200 pl-8 dark:border-neutral-800")}>
-                        <span className="bg-gradient-to-br from-primary-600 to-secondary-500 bg-clip-text text-3xl font-extrabold text-transparent dark:from-primary-400 dark:to-secondary-400">
-                            {s.value}
+const SpectrumRuler = () => (
+    <div className="mt-10 overflow-hidden rounded-lg border border-rule bg-white dark:border-neutral-800 dark:bg-neutral-900">
+        <div className="grid grid-cols-2 md:grid-cols-4">
+            {RULER.map((stage, index) => (
+                <Link
+                    key={stage.key}
+                    href={stage.href}
+                    className={cn(
+                        "group flex min-h-36 flex-col justify-between px-4 py-4 transition-colors hover:bg-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-copper-500 dark:hover:bg-neutral-950",
+                        index > 0 && "md:border-l md:border-rule dark:md:border-neutral-800",
+                        index % 2 === 1 && "border-l border-rule md:border-l dark:border-neutral-800",
+                        index >= 2 && "border-t border-rule md:border-t-0 dark:border-neutral-800",
+                        index === RULER.length - 1 && "bg-paper/80 dark:bg-neutral-950/60",
+                    )}
+                >
+                    <span className="flex h-8 items-end gap-[3px]" aria-hidden="true">
+                        {Array.from({ length: stage.bars }, (_, bar) => (
+                            <span
+                                key={bar}
+                                className={cn(
+                                    "w-[3px] rounded-[1px]",
+                                    bar === stage.bars - 1 && index === RULER.length - 1
+                                        ? "bg-copper-500"
+                                        : "bg-ink/70 dark:bg-neutral-200/80",
+                                )}
+                                style={{ height: `${8 + bar * 4}px` }}
+                            />
+                        ))}
+                    </span>
+                    <span>
+                        <span className="font-display block text-xl font-semibold tracking-[-0.03em] text-ink group-hover:text-copper-600 dark:text-neutral-50 dark:group-hover:text-copper-400">
+                            {stage.key}
                         </span>
-                        <span className="text-sm text-neutral-500 dark:text-neutral-400">{s.label}</span>
-                    </div>
-                ))}
-            </div>
-
-            {/* 分类快捷入口 */}
-            <div className="mt-8 flex flex-wrap gap-2">
-                {CATEGORIES.map((c) => (
-                    <Link
-                        key={c.key}
-                        href={getCategoryFirstPath(c.key)}
-                        className={cn(
-                            "inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white/80 px-3.5 py-1.5 text-xs font-medium text-neutral-600 backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-neutral-400",
-                            c.theme.hoverBorder,
-                        )}
-                    >
-                        <span className={cn("h-1.5 w-1.5 rounded-full", c.theme.dot)} />
-                        {c.title}
-                    </Link>
-                ))}
-            </div>
-        </section>
-    );
-};
+                        <span className="mt-1 block font-mono text-[11px] text-neutral-500 dark:text-neutral-400">
+                            {stage.hint}
+                        </span>
+                    </span>
+                </Link>
+            ))}
+        </div>
+        <div className="flex items-center justify-between gap-4 border-t border-rule px-4 py-3 text-xs text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
+            <span>左静,右动。点一格,打开那一格的对照。</span>
+            <Link
+                href="/rendering/spectrum"
+                className="shrink-0 font-medium text-ink underline decoration-copper-500 decoration-1 underline-offset-4 hover:text-copper-600 dark:text-neutral-100 dark:hover:text-copper-400"
+            >
+                五格放在一起看
+            </Link>
+        </div>
+    </div>
+);
 
 /* =================================================================
- * 分类分组区
+ * 分类账本
  * ================================================================ */
 
-const CategoryGroups = () => (
-    <div className="space-y-12 pb-16">
-        {CATEGORIES.map((c) => {
-            const topics = getTopicsByCategory(c.key);
+const CategoryLedger = () => (
+    <div className="mt-16 flex flex-col gap-8 pb-12">
+        {CATEGORIES.map((category, index) => {
+            const topics = getTopicsByCategory(category.key);
+            const order = String(index + 1).padStart(2, "0");
             return (
-                <section key={c.key}>
-                    {/* 组头:色点 + 分类名 + 副标题 + 数量徽标 */}
-                    <div className="mb-4 flex items-center gap-3">
-                        <span className={cn("h-2.5 w-2.5 rounded-full", c.theme.dot)} />
-                        <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-50">
-                            {c.title}
-                        </h2>
-                        <span
-                            className={cn(
-                                "rounded-full px-2 py-0.5 text-xs font-medium",
-                                c.theme.chip,
-                            )}
-                        >
-                            {topics.length}
-                        </span>
-                    </div>
-                    <p className="mb-5 text-sm text-neutral-500 dark:text-neutral-400">
-                        {c.subtitle}
-                    </p>
-
-                    {/* 专题卡片网格 */}
-                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {topics.map((t) => (
-                            <Link
-                                key={t.path}
-                                href={t.path}
-                                className={cn(
-                                    "group rounded-2xl border border-neutral-200/60 bg-white p-5 transition-all duration-200 hover:shadow-lg dark:border-neutral-800/60 dark:bg-neutral-900",
-                                    c.theme.hoverBorder,
-                                )}
+                <section
+                    key={category.key}
+                    className="overflow-hidden rounded-lg border border-rule bg-white dark:border-neutral-800 dark:bg-neutral-900"
+                >
+                    <header className="border-b border-rule px-5 py-4 dark:border-neutral-800">
+                        <div className="flex items-baseline gap-3">
+                            <p className="font-mono text-[11px] tracking-[0.18em] text-copper-600 dark:text-copper-400">
+                                {order}
+                            </p>
+                            <h2 className="text-xl font-semibold tracking-tight text-ink dark:text-neutral-50">
+                                {category.title}
+                            </h2>
+                        </div>
+                        <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+                            {category.subtitle}
+                        </p>
+                    </header>
+                    <ul>
+                        {topics.map((topic) => (
+                            <li
+                                key={topic.path}
+                                className="border-t border-rule first:border-t-0 dark:border-neutral-800"
                             >
-                                <h3 className="font-semibold text-neutral-900 transition-colors group-hover:text-primary-600 dark:text-neutral-50 dark:group-hover:text-primary-400">
-                                    {t.title}
-                                </h3>
-                                <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-                                    {t.description}
-                                </p>
-                                <span
-                                    className={cn(
-                                        "mt-4 inline-flex items-center gap-1 text-xs font-medium transition-transform duration-200 group-hover:gap-2",
-                                        c.theme.text,
-                                    )}
+                                <Link
+                                    href={topic.path}
+                                    className="group grid gap-1 px-5 py-4 transition-colors hover:bg-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-copper-500 md:grid-cols-[minmax(16rem,20rem)_1fr] md:items-start md:gap-10 dark:hover:bg-neutral-950"
                                 >
-                                    进入专题
-                                    <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </span>
-                            </Link>
+                                    <span className="text-[15px] leading-6 font-medium text-ink group-hover:text-copper-600 dark:text-neutral-100 dark:group-hover:text-copper-400">
+                                        {topic.title}
+                                    </span>
+                                    <span className="text-sm leading-6 text-neutral-500 dark:text-neutral-400">
+                                        {topic.description}
+                                    </span>
+                                </Link>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </section>
             );
         })}
@@ -164,9 +142,20 @@ const CategoryGroups = () => (
 
 export default function Home() {
     return (
-        <div className="mx-auto w-full max-w-7xl">
-            <Hero />
-            <CategoryGroups />
+        <div className="mx-auto w-full max-w-6xl">
+            <section className="pt-6 pb-4 sm:pt-10">
+                <p className="font-mono text-[11px] tracking-[0.18em] text-copper-600 dark:text-copper-400">
+                    {CATEGORIES.length} 个领域 · {TOPICS.length} 个专题
+                </p>
+                <h1 className="mt-4 max-w-3xl text-4xl leading-[1.15] font-semibold tracking-tight text-ink sm:text-5xl dark:text-neutral-50">
+                    先把策略放到同一把尺子上
+                </h1>
+                <p className="mt-4 max-w-xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
+                    {SITE_THESIS}
+                </p>
+                <SpectrumRuler />
+            </section>
+            <CategoryLedger />
         </div>
     );
 }

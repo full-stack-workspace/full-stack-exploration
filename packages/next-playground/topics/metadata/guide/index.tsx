@@ -27,7 +27,7 @@ const STATIC_CODE = `// app/layout.tsx —— 根布局,全站 metadata 的根
 export const metadata: Metadata = {
     metadataBase: new URL("http://localhost:3000"),
     title: {
-        default: "Next Playground · 生产级工程决策", // 无标题页面兜底
+        default: "Next Playground · 该选哪条", // 无标题页面兜底
         template: "%s | Next Playground",           // 子页标题自动套后缀
     },
     description: "按专题组织的 Next.js 16 工程实践站点:……",
@@ -52,23 +52,23 @@ export default function Page() {
 // 于是「首页卡片 / 专题页头 / <meta> 标签」三处文案永远一致`;
 
 /** 动态 metadata:动态段的 generateMetadata */
-const DYNAMIC_CODE = `// app/router/dynamic-routes/[id]/layout.tsx —— 本站的活例子
+const DYNAMIC_CODE = `// app/router/dynamic-routes/[id]/page.tsx —— 本站的活例子
 export async function generateMetadata({
     params,
 }: {
     params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-    const { id } = await params;               // 可访问路由参数
-    const user = getUserById(Number(id));      // 可取数(服务端)
+    const { id } = await params;
+    const user = getUserById(Number(id));
+    if (!user) return { title: "用户未找到" };
     return {
-        title: \`\${user.name} - \${user.role}\`,  // 每个 id 一个标题
+        title: \`\${user.name} - \${user.role}\`,
         openGraph: { title: \`\${user.name} - \${user.role} | \${SITE_NAME}\` },
     };
 }
 
-// 为什么写在 layout 而不写在 page:
-// 该页的演示组件是 "use client",Client Component 不能导出 metadata;
-// layout 始终是 Server Component,天然可以,且同样拿得到 params`;
+// page 保持 Server Component,标题就和页面写在一起。
+// 只有 page 不得不 "use client" 时,才把 generateMetadata 挪到同级 layout。`;
 
 /** 约定文件 */
 const FILE_CONVENTION_CODE = `// 文件即配置:放进 app/ 对应段,Next 自动生成 <link>/<meta>
@@ -181,7 +181,7 @@ export default function MetadataGuideTopic() {
 
             <TopicSection
                 title="本站真实例子 ③:动态段的 generateMetadata"
-                note="app/router/dynamic-routes/[id]/layout.tsx —— 每个用户详情页一个专属标题"
+                note="app/router/dynamic-routes/[id]/page.tsx —— 每个用户详情页一个专属标题"
             >
                 <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
 {DYNAMIC_CODE}
@@ -236,6 +236,15 @@ export default function MetadataGuideTopic() {
                     <li>
                         <strong>别在里面做副作用</strong>:generateMetadata 可能因预渲染、
                         爬虫、重试被多次调用,埋点/写库这类事放进这里迟早出事
+                    </li>
+                    <li>
+                        sitemap、robots 和 JSON-LD 不走这个函数,见
+                        <Link
+                            href="/metadata/crawl"
+                            className="mx-1 text-rose-600 underline underline-offset-2 hover:text-rose-500 dark:text-rose-400"
+                        >
+                            爬虫文件专题
+                        </Link>
                     </li>
                 </ul>
             </TopicSection>

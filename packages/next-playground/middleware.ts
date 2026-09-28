@@ -18,15 +18,18 @@
  * @module middleware
  */
 
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
-/** 自定义响应头名,专题页文档与 curl 验证共用这个字面量 */
-export const DEMO_HEADER = "x-playground-middleware";
+import { DEMO_HEADER } from "@/lib/demo-header";
 
-export function middleware() {
-    // NextResponse.next() = 不改写、不重定向,放行原请求,
-    // 但返回的响应对象允许改写头部 —— 这是「只加头」的标准姿势
-    const response = NextResponse.next();
+export function middleware(request: NextRequest) {
+    // 响应头给 curl -I 看;请求头给页面里的 headers() 看。
+    // 它们不是同一个对象,只改响应的话,Server Component 读不到。
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set(DEMO_HEADER, "demo");
+    const response = NextResponse.next({
+        request: { headers: requestHeaders },
+    });
     response.headers.set(DEMO_HEADER, "demo");
     return response;
 }

@@ -33,16 +33,16 @@ interface TopicPageProps {
 export function TopicPage({ title, description, children }: TopicPageProps) {
     return (
         <div className="mx-auto w-full max-w-6xl">
-            {/* 页头:品牌色竖条 + 标题 + 描述 */}
-            <header className="mb-8 border-l-4 border-primary-500 pl-4">
-                <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-50">
+            <header className="mb-10 max-w-3xl">
+                <div className="h-px w-10 bg-copper-500" />
+                <h1 className="mt-4 text-[1.75rem] leading-tight font-semibold tracking-tight text-ink dark:text-neutral-50">
                     {title}
                 </h1>
-                <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                <p className="mt-3 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                     {description}
                 </p>
             </header>
-            <div className="space-y-6">{children}</div>
+            <div className="space-y-5">{children}</div>
         </div>
     );
 }
@@ -57,7 +57,7 @@ interface TopicSectionProps {
 
 export function TopicSection({ title, note, children }: TopicSectionProps) {
     return (
-        <section className="rounded-2xl border border-neutral-200/60 bg-white p-6 shadow-sm dark:border-neutral-800/60 dark:bg-neutral-900">
+        <section className="rounded-lg border border-rule bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
             <h2 className="text-base font-semibold text-neutral-800 dark:text-neutral-100">
                 {title}
             </h2>

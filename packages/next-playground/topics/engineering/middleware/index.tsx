@@ -12,21 +12,29 @@
  * @module topics/engineering/middleware
  */
 
+import { headers } from "next/headers";
+
 import { TopicPage, TopicSection } from "@/components/topic/TopicPage";
+import { DEMO_HEADER } from "@/lib/demo-header";
 
 /* =================================================================
  * 代码对照块
  * ================================================================ */
 
 /** 本站 middleware.ts 全文(与包根文件保持同步) */
-const MIDDLEWARE_CODE = `// middleware.ts —— 包根,与 app/ 同级;本页响应头就是它加的
-import { NextResponse } from "next/server";
+const MIDDLEWARE_CODE = `// middleware.ts —— 包根,与 app/ 同级
+import { NextResponse, type NextRequest } from "next/server";
+import { DEMO_HEADER } from "@/lib/demo-header";
 
-export function middleware() {
-    // NextResponse.next():不改写、不重定向,放行原请求,
-    // 但允许改写响应头 —— 「只加头」的标准姿势
-    const response = NextResponse.next();
-    response.headers.set("x-playground-middleware", "demo");
+export function middleware(request: NextRequest) {
+    // 请求头:页面里 headers() 读得到
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set(DEMO_HEADER, "demo");
+    const response = NextResponse.next({
+        request: { headers: requestHeaders },
+    });
+    // 响应头:curl -I 看得到。两个头不是同一个对象
+    response.headers.set(DEMO_HEADER, "demo");
     return response;
 }
 
@@ -63,15 +71,31 @@ export function middleware(request: NextRequest) {
  * 专题主体
  * ================================================================ */
 
-export default function MiddlewareTopic() {
+export default async function MiddlewareTopic() {
+    // headers() 读的是请求头。中间件若只改响应,这里会是 null。
+    const headerStore = await headers();
+    const demoHeader = headerStore.get(DEMO_HEADER);
+
     return (
         <TopicPage
-            title="中间件边界与代价"
-            description="middleware 的执行位置与 matcher 配置:本站真实的 middleware.ts 给本页加自定义响应头,curl 可验证;读 body / 重计算别放这里"
+            title="Proxy 与中间件"
+            description="Next 16 的 proxy.ts 固定跑在 Node;本站仍用 middleware.ts 做边缘改头演示,页面能读到同一枚请求头。matcher 之外的路由不会经过它"
         >
             <TopicSection
-                title="活演示:本页的响应头就是中间件加的"
-                note="包根 middleware.ts,与 app/ 同级;matcher 只命中本页路径"
+                title="这一页读到的请求头"
+                note="headers() 看到的是请求,不是 curl -I 里的响应。两边都写了同一个名字"
+            >
+                <p className="font-mono text-sm text-ink dark:text-neutral-100">
+                    {DEMO_HEADER}: {demoHeader ?? "（没有。matcher 未命中,或只改了响应头）"}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                    读 headers() 会让这一页变成动态渲染。这是代价的一部分:要在渲染时看见请求级信息,就不能再把整页冻成静态 HTML。
+                </p>
+            </TopicSection>
+
+            <TopicSection
+                title="活演示:响应头同时给 curl"
+                note="包根 middleware.ts;matcher 只命中本页路径"
             >
                 <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
 {MIDDLEWARE_CODE}
@@ -84,9 +108,7 @@ export default function MiddlewareTopic() {
                     <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">
                         packages/next-playground/middleware.ts
                     </code>
-                    ;页面正文是 HTML,头部实验请用 curl -I 或 DevTools Network 观察。
-                    另注意:Next 16 已将 middleware 文件约定更名为 proxy(build 时会给出
-                    迁移警告),语义与 matcher 配置不变,本站保留旧名仅为对照演示。
+                    。页面上的字来自请求头;curl -I 看到的是响应头。运行时差异见下方「proxy.ts 与 middleware.ts」。
                 </p>
             </TopicSection>
 
@@ -154,6 +176,22 @@ export default function MiddlewareTopic() {
                 <pre className="mt-4 overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
 {AUTH_CODE}
                 </pre>
+            </TopicSection>
+
+            <TopicSection
+                title="Next 16:proxy.ts 与 middleware.ts"
+                note="改名同时改了默认运行时。本站留着旧文件,是因为这则演示要跑在边缘上"
+            >
+                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                    <li>
+                        <strong>proxy.ts</strong> 是新的文件约定,导出函数叫 proxy。它固定在 Node.js 运行时,不能再配 runtime
+                    </li>
+                    <li>
+                        <strong>middleware.ts</strong> 仍能跑,默认还是 Edge,但已经废弃,构建时会警告。需要边缘上的轻量改写时,眼下仍用它
+                    </li>
+                    <li>两个文件不能同时存在。迁到 proxy 之后,依赖 Edge 冷启动的逻辑要重新量过延迟</li>
+                    <li>matcher、NextResponse.next()、改头和重定向的写法两边相同。变的是运行时,不是 API 形状</li>
+                </ul>
             </TopicSection>
 
             <TopicSection

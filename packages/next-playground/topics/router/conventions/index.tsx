@@ -30,8 +30,11 @@ const NESTING_TREE = `app/
 │       ├── dynamic-routes/
 │       │   ├── page.tsx        ← 列表页
 │       │   └── [id]/
-│       │       ├── layout.tsx  ← 本站的活例子:只放 generateMetadata
-│       │       └── page.tsx    ← 详情页
+│       │       └── page.tsx    ← 详情页:Server + generateMetadata
+│       ├── errors/
+│       │   ├── error.tsx       ← 渲染失败(必须 Client)
+│       │   ├── not-found.tsx   ← notFound(),不进 error.tsx
+│       │   └── page.tsx
 │       └── conventions/
 │           ├── loading.tsx     ← 本页的骨架屏(本页的活例子)
 │           └── page.tsx        ← 你正在看的页面
@@ -133,15 +136,22 @@ export default function ConventionsTopic() {
 {NESTING_TREE}
                 </pre>
                 <p className="mt-3 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
-                    本站的 app/router/dynamic-routes/[id]/layout.tsx 是活例子:不渲染任何
-                    DOM,只承载 generateMetadata 为详情页出动态标题(详见
+                    详情页没有再套一层只为了标题的 layout:page 保持 Server Component,
+                    generateMetadata 与页面写在一起。见
                     <Link
                         href="/router/dynamic-routes"
                         className="mx-1 text-sky-600 underline underline-offset-2 hover:text-sky-500 dark:text-sky-400"
                     >
                         动态路由专题
                     </Link>
-                    )。
+                    。default.tsx 的活例子在
+                    <Link
+                        href="/router/parallel"
+                        className="mx-1 text-sky-600 underline underline-offset-2 hover:text-sky-500 dark:text-sky-400"
+                    >
+                        平行路由
+                    </Link>
+                    。
                 </p>
             </TopicSection>
 
@@ -199,7 +209,14 @@ export default function ConventionsTopic() {
                     </li>
                     <li>
                         <strong>别指望 error.tsx 接住一切</strong>:它只接本段 page 及其子树的渲染错误,
-                        接不住同级 layout 自身的错误,也接不住事件回调里的异步异常(那要 try/catch)
+                        接不住同级 layout 自身的错误,也接不住事件回调里的异步异常(那要 try/catch)。
+                        按下去看效果:
+                        <Link
+                            href="/router/errors"
+                            className="mx-1 text-sky-600 underline underline-offset-2 hover:text-sky-500 dark:text-sky-400"
+                        >
+                            错误与未找到
+                        </Link>
                     </li>
                 </ul>
             </TopicSection>

@@ -12,6 +12,8 @@
  * @module topics/rendering/spectrum
  */
 
+import Link from "next/link";
+
 import { TopicPage, TopicSection } from "@/components/topic/TopicPage";
 import { cn } from "@/lib/utils";
 
@@ -37,6 +39,8 @@ interface SpectrumStage {
     };
     /** 「什么时候用它」要点 */
     when: string[];
+    /** 这一格若有独立对照页,卡片底部链过去 */
+    href?: string;
 }
 
 /**
@@ -75,6 +79,7 @@ const STAGES: SpectrumStage[] = [
             "想要 SSG 的成本,又不想每次改内容都重新部署",
             "配合 revalidateTag 可按事件精确失效,逼近实时",
         ],
+        href: "/rendering/isr",
     },
     {
         name: "SSR",
@@ -91,6 +96,7 @@ const STAGES: SpectrumStage[] = [
             "内容依赖 cookie/会话,千人千面(缓存无法共享)",
             "页面量少而实时性要求高,不值得为它设计缓存失效",
         ],
+        href: "/rendering/ssr",
     },
     {
         name: "Streaming",
@@ -107,6 +113,7 @@ const STAGES: SpectrumStage[] = [
             "首屏可以先给框架与快数据,让用户尽早看到「活的页面」",
             "AI 生成、搜索聚合等天然分段产出的场景",
         ],
+        href: "/rendering/streaming",
     },
     {
         name: "PPR",
@@ -123,6 +130,7 @@ const STAGES: SpectrumStage[] = [
             "想把「按路由选策略」细化到「按组件选策略」",
             "Next 16 起经 cacheComponents 开启,详见 PPR 专题",
         ],
+        href: "/rendering/ppr",
     },
 ];
 
@@ -187,6 +195,14 @@ export default function SpectrumTopic() {
                                     </dd>
                                 </div>
                             </dl>
+                            {stage.href && (
+                                <Link
+                                    href={stage.href}
+                                    className="mt-3 inline-block text-xs font-medium text-ink underline decoration-copper-500 underline-offset-4 dark:text-neutral-100"
+                                >
+                                    打开这一格
+                                </Link>
+                            )}
                         </div>
                     ))}
                 </div>

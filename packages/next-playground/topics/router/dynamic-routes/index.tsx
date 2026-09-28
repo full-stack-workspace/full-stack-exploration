@@ -3,12 +3,9 @@
  * 动态路由与动态 metadata — 路由机制专题
  * ============================================================================
  *
- * 从原 /user/[id] 页迁移,演示两个配套机制:
- *
- * 1. 动态段:[id] 目录把 URL 段变成 params;详情页是 Client Component,
- *    用 useParams 取参 + SWR 取数据
- * 2. 动态 metadata:Client 页面无法导出 metadata,
- *    由同级 layout.tsx(Server Component)的 generateMetadata 按 id 生成
+ * [id] 把 URL 段变成 params。详情页保持 Server Component:
+ * generateStaticParams 预生成已知用户,generateMetadata 与 page 同文件。
+ * 不存在的 id 调用 notFound(),而不是在客户端分支里画空状态。
  *
  * @module topics/router/dynamic-routes
  */
@@ -22,11 +19,11 @@ export default function DynamicRoutesTopic() {
     return (
         <TopicPage
             title="动态路由与动态 metadata"
-            description="[id] 动态段 + useParams 客户端取参;Client 页面无法导出 metadata 时,用同级 layout 的 generateMetadata 兜底"
+            description="[id] 动态段保持 Server Component:generateStaticParams 预生成已知 id,generateMetadata 与页面同文件;不存在的 id 走 notFound()"
         >
             <TopicSection
                 title="进入一条动态段详情"
-                note="/router/dynamic-routes/[id];详情页为 Client Component(SWR 取文章),metadata 由同级 layout 动态生成"
+                note="点进去看标签标题。详情页是 Server Component,标题由同文件的 generateMetadata 生成"
             >
                 <div className="grid gap-3 sm:grid-cols-2">
                     {users.map((u) => (
@@ -52,13 +49,14 @@ export default function DynamicRoutesTopic() {
             </TopicSection>
 
             <TopicSection
-                title="为什么 metadata 放在 layout 里"
-                note="约束决定结构,而不是习惯"
+                title="动态段不等于整页动态"
+                note="已知 id 在构建期就生成好了"
             >
                 <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                    <li>page.tsx 一旦标记 &quot;use client&quot;,就不能再导出 metadata/generateMetadata——元信息在服务端求值,客户端模块里没有这个机会</li>
-                    <li>同级 layout.tsx 始终是 Server Component,且同样能拿到 params,是动态 metadata 的合法落脚点</li>
-                    <li>更好的做法是把需要交互的部分下沉为 Client 子组件,让 page 保持 Server——本专题的 [id] 页是「不得不 Client」时的兜底模式</li>
+                    <li>generateStaticParams 列出这 6 个用户。他们的详情在构建期生成,不是每次请求现查一遍本地数组</li>
+                    <li>generateMetadata 与 page 写在同一个 Server 文件里。只有 page 不得不标成 &quot;use client&quot; 时,才把标题挪到同级 layout</li>
+                    <li>名单之外的 id 仍会进这个页面(dynamicParams 默认开启),getUserById 找不到就 notFound(),而不是返回一份空白资料卡</li>
+                    <li>水合之后才需要变的数据(聚焦重验证、轮询)去客户端取数专题,不要为了它把整条详情改成 Client</li>
                 </ul>
             </TopicSection>
         </TopicPage>

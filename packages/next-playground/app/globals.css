@@ -129,11 +129,24 @@
   --color-neutral-950: #0a0a0a;
 
   /* ========================================================================
+   * 站点识别色 (Bench)
+   * ========================================================================
+   * 壳层、首页与专题页头只用这一组，专题内部的光谱色另算。
+   * ink 是正文与标记底，copper 只标「当前这一格」，paper 是页面底。
+   */
+  --color-ink: #15202b;
+  --color-paper: #eef2f5;
+  --color-rule: #d5dee6;
+  --color-copper-400: #fb923c;
+  --color-copper-500: #c2410c;
+  --color-copper-600: #9a3412;
+
+  /* ========================================================================
    * 背景与前景色 (Background & Foreground)
    * ========================================================================
    * 用于主题切换的背景色和文本色变量
    */
-  --color-background-light: #ffffff;
+  --color-background-light: #eef2f5;
   --color-background-dark: #0a0a0a;
   --color-foreground-light: #171717;
   --color-foreground-dark: #ededed;
@@ -150,8 +163,10 @@
    * - -apple-system: iOS Safari 和 macOS Safari 的系统字体
    * - BlinkMacSystemFont: macOS Chrome 使用的系统字体
    */
-  --font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", Monaco, Consolas, monospace;
+  /* next/font 把家族名写进 --font-source / --font-syne / --font-plex（挂在 html 上） */
+  --font-sans: var(--font-source), "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --font-display: var(--font-syne), "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-mono: var(--font-plex), "SF Mono", ui-monospace, Menlo, Consolas, monospace;
 
   /* ========================================================================
    * 圆角系统 (Border Radius)
@@ -319,14 +334,20 @@ body {
  * 自定义用户选中文本的背景和文字颜色
  */
 ::selection {
-  background-color: var(--color-primary-200);
-  color: var(--color-primary-900);
+  background-color: #fed7aa;
+  color: var(--color-ink);
 }
 
 /* 暗色模式下的选中文本样式 */
 :root.dark ::selection {
-  background-color: var(--color-primary-800);
-  color: var(--color-primary-100);
+  background-color: #9a3412;
+  color: #fff7ed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /**
@@ -340,6 +361,14 @@ body {
  * - 圆角设计保持柔和感
  * - 悬浮时颜色加深提供交互反馈
  */
+
+/* 顶栏分类很多,横向滚动时不画出那条灰槽 */
+.nav-scroll {
+  scrollbar-width: none;
+}
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
 
 /* 滚动条轨道（可选，当前为透明） */
 ::-webkit-scrollbar {

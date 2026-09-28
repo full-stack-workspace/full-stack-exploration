@@ -19,8 +19,17 @@ import { getTopicByPath } from "@/config/topics";
 /** 站点品牌名 */
 export const SITE_NAME = "Next Playground";
 
-/** 首页 / 兜底标题,与顶栏 slogan 一致 */
-export const HOME_TITLE = `${SITE_NAME} · 生产级工程决策`;
+/** 顶栏口号:短,能放在标记旁边 */
+export const SITE_SLOGAN = "该选哪条";
+
+/**
+ * 站点论点。首页主句、页脚与 Open Graph 共用。
+ * 文档负责「能做什么」,本站负责「这一页该选哪条」。
+ */
+export const SITE_THESIS = "文档写能做什么。这里写该选哪条。";
+
+/** 首页 / 兜底标题,与顶栏口号一致 */
+export const HOME_TITLE = `${SITE_NAME} · ${SITE_SLOGAN}`;
 
 /**
  * 由注册表生成专题页 metadata。

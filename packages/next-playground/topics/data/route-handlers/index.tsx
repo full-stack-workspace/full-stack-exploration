@@ -27,6 +27,45 @@ export default function RouteHandlersTopic() {
             </TopicSection>
 
             <TopicSection
+                title="三条取数通道怎么选"
+                note="先问调用方是不是浏览器里的这个页面"
+            >
+                <div className="overflow-x-auto">
+                    <table className="w-full min-w-[640px] text-left text-sm leading-relaxed">
+                        <thead>
+                            <tr className="border-b border-rule text-xs text-neutral-500 dark:border-neutral-700">
+                                <th className="py-2 pr-4 font-medium">调用方</th>
+                                <th className="py-2 pr-4 font-medium">用什么</th>
+                                <th className="py-2 font-medium">不要用什么</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-neutral-600 dark:text-neutral-400">
+                            <tr className="border-b border-rule/80 dark:border-neutral-800">
+                                <td className="py-2 pr-4">本站页面,渲染时就要数据</td>
+                                <td className="py-2 pr-4">Server Component 里直接取</td>
+                                <td className="py-2">再 fetch 自己的 /api。构建期会连不上自己</td>
+                            </tr>
+                            <tr className="border-b border-rule/80 dark:border-neutral-800">
+                                <td className="py-2 pr-4">表单修改服务端数据</td>
+                                <td className="py-2 pr-4">Server Action</td>
+                                <td className="py-2">为了页面自己再手写一个 POST</td>
+                            </tr>
+                            <tr className="border-b border-rule/80 dark:border-neutral-800">
+                                <td className="py-2 pr-4">别的客户端、webhook、要流式字节</td>
+                                <td className="py-2 pr-4">Route Handler</td>
+                                <td className="py-2">Server Action。它不是公开的 HTTP 契约</td>
+                            </tr>
+                            <tr>
+                                <td className="py-2 pr-4">水合之后才变的会话数据</td>
+                                <td className="py-2 pr-4">SWR,见客户端取数专题</td>
+                                <td className="py-2">把整页改成 Client 再自己 fetch</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </TopicSection>
+
+            <TopicSection
                 title="Route Handler 什么时候该存在"
                 note="它是「对外的 HTTP 界面」,不是页面取数的必经层"
             >
