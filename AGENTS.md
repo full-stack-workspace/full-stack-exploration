@@ -73,6 +73,7 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 **Directory conventions:**
 - `src/config/topics.tsx` — **专题注册表(全站单一数据源)**:路由、顶部导航、侧边栏、首页卡片全部从 `TOPICS` 派生;新增专题 = 新建目录 + 注册一行(详见包 README)
 - `src/topics/<category>/<name>/` — 专题演示页;category 为 `basics` / `hooks` / `advanced` / `apps` / `agent` / `performance`(综合应用如 todo/bookkeeping/shopping-cart 也在此,co-locate 组件/类型/mock 数据)
+- `src/topics/basics/fn-vs-class/` — 「函数组件与类组件」三页专题(basics 分类):`guide/` 新设计想象与 class→Hooks 对照、`playground/` 快照/派生/订阅对照演练、`practice/` 行情看板(class 实例 vs Hook 拆分);三页页头互链(indigo 系 NavBanner);Error Boundary 仍只能用 class,链到进阶专题
 - `src/topics/agent/` — 「Agent 实战」分类(basePath `/agent`):演示「SSE 事件流 → React 之外的 Runtime Store → useSyncExternalStore → UI」链路;`runtime/` 为不 import React 的纯 TS 核心(types/reducer/RuntimeStore/script/MockSseClient),`react-adapter/` 为 Provider + 手写 Selector 的 hooks,`agent-chat/` 为演示页,`sync-store-guide/` 为 useSyncExternalStore 梳理页
 - `src/topics/hooks/custom-hooks/` — 「自定义 Hooks」三页专题(hooks 分类):`lib/` 为 8 个生产级原子 Hook + renderHook 契约测试 + barrel 导出,`playground/` 原子演练页、`composition/` 组合实战页(原子 Hook 分层组合成领域 Hook useUserSearch + mock 接口)、`guide/` 深入梳理页;三页页头互链(violet 系 NavBanner)
 - `src/topics/advanced/component-comm/` — 「组件通信」三页专题(advanced 分类,basePath `/topics/advanced`):`guide/` 决策梳理(四问 + 通道梯子)、`playground/` 模式对照演练、`practice/` 工单工作台实战;三页页头互链(sky 系 NavBanner);已有机制(Context / reducer / ref / 外部 Store / Relay)用卡片链到对应专题,本专题不重复展开
