@@ -112,7 +112,7 @@ export const CATEGORIES: CategoryMeta[] = [
         key: 'advanced',
         basePath: '/topics/advanced',
         title: '进阶专题',
-        subtitle: 'Context、错误边界与数据流',
+        subtitle: 'Context、错误边界、组件通信与数据流',
         theme: {
             icon: <ExperimentOutlined />,
             iconChip: 'bg-sky-50 text-sky-600 dark:bg-sky-950 dark:text-sky-300',
@@ -292,7 +292,7 @@ export const TOPICS: TopicMeta[] = [
         path: '/topics/advanced/error-boundary',
         title: 'Error Boundary',
         category: 'advanced',
-        description: '错误边界捕获渲染异常,防止整棵组件树崩溃',
+        description: '捕获渲染期异常、隔离失败半径、按粒度降级与恢复;对照事件/异步错误为何必须自己处理',
         element: lazy(() => import('../topics/advanced/error-boundary')),
     },
     {
@@ -301,6 +301,27 @@ export const TOPICS: TopicMeta[] = [
         category: 'advanced',
         description: 'GraphQL/Relay 的声明式数据获取(mock 数据)',
         element: lazy(() => import('../topics/advanced/relay')),
+    },
+    {
+        path: '/topics/advanced/component-comm-guide',
+        title: '组件通信 · 决策梳理',
+        category: 'advanced',
+        description: '先问数据归谁、传多远、变得有多勤;再在 props / 组合 / Context / URL / Store 里选通道',
+        element: lazy(() => import('../topics/advanced/component-comm/guide')),
+    },
+    {
+        path: '/topics/advanced/component-comm-playground',
+        title: '组件通信 · 模式演练',
+        category: 'advanced',
+        description: 'props、提升 state、组合代钻探、URL、命令式 ref 与错误同步的对照演示',
+        element: lazy(() => import('../topics/advanced/component-comm/playground')),
+    },
+    {
+        path: '/topics/advanced/component-comm-practice',
+        title: '组件通信 · 工作台实战',
+        category: 'advanced',
+        description: '工单工作台里把过滤、选中、草稿、当前用户拆到各自该在的通道',
+        element: lazy(() => import('../topics/advanced/component-comm/practice')),
     },
 
     /* ---- 综合应用 ---- */

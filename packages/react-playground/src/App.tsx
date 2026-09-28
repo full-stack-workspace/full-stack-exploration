@@ -77,8 +77,11 @@ const Brand = () => (
  * ================================================================ */
 
 const AppContent = () => {
+    // 用于获取当前路径
     const location = useLocation();
+    // 用于编程式导航
     const navigate = useNavigate();
+    // 用于控制侧边栏的折叠状态
     const [collapsed, setCollapsed] = useState(false);
 
     // 当前路径所属分类,决定顶部导航高亮与侧边栏内容;首页不属于任何分类
