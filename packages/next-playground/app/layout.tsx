@@ -16,11 +16,34 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import { IBM_Plex_Mono, Source_Sans_3, Syne } from "next/font/google";
 
 import Footer from "../components/Footer";
 import { SiteShell } from "../components/shell/SiteShell";
 import { ThemeProvider } from "../components/ThemeProvider";
-import { HOME_TITLE, SITE_NAME } from "../lib/topic-meta";
+import { HOME_TITLE, SITE_NAME, SITE_THESIS } from "../lib/topic-meta";
+
+/* 拉丁文用 Syne 做字标与光谱刻度;中文落到 --font-sans 的苹方/思源 */
+const display = Syne({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const sans = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-source",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex",
+  display: "swap",
+});
 
 /**
  * 全局元数据配置。
@@ -36,8 +59,7 @@ export const metadata: Metadata = {
     default: HOME_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "按专题组织的 Next.js 16 工程实践站点:渲染策略、Server/Client 边界、路由机制、数据缓存与 AI-Native 应用的对照演示与决策梳理。",
+  description: `${SITE_THESIS} 渲染光谱、Server/Client 边界、路由、缓存与 AI 流式体验,按专题做成可运行的对照。`,
   keywords: [
     "Next.js",
     "React",
@@ -59,8 +81,7 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     siteName: SITE_NAME,
     title: HOME_TITLE,
-    description:
-      "把生产里的 Next.js 判断写成可运行的对照:渲染、边界、缓存与 AI-Native,按专题展开。",
+    description: SITE_THESIS,
   },
   twitter: {
     card: "summary_large_image",
@@ -81,8 +102,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className="h-full antialiased" suppressHydrationWarning>
-      <body className="flex min-h-full flex-col bg-neutral-50 dark:bg-neutral-950">
+    <html
+      lang="zh-CN"
+      data-scroll-behavior="smooth"
+      className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <body className="flex min-h-full flex-col bg-paper dark:bg-neutral-950">
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var t=localStorage.getItem('theme');var p=window.matchMedia('(prefers-color-scheme: dark)').matches;var e=t||(p?'dark':'light');document.documentElement.classList.add(e)})()`,

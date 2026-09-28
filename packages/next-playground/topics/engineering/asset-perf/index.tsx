@@ -49,18 +49,15 @@ import Image from "next/image";
 //       (本站已为 images.unsplash.com 配置)`;
 
 /** next/font 自托管 */
-const FONT_CODE = `// app/layout.tsx
-import { Inter } from "next/font/google"; // 构建期下载并自托管
+const FONT_CODE = `// app/layout.tsx —— 本站正在用的三套 next/font
+import { IBM_Plex_Mono, Source_Sans_3, Syne } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const display = Syne({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-syne" });
+const sans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "600"], variable: "--font-source" });
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-plex" });
 
-export default function RootLayout({ children }) {
-    return (
-        <html lang="zh-CN" className={inter.className}>
-            <body>{children}</body>
-        </html>
-    );
-}
+// variable 把家族名写进 CSS 变量,中文继续落到苹方 / 思源
+<html className={\`\${display.variable} \${sans.variable} \${mono.variable}\`}>
 
 // 三个收益:
 // 1. 自托管:字体随站点产物分发,不再依赖第三方字体 CDN 的额外连接
@@ -106,10 +103,9 @@ export default function AssetPerfTopic() {
                     <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">
                         pnpm -C packages/next-playground lint
                     </code>
-                    可以看到 components/UserCard.tsx 与
-                    topics/router/dynamic-routes/UserDetailDemo.tsx 的
-                    no-img-element warning —— 这是有意保留的对照素材;
-                    优化后的头像组件恰好适合作为「本专题练习题」。
+                    可以看到 components/UserCard.tsx 的
+                    no-img-element warning —— 这是有意保留的对照。
+                    动态路由详情页的头像已经换成 next/image,当作改完之后的样子。
                 </p>
             </TopicSection>
 

@@ -1,6 +1,6 @@
-# Next Playground · 生产级工程决策
+# Next Playground · 该选哪条
 
-Next.js 文档告诉你 API **能做什么**。这个站点练的是另一件事:**生产里该选哪条路,以及为什么不选另外几条。**
+Next.js 文档告诉你 API **能做什么**。这个站点写的是另一件事:**这一页该选哪条,以及为什么不选另外几条。**
 
 渲染光谱上选哪一格、Server/Client 边界画在哪、四层缓存谁说了算、AI 流式体验怎么落地——每个专题都是可运行的对照实验,而不是一页说明书。站点按专题注册表驱动,顶栏、侧边栏、首页卡片、页面 metadata 全部同源。
 
@@ -10,12 +10,12 @@ Next.js 文档告诉你 API **能做什么**。这个站点练的是另一件事
 
 | 分类 | 你能练到什么 |
 |------|----------------|
-| **渲染策略** `/rendering` | SSG⇄ISR⇄SSR⇄Streaming⇄PPR 光谱决策;真实流式 Suspense 粒度对照;Cache Components 讲解 |
-| **Server/Client 边界** `/rsc-boundary` | RSC 心智模型、边界下沉、Server Actions 渐进增强留言板 |
-| **路由机制** `/router` | 动态段与动态 metadata 兜底、七个约定文件对照(本站自带 loading.tsx 活演示)、Link prefetch 与 Router Cache |
-| **数据与缓存** `/data` | 四层缓存对照台(最大难点)、Route Handler 的存在理由、SWR 的合理场景 |
-| **Metadata 与 SEO** `/metadata` | 静态/动态/约定文件三条通道与合并顺序,全部引用本站真实代码 |
-| **工程化** `/engineering` | 真实 middleware.ts 响应头演示、缓存策略三问决策表、Image/Font/包体治理 |
+| **渲染策略** `/rendering` | SSG⇄ISR⇄SSR⇄Streaming⇄PPR 光谱决策;SSR 整页可刷新对照;真实流式 Suspense;Cache Components 讲解 |
+| **Server/Client 边界** `/rsc-boundary` | RSC 心智模型、可序列化 props 与 `use()`、Server Actions 渐进增强留言板 |
+| **路由机制** `/router` | 动态段保持 Server、约定文件、error/not-found 活演示、平行路由拦截弹层、Link prefetch 与 Router Cache |
+| **数据与缓存** `/data` | 四层缓存对照台、Route Handler 与 Server Action / 直取的分界、SWR 的合理场景 |
+| **Metadata 与 SEO** `/metadata` | 静态/动态/约定文件合并顺序;sitemap、robots 与 JSON-LD |
+| **工程化** `/engineering` | middleware 改头可在页面读到,并对照 Next 16 的 proxy.ts;缓存策略;Image/Font/包体 |
 | **AI-Native 与 Agent** `/ai-native` | 真实 SSE 流式端点(含取消=省计费)、Generative UI 组件映射、Agent 多步时间线串并行对照 |
 
 ## 如何新增一个专题

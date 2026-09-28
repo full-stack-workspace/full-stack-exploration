@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // 浏览器工具走 127.0.0.1 时,开发资源不能被当成跨源拦掉
+  allowedDevOrigins: ["127.0.0.1"],
   images: {
     remotePatterns: [
       {

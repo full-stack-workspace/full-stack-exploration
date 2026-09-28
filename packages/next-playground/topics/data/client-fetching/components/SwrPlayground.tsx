@@ -9,7 +9,7 @@
  * - refreshInterval:按间隔轮询,适合准实时数据
  *
  * 请求计数器 + 「重新验证中」指示灯让每次后台请求都可见;
- * fetcher 写法沿用 topics/router/dynamic-routes/UserDetailDemo.tsx。
+ * fetcher 直接请求 jsonplaceholder,不经过本站 Route Handler。
  *
  * @module topics/data/client-fetching/components/SwrPlayground
  * @client
@@ -82,7 +82,7 @@ export function SwrPlayground() {
     // 后台重取不会改变 data 内容(mock API 返回恒定),用计数器让每次请求可见
     const [fetchCount, setFetchCount] = useState(0);
 
-    // 计数 fetcher:包一层只为计数,请求本身与 UserDetailDemo 的写法一致
+    // 计数 fetcher:包一层只为让后台重取可见,请求本身仍是一次 fetch
     const countingFetcher = useCallback(async (url: string) => {
         setFetchCount((c) => c + 1);
         const res = await fetch(url);

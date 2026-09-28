@@ -1,20 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <defs>
-    <linearGradient id="bg" x1="3" y1="1" x2="29" y2="31" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#60A5FA"/>
-      <stop offset="0.45" stop-color="#3B82F6"/>
-      <stop offset="1" stop-color="#7C3AED"/>
-    </linearGradient>
-    <clipPath id="clip">
-      <rect width="32" height="32" rx="8"/>
-    </clipPath>
-  </defs>
-  <g clip-path="url(#clip)">
-    <rect width="32" height="32" fill="url(#bg)"/>
-    <ellipse cx="9" cy="-4" rx="16" ry="12" fill="#fff" fill-opacity="0.16"/>
-    <path d="M8.2 9.1v13.8c0 .95 1.03 1.54 1.85 1.03l10.4-6.9a1.2 1.2 0 0 0 0-2.06l-10.4-6.9a1.2 1.2 0 0 0-1.85 1.03Z" fill="#fff"/>
-    <rect x="21.8" y="12" width="2.4" height="8" rx="1.2" fill="#fff" fill-opacity="0.75"/>
-    <rect x="25.4" y="9" width="2.4" height="14" rx="1.2" fill="#fff" fill-opacity="0.9"/>
-    <rect x="29" y="6" width="2.4" height="20" rx="1.2" fill="#fff"/>
-  </g>
+  <rect width="32" height="32" rx="7" fill="#15202B"/>
+  <rect x="5.5" y="18.5" width="2.6" height="7" rx="0.6" fill="#fff" fill-opacity="0.38"/>
+  <rect x="10.4" y="15.5" width="2.6" height="10" rx="0.6" fill="#fff" fill-opacity="0.55"/>
+  <rect x="15.3" y="12.5" width="2.6" height="13" rx="0.6" fill="#fff" fill-opacity="0.72"/>
+  <rect x="20.2" y="9.5" width="2.6" height="16" rx="0.6" fill="#fff" fill-opacity="0.88"/>
+  <rect x="25.1" y="6.5" width="2.6" height="19" rx="0.6" fill="#E8A07A"/>
 </svg>
