@@ -17,8 +17,8 @@ import { getCategoryByPath, getTopicByPath } from '../config/topics';
 /** 站点品牌名,与 Header 品牌区、html.title 保持一致 */
 export const SITE_NAME = 'React Playground';
 
-/** 首页 / 兜底标题 */
-export const HOME_DOCUMENT_TITLE = `${SITE_NAME} · 专题练习场`;
+/** 首页 / 兜底标题,与顶栏 slogan 一致 */
+export const HOME_DOCUMENT_TITLE = `${SITE_NAME} · 生产级工程决策`;
 
 /**
  * 根据路径计算标签页标题。

@@ -112,7 +112,7 @@ export const CATEGORIES: CategoryMeta[] = [
         key: 'advanced',
         basePath: '/topics/advanced',
         title: '进阶专题',
-        subtitle: 'Context、错误边界、组件通信与数据流',
+        subtitle: '组件通信、Context、错误边界与数据流',
         theme: {
             icon: <ExperimentOutlined />,
             iconChip: 'bg-sky-50 text-sky-600 dark:bg-sky-950 dark:text-sky-300',
@@ -122,16 +122,16 @@ export const CATEGORIES: CategoryMeta[] = [
         },
     },
     {
-        key: 'apps',
-        basePath: '/apps',
-        title: '综合应用',
-        subtitle: '贴近真实业务的完整功能演练',
+        key: 'performance',
+        basePath: '/performance',
+        title: '性能优化',
+        subtitle: '原则、指标、架构、实现、排查；含渲染调度与 AI-Native',
         theme: {
-            icon: <AppstoreOutlined />,
-            iconChip: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-300',
-            dot: 'bg-emerald-500',
-            text: 'text-emerald-600 dark:text-emerald-400',
-            hoverBorder: 'hover:border-emerald-200 dark:hover:border-emerald-700',
+            icon: <ThunderboltOutlined />,
+            iconChip: 'bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-300',
+            dot: 'bg-amber-500',
+            text: 'text-amber-600 dark:text-amber-400',
+            hoverBorder: 'hover:border-amber-200 dark:hover:border-amber-700',
         },
     },
     {
@@ -148,16 +148,16 @@ export const CATEGORIES: CategoryMeta[] = [
         },
     },
     {
-        key: 'performance',
-        basePath: '/performance',
-        title: '性能优化',
-        subtitle: '原则、指标、架构、实现、排查；含 AI-Native 与渲染调度',
+        key: 'apps',
+        basePath: '/apps',
+        title: '综合应用',
+        subtitle: '贴近真实业务的完整功能演练',
         theme: {
-            icon: <ThunderboltOutlined />,
-            iconChip: 'bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-300',
-            dot: 'bg-amber-500',
-            text: 'text-amber-600 dark:text-amber-400',
-            hoverBorder: 'hover:border-amber-200 dark:hover:border-amber-700',
+            icon: <AppstoreOutlined />,
+            iconChip: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-300',
+            dot: 'bg-emerald-500',
+            text: 'text-emerald-600 dark:text-emerald-400',
+            hoverBorder: 'hover:border-emerald-200 dark:hover:border-emerald-700',
         },
     },
 ];
@@ -187,18 +187,18 @@ export const TOPICS: TopicMeta[] = [
         element: lazy(() => import('../topics/basics/fragment')),
     },
     {
-        path: '/topics/basics/event',
-        title: '事件与合成事件',
-        category: 'basics',
-        description: 'SyntheticEvent 委托机制、原生混用高频坑、批处理与面试经典 Case',
-        element: lazy(() => import('../topics/basics/event')),
-    },
-    {
         path: '/topics/basics/list-key',
         title: '列表与 key',
         category: 'basics',
         description: 'key 决定 Diff 身份:双栏错位实验、三条规则、key 重置状态与渲染期生成 key 的坑',
         element: lazy(() => import('../topics/basics/list-key')),
+    },
+    {
+        path: '/topics/basics/event',
+        title: '事件与合成事件',
+        category: 'basics',
+        description: 'SyntheticEvent 委托机制、原生混用高频坑、批处理与面试经典 Case',
+        element: lazy(() => import('../topics/basics/event')),
     },
     {
         path: '/topics/basics/fn-vs-class-guide',
@@ -317,27 +317,6 @@ export const TOPICS: TopicMeta[] = [
 
     /* ---- 进阶专题 ---- */
     {
-        path: '/topics/advanced/context',
-        title: 'Context API',
-        category: 'advanced',
-        description: 'createContext 开通道,Provider 供数,use() 读最近一层;并对照如何拆 Context 避免连坐重渲染',
-        element: lazy(() => import('../topics/advanced/context')),
-    },
-    {
-        path: '/topics/advanced/error-boundary',
-        title: 'Error Boundary',
-        category: 'advanced',
-        description: '捕获渲染期异常、隔离失败半径、按粒度降级与恢复;对照事件/异步错误为何必须自己处理',
-        element: lazy(() => import('../topics/advanced/error-boundary')),
-    },
-    {
-        path: '/topics/advanced/relay',
-        title: 'Relay 数据流',
-        category: 'advanced',
-        description: 'GraphQL/Relay 的声明式数据获取(mock 数据)',
-        element: lazy(() => import('../topics/advanced/relay')),
-    },
-    {
         path: '/topics/advanced/component-comm-guide',
         title: '组件通信 · 决策梳理',
         category: 'advanced',
@@ -358,6 +337,27 @@ export const TOPICS: TopicMeta[] = [
         description: '工单工作台里把过滤、选中、草稿、当前用户拆到各自该在的通道',
         element: lazy(() => import('../topics/advanced/component-comm/practice')),
     },
+    {
+        path: '/topics/advanced/context',
+        title: 'Context API',
+        category: 'advanced',
+        description: 'createContext 开通道,Provider 供数,use() 读最近一层;并对照如何拆 Context 避免连坐重渲染',
+        element: lazy(() => import('../topics/advanced/context')),
+    },
+    {
+        path: '/topics/advanced/error-boundary',
+        title: 'Error Boundary',
+        category: 'advanced',
+        description: '捕获渲染期异常、隔离失败半径、按粒度降级与恢复;对照事件/异步错误为何必须自己处理',
+        element: lazy(() => import('../topics/advanced/error-boundary')),
+    },
+    {
+        path: '/topics/advanced/relay',
+        title: 'Relay 数据流',
+        category: 'advanced',
+        description: 'GraphQL/Relay 的声明式数据获取(mock 数据)',
+        element: lazy(() => import('../topics/advanced/relay')),
+    },
 
     /* ---- 综合应用 ---- */
     {
@@ -366,13 +366,6 @@ export const TOPICS: TopicMeta[] = [
         category: 'apps',
         description: '增删改查、筛选、优先级与本地持久化',
         element: lazy(() => import('../topics/apps/todo')),
-    },
-    {
-        path: '/apps/bookkeeping',
-        title: '记账本',
-        category: 'apps',
-        description: '表单校验、分类联动、汇总统计与表格展示',
-        element: lazy(() => import('../topics/apps/bookkeeping')),
     },
     {
         path: '/apps/shopping-cart',
@@ -385,21 +378,28 @@ export const TOPICS: TopicMeta[] = [
             })),
         ),
     },
+    {
+        path: '/apps/bookkeeping',
+        title: '记账本',
+        category: 'apps',
+        description: '表单校验、分类联动、汇总统计与表格展示',
+        element: lazy(() => import('../topics/apps/bookkeeping')),
+    },
 
     /* ---- Agent 实战 ---- */
-    {
-        path: '/agent/agent-chat',
-        title: 'Agent 对话运行时',
-        category: 'agent',
-        description: '模拟 SSE 事件流驱动外部 Runtime Store,UI 经 useSyncExternalStore 精准订阅',
-        element: lazy(() => import('../topics/agent/agent-chat')),
-    },
     {
         path: '/agent/use-sync-external-store',
         title: 'useSyncExternalStore 深入梳理',
         category: 'agent',
         description: '外部 Store 订阅协议、并发一致性、Selector 与本演练架构设计说明',
         element: lazy(() => import('../topics/agent/sync-store-guide')),
+    },
+    {
+        path: '/agent/agent-chat',
+        title: 'Agent 对话运行时',
+        category: 'agent',
+        description: '模拟 SSE 事件流驱动外部 Runtime Store,UI 经 useSyncExternalStore 精准订阅',
+        element: lazy(() => import('../topics/agent/agent-chat')),
     },
 
     /* ---- 性能优化 · 治理全链路 ---- */
@@ -439,6 +439,29 @@ export const TOPICS: TopicMeta[] = [
         element: lazy(() => import('../topics/performance/governance/diagnose')),
     },
 
+    /* ---- 性能优化 · 渲染调度 ---- */
+    {
+        path: '/performance/render-scheduling-guide',
+        title: '渲染调度深入梳理',
+        category: 'performance',
+        description: '并发渲染心智模型、三件套分工矩阵与工程实践细节',
+        element: lazy(() => import('../topics/performance/render-scheduling-guide')),
+    },
+    {
+        path: '/performance/transition-deferred',
+        title: 'useTransition × useDeferredValue',
+        category: 'performance',
+        description: '渲染竞态场景演练:输入阻塞、Tab 切换三件套协作、stale 结果',
+        element: lazy(() => import('../topics/performance/transition-deferred')),
+    },
+    {
+        path: '/performance/suspense-ui',
+        title: 'Suspense 骨架与状态 UI',
+        category: 'performance',
+        description: '初始骨架、回退闪烁消除与边界粒度的 Suspense × transition 协作演练',
+        element: lazy(() => import('../topics/performance/suspense-ui')),
+    },
+
     /* ---- 性能优化 · AI-Native ---- */
     {
         path: '/performance/ai-native-guide',
@@ -460,29 +483,6 @@ export const TOPICS: TopicMeta[] = [
         category: 'performance',
         description: '规划、RAG、工具串行 vs 并行、取消计费,以及快但错的墙钟翻倍',
         element: lazy(() => import('../topics/performance/ai-native/agent-lab')),
-    },
-
-    /* ---- 性能优化 · 渲染调度(已有) ---- */
-    {
-        path: '/performance/transition-deferred',
-        title: 'useTransition × useDeferredValue',
-        category: 'performance',
-        description: '渲染竞态场景演练:输入阻塞、Tab 切换三件套协作、stale 结果',
-        element: lazy(() => import('../topics/performance/transition-deferred')),
-    },
-    {
-        path: '/performance/suspense-ui',
-        title: 'Suspense 骨架与状态 UI',
-        category: 'performance',
-        description: '初始骨架、回退闪烁消除与边界粒度的 Suspense × transition 协作演练',
-        element: lazy(() => import('../topics/performance/suspense-ui')),
-    },
-    {
-        path: '/performance/render-scheduling-guide',
-        title: '渲染调度深入梳理',
-        category: 'performance',
-        description: '并发渲染心智模型、三件套分工矩阵与工程实践细节',
-        element: lazy(() => import('../topics/performance/render-scheduling-guide')),
     },
 ];
 
