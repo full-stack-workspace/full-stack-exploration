@@ -13,7 +13,7 @@
 import { memo } from 'react';
 
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
-import { NavBanner } from '../transition-deferred/components/NavBanner';
+import { SeriesNav } from '../components/SeriesNav';
 import { InitialSkeletonDemo } from './components/InitialSkeletonDemo';
 import { NoFallbackFlashDemo } from './components/NoFallbackFlashDemo';
 import { BoundaryGranularityDemo } from './components/BoundaryGranularityDemo';
@@ -24,7 +24,7 @@ const SuspenseUiTopic = memo(() => {
             title="Suspense 骨架与状态 UI"
             description="初始骨架 vs 更新保持旧 UI:同一边界、两种时机,Suspense 与 transition 各管一段"
         >
-            <NavBanner current="suspense-ui" />
+            <SeriesNav current="suspense-ui" />
 
             <TopicSection
                 title="场景 0:初始加载的两种资源(Suspense 单件套)"

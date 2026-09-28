@@ -13,7 +13,7 @@
 import { memo } from 'react';
 
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
-import { NavBanner } from './components/NavBanner';
+import { SeriesNav } from '../components/SeriesNav';
 import { InputLagDemo } from './components/InputLagDemo';
 import { TabSwitchDemo } from './components/TabSwitchDemo';
 import { StaleSearchDemo } from './components/StaleSearchDemo';
@@ -24,7 +24,7 @@ const TransitionDeferredTopic = memo(() => {
             title="useTransition × useDeferredValue"
             description="把昂贵渲染标为非紧急:输入即时、旧 UI 保持、stale 反馈 —— 对照开关 + 帧条图感受差异"
         >
-            <NavBanner current="transition-deferred" />
+            <SeriesNav current="transition-deferred" />
 
             <TopicSection
                 title="场景一:输入阻塞(deferred / transition 二件套)"
