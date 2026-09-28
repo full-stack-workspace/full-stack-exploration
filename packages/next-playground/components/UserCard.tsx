@@ -21,7 +21,7 @@ const UserCard = memo(({
 }: UserCardProps) => (
         <Link
             key={user.id}
-            href={`/user/${user.id}`}
+            href={`/router/dynamic-routes/${user.id}`}
             className="animate-slide-up group block rounded-2xl border border-neutral-200/60 bg-white p-6 transition-all duration-300 hover:border-success-200/60 hover:shadow-lg dark:border-neutral-800/60 dark:bg-neutral-900 dark:hover:border-success-800/60"
             style={{ animationDelay: `${animationDelay}ms` }}
         >
