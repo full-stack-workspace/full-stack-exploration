@@ -143,12 +143,36 @@ export const CATEGORIES: CategoryMeta[] = [
 
 export const TOPICS: TopicMeta[] = [
     {
+        path: "/rendering/spectrum",
+        title: "渲染光谱梳理",
+        category: "rendering",
+        description:
+            "SSG → ISR → SSR → Streaming → PPR 不是五个开关而是一条光谱:按首字节来源、数据新鲜度与服务器成本定位每格,按路由甚至按组件混用",
+        keywords: ["SSG", "ISR", "SSR", "Streaming", "PPR", "渲染策略"],
+    },
+    {
         path: "/rendering/isr",
         title: "ISR 与静态再生",
         category: "rendering",
         description:
             "revalidate=60 的增量静态再生:页面预渲染为静态 HTML,过期后后台重建;generateMetadata 与页面共享 cache() 记忆化请求",
         keywords: ["ISR", "revalidate", "SSG", "React cache"],
+    },
+    {
+        path: "/rendering/streaming",
+        title: "Streaming SSR 与 Suspense 粒度",
+        category: "rendering",
+        description:
+            "force-dynamic 下的真实流式渲染:静态壳先行吐出,三个不同时延的异步区块各自包 Suspense 分段到达;边界粒度决定谁阻塞谁",
+        keywords: ["Streaming SSR", "Suspense", "TTFB", "force-dynamic"],
+    },
+    {
+        path: "/rendering/ppr",
+        title: "PPR 与 Cache Components",
+        category: "rendering",
+        description:
+            "Next 16 起 PPR 并入 Cache Components:取数默认动态,\"use cache\" 显式标记静态部分;静态壳预渲染进 CDN,动态洞经 Suspense 流式补出",
+        keywords: ["PPR", "Cache Components", "use cache", "cacheLife", "cacheTag"],
     },
     {
         path: "/rsc-boundary/props-boundary",
