@@ -175,12 +175,28 @@ export const TOPICS: TopicMeta[] = [
         keywords: ["PPR", "Cache Components", "use cache", "cacheLife", "cacheTag"],
     },
     {
+        path: "/rsc-boundary/guide",
+        title: "RSC 心智模型",
+        category: "rsc-boundary",
+        description:
+            "为什么默认 Server:RSC 载荷是序列化的 UI 描述;每条 'use client' 边界都是一次 bundle 切点与序列化约束;Client 嵌 Server 走 children 槽",
+        keywords: ["RSC", "心智模型", "use client", "children 槽"],
+    },
+    {
         path: "/rsc-boundary/props-boundary",
         title: "Server/Client 边界",
         category: "rsc-boundary",
         description:
             "page 保持 Server Component 预渲染,交互(搜索/添加)下沉到 Client Component;初始数据以 props 跨越边界",
         keywords: ["RSC", "use client", "序列化", "边界下沉"],
+    },
+    {
+        path: "/rsc-boundary/server-actions",
+        title: "Server Actions 留言板",
+        category: "rsc-boundary",
+        description:
+            "'use server' 变更 + <form action> 渐进增强:无 JS 也能提交;action 里 revalidatePath,列表随响应刷新",
+        keywords: ["Server Actions", "use server", "渐进增强", "revalidatePath"],
     },
     {
         path: "/router/dynamic-routes",
@@ -191,12 +207,28 @@ export const TOPICS: TopicMeta[] = [
         keywords: ["动态路由", "generateMetadata", "useParams"],
     },
     {
+        path: "/data/cache-layers",
+        title: "四层缓存对照台",
+        category: "data",
+        description:
+            "Request Memoization / Data Cache / Full Route Cache / Router Cache:四层各管一段生命周期,「时新时不新」先定位是哪一层",
+        keywords: ["缓存", "Data Cache", "Full Route Cache", "Router Cache", "revalidate"],
+    },
+    {
         path: "/data/route-handlers",
         title: "Route Handler",
         category: "data",
         description:
             "GET/POST/PUT/DELETE 四方法端点;Route Handler 与页面取数相互独立,各自直连外部服务避免构建期自调用",
         keywords: ["Route Handler", "REST", "NextResponse"],
+    },
+    {
+        path: "/data/client-fetching",
+        title: "客户端取数与 SWR",
+        category: "data",
+        description:
+            "客户端取数的正确打开方式:能在 Server Component 里 await 就别用 SWR;但会话数据、聚焦重验证、轮询、离线缓存仍是 SWR 的主场",
+        keywords: ["SWR", "客户端取数", "revalidateOnFocus", "轮询"],
     },
     {
         path: "/ai-native/streaming-endpoint",
