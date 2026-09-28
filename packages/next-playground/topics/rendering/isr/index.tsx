@@ -46,6 +46,75 @@ export default async function IsrTopic() {
                 </div>
             </TopicSection>
 
+            {/* 三种策略的对照:差异只在路由段配置的一行 */}
+            <TopicSection
+                title="SSG / ISR / SSR 一行之差"
+                note="三种策略共享同一份组件代码,切换成本是路由段配置里的一行"
+            >
+                <div className="grid gap-4 lg:grid-cols-3">
+                    <div>
+                        <p className="mb-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                            SSG(不写,或显式声明)
+                        </p>
+                        <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`// 默认即静态;也可显式锁定
+export const dynamic =
+  "force-static";`}
+                        </pre>
+                    </div>
+                    <div>
+                        <p className="mb-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                            ISR(本页)
+                        </p>
+                        <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`// 静态缓存 + 60s 后后台重建
+export const revalidate = 60;`}
+                        </pre>
+                    </div>
+                    <div>
+                        <p className="mb-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                            SSR
+                        </p>
+                        <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`// 每个请求在服务器现渲染
+export const dynamic =
+  "force-dynamic";`}
+                        </pre>
+                    </div>
+                </div>
+
+                <table className="mt-4 w-full text-left text-xs leading-relaxed">
+                    <thead>
+                        <tr className="border-b border-neutral-200 text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+                            <th className="py-2 pr-4 font-semibold">策略</th>
+                            <th className="py-2 pr-4 font-semibold">预渲染时机</th>
+                            <th className="py-2 pr-4 font-semibold">数据新鲜度</th>
+                            <th className="py-2 font-semibold">适用场景</th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-neutral-600 dark:text-neutral-300">
+                        <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                            <td className="py-2 pr-4 font-semibold">SSG</td>
+                            <td className="py-2 pr-4">构建期一次</td>
+                            <td className="py-2 pr-4">冻结在构建时刻</td>
+                            <td className="py-2">内容稳定、人人一致</td>
+                        </tr>
+                        <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                            <td className="py-2 pr-4 font-semibold">ISR</td>
+                            <td className="py-2 pr-4">构建期 + 过期后台重建</td>
+                            <td className="py-2 pr-4">最长落后一个 revalidate 窗口</td>
+                            <td className="py-2">会更新但容忍分钟级延迟</td>
+                        </tr>
+                        <tr>
+                            <td className="py-2 pr-4 font-semibold">SSR</td>
+                            <td className="py-2 pr-4">不预渲染,每请求现算</td>
+                            <td className="py-2 pr-4">实时</td>
+                            <td className="py-2">强实时 / 千人千面</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </TopicSection>
+
             <TopicSection
                 title="什么时候别用 ISR"
                 note="决策要点,而非 API 背诵"
