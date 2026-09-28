@@ -307,8 +307,24 @@ export const TOPICS: TopicMeta[] = [
         title: "AI 流式响应",
         category: "ai-native",
         description:
-            "以 AI 模型列表为场景模拟流式加载:Suspense 骨架 + async generator 分段输出,感受「边生成边渲染」的体验基线",
-        keywords: ["Streaming", "Suspense", "AI", "async generator"],
+            "真实 SSE 流式端点:Route Handler 用 ReadableStream 逐 token 推送,前端 getReader() 边收边渲染;TTFT 才是用户感知的「快」,取消即省计费",
+        keywords: ["SSE", "ReadableStream", "TTFT", "AbortController", "流式端点"],
+    },
+    {
+        path: "/ai-native/generative-ui",
+        title: "Generative UI",
+        category: "ai-native",
+        description:
+            "模型输出结构化工具调用,UI 层做组件映射:天气卡片、股价走势图、待办清单直接渲染成真实 React 组件,与文本气泡混排在同一条消息流",
+        keywords: ["Generative UI", "工具调用", "function calling", "组件映射"],
+    },
+    {
+        path: "/ai-native/agent-page",
+        title: "Agent 长任务页",
+        category: "ai-native",
+        description:
+            "多步 Agent 任务流的过程可视化:SSE 推送步骤事件,前端渲染 pending/running/done 时间线;串行 vs 并行墙钟对照,取消即省计费",
+        keywords: ["Agent", "SSE", "步骤时间线", "并行工具调用", "可取消"],
     },
 ];
 
