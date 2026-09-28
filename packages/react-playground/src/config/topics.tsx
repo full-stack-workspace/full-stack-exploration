@@ -86,7 +86,7 @@ export const CATEGORIES: CategoryMeta[] = [
         key: 'basics',
         basePath: '/topics/basics',
         title: 'React 基础',
-        subtitle: 'JSX、渲染、事件、列表等核心语法专题',
+        subtitle: 'JSX、渲染、事件、函数组件与类组件',
         theme: {
             icon: <CodeOutlined />,
             iconChip: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-300',
@@ -199,6 +199,27 @@ export const TOPICS: TopicMeta[] = [
         category: 'basics',
         description: 'key 决定 Diff 身份:双栏错位实验、三条规则、key 重置状态与渲染期生成 key 的坑',
         element: lazy(() => import('../topics/basics/list-key')),
+    },
+    {
+        path: '/topics/basics/fn-vs-class-guide',
+        title: '函数组件与类组件 · 范式梳理',
+        category: 'basics',
+        description: 'UI = f(state):用函数组件 + Hooks 覆盖 class 的能力,并说明新范式为什么更适合生产与并发',
+        element: lazy(() => import('../topics/basics/fn-vs-class/guide')),
+    },
+    {
+        path: '/topics/basics/fn-vs-class-playground',
+        title: '函数组件与类组件 · 对照演练',
+        category: 'basics',
+        description: '快照 vs this、派生值、订阅拆生命周期 vs useEffect,对照同一行为的两种写法',
+        element: lazy(() => import('../topics/basics/fn-vs-class/playground')),
+    },
+    {
+        path: '/topics/basics/fn-vs-class-practice',
+        title: '函数组件与类组件 · 看板实战',
+        category: 'basics',
+        description: '同一份行情看板:class 把时钟/请求/过滤堆在实例上,函数组件拆成可复用 Hook',
+        element: lazy(() => import('../topics/basics/fn-vs-class/practice')),
     },
 
     /* ---- Hooks ---- */
