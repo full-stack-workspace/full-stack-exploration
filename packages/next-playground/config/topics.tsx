@@ -21,7 +21,7 @@
  * 类型定义
  * ================================================================ */
 
-/** 分类 key;metadata / engineering 分类的专题在后续阶段落地 */
+/** 分类 key */
 export type CategoryKey =
     | "rendering"
     | "rsc-boundary"
@@ -124,6 +124,30 @@ export const CATEGORIES: CategoryMeta[] = [
         },
     },
     {
+        key: "metadata",
+        basePath: "/metadata",
+        title: "Metadata 与 SEO",
+        subtitle: "metadata 流水线:静态导出、动态生成与约定文件",
+        theme: {
+            dot: "bg-rose-500",
+            text: "text-rose-600 dark:text-rose-400",
+            chip: "bg-rose-50 text-rose-600 dark:bg-rose-950 dark:text-rose-300",
+            hoverBorder: "hover:border-rose-200 dark:hover:border-rose-700",
+        },
+    },
+    {
+        key: "engineering",
+        basePath: "/engineering",
+        title: "工程化",
+        subtitle: "中间件边界、缓存策略设计与资产性能治理",
+        theme: {
+            dot: "bg-slate-500",
+            text: "text-slate-600 dark:text-slate-400",
+            chip: "bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-300",
+            hoverBorder: "hover:border-slate-300 dark:hover:border-slate-700",
+        },
+    },
+    {
         key: "ai-native",
         basePath: "/ai-native",
         title: "AI-Native 与 Agent",
@@ -207,6 +231,22 @@ export const TOPICS: TopicMeta[] = [
         keywords: ["动态路由", "generateMetadata", "useParams"],
     },
     {
+        path: "/router/conventions",
+        title: "约定文件对照",
+        category: "router",
+        description:
+            "page / layout / loading / error / not-found / template / default 各管什么:一张对照表 + 嵌套层级示意;本页自带真实 loading.tsx 演示 Suspense 边界",
+        keywords: ["约定文件", "loading", "error", "template", "Suspense"],
+    },
+    {
+        path: "/router/navigation",
+        title: "导航与 Router Cache",
+        category: "router",
+        description:
+            "Link 的 prefetch 默认行为、useRouter 的 push/replace/back/refresh,以及「为什么页面不刷新」的排查入口",
+        keywords: ["Link", "prefetch", "useRouter", "Router Cache"],
+    },
+    {
         path: "/data/cache-layers",
         title: "四层缓存对照台",
         category: "data",
@@ -229,6 +269,38 @@ export const TOPICS: TopicMeta[] = [
         description:
             "客户端取数的正确打开方式:能在 Server Component 里 await 就别用 SWR;但会话数据、聚焦重验证、轮询、离线缓存仍是 SWR 的主场",
         keywords: ["SWR", "客户端取数", "revalidateOnFocus", "轮询"],
+    },
+    {
+        path: "/metadata/guide",
+        title: "metadata 流水线",
+        category: "metadata",
+        description:
+            "静态 metadata / generateMetadata / 约定文件(icon、opengraph-image)的合并顺序;本站 title.template 与 getTopicMetadata 的真实例子",
+        keywords: ["metadata", "generateMetadata", "title.template", "SEO", "Open Graph"],
+    },
+    {
+        path: "/engineering/middleware",
+        title: "中间件边界与代价",
+        category: "engineering",
+        description:
+            "middleware 的执行位置与 matcher 配置:本站真实的 middleware.ts 给本页加自定义响应头,curl 可验证;读 body / 重计算别放这里",
+        keywords: ["middleware", "matcher", "NextResponse", "边缘"],
+    },
+    {
+        path: "/engineering/caching-strategy",
+        title: "缓存策略设计",
+        category: "engineering",
+        description:
+            "给一个页面定缓存方案的决策流程:数据归属 → 新鲜度要求 → 变更触发方式,落到 revalidate / revalidateTag / force-dynamic / use cache",
+        keywords: ["缓存策略", "revalidate", "revalidateTag", "force-dynamic", "use cache"],
+    },
+    {
+        path: "/engineering/asset-perf",
+        title: "Image/Font 与包体治理",
+        category: "engineering",
+        description:
+            "next/image 的尺寸/懒加载/格式协商、next/font 的自托管零 CLS,以及动态 import 与客户端边界下沉的包体治理",
+        keywords: ["next/image", "next/font", "CLS", "代码分割", "bundle"],
     },
     {
         path: "/ai-native/streaming-endpoint",
