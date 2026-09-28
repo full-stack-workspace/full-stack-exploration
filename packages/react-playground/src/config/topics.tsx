@@ -86,7 +86,7 @@ export const CATEGORIES: CategoryMeta[] = [
         key: 'basics',
         basePath: '/topics/basics',
         title: 'React 基础',
-        subtitle: 'JSX、渲染、事件、函数组件与类组件',
+        subtitle: 'JSX、渲染、事件、函数组件与类组件、RSC',
         theme: {
             icon: <CodeOutlined />,
             iconChip: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-300',
@@ -151,7 +151,7 @@ export const CATEGORIES: CategoryMeta[] = [
         key: 'performance',
         basePath: '/performance',
         title: '性能优化',
-        subtitle: '渲染优先级与任务调度演练',
+        subtitle: '原则、指标、架构、实现、排查；含 AI-Native 与渲染调度',
         theme: {
             icon: <ThunderboltOutlined />,
             iconChip: 'bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-300',
@@ -220,6 +220,20 @@ export const TOPICS: TopicMeta[] = [
         category: 'basics',
         description: '同一份行情看板:class 把时钟/请求/过滤堆在实例上,函数组件拆成可复用 Hook',
         element: lazy(() => import('../topics/basics/fn-vs-class/practice')),
+    },
+    {
+        path: '/topics/basics/rsc-guide',
+        title: 'RSC · 深度梳理',
+        category: 'basics',
+        description: 'Server Component 与 SSR、Client Component 的分界,以及生产里何时把边界下沉到交互叶子',
+        element: lazy(() => import('../topics/basics/rsc/guide')),
+    },
+    {
+        path: '/topics/basics/rsc-boundary',
+        title: 'RSC · 边界示意',
+        category: 'basics',
+        description: '用商品页切分 Server 与 Client:看包、载荷,以及 Client 不能 import Server',
+        element: lazy(() => import('../topics/basics/rsc/boundary')),
     },
 
     /* ---- Hooks ---- */
@@ -388,7 +402,67 @@ export const TOPICS: TopicMeta[] = [
         element: lazy(() => import('../topics/agent/sync-store-guide')),
     },
 
-    /* ---- 性能优化 ---- */
+    /* ---- 性能优化 · 治理全链路 ---- */
+    {
+        path: '/performance/governance-guide',
+        title: '性能治理 · 原则与约定',
+        category: 'performance',
+        description: '三目标五原则、阶段地图,以及一张可改的性能约定表',
+        element: lazy(() => import('../topics/performance/governance/guide')),
+    },
+    {
+        path: '/performance/metrics-lab',
+        title: '性能治理 · 指标实验室',
+        category: 'performance',
+        description: '按场景切换北极星:CWV、业务完成时间与 AI 思考指标不能混用',
+        element: lazy(() => import('../topics/performance/governance/metrics-lab')),
+    },
+    {
+        path: '/performance/architecture-guide',
+        title: '性能治理 · 架构关键路径',
+        category: 'performance',
+        description: '按区域决定何时生成、谁可以慢、首屏带哪些客户端成本',
+        element: lazy(() => import('../topics/performance/governance/architecture')),
+    },
+    {
+        path: '/performance/implement-lab',
+        title: '性能治理 · 实现六规则',
+        category: 'performance',
+        description: '所有权、请求、调度、规模、资源、记忆化最后的对照演练',
+        element: lazy(() => import('../topics/performance/governance/implement')),
+    },
+    {
+        path: '/performance/diagnose-lab',
+        title: '性能治理 · 排查演练',
+        category: 'performance',
+        description: '按用户现象选证据链,写出可验证假设,避免改错指标',
+        element: lazy(() => import('../topics/performance/governance/diagnose')),
+    },
+
+    /* ---- 性能优化 · AI-Native ---- */
+    {
+        path: '/performance/ai-native-guide',
+        title: 'AI-Native · 指标金字塔',
+        category: 'performance',
+        description: 'CWV 是入场券;TTFUI 才是北极星。快但错不如慢但对',
+        element: lazy(() => import('../topics/performance/ai-native/guide')),
+    },
+    {
+        path: '/performance/ai-native-lab',
+        title: 'AI-Native · 流式体验演练',
+        category: 'performance',
+        description: '拆开 TTFT / FTRT / TTFUI / TPOT / 取消,看开场白和批处理如何骗人',
+        element: lazy(() => import('../topics/performance/ai-native/lab')),
+    },
+    {
+        path: '/performance/ai-native-agent',
+        title: 'AI-Native · Agent 工具链演练',
+        category: 'performance',
+        description: '规划、RAG、工具串行 vs 并行、取消计费,以及快但错的墙钟翻倍',
+        element: lazy(() => import('../topics/performance/ai-native/agent-lab')),
+    },
+
+    /* ---- 性能优化 · 渲染调度(已有) ---- */
     {
         path: '/performance/transition-deferred',
         title: 'useTransition × useDeferredValue',

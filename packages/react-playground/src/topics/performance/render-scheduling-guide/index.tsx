@@ -6,7 +6,7 @@
  * 围绕本专题 performance/ 的真实实现,系统梳理客户端渲染任务调度:
  * 并发渲染心智模型、useTransition / useDeferredValue / Suspense
  * 三件套协作模型、渲染竞态场景目录与工程实践细节。
- * 边界声明:不涉 SSR / 架构级渲染策略(属「性能优化」系列第一专题)。
+ * 边界声明:不涉 SSR / 架构级渲染策略,见「性能治理 · 架构关键路径」。
  *
  * @module topics/performance/render-scheduling-guide
  */
@@ -17,7 +17,7 @@ import type { ReactNode } from 'react';
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
 import { CodeBlock } from '../../../components/CodeBlock';
 import { Diagram } from '../../../components/Diagram';
-import { NavBanner } from '../transition-deferred/components/NavBanner';
+import { SeriesNav } from '../components/SeriesNav';
 
 /* =================================================================
  * 正文辅助组件
@@ -42,7 +42,7 @@ const RenderSchedulingGuide = memo(() => {
             title="渲染调度深入梳理"
             description="紧急 vs 非紧急的分类思维,Suspense × transition × deferred 的分工协作 —— 以本专题 performance/ 实现为样本"
         >
-            <NavBanner current="guide" />
+            <SeriesNav current="render-scheduling-guide" />
 
             {/* ---------- 1. 问题的本质 ---------- */}
             <TopicSection
