@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 自定义 Hooks 深入梳理(/topics/hooks/custom-hooks-guide)
+ * 自定义 Hooks 深入梳理(/hooks/custom-hooks-guide)
  * ============================================================================
  *
  * 围绕本专题 custom-hooks/ 的真实实现,系统梳理自定义 Hook 的
@@ -24,7 +24,8 @@ import type { ReactNode } from 'react';
 import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { Diagram } from '../../../../components/Diagram';
-import { NavBanner } from '../playground/components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { CUSTOM_HOOKS_NAV_LINKS, CUSTOM_HOOKS_NAV_TITLE } from '../nav';
 
 /* =================================================================
  * 正文辅助组件
@@ -49,7 +50,12 @@ const CustomHooksGuide = memo(() => {
             title="自定义 Hooks 深入梳理"
             description="设计原则、组合设计思路与落地实践 —— 以本专题 custom-hooks/lib 的 8 个生产级 Hook 为样本"
         >
-            <NavBanner current="guide" />
+            <TopicNav
+                title={CUSTOM_HOOKS_NAV_TITLE}
+                links={CUSTOM_HOOKS_NAV_LINKS}
+                current="/hooks/custom-hooks-guide"
+                category="hooks"
+            />
 
             {/* ---------- 1. 逻辑复用的演进 ---------- */}
             <TopicSection

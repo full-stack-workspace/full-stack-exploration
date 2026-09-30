@@ -3,8 +3,9 @@
  * series.ts — 性能优化分类的系列目录
  * ============================================================================
  *
- * 性能优化不再只有「渲染调度操作」,而是三条互链的系列:
+ * 性能优化的页头导航有三条教学系列,外加一条 React Compiler 独立页和放在最后的理解检验:
  * 治理全链路(原则→指标→架构→实现→排查)、渲染调度(梳理→演练→Suspense)、AI-Native(金字塔/流式/工具链)。
+ * Compiler 独立页讲「开/不开的判断」,不属于任何一条系列,单独一组。
  * SeriesNav 与注册表共用这份目录,避免路径写散。
  *
  * @module topics/performance/series
@@ -21,7 +22,9 @@ export type PerformanceTopicKey =
     | 'ai-native-agent'
     | 'transition-deferred'
     | 'suspense-ui'
-    | 'render-scheduling-guide';
+    | 'render-scheduling-guide'
+    | 'react-compiler'
+    | 'check';
 
 export interface SeriesLink {
     key: PerformanceTopicKey;
@@ -30,12 +33,12 @@ export interface SeriesLink {
 }
 
 export interface PerformanceSeries {
-    id: 'governance' | 'ai-native' | 'scheduling';
+    id: 'governance' | 'ai-native' | 'scheduling' | 'compiler' | 'review';
     title: string;
     links: readonly SeriesLink[];
 }
 
-/** 三条系列的页头导航;新增子专题时只改这里和 topics.tsx */
+/** 页头导航;新增子专题时只改这里和 topics.tsx。理解检验放在最后,避免分类点击落到题库。 */
 export const PERFORMANCE_SERIES: readonly PerformanceSeries[] = [
     {
         id: 'governance',
@@ -65,5 +68,15 @@ export const PERFORMANCE_SERIES: readonly PerformanceSeries[] = [
             { key: 'ai-native-lab', to: '/performance/ai-native-lab', label: '流式体验演练' },
             { key: 'ai-native-agent', to: '/performance/ai-native-agent', label: 'Agent 工具链' },
         ],
+    },
+    {
+        id: 'compiler',
+        title: 'React Compiler',
+        links: [{ key: 'react-compiler', to: '/performance/react-compiler', label: 'Compiler 判断框架' }],
+    },
+    {
+        id: 'review',
+        title: '检验',
+        links: [{ key: 'check', to: '/performance/check', label: '理解检验' }],
     },
 ];

@@ -72,6 +72,38 @@ describe('Error Boundary 专题', () => {
         expect(screen.queryByTestId('boundary-fallback-捕获范围')).not.toBeInTheDocument();
     });
 
+    it('渲染期 throw 启动边界;异步 throw 由回调自己接住', async () => {
+        const user = userEvent.setup();
+        renderTopic();
+
+        // 异步 throw:setTimeout 里的错误被就地 try/catch,旁路展示,边界不动
+        await user.click(screen.getByRole('button', { name: '异步 throw' }));
+        expect(
+            await screen.findByText(/异步回调自己接住了「setTimeout 里 throw」/),
+        ).toBeInTheDocument();
+        expect(screen.queryByTestId('boundary-fallback-捕获范围')).not.toBeInTheDocument();
+
+        // 渲染期 throw:下一次渲染直接抛错,边界接管降级
+        await user.click(screen.getByRole('button', { name: '渲染期 throw' }));
+        expect(screen.getByTestId('boundary-fallback-捕获范围')).toBeInTheDocument();
+    });
+
+    it('异步重抛:失败写进 state 再 throw,边界接管;关掉开关则组件内消化', async () => {
+        const user = userEvent.setup();
+        renderTopic();
+
+        // 默认开启「throw 进渲染」:400ms 后错误在渲染期抛出,边界降级
+        await user.click(screen.getByRole('button', { name: '发起会失败的请求' }));
+        expect(await screen.findByTestId('boundary-fallback-异步重抛')).toBeInTheDocument();
+
+        // 关掉开关后(同时重置边界):同样的失败只在组件内展示告警
+        await user.click(screen.getByRole('switch', { name: '失败后 throw 进渲染' }));
+        await user.click(screen.getByRole('button', { name: '发起会失败的请求' }));
+        expect(await screen.findByText('组件内自己消化')).toBeInTheDocument();
+        expect(screen.getByText('接口 500:库存服务不可用')).toBeInTheDocument();
+        expect(screen.queryByTestId('boundary-fallback-异步重抛')).not.toBeInTheDocument();
+    });
+
     it('细粒度下 A 崩了 B 还在;粗粒度下整块一起降级', async () => {
         const user = userEvent.setup();
         renderTopic();

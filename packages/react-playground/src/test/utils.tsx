@@ -8,7 +8,6 @@ import type { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { vi } from 'vitest';
 
 import { ThemeProvider } from '../context/ThemeProvider';
 import { UserProvider } from '../context/UserProvider';
@@ -46,12 +45,3 @@ export { customRender as render };
  */
 export const wait = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
-
-/**
- * Mock 函数创建器（使用 Vitest 的 vi）
- */
-export const createMockFunction = <T extends (...args: any[]) => any>(
-  implementation?: T,
-): ReturnType<typeof vi.fn> => {
-  return vi.fn(implementation) as any;
-};

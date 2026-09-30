@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 组件通信 · 模式演练(/topics/advanced/component-comm-playground)
+ * 组件通信 · 模式演练(/advanced/component-comm-playground)
  * ============================================================================
  *
  * 把决策梯子上的默认档、组合、URL、命令式 ref、错误同步做成可点对照;
@@ -14,7 +14,8 @@ import { Link } from 'react-router-dom';
 
 import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
-import { NavBanner } from '../components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { COMPONENT_COMM_NAV_LINKS, COMPONENT_COMM_NAV_TITLE } from '../nav';
 import { RelatedTopics } from '../components/RelatedTopics';
 import { CommandRefDemo } from './components/CommandRefDemo';
 import { DrillingVsSlotDemo } from './components/DrillingVsSlotDemo';
@@ -30,7 +31,12 @@ const ComponentCommPlayground = memo(() => {
             title="组件通信 · 模式演练"
             description="默认走 props,兄弟就提升,中间层用组合,远而稳才开 Context,能分享的进 URL,命令走 ref"
         >
-            <NavBanner current="playground" />
+            <TopicNav
+                title={COMPONENT_COMM_NAV_TITLE}
+                links={COMPONENT_COMM_NAV_LINKS}
+                current="/advanced/component-comm-playground"
+                category="advanced"
+            />
 
             <TopicSection
                 title="1. 默认:props 往下,callback 往上"
@@ -71,7 +77,7 @@ const ComponentCommPlayground = memo(() => {
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/advanced/context',
+                                to: '/advanced/context',
                                 label: 'Context API',
                                 why: '嵌套 Provider、胖 Context 连坐、拆分 state/actions,本页探针读的就是那套 Theme / User',
                             },
@@ -113,12 +119,12 @@ useEffect(() => { onDraftChange(draft); }, [draft, onDraftChange]);
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/hooks/use-ref',
+                                to: '/hooks/use-ref',
                                 label: 'useRef',
                                 why: '改 current 不触发渲染,适合握 DOM 和定时器',
                             },
                             {
-                                to: '/topics/hooks/use-imperative-handle',
+                                to: '/hooks/use-imperative-handle',
                                 label: 'useImperativeHandle',
                                 why: '父级只该拿到 focus / clear,不该拿到内部节点',
                             },
@@ -144,12 +150,12 @@ useEffect(() => { onDraftChange(draft); }, [draft, onDraftChange]);
                             why: '并发下如何订阅树外 Store,而不把整份快照当 Context value',
                         },
                         {
-                            to: '/topics/advanced/relay',
+                            to: '/advanced/relay',
                             label: 'Relay 数据流',
                             why: '服务器列表 / 详情是缓存问题,不是父子通信问题',
                         },
                         {
-                            to: '/topics/advanced/component-comm-practice',
+                            to: '/advanced/component-comm-practice',
                             label: '工作台实战',
                             why: '下一页把 URL、提升、局部草稿、User Context 拆进同一个工单界面',
                         },

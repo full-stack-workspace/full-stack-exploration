@@ -1,6 +1,7 @@
+// 注意：devDependencies 中的 vite ^5 仅为 vitest 2 所需（vitest 2 依赖 vite 5）；
+// 本包构建实际使用 Rsbuild(Rspack)，请勿随根目录 vite 版本升级，否则会破坏测试。
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
 // https://vitest.dev/config/
 export default defineConfig({
@@ -55,13 +56,6 @@ export default defineConfig({
       threads: {
         singleThread: false,
       },
-    },
-  },
-
-  // 路径别名配置（与 tsconfig.json 保持一致）
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
     },
   },
 });

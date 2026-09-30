@@ -1,20 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <defs>
-    <linearGradient id="rp-bg" x1="3" y1="1" x2="29" y2="31" gradientUnits="userSpaceOnUse">
+    <linearGradient id="ra-bg" x1="3" y1="1" x2="29" y2="31" gradientUnits="userSpaceOnUse">
       <stop stop-color="#A5B4FC"/>
       <stop offset="0.42" stop-color="#6366F1"/>
       <stop offset="1" stop-color="#312E81"/>
     </linearGradient>
-    <clipPath id="rp-clip">
+    <clipPath id="ra-clip">
       <rect width="32" height="32" rx="8"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#rp-clip)">
-    <rect width="32" height="32" fill="url(#rp-bg)"/>
+  <g clip-path="url(#ra-clip)">
+    <rect width="32" height="32" fill="url(#ra-bg)"/>
     <ellipse cx="8" cy="-4" rx="16" ry="12" fill="#fff" fill-opacity="0.14"/>
-    <rect x="5.2" y="5.5" width="14.6" height="15.6" rx="3" fill="#E0E7FF"/>
-    <rect x="12" y="11" width="14.6" height="15.6" rx="3" fill="#fff"/>
-    <rect x="14.5" y="14.5" width="9.4" height="1.8" rx="0.9" fill="#3730A3"/>
-    <rect x="14.5" y="18" width="6.2" height="1.8" rx="0.9" fill="#6366F1"/>
+    <rect x="5" y="8.5" width="9" height="15" rx="2.4" fill="#C7D2FE" transform="rotate(-9 9.5 16)"/>
+    <rect x="18" y="8.5" width="9" height="15" rx="2.4" fill="#fff" transform="rotate(9 22.5 16)"/>
+    <rect x="13.7" y="13.7" width="4.6" height="4.6" rx="1.1" fill="#FBBF24" transform="rotate(45 16 16)"/>
   </g>
 </svg>

@@ -54,7 +54,7 @@ const columns = (onDelete: (id: string) => void): ColumnsType<BookkeepingRecord>
         sorter: (a, b) => a.amount - b.amount,
         render: (amount: number, record: BookkeepingRecord) => (
             <span
-                className={`font-semibold ${record.type === 'income' ? 'text-green-600' : 'text-red-500'}`}
+                className={`font-semibold ${record.type === 'income' ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}
             >
                 {record.type === 'income' ? '+' : '-'} ¥
                 {amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
@@ -90,9 +90,8 @@ export const RecordTable: React.FC<RecordTableProps> = ({
     dateRange,
     onDateRangeChange,
 }) => (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-            <h2 className="text-lg font-semibold text-gray-700">收支明细</h2>
+    <>
+        <div className="flex items-center justify-end mb-4 flex-wrap gap-3">
             <Space>
                 <RangePicker
                     value={dateRange}
@@ -117,5 +116,5 @@ export const RecordTable: React.FC<RecordTableProps> = ({
             locale={{ emptyText: '暂无记录，开始记账吧！' }}
             size="middle"
         />
-    </div>
+    </>
 );

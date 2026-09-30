@@ -18,7 +18,7 @@ import { act } from 'react';
 import { RuntimeStore } from '../runtime/RuntimeStore';
 import type { RuntimeEvent } from '../runtime/types';
 import { RuntimeProvider } from './RuntimeProvider';
-import { useRuntimeSelector } from './hooks';
+import { useRuntimeSelector, useRuntimeSnapshot, useRuntimeStore } from './hooks';
 
 /** 注入固定 store 的 Provider 包装器 */
 const createWrapper = (store: RuntimeStore) => {
@@ -118,5 +118,46 @@ describe('useRuntimeSelector', () => {
 
         expect(selector.mock.calls.length).toBe(callsAfterMount);
         expect(result.current).toBe(before);
+    });
+});
+
+describe('useRuntimeSnapshot', () => {
+    it('订阅整份快照:任何有效事件都触发重渲染,version 递增', () => {
+        const store = new RuntimeStore();
+        const { result } = renderHook(() => useRuntimeSnapshot(), {
+            wrapper: createWrapper(store),
+        });
+
+        expect(result.current.version).toBe(0);
+
+        act(() => {
+            store.applyEvent({
+                type: 'conversation.created',
+                eventId: 'e-conv',
+                conversation: { id: 'conv-1', title: 't', messageIds: [] },
+            });
+        });
+        expect(result.current.version).toBe(1);
+
+        // 重复 eventId 不产生新快照
+        act(() => {
+            store.applyEvent({
+                type: 'conversation.created',
+                eventId: 'e-conv',
+                conversation: { id: 'conv-1', title: 't', messageIds: [] },
+            });
+        });
+        expect(result.current.version).toBe(1);
+    });
+});
+
+describe('useRuntimeStore', () => {
+    it('在 RuntimeProvider 之外调用时抛出明确错误', () => {
+        // React 会把组件抛错打到 console.error,这里只关心抛出的契约
+        const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+        expect(() => renderHook(() => useRuntimeStore())).toThrow(
+            'useRuntimeStore 必须在 RuntimeProvider 内使用',
+        );
+        spy.mockRestore();
     });
 });

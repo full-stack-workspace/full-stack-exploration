@@ -23,7 +23,7 @@ function renderPlayground() {
     return render(
         <ThemeProvider>
             <UserProvider>
-                <MemoryRouter initialEntries={['/topics/advanced/component-comm-playground']}>
+                <MemoryRouter initialEntries={['/advanced/component-comm-playground']}>
                     <ComponentCommPlayground />
                 </MemoryRouter>
             </UserProvider>

@@ -335,7 +335,7 @@ const UseMemoTopic: React.FC = () => {
                     函数用{' '}
                     <Link
                         className="text-primary-600 underline-offset-2 hover:underline"
-                        to="/topics/hooks/use-callback"
+                        to="/hooks/use-callback"
                     >
                         useCallback
                     </Link>
@@ -375,7 +375,7 @@ const UseMemoTopic: React.FC = () => {
                             列表行、图表、编辑器这类渲染贵的子组件,用 memo 包住后,把 options / columns / style 用 useMemo 稳住。回调则用{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/hooks/use-callback"
+                                to="/hooks/use-callback"
                             >
                                 useCallback
                             </Link>
@@ -394,7 +394,7 @@ const UseMemoTopic: React.FC = () => {
                             Provider 的 value=&#123;&#123; state, actions &#125;&#125; 每次都是新对象,下游全员重渲染。站点 Theme / User 把 value 用 useMemo 稳住,并拆成两个 Context,详见{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/advanced/context"
+                                to="/advanced/context"
                             >
                                 Context API 专题
                             </Link>
@@ -407,7 +407,7 @@ const UseMemoTopic: React.FC = () => {
                             把对象放进 useEffect / useMemo 的 deps 时,内联字面量会让后面的 Hook 每渲染都重跑。先用 useMemo 交出稳定引用,再写进依赖。和{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/hooks/use-state"
+                                to="/hooks/use-state"
                             >
                                 useState 的 Object.is 跳过
                             </Link>

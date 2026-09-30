@@ -17,10 +17,9 @@
  */
 
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BookOutlined } from '@ant-design/icons';
-
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
+import { TopicNav } from '../../../components/TopicNav';
+import { AGENT_CHAT_ADJACENT_LINKS, AGENT_NAV_LINKS } from '../nav';
 import { RuntimeProvider } from '../react-adapter/RuntimeProvider';
 import { useRuntimeStore } from '../react-adapter/hooks';
 import { MockSseClient } from '../runtime/MockSseClient';
@@ -172,17 +171,19 @@ const AgentChatTopic = memo(() => {
                 title="Agent 对话运行时"
                 description="模拟 SSE 事件流驱动 React 之外的 Runtime Store,UI 经 useSyncExternalStore 精准订阅 —— 角标 ×N 为各组件渲染次数"
             >
-                <div className="rounded-card border border-rose-100 bg-rose-50/60 px-4 py-3 text-xs text-rose-600 dark:border-rose-900 dark:bg-rose-950/40 dark:text-rose-300">
-                    <BookOutlined className="mr-1.5" />
-                    本页是「useSyncExternalStore 深入梳理」的配套演练,原理解析与架构说明见
-                    <Link
-                        to="/agent/use-sync-external-store"
-                        className="mx-1 font-medium underline underline-offset-2 hover:text-rose-700 dark:hover:text-rose-200"
-                    >
-                        梳理页
-                    </Link>
-                    。
-                </div>
+                <TopicNav
+                    title="本页是「useSyncExternalStore 深入梳理」的配套演练,原理解析与架构说明见:"
+                    links={AGENT_NAV_LINKS}
+                    current="/agent/agent-chat"
+                    category="agent"
+                />
+                {/* 相邻专题:同一事件流的性能视角(TTFT / TTFUI / 取消计费) */}
+                <TopicNav
+                    title="相邻专题:这条事件流串起的思考指标与成本,见性能分类的"
+                    links={AGENT_CHAT_ADJACENT_LINKS}
+                    current="/agent/agent-chat"
+                    category="performance"
+                />
                 <AgentChatPanel />
             </TopicPage>
         </RuntimeProvider>

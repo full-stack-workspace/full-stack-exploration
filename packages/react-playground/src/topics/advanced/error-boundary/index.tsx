@@ -292,7 +292,7 @@ handleReset() {
                         型炸弹换 key 是多余的;父级非法 props、坏掉的路由 id,才需要在 onReset 里改数据。相关范式见{' '}
                         <Link
                             className="text-primary-600 underline-offset-2 hover:underline"
-                            to="/topics/basics/list-key"
+                            to="/basics/list-key"
                         >
                             列表与 key
                         </Link>

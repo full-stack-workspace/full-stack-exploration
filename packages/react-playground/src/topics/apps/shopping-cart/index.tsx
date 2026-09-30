@@ -1,26 +1,28 @@
 /**
- * @file 购物车页面
+ * ============================================================================
+ * 购物车(/apps/shopping-cart)
+ * ============================================================================
+ *
+ * 综合应用:商品列表、搜索过滤与状态派生计算。
+ * 页面持有搜索状态(关键字 / 仅看有货),商品列表由 useMemo 从静态数据派生,
+ * 骨架复用全站统一的 TopicPage / TopicSection。
+ *
+ * @module topics/apps/shopping-cart
  */
 
-import React, { useCallback, useState, useMemo } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 
-import type { ProductItem } from './interface';
-
+import { TopicPage, TopicSection } from '../../../components/TopicPage';
+import type { ProductItem, SearchInfo } from './interface';
 import { SearchBar } from './SearchBar';
 import { ProductList } from './ProductList';
 import { allShoppingCartProducts } from './allShoppingCartProducts';
 
-export interface SearchInfo {
-    searchText: string;
-    onlyShowInStock: boolean;
-};
-
-export const ShoppingCart: React.FC = () => {
+const ShoppingCart = memo(() => {
     const [searchInfo, setSearchInfo] = useState<SearchInfo>({
         searchText: '',
         onlyShowInStock: false
     });
-    console.log('state:', searchInfo);
 
     // 使用 useMemo 缓存过滤后的商品列表
     // useMemo 的作用：
@@ -35,23 +37,35 @@ export const ShoppingCart: React.FC = () => {
     }, [searchInfo]);
 
     const onSearch = useCallback((value: SearchInfo) => {
-        console.log('onSearch in ShoppingCart', value);
         setSearchInfo(value);
-    }, [searchInfo]);
+    }, []);
 
     return (
-        <div className="max-w-7xl mx-auto">
-            <main>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">购物车</h3>
+        <TopicPage
+            title="购物车"
+            description="商品列表、搜索过滤与状态派生计算 —— 搜索状态单向流入,列表由 useMemo 派生"
+        >
+            <TopicSection
+                title="商品搜索"
+                note="受控搜索栏:关键字与「仅显示有库存」合并为一个 SearchInfo 状态,变更即触发列表派生"
+            >
                 <SearchBar
                     placeholder="搜索商品"
                     searchInfo={searchInfo}
                     onSearch={onSearch}
                 />
-                <div className="mt-8">
-                    <ProductList products={filteredProducts} />
-                </div>
-            </main>
-        </div>
+            </TopicSection>
+
+            <TopicSection
+                title="商品列表"
+                note="按分类分组的商品清单,过滤逻辑纯函数化,无冗余状态"
+            >
+                <ProductList products={filteredProducts} />
+            </TopicSection>
+        </TopicPage>
     );
-}
+});
+
+ShoppingCart.displayName = 'ShoppingCart';
+
+export default ShoppingCart;

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 组件通信 · 决策梳理(/topics/advanced/component-comm-guide)
+ * 组件通信 · 决策梳理(/advanced/component-comm-guide)
  * ============================================================================
  *
  * 生产里「组件怎么说话」不是技巧题,是所有权题:数据归谁、传多远、
@@ -16,7 +16,8 @@ import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { Diagram } from '../../../../components/Diagram';
 import { FlowList, type FlowStep } from '../../../../components/FlowList';
-import { NavBanner } from '../components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { COMPONENT_COMM_NAV_LINKS, COMPONENT_COMM_NAV_TITLE } from '../nav';
 import { RelatedTopics } from '../components/RelatedTopics';
 
 const P = ({ children }: { children: ReactNode }) => (
@@ -54,7 +55,12 @@ const ComponentCommGuide = memo(() => {
             title="组件通信 · 决策梳理"
             description="先问数据归谁、传多远、变得有多勤、是数据还是命令;再选 props、组合、Context、URL 或外部 Store"
         >
-            <NavBanner current="guide" />
+            <TopicNav
+                title={COMPONENT_COMM_NAV_TITLE}
+                links={COMPONENT_COMM_NAV_LINKS}
+                current="/advanced/component-comm-guide"
+                category="advanced"
+            />
 
             <TopicSection
                 title="1. 通信解决的是「一份事实,多处使用」"
@@ -181,12 +187,12 @@ function Page() {
                                 why: 'SearchBar 回调 + 页面派生过滤列表,是生产里最常见的 props/callback 形状',
                             },
                             {
-                                to: '/topics/hooks/use-callback',
+                                to: '/hooks/use-callback',
                                 label: 'useCallback',
                                 why: '回调作为 props 传给 memo 子组件时,身份不稳会连坐重渲染',
                             },
                             {
-                                to: '/topics/hooks/use-reducer',
+                                to: '/hooks/use-reducer',
                                 label: 'useReducer',
                                 why: '选中项、草稿、校验多字段必须一起变时,dispatch 比散落的 setState 更安全',
                             },
@@ -270,7 +276,7 @@ function List({ onSelect }: { onSelect: (id: string) => void }) {
                 <RelatedTopics
                     items={[
                         {
-                            to: '/topics/advanced/context',
+                            to: '/advanced/context',
                             label: 'Context API',
                             why: '查找规则、胖 Context 连坐、拆分与把 children 抬出 Provider,本仓库完整对照',
                         },
@@ -313,7 +319,7 @@ function setStatus(next: string) {
                             why: 'SSE 事件进 RuntimeStore,UI 不持有会话事实,只订阅切片',
                         },
                         {
-                            to: '/topics/advanced/relay',
+                            to: '/advanced/relay',
                             label: 'Relay 数据流',
                             why: '服务器缓存 / 去重不属于组件通信;别把接口响应塞进巨大 Context',
                         },
@@ -328,12 +334,12 @@ function setStatus(next: string) {
                 <RelatedTopics
                     items={[
                         {
-                            to: '/topics/hooks/use-ref',
+                            to: '/hooks/use-ref',
                             label: 'useRef',
                             why: '盒子身份稳定,改 current 不排队渲染;命令的落点通常是 DOM 或定时器 ID',
                         },
                         {
-                            to: '/topics/hooks/use-imperative-handle',
+                            to: '/hooks/use-imperative-handle',
                             label: 'useImperativeHandle',
                             why: '父级只该看到 focus / clear,不该拿到内部 input 节点',
                         },
@@ -382,17 +388,17 @@ bus.dispatchEvent(new Event('cart:add')); // 谁在听?类型在哪?如何取消
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/hooks/custom-hooks-guide',
+                                to: '/hooks/custom-hooks-guide',
                                 label: '自定义 Hooks 深入梳理',
                                 why: 'Hook 复用的是逻辑不是状态;两处调用 useXxx 不会自动同步,要同步请提升或走 Context / Store',
                             },
                             {
-                                to: '/topics/advanced/component-comm-playground',
+                                to: '/advanced/component-comm-playground',
                                 label: '模式演练',
                                 why: '把梯子上的每一档点一遍,看错的那一档会多一次渲染或把中间层拖下水',
                             },
                             {
-                                to: '/topics/advanced/component-comm-practice',
+                                to: '/advanced/component-comm-practice',
                                 label: '工作台实战',
                                 why: '工单列表 / 详情 / 过滤 / 评论草稿,通道一旦用错会立刻别扭',
                             },

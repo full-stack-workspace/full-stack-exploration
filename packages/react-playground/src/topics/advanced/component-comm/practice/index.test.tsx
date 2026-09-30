@@ -22,7 +22,7 @@ function renderPractice() {
     return render(
         <ThemeProvider>
             <UserProvider>
-                <MemoryRouter initialEntries={['/topics/advanced/component-comm-practice']}>
+                <MemoryRouter initialEntries={['/advanced/component-comm-practice']}>
                     <ComponentCommPractice />
                 </MemoryRouter>
             </UserProvider>

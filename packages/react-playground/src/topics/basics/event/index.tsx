@@ -141,7 +141,7 @@ const handleSelect = useCallback((id: string) => { ... }, []);
                     <p className="text-xs text-gray-400 dark:text-slate-500">
                         useCallback 的完整推演见
                         <Link
-                            to="/topics/hooks/use-callback"
+                            to="/hooks/use-callback"
                             className="mx-1 text-primary-600 hover:underline dark:text-primary-400"
                         >
                             useCallback 专题

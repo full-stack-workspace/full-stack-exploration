@@ -298,7 +298,7 @@ const UseCallbackTopic = () => {
                             缓存计算结果(对象、数组、派生值)。函数只是其中一种可缓存的值。对象 / memo 的配对见{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/hooks/use-memo"
+                                to="/hooks/use-memo"
                             >
                                 useMemo 与 memo 专题
                             </Link>
@@ -340,7 +340,7 @@ const UseCallbackTopic = () => {
                             列表行、图表、编辑器这类渲染贵的子组件,用 memo 包住后再把 onToggle / onChange 用 useCallback 稳住。本站{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/hooks/use-reducer"
+                                to="/hooks/use-reducer"
                             >
                                 useReducer 专题
                             </Link>
@@ -359,7 +359,7 @@ const UseCallbackTopic = () => {
                             只读 state 的组件不该因为 setter 换身份而重渲染。站点 Theme / User 把 actions 单独放一个 Context,详见{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/advanced/context"
+                                to="/advanced/context"
                             >
                                 Context API 专题
                             </Link>

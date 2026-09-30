@@ -1,7 +1,7 @@
 /**
  * @file series.test.ts
  *
- * @description 性能三条系列的路径必须都能在专题注册表里找到。
+ * @description 性能系列的路径必须都能在专题注册表里找到。
  */
 
 import { describe, expect, it } from 'vitest';

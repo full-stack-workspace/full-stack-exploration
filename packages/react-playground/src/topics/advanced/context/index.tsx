@@ -453,7 +453,7 @@ const UseContextTopic = () => {
                         <dt className="font-medium text-gray-700 dark:text-slate-200">多字段必须一起变</dt>
                         <dd className="mt-1 text-xs leading-relaxed text-gray-400 dark:text-slate-500">
                             Context 只负责分发。下一份 state 怎么算,该用 useReducer,见{' '}
-                            <Link className="text-primary-600 underline-offset-2 hover:underline" to="/topics/hooks/use-reducer">
+                            <Link className="text-primary-600 underline-offset-2 hover:underline" to="/hooks/use-reducer">
                                 useReducer 专题
                             </Link>
                             。

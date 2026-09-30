@@ -153,7 +153,7 @@ const UseEffectTopic = () => {
                             <dt className="font-medium text-amber-600">useLayoutEffect</dt>
                             <dd className="mt-1 text-xs leading-relaxed text-gray-400">
                                 只在「第一帧就不能错」时用:读布局、校正位置、避免闪烁。更新时它的 cleanup 在绘制前就跑完。详见{' '}
-                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/topics/hooks/use-layout-effect">
+                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/hooks/use-layout-effect">
                                     useLayoutEffect 专题
                                 </Link>
                                 。

@@ -29,8 +29,8 @@ describe('函数组件与类组件 · 范式梳理', () => {
         expect(screen.getByText('一次渲染 = 一次计算')).toBeInTheDocument();
         expect(screen.getByRole('link', { name: 'Error Boundary' })).toHaveAttribute(
             'href',
-            '/topics/advanced/error-boundary',
+            '/advanced/error-boundary',
         );
-        expect(screen.getByRole('link', { name: 'useState' })).toHaveAttribute('href', '/topics/hooks/use-state');
+        expect(screen.getByRole('link', { name: 'useState' })).toHaveAttribute('href', '/hooks/use-state');
     });
 });

@@ -72,7 +72,7 @@ const TodoItemComponent: React.FC<Props> = ({
                 className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 transition-all ${
                     item.completed
                         ? 'border-emerald-500 bg-emerald-500 text-white'
-                        : 'border-slate-300 bg-white text-transparent hover:border-sky-400'
+                        : 'border-slate-300 bg-white text-transparent hover:border-sky-400 dark:border-slate-600 dark:bg-slate-800 dark:hover:border-sky-500'
                 }`}
                 aria-label={item.completed ? '标记为未完成' : '标记为已完成'}
             >
@@ -103,13 +103,13 @@ const TodoItemComponent: React.FC<Props> = ({
                         if (e.key === 'Enter') {commitEdit();}
                         if (e.key === 'Escape') {cancelEdit();}
                     }}
-                    className="flex-1 rounded-lg border border-sky-200 bg-white px-2.5 py-1 text-sm sm:text-base text-slate-700 outline-none focus:ring-2 focus:ring-sky-300 transition-all"
+                    className="flex-1 rounded-lg border border-sky-200 bg-white px-2.5 py-1 text-sm sm:text-base text-slate-700 outline-none focus:ring-2 focus:ring-sky-300 transition-all dark:border-sky-800 dark:bg-slate-800 dark:text-slate-200 dark:focus:ring-sky-600"
                 />
             ) : (
                 <span
                     onDoubleClick={startEdit}
                     className={`flex-1 text-sm sm:text-base break-words cursor-default select-none transition-colors ${
-                        item.completed ? 'line-through text-slate-400' : 'text-slate-700'
+                        item.completed ? 'line-through text-slate-400 dark:text-slate-500' : 'text-slate-700 dark:text-slate-200'
                     }`}
                     title="双击编辑"
                 >
@@ -122,7 +122,7 @@ const TodoItemComponent: React.FC<Props> = ({
                 <button
                     type="button"
                     onClick={startEdit}
-                    className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-slate-300 opacity-0 group-hover:opacity-100 hover:bg-sky-50 hover:text-sky-500 transition-all"
+                    className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-slate-300 opacity-0 group-hover:opacity-100 hover:bg-sky-50 hover:text-sky-500 transition-all dark:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-sky-400"
                     aria-label="编辑任务"
                 >
                     <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -140,7 +140,7 @@ const TodoItemComponent: React.FC<Props> = ({
             <button
                 type="button"
                 onClick={onDelete}
-                className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-slate-300 opacity-0 group-hover:opacity-100 hover:bg-rose-50 hover:text-rose-500 transition-all"
+                className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-slate-300 opacity-0 group-hover:opacity-100 hover:bg-rose-50 hover:text-rose-500 transition-all dark:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-rose-400"
                 aria-label="删除任务"
             >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
