@@ -96,12 +96,12 @@ startTransition(() => setList(value)); // 非紧急:昂贵 UI 更新
                     <AmberTopics
                         items={[
                             {
-                                to: '/topics/hooks/use-memo',
+                                to: '/hooks/use-memo',
                                 label: 'useMemo 与 memo',
                                 why: '浅比较配对才有收益,本规则最后才链到这里',
                             },
                             {
-                                to: '/topics/hooks/use-callback',
+                                to: '/hooks/use-callback',
                                 label: 'useCallback',
                                 why: '稳定的是函数身份,要和 memo 子组件一起才值钱',
                             },

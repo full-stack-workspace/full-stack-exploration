@@ -73,7 +73,7 @@ const SearchField = memo(({ ref, initialValue = '', inputTestId }: SearchFieldPr
         },
         selectAll: () => {
             const node = inputRef.current;
-            if (!node) return;
+            if (!node) {return;}
             node.focus();
             node.select();
         },
@@ -311,7 +311,7 @@ const UseImperativeHandleTopic = () => {
                             定时器 ID、上一拍、最新回调,都留在本组件。详见{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/hooks/use-ref"
+                                to="/hooks/use-ref"
                             >
                                 useRef 专题
                             </Link>
@@ -407,7 +407,7 @@ const UseImperativeHandleTopic = () => {
                             current 在 commit 之后才写好,第一次 render 仍是 null。调用放在事件或{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/hooks/use-layout-effect"
+                                to="/hooks/use-layout-effect"
                             >
                                 useLayoutEffect
                             </Link>

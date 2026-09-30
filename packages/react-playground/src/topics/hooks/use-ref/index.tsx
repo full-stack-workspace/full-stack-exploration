@@ -138,7 +138,7 @@ const TimerProbe = memo(() => {
     };
 
     const start = () => {
-        if (idRef.current != null) return;
+        if (idRef.current != null) {return;}
         idRef.current = setInterval(() => {
             setTicks((n) => n + 1);
         }, 1000);
@@ -311,7 +311,7 @@ const UseRefTopic = () => {
                                 一次渲染的快照。setState 只排队下一次渲染。要画到屏幕上,或要驱动子组件,用它。详见{' '}
                                 <Link
                                     className="text-primary-600 underline-offset-2 hover:underline"
-                                    to="/topics/hooks/use-state"
+                                    to="/hooks/use-state"
                                 >
                                     useState 专题
                                 </Link>
@@ -357,7 +357,7 @@ const UseRefTopic = () => {
                     订阅类副作用仍应走{' '}
                     <Link
                         className="text-primary-600 underline-offset-2 hover:underline"
-                        to="/topics/hooks/use-effect"
+                        to="/hooks/use-effect"
                     >
                         useEffect
                     </Link>
@@ -430,7 +430,7 @@ const UseRefTopic = () => {
                             渲染时 current 仍是初始值(通常 null)。读布局、量宽高,放到{' '}
                             <Link
                                 className="text-primary-600 underline-offset-2 hover:underline"
-                                to="/topics/hooks/use-layout-effect"
+                                to="/hooks/use-layout-effect"
                             >
                                 useLayoutEffect
                             </Link>

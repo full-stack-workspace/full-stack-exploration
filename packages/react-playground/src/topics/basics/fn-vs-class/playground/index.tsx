@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 函数组件与类组件 · 对照演练(/topics/basics/fn-vs-class-playground)
+ * 函数组件与类组件 · 对照演练(/basics/fn-vs-class-playground)
  * ============================================================================
  *
  * 三组同一操作、两种模型:延时读数、换用户草稿、换房间订阅。
@@ -13,7 +13,8 @@ import { memo } from 'react';
 
 import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
-import { NavBanner } from '../components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { FN_VS_CLASS_NAV_LINKS, FN_VS_CLASS_NAV_TITLE } from '../nav';
 import { RelatedTopics } from '../components/RelatedTopics';
 import { DerivedStateDemo } from './components/DerivedStateDemo';
 import { EffectVsLifecycleDemo } from './components/EffectVsLifecycleDemo';
@@ -25,7 +26,12 @@ const FnVsClassPlayground = memo(() => {
             title="函数组件与类组件 · 对照演练"
             description="先点同一组按钮,再看左右栏读到的值为什么不同 —— 那就是新旧心智模型的差别"
         >
-            <NavBanner current="playground" />
+            <TopicNav
+                title={FN_VS_CLASS_NAV_TITLE}
+                links={FN_VS_CLASS_NAV_LINKS}
+                current="/basics/fn-vs-class-playground"
+                category="basics"
+            />
 
             <TopicSection
                 title="1. 延时读数:盒子 vs 快照"
@@ -50,7 +56,7 @@ setTimeout(() => setLater(count), 800);                          // 快照`}
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/basics/list-key',
+                                to: '/basics/list-key',
                                 label: '列表与 key',
                                 why: 'key 变了是另一个实例,这是重置内部 state 的正路,不是 gDSFP',
                             },
@@ -68,17 +74,17 @@ setTimeout(() => setLater(count), 800);                          // 快照`}
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/hooks/use-effect',
+                                to: '/hooks/use-effect',
                                 label: 'useEffect',
                                 why: 'cleanup 永远先于同一次的新 setup;对应 willUnmount + didUpdate 退订',
                             },
                             {
-                                to: '/topics/advanced/error-boundary',
+                                to: '/advanced/error-boundary',
                                 label: 'Error Boundary',
                                 why: '渲染期 catch 仍只能 class;叶子继续用函数组件',
                             },
                             {
-                                to: '/topics/basics/fn-vs-class-practice',
+                                to: '/basics/fn-vs-class-practice',
                                 label: '看板实战',
                                 why: '下一页把时钟、可取消请求、过滤派生拆进 Hook,对照 class 实例字段',
                             },

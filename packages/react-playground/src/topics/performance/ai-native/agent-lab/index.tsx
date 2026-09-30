@@ -12,10 +12,12 @@
 import { memo } from 'react';
 
 import { TopicPage, TopicSection } from '../../../../components/TopicPage';
+import { TopicNav } from '../../../../components/TopicNav';
 import { Diagram } from '../../../../components/Diagram';
 import { AmberTopics } from '../../components/AmberTopics';
 import { P, Stack } from '../../components/Prose';
 import { SeriesNav } from '../../components/SeriesNav';
+import { AI_NATIVE_AGENT_NAV_LINKS } from '../nav';
 import { AgentPipeline } from './components/AgentPipeline';
 import { QualityTradeoff } from './components/QualityTradeoff';
 
@@ -26,6 +28,13 @@ const AgentLab = memo(() => {
             description="TTFT 只证明模型开口了。Agent 的北极星仍是 TTFUI,瓶颈经常在工具瀑布和取消是否真停"
         >
             <SeriesNav current="ai-native-agent" />
+            {/* 相邻专题:本条工具链的事件流如何驱动 UI,见 Agent 实战分类 */}
+            <TopicNav
+                title="相邻专题:把这条工具链接进界面(SSE → Runtime Store → UI)的完整演练,见"
+                links={AI_NATIVE_AGENT_NAV_LINKS}
+                current="/performance/ai-native-agent"
+                category="agent"
+            />
 
             <TopicSection
                 title="1. Agent 的耗时链比聊天长一截"

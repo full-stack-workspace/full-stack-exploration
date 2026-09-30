@@ -1,0 +1,7 @@
+# React 权衡录 (React Tradeoffs)
+# ⚠️ 部署后:在 src/config/site.ts 填写 SITE_URL,并把下方 Sitemap 换成绝对地址
+# 形如 https://<你的域名>/sitemap.xml(robots 协议要求 Sitemap 为绝对 URL)
+User-agent: *
+Allow: /
+
+Sitemap: /sitemap.xml

@@ -24,17 +24,17 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
     bgGradient,
 }) => (
     <div
-        className={`rounded-2xl p-5 ${bgGradient} border border-white/60 shadow-sm hover:shadow-md transition-shadow`}
+        className={`rounded-2xl p-5 ${bgGradient} border border-white/60 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow`}
     >
         <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium text-gray-500">{title}</span>
+            <span className="text-sm font-medium text-gray-500 dark:text-slate-400">{title}</span>
             <div
                 className={`w-10 h-10 rounded-xl ${color} flex items-center justify-center text-white text-lg`}
             >
                 {icon}
             </div>
         </div>
-        <div className="text-2xl font-bold text-gray-800">
+        <div className="text-2xl font-bold text-gray-800 dark:text-slate-100">
             {formatAmount(value)}
         </div>
     </div>
@@ -51,27 +51,27 @@ export const SummaryCards: React.FC<SummaryCardsProps> = ({
     totalExpense,
     balance,
 }) => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <SummaryCard
             title="总收入"
             value={totalIncome}
             icon={<RiseOutlined />}
             color="bg-green-500"
-            bgGradient="bg-gradient-to-br from-green-50 to-emerald-50"
+            bgGradient="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950"
         />
         <SummaryCard
             title="总支出"
             value={totalExpense}
             icon={<FallOutlined />}
             color="bg-red-500"
-            bgGradient="bg-gradient-to-br from-red-50 to-rose-50"
+            bgGradient="bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-950 dark:to-rose-950"
         />
         <SummaryCard
             title="余额"
             value={balance}
             icon={<WalletOutlined />}
             color="bg-indigo-500"
-            bgGradient="bg-gradient-to-br from-indigo-50 to-purple-50"
+            bgGradient="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950 dark:to-purple-950"
         />
     </div>
 );

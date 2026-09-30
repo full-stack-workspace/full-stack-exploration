@@ -282,7 +282,7 @@ const UseStateTopic = () => {
                             <dt className="font-medium text-sky-600">useReducer</dt>
                             <dd className="mt-1 text-xs leading-relaxed text-gray-400">
                                 多字段必须一起变、更新规则复杂、想把「发生了什么」从 UI 里抽出来时再升级。详见{' '}
-                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/topics/hooks/use-reducer">
+                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/hooks/use-reducer">
                                     useReducer 专题
                                 </Link>
                                 。

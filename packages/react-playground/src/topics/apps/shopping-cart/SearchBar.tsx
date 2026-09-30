@@ -5,7 +5,7 @@
 import React, { useCallback } from "react";
 import { Input, Checkbox, Button } from 'antd';
 import type { CheckboxChangeEvent } from 'antd/lib/checkbox';
-import type { SearchInfo } from './index';
+import type { SearchInfo } from './interface';
 
 // 搜索栏组件的属性接口
 interface SearchBarProps {
@@ -40,7 +40,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ placeholder, searchInfo, o
     }, [searchInfo, onSearch]);
 
     return (
-        <div className="flex items-center bg-white rounded-md shadow-md p-2">
+        <div className="flex items-center bg-white dark:bg-slate-800 rounded-md shadow-md p-2">
             <div className="flex flex-col gap-2">
                 <Input
                     type="text"

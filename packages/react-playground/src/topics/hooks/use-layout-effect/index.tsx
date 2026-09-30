@@ -207,7 +207,7 @@ const UseLayoutEffectTopic = () => {
                             <dt className="font-medium text-sky-600">useEffect</dt>
                             <dd className="mt-1 text-xs leading-relaxed text-gray-400">
                                 订阅、请求、打点、和绘制无关的同步。默认用它;更新时它的 cleanup 发生在用户已经看见新 UI 之后。详见{' '}
-                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/topics/hooks/use-effect">
+                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/hooks/use-effect">
                                     useEffect 专题
                                 </Link>
                                 。

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 函数组件与类组件 · 看板实战(/topics/basics/fn-vs-class-practice)
+ * 函数组件与类组件 · 看板实战(/basics/fn-vs-class-practice)
  * ============================================================================
  *
  * 同一份行情看板:过滤、时钟、可取消报价。class 全堆在实例上;
@@ -14,7 +14,8 @@ import { memo } from 'react';
 import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { ComparePane } from '../components/ComparePane';
-import { NavBanner } from '../components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { FN_VS_CLASS_NAV_LINKS, FN_VS_CLASS_NAV_TITLE } from '../nav';
 import { RelatedTopics } from '../components/RelatedTopics';
 import { WatchClass } from './WatchClass';
 import { WatchFn } from './WatchFn';
@@ -25,7 +26,12 @@ const FnVsClassPractice = memo(() => {
             title="函数组件与类组件 · 看板实战"
             description="class 能做的过滤、时钟、可取消请求,函数组件用派生值 + Hook 做完,并且能单独复用、单独测"
         >
-            <NavBanner current="practice" />
+            <TopicNav
+                title={FN_VS_CLASS_NAV_TITLE}
+                links={FN_VS_CLASS_NAV_LINKS}
+                current="/basics/fn-vs-class-practice"
+                category="basics"
+            />
 
             <TopicSection
                 title="同一份需求,两种所有权"
@@ -89,17 +95,17 @@ function useQuote(symbolId: string | null) {
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/hooks/custom-hooks-guide',
+                                to: '/hooks/custom-hooks-guide',
                                 label: '自定义 Hooks 深入梳理',
                                 why: 'useQuote 这种领域 Hook 再往上组合成 useUserSearch,树不用包 HOC',
                             },
                             {
-                                to: '/topics/hooks/use-effect',
+                                to: '/hooks/use-effect',
                                 label: 'useEffect',
                                 why: '时钟 interval 与 fetch abort 都是「与这一拍对齐」的 cleanup',
                             },
                             {
-                                to: '/topics/advanced/component-comm-practice',
+                                to: '/advanced/component-comm-practice',
                                 label: '组件通信 · 工作台实战',
                                 why: '过滤进 URL、选中留页面,和本页「过滤派生、选中触发请求」是同一套所有权题',
                             },

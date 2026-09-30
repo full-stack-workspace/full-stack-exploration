@@ -41,7 +41,7 @@ const TodoComposer: React.FC<Props> = ({
                 onChange={e => onChange(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && onAdd()}
                 placeholder="输入新任务，回车添加…"
-                className="flex-1 rounded-xl border border-sky-100 bg-sky-50/60 px-4 py-2.5 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-300 transition-all"
+                className="flex-1 rounded-xl border border-sky-100 bg-sky-50/60 px-4 py-2.5 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-300 transition-all dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-sky-500"
             />
             <button
                 type="button"
@@ -55,7 +55,7 @@ const TodoComposer: React.FC<Props> = ({
 
         {/* 优先级 tag 选择器：点击对应 tag 设置新任务的优先级 */}
         <div className="flex items-center gap-2 mt-3 mb-4">
-            <span className="text-xs text-slate-400 mr-0.5">优先级</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500 mr-0.5">优先级</span>
             {PRIORITIES.map(p => {
                 const cfg = PRIORITY_CONFIG[p];
                 const active = priority === p;

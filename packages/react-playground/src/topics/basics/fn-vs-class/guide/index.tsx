@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 函数组件与类组件 · 范式梳理(/topics/basics/fn-vs-class-guide)
+ * 函数组件与类组件 · 范式梳理(/basics/fn-vs-class-guide)
  * ============================================================================
  *
  * React 新设计把 UI 当成「props + state 的计算结果」,而不是「活在实例上
@@ -17,7 +17,8 @@ import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { Diagram } from '../../../../components/Diagram';
 import { FlowList, type FlowStep } from '../../../../components/FlowList';
-import { NavBanner } from '../components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { FN_VS_CLASS_NAV_LINKS, FN_VS_CLASS_NAV_TITLE } from '../nav';
 import { RelatedTopics } from '../components/RelatedTopics';
 
 const P = ({ children }: { children: ReactNode }) => (
@@ -55,7 +56,12 @@ const FnVsClassGuide = memo(() => {
             title="函数组件与类组件 · 范式梳理"
             description="UI 是计算结果,不是实例上的可变对象;用 Hooks 覆盖 class 的能力,并说明新范式为什么更适合生产"
         >
-            <NavBanner current="guide" />
+            <TopicNav
+                title={FN_VS_CLASS_NAV_TITLE}
+                links={FN_VS_CLASS_NAV_LINKS}
+                current="/basics/fn-vs-class-guide"
+                category="basics"
+            />
 
             <TopicSection
                 title="1. 新设计想象:UI = f(props, state)"
@@ -181,12 +187,12 @@ function handleLater() {
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/hooks/use-state',
+                                to: '/hooks/use-state',
                                 label: 'useState',
                                 why: 'state 是一次渲染的快照;setState 只排队下一次计算',
                             },
                             {
-                                to: '/topics/hooks/use-ref',
+                                to: '/hooks/use-ref',
                                 label: 'useRef',
                                 why: '真要在回调里读「最新」而不触发渲染,用盒子,但要自己保证同步',
                             },
@@ -229,12 +235,12 @@ useEffect(() => {
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/hooks/use-effect',
+                                to: '/hooks/use-effect',
                                 label: 'useEffect',
                                 why: 'Paint 之后 setup;依赖变化时先 cleanup 再 setup,对应 class 三件套',
                             },
                             {
-                                to: '/topics/hooks/use-layout-effect',
+                                to: '/hooks/use-layout-effect',
                                 label: 'useLayoutEffect',
                                 why: '对应 getSnapshotBeforeUpdate / 读布局再写 DOM,仍是「与这一拍对齐」',
                             },
@@ -271,12 +277,12 @@ const displayName = user.name.toUpperCase();
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/basics/list-key',
+                                to: '/basics/list-key',
                                 label: '列表与 key',
                                 why: 'key 变了 React 认为是另一个实例,内部 state 自然清空',
                             },
                             {
-                                to: '/topics/advanced/component-comm-guide',
+                                to: '/advanced/component-comm-guide',
                                 label: '组件通信 · 决策梳理',
                                 why: '一份事实不要抄进第二份 state 再用 effect 追',
                             },
@@ -308,12 +314,12 @@ const { quote, status } = useQuote(selectedId);`}
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/hooks/custom-hooks-guide',
+                                to: '/hooks/custom-hooks-guide',
                                 label: '自定义 Hooks 深入梳理',
                                 why: 'Hook 复用的是逻辑不是状态;两处调用不会自动同步',
                             },
                             {
-                                to: '/topics/hooks/use-reducer',
+                                to: '/hooks/use-reducer',
                                 label: 'useReducer',
                                 why: '多字段必须一起变时,dispatch 替代 class 里一堆 setState 分支',
                             },
@@ -390,7 +396,7 @@ const { quote, status } = useQuote(selectedId);`}
                 <RelatedTopics
                     items={[
                         {
-                            to: '/topics/advanced/error-boundary',
+                            to: '/advanced/error-boundary',
                             label: 'Error Boundary',
                             why: '边界本身是 class;被它包住的叶子应是函数组件。事件和 Promise 拒绝仍要自己处理',
                         },
@@ -424,12 +430,12 @@ const { quote, status } = useQuote(selectedId);`}
                     <RelatedTopics
                         items={[
                             {
-                                to: '/topics/basics/fn-vs-class-playground',
+                                to: '/basics/fn-vs-class-playground',
                                 label: '对照演练',
                                 why: '延时读数、换用户草稿、换房间订阅,左右栏同一操作不同模型',
                             },
                             {
-                                to: '/topics/basics/fn-vs-class-practice',
+                                to: '/basics/fn-vs-class-practice',
                                 label: '看板实战',
                                 why: '生产形状:过滤派生、时钟、可取消请求,看 Hook 如何切开 class 的实例字段',
                             },

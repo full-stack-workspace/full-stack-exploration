@@ -29,7 +29,7 @@ describe('组件通信 · 决策梳理', () => {
         expect(screen.getByText('数据归谁?')).toBeInTheDocument();
         expect(screen.getByRole('link', { name: 'Context API' })).toHaveAttribute(
             'href',
-            '/topics/advanced/context',
+            '/advanced/context',
         );
         expect(screen.getByRole('link', { name: 'useSyncExternalStore 深入梳理' })).toHaveAttribute(
             'href',

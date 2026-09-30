@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '../../../test/utils';
+import { TopicSection } from '../../../components/TopicPage';
 import { RecordTable } from './RecordTable';
 import type { BookkeepingRecord, DateRange } from './types';
 import dayjs from 'dayjs';
@@ -23,13 +24,16 @@ describe('RecordTable', () => {
         records: BookkeepingRecord[] = mockRecords,
         dateRange: DateRange = null,
     ) =>
+        // 页面骨架重组后,"收支明细"标题由 TopicSection 提供,RecordTable 只渲染工具栏与表格
         render(
-            <RecordTable
-                records={records}
-                onDelete={mockOnDelete}
-                dateRange={dateRange}
-                onDateRangeChange={mockOnDateRangeChange}
-            />,
+            <TopicSection title="收支明细">
+                <RecordTable
+                    records={records}
+                    onDelete={mockOnDelete}
+                    dateRange={dateRange}
+                    onDateRangeChange={mockOnDateRangeChange}
+                />
+            </TopicSection>,
         );
 
     describe('渲染', () => {

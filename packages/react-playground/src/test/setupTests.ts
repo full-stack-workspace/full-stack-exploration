@@ -4,7 +4,7 @@
  */
 
 import '@testing-library/jest-dom';
-import { expect, afterEach, vi, beforeAll, afterAll } from 'vitest';
+import { expect, afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import * as matchers from '@testing-library/jest-dom/matchers';
 
@@ -51,30 +51,16 @@ global.ResizeObserver = class ResizeObserver {
   unobserve() {}
 } as any;
 
-// 清理 console 错误和警告（可选，用于测试中的静默输出）
-const originalError = console.error;
-const originalWarn = console.warn;
-
-beforeAll(() => {
-  console.error = (...args: any[]) => {
-    // 过滤 React 18 的一些已知警告
-    if (
-      typeof args[0] === 'string' &&
-      (args[0].includes('Warning: ReactDOM.render') ||
-        args[0].includes('not wrapped in act'))
-    ) {
-      return;
-    }
-    originalError.call(console, ...args);
-  };
-
-  console.warn = (...args: any[]) => {
-    // 可以在这里过滤特定的警告
-    originalWarn.call(console, ...args);
-  };
+// antd Table 等组件会用 window.getComputedStyle(el, pseudoElt) 读伪元素样式,
+// jsdom 只实现了单参数版本,带伪元素参数时会往 stderr 刷
+// "Not implemented: window.getComputedStyle(elt, pseudoElt)"。
+// 这里包一层丢掉第二个参数,走 jsdom 已实现的路径,消除噪音。
+const originalGetComputedStyle = window.getComputedStyle.bind(window);
+Object.defineProperty(window, 'getComputedStyle', {
+  writable: true,
+  value: (el: Element) => originalGetComputedStyle(el),
 });
 
-afterAll(() => {
-  console.error = originalError;
-  console.warn = originalWarn;
-});
+// 注意:这里刻意不过滤 console。React 19 的 act 警告是有价值的信号 ——
+// 若某条用例触发 act 警告,应改用 user-event / waitFor / act 修测试本身,
+// 而不是在全局把警告吞掉。

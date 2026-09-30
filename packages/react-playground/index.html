@@ -7,12 +7,33 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="React Playground：把生产里的判断写成可运行的对照。渲染、状态、通信、性能治理、RSC 与 AI-Native，按专题展开。">
-    <meta name="keywords" content="React, React 19, Hooks, 组件通信, 性能治理, RSC">
+    <!-- 品牌文案由 rsbuild.config.ts 从 src/config/site.ts 派生注入,改文案只动 site.ts -->
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="React, React 19, Hooks, 组件通信, 性能治理, RSC, <%= siteName %>, <%= siteNameEn %>">
 
-    <title>React Playground · 生产级工程决策</title>
+    <title><%= title %></title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="128x128" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- 主题色:亮色对齐站点 primary(#4f46e5),暗色对齐暗色背景(slate-950) -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#4f46e5" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020617" />
+
+    <!--
+      Open Graph / Twitter 分享卡片。
+      注意:SITE_URL(src/config/site.ts)留空时 og:image 为相对路径 /og.png,
+      多数分享抓取器要求绝对 URL —— 部署后请在 site.ts 填上线上域名重新构建。
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <meta property="og:site_name" content="<%= siteName %>" />
+    <meta property="og:image" content="<%= ogImage %>" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= title %>" />
+    <meta name="twitter:description" content="<%= description %>" />
+
     <script>
         (function () {
             try {

@@ -1,12 +1,20 @@
 /**
- * @file index.tsx
+ * ============================================================================
+ * 待办事项清单(/apps/todo)
+ * ============================================================================
  *
- * @description 待办事项页面根组件，负责：
- *   - 持有全局状态（任务列表、筛选、清空确认）
- *   - 提供所有业务操作（增删改、切换完成状态、全选、清除等）
- *   - 组织 TodoComposer / TodoItem / 筛选栏 / 底部操作区的布局
+ * 综合应用:任务增删改、筛选、优先级与本地持久化。
+ *
+ * 功能特点:
+ * - 持有全局状态(任务列表、筛选、清空确认)
+ * - 提供所有业务操作(增删改、切换完成状态、全选、清除等)
+ * - 组织 TodoComposer / TodoItem / 筛选栏 / 底部操作区,骨架复用 TopicPage
+ *
+ * @module topics/apps/todo
  */
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+
+import { TopicPage, TopicSection } from '../../../components/TopicPage';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import TodoComposer from './TodoComposer';
 import TodoFilterBar from './TodoFilterBar';
@@ -21,7 +29,7 @@ import {
 const uid = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
 /**
- * 空态展示的两种 variant 配置：
+ * 空态展示的两种 variant 配置:
  *   - empty    : 列表中完全没有任务
  *   - filtered : 有任务但当前筛选条件下没有匹配项
  */
@@ -40,31 +48,15 @@ const EMPTY_STATE_CONFIG = {
     },
 } as const;
 
-/** 页面顶部标题区：纯静态，不依赖任何 props/state */
-const TodoPageHeader = () => (
-    <header className="mb-6 text-center">
-        <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-sky-100 text-sky-700 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-            待办事项 · Todo List
-        </p>
-        <h1 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">
-            记录今天要完成的事情
-        </h1>
-        <p className="mt-2 text-sm sm:text-base text-slate-500">
-            添加、勾选、双击或点击铅笔编辑，数据自动保存在浏览器本地。
-        </p>
-    </header>
-);
-
-/** 列表为空时的占位提示，根据 variant 切换图标与文案 */
-const TodoEmptyState: React.FC<{ variant: keyof typeof EMPTY_STATE_CONFIG }> = ({
+/** 列表为空时的占位提示,根据 variant 切换图标与文案 */
+const TodoEmptyState = memo<{ variant: keyof typeof EMPTY_STATE_CONFIG }>(({
     variant,
 }) => {
     const { iconPath, title, subtitle } = EMPTY_STATE_CONFIG[variant];
     return (
-        <div className="flex flex-col items-center justify-center py-14 text-slate-400">
+        <div className="flex flex-col items-center justify-center py-14 text-slate-400 dark:text-slate-500">
             <svg
-                className="h-12 w-12 mb-4 text-sky-200"
+                className="h-12 w-12 mb-4 text-sky-200 dark:text-sky-800"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -76,13 +68,15 @@ const TodoEmptyState: React.FC<{ variant: keyof typeof EMPTY_STATE_CONFIG }> = (
                     d={iconPath}
                 />
             </svg>
-            <p className="text-sm font-medium text-slate-500">{title}</p>
-            <p className="text-xs text-slate-400 mt-1">{subtitle}</p>
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{title}</p>
+            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">{subtitle}</p>
         </div>
     );
-};
+});
 
-const Todo: React.FC = () => {
+TodoEmptyState.displayName = 'TodoEmptyState';
+
+const Todo = memo(() => {
     const [input, setInput] = useState('');
     const [priority, setPriority] = useState<Priority>('medium');
     const [filter, setFilter] = useState<FilterType>('all');
@@ -185,93 +179,96 @@ const Todo: React.FC = () => {
     /* ---- render ---- */
 
     return (
-        <div className="min-h-full flex items-center justify-center bg-gradient-to-br from-sky-50 via-white to-indigo-50 px-4 py-6 sm:py-10">
-            <div className="w-full max-w-3xl">
-                <TodoPageHeader />
+        <TopicPage
+            title="待办事项清单"
+            description="增删改查、筛选、优先级与本地持久化 —— 添加、勾选、双击或点击铅笔编辑,数据自动保存在浏览器本地"
+        >
+            <TopicSection
+                title="任务清单"
+                note="输入框受控于页面状态;筛选、统计、批量操作全部由同一份 todos 派生,无冗余状态"
+            >
+                {/* 新任务输入区:文本输入、添加按钮、优先级选择 */}
+                <TodoComposer
+                    value={input}
+                    priority={priority}
+                    onChange={setInput}
+                    onPriorityChange={setPriority}
+                    onAdd={addTodo}
+                />
 
-                {/* Card */}
-                <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl shadow-sky-100 border border-sky-50 p-4 sm:p-6">
-                    {/* 新任务输入区：文本输入、添加按钮、优先级选择 */}
-                    <TodoComposer
-                        value={input}
-                        priority={priority}
-                        onChange={setInput}
-                        onPriorityChange={setPriority}
-                        onAdd={addTodo}
-                    />
-
-                    {/* 筛选栏：tab 切换 + 任务数量统计 */}
-                    {todos.length > 0 && (
-                        <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                            <TodoFilterBar
-                                filter={filter}
-                                remainingCount={remainingCount}
-                                completedCount={completedCount}
-                                onFilterChange={setFilter}
-                            />
-                        </div>
-                    )}
-
-                    {/* List */}
-                    <div className="max-h-[400px] overflow-y-auto pr-1">
-                        {filtered.length === 0 ? (
-                            <TodoEmptyState
-                                variant={todos.length === 0 ? 'empty' : 'filtered'}
-                            />
-                        ) : (
-                            <ul className="space-y-2">
-                                {filtered.map(todo => (
-                                    <TodoItemComponent
-                                        key={todo.id}
-                                        item={todo}
-                                        onToggle={() => toggleTodo(todo.id)}
-                                        onDelete={() => deleteTodo(todo.id)}
-                                        onEdit={text => editTodo(todo.id, text)}
-                                        onPriorityChange={p => changePriority(todo.id, p)}
-                                    />
-                                ))}
-                            </ul>
-                        )}
+                {/* 筛选栏:tab 切换 + 任务数量统计 */}
+                {todos.length > 0 && (
+                    <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                        <TodoFilterBar
+                            filter={filter}
+                            remainingCount={remainingCount}
+                            completedCount={completedCount}
+                            onFilterChange={setFilter}
+                        />
                     </div>
+                )}
 
-                    {/* Footer actions */}
-                    {todos.length > 0 && (
-                        <div className="flex flex-wrap items-center justify-between gap-2 mt-4 pt-3 border-t border-slate-100 text-xs sm:text-sm">
-                            <div className="flex items-center gap-3">
-                                <button
-                                    type="button"
-                                    onClick={toggleAll}
-                                    className="text-slate-500 hover:text-sky-600 transition-colors"
-                                >
-                                    {allCompleted ? '取消全选' : '全部完成'}
-                                </button>
-                                {completedCount > 0 && (
-                                    <button
-                                        type="button"
-                                        onClick={clearCompleted}
-                                        className="text-slate-500 hover:text-rose-500 transition-colors"
-                                    >
-                                        清除已完成 ({completedCount})
-                                    </button>
-                                )}
-                            </div>
-                            <button
-                                type="button"
-                                onClick={handleClearAll}
-                                className={`transition-all ${
-                                    confirmClearAll
-                                        ? 'text-rose-600 font-medium animate-pulse'
-                                        : 'text-slate-400 hover:text-rose-500'
-                                }`}
-                            >
-                                {confirmClearAll ? '再次点击确认清空' : '全部清空'}
-                            </button>
-                        </div>
+                {/* List */}
+                <div className="max-h-[400px] overflow-y-auto pr-1">
+                    {filtered.length === 0 ? (
+                        <TodoEmptyState
+                            variant={todos.length === 0 ? 'empty' : 'filtered'}
+                        />
+                    ) : (
+                        <ul className="space-y-2">
+                            {filtered.map(todo => (
+                                <TodoItemComponent
+                                    key={todo.id}
+                                    item={todo}
+                                    onToggle={() => toggleTodo(todo.id)}
+                                    onDelete={() => deleteTodo(todo.id)}
+                                    onEdit={text => editTodo(todo.id, text)}
+                                    onPriorityChange={p => changePriority(todo.id, p)}
+                                />
+                            ))}
+                        </ul>
                     )}
                 </div>
-            </div>
-        </div>
+
+                {/* Footer actions */}
+                {todos.length > 0 && (
+                    <div className="flex flex-wrap items-center justify-between gap-2 mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs sm:text-sm">
+                        <div className="flex items-center gap-3">
+                            <button
+                                type="button"
+                                onClick={toggleAll}
+                                className="text-slate-500 hover:text-sky-600 dark:text-slate-400 dark:hover:text-sky-400 transition-colors"
+                            >
+                                {allCompleted ? '取消全选' : '全部完成'}
+                            </button>
+                            {completedCount > 0 && (
+                                <button
+                                    type="button"
+                                    onClick={clearCompleted}
+                                    className="text-slate-500 hover:text-rose-500 dark:text-slate-400 dark:hover:text-rose-400 transition-colors"
+                                >
+                                    清除已完成 ({completedCount})
+                                </button>
+                            )}
+                        </div>
+                        <button
+                            type="button"
+                            onClick={handleClearAll}
+                            className={`transition-all ${
+                                confirmClearAll
+                                    ? 'text-rose-600 dark:text-rose-400 font-medium animate-pulse'
+                                    : 'text-slate-400 hover:text-rose-500 dark:text-slate-500 dark:hover:text-rose-400'
+                            }`}
+                        >
+                            {confirmClearAll ? '再次点击确认清空' : '全部清空'}
+                        </button>
+                    </div>
+                )}
+            </TopicSection>
+        </TopicPage>
     );
-};
+});
+
+Todo.displayName = 'Todo';
 
 export default Todo;

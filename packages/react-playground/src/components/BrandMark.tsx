@@ -3,8 +3,10 @@
  * BrandMark — 站点标识
  * ============================================================================
  *
- * 顶栏与浏览器图标共用的标记:靛色圆角方印上叠着两页,后页从左上露出一角,
- * 前页写着两行。表示把判断写成可对照的一页。图形与 public/favicon.svg 保持一致。
+ * 顶栏、抽屉导航与浏览器图标共用的标记。图形语义贴合「权衡录 · 对照取舍」:
+ * 靛色圆角擂台内两页相向而立(浅色 vs 白色),中线处一枚琥珀色星火,
+ * 表示两条技术路线在此对照、分出取舍。造型全部是大色块,16px favicon 可辨。
+ * 图形与 public/favicon.svg 保持一致。
  *
  * @module components/BrandMark
  */
@@ -49,10 +51,35 @@ export function BrandMark({ className = 'h-10 w-10' }: BrandMarkProps) {
             <g clipPath={`url(#${clip})`}>
                 <rect width="32" height="32" fill={`url(#${bg})`} />
                 <ellipse cx="8" cy="-4" rx="16" ry="12" fill="#fff" fillOpacity="0.14" />
-                <rect x="5.2" y="5.5" width="14.6" height="15.6" rx="3" fill="#E0E7FF" />
-                <rect x="12" y="11" width="14.6" height="15.6" rx="3" fill="#fff" />
-                <rect x="14.5" y="14.5" width="9.4" height="1.8" rx="0.9" fill="#3730A3" />
-                <rect x="14.5" y="18" width="6.2" height="1.8" rx="0.9" fill="#6366F1" />
+                {/* 对阵双方:两页相向微倾,浅色为守方、白色为攻方 */}
+                <rect
+                    x="5"
+                    y="8.5"
+                    width="9"
+                    height="15"
+                    rx="2.4"
+                    fill="#C7D2FE"
+                    transform="rotate(-9 9.5 16)"
+                />
+                <rect
+                    x="18"
+                    y="8.5"
+                    width="9"
+                    height="15"
+                    rx="2.4"
+                    fill="#fff"
+                    transform="rotate(9 22.5 16)"
+                />
+                {/* 中线星火:对照分出胜负的一瞬 */}
+                <rect
+                    x="13.7"
+                    y="13.7"
+                    width="4.6"
+                    height="4.6"
+                    rx="1.1"
+                    fill="#FBBF24"
+                    transform="rotate(45 16 16)"
+                />
             </g>
         </svg>
     );

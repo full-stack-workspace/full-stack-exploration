@@ -45,6 +45,9 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx,mjs,cjs}": [
       "eslint --fix --no-warn-ignored"
+    ],
+    "packages/react-playground/**/*.{ts,tsx,js,jsx}": [
+      "bash -c 'cd packages/react-playground && args=(); for f in \"$@\"; do args+=(\"${f##*packages/react-playground/}\"); done; eslint --fix --no-warn-ignored \"${args[@]}\"' --"
     ]
   },
   "engines": {

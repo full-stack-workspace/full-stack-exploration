@@ -2,7 +2,7 @@
  * @file useLocalStorage.test.ts
  *
  * @description useLocalStorage Hook 单元测试
- * 验证初始读取、同步写入、异常降级等核心行为。
+ * 验证初始读取、同步写入、key 变更重读、异常降级等核心行为。
  */
 
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
@@ -65,5 +65,49 @@ describe('useLocalStorage', () => {
             });
         }).not.toThrow();
         expect(result.current[0]).toBe(42);
+    });
+
+    it('key 变化时重读新 key 的已有存储值', () => {
+        localStorage.setItem('key-a', JSON.stringify('value-a'));
+        localStorage.setItem('key-b', JSON.stringify('value-b'));
+
+        const { result, rerender } = renderHook(
+            ({ key }) => useLocalStorage(key, 'default'),
+            { initialProps: { key: 'key-a' } },
+        );
+        expect(result.current[0]).toBe('value-a');
+
+        rerender({ key: 'key-b' });
+        expect(result.current[0]).toBe('value-b');
+    });
+
+    it('key 变化时不把旧 value 写入新 key', () => {
+        localStorage.setItem('key-a', JSON.stringify('value-a'));
+        // key-b 已有自己的存储值,不应被 key-a 的旧值覆盖
+        localStorage.setItem('key-b', JSON.stringify('value-b'));
+
+        const { rerender } = renderHook(({ key }) => useLocalStorage(key, 'default'), {
+            initialProps: { key: 'key-a' },
+        });
+        rerender({ key: 'key-b' });
+
+        expect(JSON.parse(localStorage.getItem('key-b') ?? 'null')).toBe('value-b');
+        // 旧 key 的存储内容不受影响
+        expect(JSON.parse(localStorage.getItem('key-a') ?? 'null')).toBe('value-a');
+    });
+
+    it('key 变化到新 key 无存储时使用 fallback，且后续 setter 写入新 key', () => {
+        localStorage.setItem('key-a', JSON.stringify('value-a'));
+
+        const { result, rerender } = renderHook(({ key }) => useLocalStorage(key, 'default'), {
+            initialProps: { key: 'key-a' },
+        });
+        rerender({ key: 'key-empty' });
+        expect(result.current[0]).toBe('default');
+
+        act(() => {
+            result.current[1]('new-value');
+        });
+        expect(JSON.parse(localStorage.getItem('key-empty') ?? 'null')).toBe('new-value');
     });
 });

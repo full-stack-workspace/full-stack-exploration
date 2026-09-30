@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 自定义 Hooks 原子演练(/topics/hooks/custom-hooks-playground)
+ * 自定义 Hooks 原子演练(/hooks/custom-hooks-playground)
  * ============================================================================
  *
  * 8 个生产级基础 Hook 逐个交互演示:每个 TopicSection 包含
@@ -14,7 +14,8 @@ import { memo } from 'react';
 
 import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
-import { NavBanner } from './components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { CUSTOM_HOOKS_NAV_LINKS, CUSTOM_HOOKS_NAV_TITLE } from '../nav';
 import { ToggleDemo } from './components/ToggleDemo';
 import { PreviousDemo } from './components/PreviousDemo';
 import { DebouncedDemo } from './components/DebouncedDemo';
@@ -30,7 +31,12 @@ const CustomHooksPlayground = memo(() => {
             title="自定义 Hooks 原子演练"
             description="8 个生产级基础 Hook 逐个交互演示 —— 每个都可直接拷进项目使用,源码见 custom-hooks/lib/"
         >
-            <NavBanner current="playground" />
+            <TopicNav
+                title={CUSTOM_HOOKS_NAV_TITLE}
+                links={CUSTOM_HOOKS_NAV_LINKS}
+                current="/hooks/custom-hooks-playground"
+                category="hooks"
+            />
 
             <TopicSection
                 title="useToggle — 布尔状态开关"

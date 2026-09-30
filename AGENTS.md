@@ -71,31 +71,35 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 - **Manual code splitting** via `rolldownOptions.output.manualChunks` (react, react-dom)
 - **Design Tokens system** in `src/styles/tokens.css` — CSS custom properties in three layers: Primitive → Semantic → Component, with `[data-theme="dark"]` overrides
 
-### react-playground — Rsbuild + React 19 练习场
+### react-playground — Rsbuild + React 19 练习场(站点品牌:React 权衡录 / React Tradeoffs)
 
 **Tech stack:** Rsbuild 1 (Rspack), React 19, TypeScript strict, React Relay 19 (GraphQL), Ant Design 6, Tailwind CSS 3 + SCSS, React Router 6, Vitest 2 + React Testing Library
 
 **Directory conventions:**
+- `src/config/site.ts` — **站点品牌单一数据源**(站点名 React 权衡录 / React Tradeoffs、slogan、og 描述、SITE_URL);index.html 标题与 og/twitter 元信息经 `rsbuild.config.ts` 的 `templateParameters` 注入,顶栏、DocumentTitle、首页 Hero 全部从这里派生
 - `src/config/topics.tsx` — **专题注册表(全站单一数据源)**:路由、顶部导航、侧边栏、首页卡片全部从 `TOPICS` 派生;新增专题 = 新建目录 + 注册一行(详见包 README)
-- `src/topics/<category>/<name>/` — 专题演示页;category 为 `basics` / `hooks` / `advanced` / `apps` / `agent` / `performance`(综合应用如 todo/bookkeeping/shopping-cart 也在此,co-locate 组件/类型/mock 数据)
-- `src/topics/basics/fn-vs-class/` — 「函数组件与类组件」三页专题(basics 分类):`guide/` 新设计想象与 class→Hooks 对照、`playground/` 快照/派生/订阅对照演练、`practice/` 行情看板(class 实例 vs Hook 拆分);三页页头互链(indigo 系 NavBanner);Error Boundary 仍只能用 class,链到进阶专题
-- `src/topics/basics/rsc/` — 「RSC」两页(basics 分类):`guide/` 讲清 RSC 不是 SSR、与 Client Component 的边界和 children 槽、生产选型与实践;`boundary/` 为规则示意(包 / 载荷 / 非法 import)。练习场是 `createRoot` SPA,不执行 Server Component;页头注明这一点
-- `src/topics/agent/` — 「Agent 实战」分类(basePath `/agent`):演示「SSE 事件流 → React 之外的 Runtime Store → useSyncExternalStore → UI」链路;`runtime/` 为不 import React 的纯 TS 核心(types/reducer/RuntimeStore/script/MockSseClient),`react-adapter/` 为 Provider + 手写 Selector 的 hooks,`agent-chat/` 为演示页,`sync-store-guide/` 为 useSyncExternalStore 梳理页
-- `src/topics/hooks/custom-hooks/` — 「自定义 Hooks」三页专题(hooks 分类):`lib/` 为 8 个生产级原子 Hook + renderHook 契约测试 + barrel 导出,`playground/` 原子演练页、`composition/` 组合实战页(原子 Hook 分层组合成领域 Hook useUserSearch + mock 接口)、`guide/` 深入梳理页;三页页头互链(violet 系 NavBanner)
-- `src/topics/advanced/component-comm/` — 「组件通信」三页专题(advanced 分类,basePath `/topics/advanced`):`guide/` 决策梳理(四问 + 通道梯子)、`playground/` 模式对照演练、`practice/` 工单工作台实战;三页页头互链(sky 系 NavBanner);已有机制(Context / reducer / ref / 外部 Store / Relay)用卡片链到对应专题,本专题不重复展开
-- `src/topics/performance/` — 「性能优化」分类(basePath `/performance`):治理全链路(`governance/` 原则约定 / 指标实验室 / 架构 / 实现六规则 / 排查含上线六行档案)、渲染调度(`render-scheduling-guide` → `transition-deferred` → `suspense-ui`，工具层在 `lab/`)、AI-Native(`ai-native/` 指标金字塔 + 流式演练 + Agent 工具链);页头 `SeriesNav` 三条系列互链;旧 `/topics/advanced/suspense` 已下线并入 suspense-ui
+- `src/topics/<category>/<name>/` — 专题演示页;category 为 `basics` / `hooks` / `advanced` / `internals` / `performance` / `agent` / `apps`(综合应用如 todo/bookkeeping/shopping-cart 也在此,co-locate 组件/类型/mock 数据);**basePath 全部是与目录同名的裸前缀**(`/basics`、`/hooks`、`/advanced` 等),旧 `/topics/<key>/*` 由 `src/config/legacy-routes.ts` 通配迁移
+- `src/topics/basics/fn-vs-class/` — 「函数组件与类组件」三页专题(basics 分类):`guide/` 新设计想象与 class→Hooks 对照、`playground/` 快照/派生/订阅对照演练、`practice/` 行情看板(class 实例 vs Hook 拆分);三页页头互链(共享 `TopicNav` + 本专题 `nav.tsx`,indigo 系);Error Boundary 仍只能用 class,链到进阶专题
+- `src/topics/advanced/rsc/` — 「RSC」两页(advanced 分类,自 basics 挪入):`guide/` 讲清 RSC 不是 SSR、与 Client Component 的边界和 children 槽、生产选型与实践;`boundary/` 为规则示意(包 / 载荷 / 非法 import)。练习场是 `createRoot` SPA,不执行 Server Component;页头 TopicNav 的 note 注明这一点。basics 末页 `check/` 的理解检验仍保留 RSC 题(JSX、列表 key、事件、函数组件、RSC)
+- `src/topics/agent/` — 「Agent 实战」分类(basePath `/agent`):演示「SSE 事件流 → React 之外的 Runtime Store → useSyncExternalStore → UI」链路;`runtime/` 为不 import React 的纯 TS 核心(types/reducer/RuntimeStore/script/MockSseClient),`react-adapter/` 为 Provider + 手写 Selector 的 hooks,`agent-chat/` 为演示页,`sync-store-guide/` 为 useSyncExternalStore 梳理页;两页页头用 `TopicNav` 互链(`nav.tsx`),并与 `/performance/ai-native-agent` 交叉链接
+- `src/topics/hooks/` — Hooks 分类(basePath `/hooks`):内置 Hook 逐个击破 + `actions/`(React 19 Actions:form action / useActionState / useOptimistic / useFormStatus)+ `custom-hooks/` 三页专题;`custom-hooks/` 的 `lib/` 为 8 个生产级原子 Hook + renderHook 契约测试 + barrel 导出,`playground/` 原子演练页、`composition/` 组合实战页、`guide/` 深入梳理页;三页页头互链(共享 `TopicNav` + `nav.tsx`,violet 系)。分类末页 `check/` 为理解检验,较难题标星级和考察点
+- `src/topics/advanced/component-comm/` — 「组件通信」三页专题(advanced 分类,basePath `/advanced`):`guide/` 决策梳理(四问 + 通道梯子)、`playground/` 模式对照演练、`practice/` 工单工作台实战;三页页头互链(共享 `TopicNav` + `nav.tsx`,sky 系);已有机制(Context / reducer / ref / 外部 Store / Relay)用卡片链到对应专题,本专题不重复展开。同分类另有 `view-transition-activity/`(React 19.2 新组件)。分类末页 `check/` 为理解检验(通信、Context、错误边界、组合、数据边界)
+- `src/topics/internals/` — 「内部机制」分类(basePath `/internals`,插在进阶与性能之间):运行时总览 → Fiber → Render → Commit → 更新队列 → Hooks 链表 → Scheduler → 合成事件 → SSR 与水合 → 理解检验(目录仍叫 `interview/`,未改名 check);页头 `SeriesNav`(cyan)。练习场是 `createRoot` SPA,SSR 页只做示意并链到 RSC 梳理;列表 key、事件坑、transition 演练链到已有专题,不另写一遍
+- `src/topics/performance/` — 「性能优化」分类(basePath `/performance`):治理全链路(`governance/` 原则约定 / 指标实验室 / 架构 / 实现六规则 / 排查含上线六行档案)、渲染调度(`render-scheduling-guide` → `transition-deferred` → `suspense-ui`，工具层在 `lab/`)、AI-Native(`ai-native/` 指标金字塔 + 流式演练 + Agent 工具链,与 `/agent/agent-chat` 交叉链接)、`react-compiler/` 独立页(开/不开的四步判断框架)、末页理解检验;页头 `SeriesNav` 互链;旧 `/topics/advanced/suspense` 已下线并入 suspense-ui
 - `src/pages/Home/` — 首页(分类分组的专题导航 Hub,注册表驱动)
-- `src/components/` — 共享组件(`TopicPage`/`TopicSection` 专题页骨架、`TopicCard` 导航卡、`Loading`、`CodeBlock`/`Diagram` 梳理页展示块),`React.FC`/`memo` + `displayName` 模式,测试 co-located
+- `src/components/` — 共享组件(`TopicPage`/`TopicSection` 专题页骨架、`TopicCard` 导航卡、`TopicNav` 多页专题页头互链横幅(配色取注册表 CategoryTheme.banner,链接目录在各专题 `nav.tsx`,有防漂移测试)、`Loading`、`CodeBlock`/`Diagram` 梳理页展示块),`React.FC`/`memo` + `displayName` 模式,测试 co-located
 - `src/relay/` — Relay Environment setup;`fetchQueryWithMock` for dev, exported `fetchQuery` for production
 - `src/__generated__/` — Relay compiler artifacts (NEVER edit manually; regenerate with `pnpm relay`)
 - `src/test/` — shared test infra: `setupTests.ts` (jsdom mocks), `utils.tsx` (custom render with BrowserRouter)
 
 **Key patterns:**
 - Build via Rsbuild + Babel (`babel-plugin-relay` compiles `graphql` tags, artifacts → `src/__generated__/`)
+- `prebuild` 依次执行 `relay-compiler` 与 `node scripts/gen-sitemap.mjs`(从 topics 注册表正则提取 path 生成 `public/sitemap.xml`;SITE_URL 为空时输出相对路径占位,部署后需填写域名)
+- 壳层约定:品牌区不占 h1(每页仅内容区一个 h1);Header 前有「跳到主内容」skip link(落点 `#main-content`);md 以下顶栏导航收起为 antd Drawer 两级菜单;`path="*"` 渲染 NotFound 页(不再静默跳回首页);DocumentTitle 专题页格式为「专题 · 分类 · 站点名」以区分同名「理解检验」
 - Port **3002** (configured in `rsbuild.config.ts`; 3000/3001 are taken by next-playground/next-upload)
 - 设计 token:`tailwind.config.js` 定义 `primary` 色阶 / `rounded-card` / `shadow-card`,与 `App.tsx` 中 antd `ConfigProvider` 的 `theme.token`(colorPrimary `#4f46e5`)对齐
 - 专题页布局统一使用 `TopicPage` + `TopicSection`;导航一律用 react-router(`useNavigate`/`Link`),禁止 `<a href>` 站内跳转
-- 旧路径(`/todo`、`/bookkeeping` 等)由 `App.tsx` 的 `LEGACY_REDIRECTS` 重定向到新路径
+- 旧路径(`/todo`、`/bookkeeping` 等)由 `src/config/legacy-routes.ts` 集中定义重定向:具体规则 `LEGACY_REDIRECTS` + 前缀通配 `/topics/<key>/*` → `/<key>/*`,`App.tsx` 只消费;`resolveLegacyRedirect` 有单测(具体规则优先于通配,如 RSC 挪类)
 - Styling: Tailwind v3 utilities primary (note: **v3**, unlike other packages on v4), antd for form controls
 - Tests: jsdom environment, 70% coverage thresholds, `pnpm test:run` for CI mode;`src/config/topics.test.ts` 校验注册表完整性
 - Standalone package-level `eslint.config.js` (eslint-plugin-react + react-hooks); does NOT extend the root Next-oriented config

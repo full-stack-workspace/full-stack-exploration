@@ -18,3 +18,8 @@ export interface ProductItem {
     description?: string;
 }
 
+export interface SearchInfo {
+    searchText: string;
+    onlyShowInStock: boolean;
+}
+

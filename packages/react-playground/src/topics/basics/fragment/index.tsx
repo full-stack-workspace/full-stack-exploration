@@ -9,14 +9,14 @@
  * @module topics/basics/fragment
  */
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button, Segmented } from 'antd';
 
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
 
 /** 用 div 包裹的版本:DOM 中会多出一层 div */
 const WithDiv = () => (
-    <div className="contents-none">
+    <div>
         <li className="text-gray-700">列表项 A</li>
         <li className="text-gray-700">列表项 B</li>
     </div>
@@ -34,6 +34,8 @@ const FragmentTopic = () => {
     const [mode, setMode] = useState<'div' | 'fragment'>('fragment');
     // 通过渲染次数直观说明:多余的包裹节点会干扰 ul > li 结构与样式选择器
     const [probe, setProbe] = useState('');
+    // 探针直接拿 ul 的真实 DOM 节点,比从事件源 closest('div') 反查更稳健
+    const ulRef = useRef<HTMLUListElement>(null);
 
     return (
         <TopicPage
@@ -53,16 +55,17 @@ const FragmentTopic = () => {
                             { label: 'div 包裹', value: 'div' },
                         ]}
                     />
-                    <ul className="rounded-card border border-dashed border-gray-200 p-4">
+                    <ul ref={ulRef} className="rounded-card border border-dashed border-gray-200 p-4">
                         {mode === 'fragment' ? <WithFragment /> : <WithDiv />}
                     </ul>
                     <Button
-                        onClick={(e) => {
-                            const ul = (e.target as HTMLElement)
-                                .closest('div')!
-                                .querySelector('ul');
-                            const tags = Array.from(ul?.children ?? []).map(
-                                (n) => n.tagName.toLowerCase(),
+                        onClick={() => {
+                            const ul = ulRef.current;
+                            if (!ul) {
+                                return;
+                            }
+                            const tags = Array.from(ul.children).map((n) =>
+                                n.tagName.toLowerCase(),
                             );
                             setProbe(`ul 的直接子节点:[${tags.join(', ')}]`);
                         }}

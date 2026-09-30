@@ -24,8 +24,10 @@ import { Link } from 'react-router-dom';
 import { ExperimentOutlined } from '@ant-design/icons';
 
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
+import { TopicNav } from '../../../components/TopicNav';
 import { CodeBlock } from '../../../components/CodeBlock';
 import { Diagram } from '../../../components/Diagram';
+import { AGENT_NAV_LINKS } from '../nav';
 
 /* =================================================================
  * 正文辅助:小节正文段落
@@ -50,17 +52,12 @@ const SyncStoreGuideTopic = memo(() => {
             title="useSyncExternalStore 深入梳理"
             description="React 为「外部可变 Store」提供的并发安全订阅协议 —— 以本仓库 Agent Runtime 实现为样本"
         >
-            <div className="rounded-card border border-rose-100 bg-rose-50/60 px-4 py-3 text-xs text-rose-600 dark:border-rose-900 dark:bg-rose-950/40 dark:text-rose-300">
-                <ExperimentOutlined className="mr-1.5" />
-                本文每一节都对应
-                <Link
-                    to="/agent/agent-chat"
-                    className="mx-1 font-medium underline underline-offset-2 hover:text-rose-700 dark:hover:text-rose-200"
-                >
-                    Agent 对话运行时演示页
-                </Link>
-                中的真实代码与可观察现象,建议两边对照阅读。
-            </div>
+            <TopicNav
+                title="本文每一节都对应演示页中的真实代码与可观察现象,建议两边对照阅读:"
+                links={AGENT_NAV_LINKS}
+                current="/agent/use-sync-external-store"
+                category="agent"
+            />
 
             {/* ---------- 1. 它解决什么问题 ---------- */}
             <TopicSection

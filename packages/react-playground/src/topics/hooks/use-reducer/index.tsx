@@ -463,7 +463,7 @@ const UseReducerTopic = () => {
                             <dt className="font-medium text-emerald-600">useState</dt>
                             <dd className="mt-1 text-xs leading-relaxed text-gray-400">
                                 开关、计数、输入草稿。字段彼此独立,下一份值很好写。详见{' '}
-                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/topics/hooks/use-state">
+                                <Link className="text-primary-600 underline-offset-2 hover:underline" to="/hooks/use-state">
                                     useState 专题
                                 </Link>
                                 。

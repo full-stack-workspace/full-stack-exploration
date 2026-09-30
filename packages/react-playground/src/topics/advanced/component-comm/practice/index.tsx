@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 组件通信 · 工作台实战(/topics/advanced/component-comm-practice)
+ * 组件通信 · 工作台实战(/advanced/component-comm-practice)
  * ============================================================================
  *
  * 一个工单工作台,把四类事实拆到各自通道:
@@ -21,7 +21,8 @@ import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { Input } from '../../../../components/Input';
 import { useUser } from '../../../../context/UserProvider';
-import { NavBanner } from '../components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { COMPONENT_COMM_NAV_LINKS, COMPONENT_COMM_NAV_TITLE } from '../nav';
 import { TICKETS, type Ticket, type TicketStatus } from './tickets';
 
 type StatusFilter = 'all' | TicketStatus;
@@ -177,7 +178,12 @@ const ComponentCommPractice = memo(() => {
             title="组件通信 · 工作台实战"
             description="过滤进 URL,选中留在页面,草稿留在详情,当前用户走已有 Context —— 通道用错会立刻别扭"
         >
-            <NavBanner current="practice" />
+            <TopicNav
+                title={COMPONENT_COMM_NAV_TITLE}
+                links={COMPONENT_COMM_NAV_LINKS}
+                current="/advanced/component-comm-practice"
+                category="advanced"
+            />
 
             <TopicSection
                 title="通道对照(先看再点)"
@@ -200,7 +206,7 @@ const ComponentCommPractice = memo(() => {
                         <p className="font-medium text-gray-800 dark:text-slate-100">User Context · 当前用户</p>
                         <p className="mt-1 text-gray-400">
                             顶栏已有通道,见{' '}
-                            <Link className="text-primary-600 underline-offset-2 hover:underline" to="/topics/advanced/context">
+                            <Link className="text-primary-600 underline-offset-2 hover:underline" to="/advanced/context">
                                 Context API
                             </Link>
                         </p>

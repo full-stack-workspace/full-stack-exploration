@@ -8,24 +8,24 @@ import type { ProductItem } from './interface';
 // 商品分类组件
 const Category: React.FC<{ category: string }> = ({ category }) => {
     return (
-        <h3 className="text-lg font-bold text-gray-800">{category}</h3>
+        <h3 className="text-lg font-bold text-gray-800 dark:text-slate-100">{category}</h3>
     );
 }
 
 // 商品项组件
 const ProductItemComponent: React.FC<ProductItem> = ({ name, price, stock }) => {
     return (
-        <div className="bg-white shadow-md rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white dark:bg-slate-800 shadow-md rounded-lg p-4 flex items-center justify-between">
             <div className="flex items-center">
                 <div className="ml-4">
-                    <p className={`text-base font-bold ${!stock ? 'text-red-500' : 'text-gray-800'}`}>
+                    <p className={`text-base font-bold ${!stock ? 'text-red-500 dark:text-red-400' : 'text-gray-800 dark:text-slate-100'}`}>
                         {name}
                     </p>
                 </div>
             </div>
             <div className="text-right">
-                <p className="text-base font-bold text-gray-800">${price.toFixed(2)}</p>
-                <p className="text-sm text-gray-500">库存: {stock}</p>
+                <p className="text-base font-bold text-gray-800 dark:text-slate-100">${price.toFixed(2)}</p>
+                <p className="text-sm text-gray-500 dark:text-slate-400">库存: {stock}</p>
                 <button className="mt-2 px-4 py-2 bg-red-500 text-white rounded-md">Remove</button>
             </div>
         </div>
@@ -38,7 +38,7 @@ export const ProductList: React.FC<{ products: ProductItem[] }> = ({ products })
 
     if (!products?.length) {
         return (
-            <div className="text-center text-gray-500">
+            <div className="text-center text-gray-500 dark:text-slate-400">
                 购物车为空
             </div>
         );

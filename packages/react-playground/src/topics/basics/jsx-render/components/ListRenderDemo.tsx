@@ -7,7 +7,7 @@
  * - map + key 的基础列表渲染,以及 key 用 index 在「头部插入」时的
  *   状态错位现象(每行的备注输入框跟随位置而不是跟随数据)
  * - 嵌套列表与带 key 的 Fragment 分组写法
- * 更深入的 Diff 实验见「列表与 key」专题(/topics/basics/list-key)。
+ * 更深入的 Diff 实验见「列表与 key」专题(/basics/list-key)。
  *
  * @module topics/basics/jsx-render/components/ListRenderDemo
  */
@@ -106,7 +106,7 @@ export const ListRenderDemo = memo(() => {
                 <p className="text-xs leading-relaxed text-gray-400 dark:text-slate-500">
                     key 是 React Diff 时识别元素身份的线索;更系统的错位实验与原理见{' '}
                     <Link
-                        to="/topics/basics/list-key"
+                        to="/basics/list-key"
                         className="text-primary-600 hover:underline dark:text-primary-400"
                     >
                         「列表与 key」专题

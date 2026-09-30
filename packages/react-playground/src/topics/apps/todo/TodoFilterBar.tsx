@@ -27,11 +27,11 @@ interface CountBadgeProps {
 const CountBadge: React.FC<CountBadgeProps> = ({ color, count, label }) => {
     const styles = {
         sky: {
-            wrap: 'bg-sky-50 text-sky-700 border-sky-100',
+            wrap: 'bg-sky-50 text-sky-700 border-sky-100 dark:bg-sky-950 dark:text-sky-300 dark:border-sky-900',
             dot: 'bg-sky-500',
         },
         emerald: {
-            wrap: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+            wrap: 'bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-950 dark:text-emerald-300 dark:border-emerald-900',
             dot: 'bg-emerald-500',
         },
     } as const;
@@ -63,7 +63,7 @@ const TodoFilterBar: React.FC<Props> = ({
 }) => (
     <>
         {/* 筛选 tab 切换 */}
-        <div className="inline-flex rounded-lg bg-slate-100 p-0.5 text-xs sm:text-sm">
+        <div className="inline-flex rounded-lg bg-slate-100 dark:bg-slate-800 p-0.5 text-xs sm:text-sm">
             {FILTER_OPTIONS.map(({ key, label }) => (
                 <button
                     key={key}
@@ -71,8 +71,8 @@ const TodoFilterBar: React.FC<Props> = ({
                     onClick={() => onFilterChange(key)}
                     className={`px-3 py-1 rounded-md font-medium transition-all ${
                         filter === key
-                            ? 'bg-white text-sky-600 shadow-sm'
-                            : 'text-slate-500 hover:text-slate-700'
+                            ? 'bg-white text-sky-600 shadow-sm dark:bg-slate-700 dark:text-sky-400'
+                            : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
                     }`}
                 >
                     {label}

@@ -1,12 +1,14 @@
 # 性能优化分类
 
-性能优化不是渲染调度 API 清单。本分类三条系列互链:
+性能优化不是渲染调度 API 清单。本分类页头互链:
 
 1. **性能治理全链路** — 原则与约定 → 指标实验室 → 架构关键路径 → 实现六规则 → 排查演练
 2. **渲染调度** — 调度梳理 → transition × deferred → Suspense 骨架
-3. **AI-Native 性能** — 指标金字塔 + 流式时间轴 + Agent 工具链(并行/取消/快但错)
+3. **AI-Native 性能** — 指标金字塔 + 流式时间轴 + Agent 工具链(并行/取消/快但错;与 `/agent/agent-chat` 交叉链接)
+4. **React Compiler** — 独立页,讲开/不开的四步判断框架,不属于任何系列
+5. **理解检验** — 分类最后一页,用问答检验前面三条系列是否连成体系;资深题标星级和考察点
 
-页头一律用 `components/SeriesNav.tsx`(amber)。新增子专题:改 `series.ts` + `config/topics.tsx`。
+页头一律用 `components/SeriesNav.tsx`(amber)。新增子专题:改 `series.ts` + `config/topics.tsx`。理解检验保持在系列和注册表的最后,分类点击才不会落到题库。
 
 边界:
 

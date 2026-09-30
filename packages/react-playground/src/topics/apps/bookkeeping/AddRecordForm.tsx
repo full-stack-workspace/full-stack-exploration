@@ -59,77 +59,72 @@ export const AddRecordForm: React.FC<AddRecordFormProps> = ({ onAdd }) => {
     ).map((c) => ({ label: c, value: c }));
 
     return (
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-6">
-            <h2 className="text-lg font-semibold text-gray-700 mb-4">
-                添加记录
-            </h2>
-            <Form
-                form={form}
-                layout="inline"
-                onFinish={handleSubmit}
-                initialValues={{ type: 'expense', date: dayjs() }}
-                className="flex flex-wrap gap-y-3"
+        <Form
+            form={form}
+            layout="inline"
+            onFinish={handleSubmit}
+            initialValues={{ type: 'expense', date: dayjs() }}
+            className="flex flex-wrap gap-y-3"
+        >
+            <Form.Item name="type" rules={[{ required: true }]}>
+                <Select
+                    style={{ width: 100 }}
+                    onChange={handleTypeChange}
+                    options={[
+                        { label: '支出', value: 'expense' },
+                        { label: '收入', value: 'income' },
+                    ]}
+                />
+            </Form.Item>
+
+            <Form.Item
+                name="amount"
+                rules={[{ required: true, message: '请输入金额' }]}
             >
-                <Form.Item name="type" rules={[{ required: true }]}>
-                    <Select
-                        style={{ width: 100 }}
-                        onChange={handleTypeChange}
-                        options={[
-                            { label: '支出', value: 'expense' },
-                            { label: '收入', value: 'income' },
-                        ]}
-                    />
-                </Form.Item>
+                <InputNumber
+                    placeholder="金额"
+                    min={0.01}
+                    step={0.01}
+                    precision={2}
+                    style={{ width: 140 }}
+                    prefix="¥"
+                />
+            </Form.Item>
 
-                <Form.Item
-                    name="amount"
-                    rules={[{ required: true, message: '请输入金额' }]}
+            <Form.Item
+                name="category"
+                rules={[{ required: true, message: '请选择分类' }]}
+            >
+                <Select
+                    placeholder="选择分类"
+                    style={{ width: 130 }}
+                    options={categoryOptions}
+                />
+            </Form.Item>
+
+            <Form.Item
+                name="date"
+                rules={[{ required: true, message: '请选择日期' }]}
+            >
+                <DatePicker style={{ width: 140 }} />
+            </Form.Item>
+
+            <Form.Item name="description">
+                <Input
+                    placeholder="备注（可选）"
+                    style={{ width: 180 }}
+                />
+            </Form.Item>
+
+            <Form.Item>
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                    icon={<PlusOutlined />}
                 >
-                    <InputNumber
-                        placeholder="金额"
-                        min={0.01}
-                        step={0.01}
-                        precision={2}
-                        style={{ width: 140 }}
-                        prefix="¥"
-                    />
-                </Form.Item>
-
-                <Form.Item
-                    name="category"
-                    rules={[{ required: true, message: '请选择分类' }]}
-                >
-                    <Select
-                        placeholder="选择分类"
-                        style={{ width: 130 }}
-                        options={categoryOptions}
-                    />
-                </Form.Item>
-
-                <Form.Item
-                    name="date"
-                    rules={[{ required: true, message: '请选择日期' }]}
-                >
-                    <DatePicker style={{ width: 140 }} />
-                </Form.Item>
-
-                <Form.Item name="description">
-                    <Input
-                        placeholder="备注（可选）"
-                        style={{ width: 180 }}
-                    />
-                </Form.Item>
-
-                <Form.Item>
-                    <Button
-                        type="primary"
-                        htmlType="submit"
-                        icon={<PlusOutlined />}
-                    >
-                        添加
-                    </Button>
-                </Form.Item>
-            </Form>
-        </div>
+                    添加
+                </Button>
+            </Form.Item>
+        </Form>
     );
 };

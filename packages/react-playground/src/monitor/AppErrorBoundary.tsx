@@ -32,14 +32,6 @@ export class AppErrorBoundary extends React.Component<React.PropsWithChildren<{}
         };
     }
 
-    constructor(props: React.PropsWithChildren<{}>) {
-        super(props);
-        this.state = {
-            hasError: false,
-            error: null,
-        };
-    }
-
     // 可选：用于记录错误信息到日志服务
     componentDidCatch(error: Error, info: React.ErrorInfo): void {
         console.error('AppErrorBoundary caught an error:', error, info);

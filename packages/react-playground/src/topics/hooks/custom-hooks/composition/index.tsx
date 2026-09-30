@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * 自定义 Hooks 组合实战(/topics/hooks/custom-hooks-composition)
+ * 自定义 Hooks 组合实战(/hooks/custom-hooks-composition)
  * ============================================================================
  *
  * 把 lib/ 的原子 Hook 分层组合成领域 Hook(useUserSearch),
@@ -19,7 +19,8 @@ import { ReloadOutlined, SearchOutlined } from '@ant-design/icons';
 import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { Diagram } from '../../../../components/Diagram';
-import { NavBanner } from '../playground/components/NavBanner';
+import { TopicNav } from '../../../../components/TopicNav';
+import { CUSTOM_HOOKS_NAV_LINKS, CUSTOM_HOOKS_NAV_TITLE } from '../nav';
 import { useToggle } from '../lib';
 import { setMockFailure } from './mockUserApi';
 import { useUserSearch } from './useUserSearch';
@@ -105,7 +106,12 @@ const CustomHooksComposition = memo(() => {
             title="自定义 Hooks 组合实战"
             description="原子 Hook 分层组合成领域 Hook:useState + useDebouncedValue + useRequest → useUserSearch → UI"
         >
-            <NavBanner current="composition" />
+            <TopicNav
+                title={CUSTOM_HOOKS_NAV_TITLE}
+                links={CUSTOM_HOOKS_NAV_LINKS}
+                current="/hooks/custom-hooks-composition"
+                category="hooks"
+            />
 
             {/* ---------- 分层架构 ---------- */}
             <TopicSection
