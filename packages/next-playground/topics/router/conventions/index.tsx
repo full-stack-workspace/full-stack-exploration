@@ -63,8 +63,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
 export default function ConventionsTopic() {
     return (
         <TopicPage
+            path="/router/conventions"
             title="约定文件对照"
             description="page / layout / loading / error / not-found / template / default 各管什么:一张对照表 + 嵌套层级示意;本页自带真实 loading.tsx 演示 Suspense 边界"
+            references={[
+                { label: "Next.js 文档:File Conventions 总表", href: "https://nextjs.org/docs/app/api-reference/file-conventions" },
+                { label: "Next.js 文档:Layouts and Pages", href: "https://nextjs.org/docs/app/getting-started/layouts-and-pages" },
+            ]}
         >
             <TopicSection
                 title="文件 → 职责 → 渲染时机"

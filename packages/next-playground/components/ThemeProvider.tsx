@@ -92,19 +92,26 @@ function getInitialTheme(): Theme {
 function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
+    // 只在用户主动选择时落盘;首次挂载若写的是系统偏好,
+    // 会把「跟随系统」固化成显式选择,之后改系统主题就不再生效
     const setTheme = useCallback((newTheme: Theme) => {
+        localStorage.setItem("theme", newTheme);
         setThemeState(newTheme);
     }, []);
 
     const toggleTheme = useCallback(() => {
-        setThemeState((prev) => (prev === "light" ? "dark" : "light"));
+        setThemeState((prev) => {
+            const next = prev === "light" ? "dark" : "light";
+            localStorage.setItem("theme", next);
+            return next;
+        });
     }, []);
 
+    // 只负责把当前主题应用到 <html>,不写存储
     useEffect(() => {
         const root = document.documentElement;
         root.classList.remove("light", "dark");
         root.classList.add(theme);
-        localStorage.setItem("theme", theme);
     }, [theme]);
 
     return (

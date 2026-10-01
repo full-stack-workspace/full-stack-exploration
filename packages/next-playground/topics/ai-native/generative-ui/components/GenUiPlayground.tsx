@@ -16,7 +16,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -56,6 +56,11 @@ export function GenUiPlayground() {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [input, setInput] = useState("");
     const [pending, setPending] = useState(false);
+    // 在途请求的控制器:卸载/新一轮提问时中断,避免后台继续跑
+    const abortRef = useRef<AbortController | null>(null);
+
+    // 卸载清理:响应未回就导航离开时中断 fetch,不再空等模型决定
+    useEffect(() => () => abortRef.current?.abort(), []);
 
     /** 发送问题并渲染工具调用结果 */
     const ask = async (question: string) => {
@@ -65,12 +70,20 @@ export function GenUiPlayground() {
         setInput("");
         setMessages((prev) => [...prev, { id: Date.now(), role: "user", text: q }]);
 
+        abortRef.current?.abort();
+        const controller = new AbortController();
+        abortRef.current = controller;
+
         try {
-            const res = await fetch(`/api/ai/generative-ui?q=${encodeURIComponent(q)}`);
+            const res = await fetch(`/api/ai/generative-ui?q=${encodeURIComponent(q)}`, {
+                signal: controller.signal,
+            });
             if (!res.ok) {throw new Error(`HTTP ${res.status}`);}
             const result = (await res.json()) as ToolCallResult;
             setMessages((prev) => [...prev, { id: Date.now() + 1, role: "assistant", result }]);
         } catch (err) {
+            // 主动取消(卸载或新一轮提问):不追加报错气泡,直接结束本轮
+            if (controller.signal.aborted) {return;}
             setMessages((prev) => [
                 ...prev,
                 {
@@ -130,6 +143,7 @@ export function GenUiPlayground() {
                 <input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
+                    aria-label="输入问题"
                     placeholder="试试:北京天气 / AAPL 股价 / 今日待办"
                     className="min-w-0 flex-1 rounded-xl border border-neutral-300 bg-white px-4 py-2 text-sm text-neutral-800 outline-none placeholder:text-neutral-400 focus:border-violet-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100"
                 />

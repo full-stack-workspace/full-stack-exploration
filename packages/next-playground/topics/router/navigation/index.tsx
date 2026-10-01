@@ -27,8 +27,13 @@ import { NavigationPlayground } from "./components/NavigationPlayground";
 export default function NavigationTopic() {
     return (
         <TopicPage
+            path="/router/navigation"
             title="导航与 Router Cache"
             description="Link 的 prefetch 默认行为、useRouter 的 push/replace/back/refresh,以及「为什么页面不刷新」的排查入口"
+            references={[
+                { label: "Next.js 文档:Linking and Navigating", href: "https://nextjs.org/docs/app/getting-started/linking-and-navigating" },
+                { label: "Next.js 文档:staleTimes 配置", href: "https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes" },
+            ]}
         >
             <TopicSection
                 title="Link 的 prefetch:默认就在偷偷干活"
@@ -113,6 +118,43 @@ export default function NavigationTopic() {
                     </Link>
                     的「④ Router Cache」一节有完整对照与可运行演示;排查顺序
                     (先退客户端缓存,再查 Full Route Cache,最后查 Data Cache)也在该页。
+                </p>
+            </TopicSection>
+
+            <TopicSection
+                title="staleTimes:Router Cache 的保质期(Next 15 行为变更)"
+                note="「后退不重新请求,重新进入却重取」不是 bug,是 staleTimes 的设计"
+            >
+                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                    <li>
+                        Next 15 起,Router Cache 里 <strong>page 段默认 staleTime = 0</strong>
+                        (14 时代是 30s):点击 Link 进入一个新页面,每次都会向服务器重取 RSC 载荷;
+                        布局段与 prefetch 预取的载荷仍按 30s 缓存
+                    </li>
+                    <li>
+                        <strong>前进/后退不受 staleTimes 约束</strong>:back/forward 沿历史栈移动时,
+                        页面一律从 Router Cache 还原(保滚动、保状态),这是浏览器式的「后退即现场」语义
+                        —— 所以「后退秒开」与「重新进入重取」同时成立
+                    </li>
+                    <li>
+                        想让 page 段也缓存,在 next.config.ts 里显式调(示意,本站未开启):
+                    </li>
+                </ul>
+                <pre className="mt-3 overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`// next.config.ts(示意)
+const nextConfig = {
+    experimental: {
+        staleTimes: {
+            dynamic: 30,  // page 段的 Router Cache 秒数;0 = 每次导航都重取(默认)
+            static: 180,  // 预取静态路由后的缓存秒数
+        },
+    },
+};`}
+                </pre>
+                <p className="mt-3 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    调大 dynamic 之前先想清楚:页面里有没有「用户刚改过就应该看到」的数据。
+                    有的话保持 0,改数据的一方用 router.refresh() 或 revalidatePath 主动失效,
+                    比全局拉长保质期安全。
                 </p>
             </TopicSection>
 

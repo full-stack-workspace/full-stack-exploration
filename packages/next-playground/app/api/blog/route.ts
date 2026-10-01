@@ -11,43 +11,40 @@
  * - Description: 获取所有博客文章列表
  *
  * 数据来源：
- * - 使用 JSONPlaceholder API 作为模拟数据源
- * - 返回文章的基本信息（id, title, body, userId）
+ * - 复用 @/data/blog 的 getPostsWithStatus()(jsonplaceholder + 本地兜底),
+ *   不再重复一段 fetch 逻辑;响应带 source 字段标记本次是活数据还是兜底
  *
  * @module api/blog/route
  */
 
 import { NextResponse } from 'next/server';
 
+import { getPostsWithStatus } from "@/data/blog";
+
 /**
  * GET /api/blog
  *
  * 获取博客文章列表
  *
- * @returns {Promise<NextResponse>} JSON 格式的文章列表
+ * @returns {Promise<NextResponse>} JSON: { posts: Post[], source: "live" | "fallback" }
  *
  * @example
  * // 请求
  * GET /api/blog
  *
  * // 响应
- * [
- *   {
- *     "userId": 1,
- *     "id": 1,
- *     "title": "sunt aut facere repellat provident",
- *     "body": "quia et suscipit..."
- *   },
- *   ...
- * ]
+ * {
+ *   "posts": [
+ *     { "userId": 1, "id": 1, "title": "sunt aut facere...", "body": "quia et suscipit..." },
+ *     ...
+ *   ],
+ *   "source": "live"
+ * }
  */
-export async function GET(request: Request) {
-    // 从外部 API 获取文章数据
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+export async function GET() {
+    // getPostsWithStatus 内部:外部 API 故障/限流时回退本地种子数据,
+    // source 让调用方能区分「活数据」与「兜底数据」
+    const { posts, source } = await getPostsWithStatus();
 
-    // 解析响应为 JSON
-    const data = await res.json();
-
-    // 返回 JSON 响应
-    return NextResponse.json(data);
+    return NextResponse.json({ posts, source });
 }

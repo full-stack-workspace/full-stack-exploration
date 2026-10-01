@@ -11,16 +11,15 @@
 
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/config/site";
 import { TOPICS } from "@/config/topics";
-
-const ORIGIN = "http://localhost:3000";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const pages = TOPICS.filter((topic) => topic.status !== "planned");
     return [
-        { url: `${ORIGIN}/`, changeFrequency: "weekly", priority: 1 },
+        { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1 },
         ...pages.map((topic) => ({
-            url: `${ORIGIN}${topic.path}`,
+            url: `${SITE_URL}${topic.path}`,
             changeFrequency: "monthly" as const,
             priority: 0.7,
         })),

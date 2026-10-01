@@ -17,7 +17,7 @@
 
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -78,6 +78,10 @@ export function AgentPlayground() {
     const [steps, setSteps] = useState<Record<StepId, StepState>>(initialSteps);
     const [wallClock, setWallClock] = useState<number | null>(null);
     const abortRef = useRef<AbortController | null>(null);
+
+    // 卸载清理:任务运行中导航离开也要中断 fetch,
+    // 否则服务端感知不到取消、后续步骤照跑(真实场景 = 工具调用继续计费)
+    useEffect(() => () => abortRef.current?.abort(), []);
 
     /** 消费 SSE 步骤事件流,驱动时间线状态迁移 */
     const consume = async (res: Response) => {

@@ -7,9 +7,10 @@
  * 的人为延迟(0.5s / 1.5s / 3s,本地 sleep,不请求外部 API),
  * 各自包在独立的 <Suspense> 边界里,静态壳先行吐出,慢区块分段补出。
  *
- * 关键前提:薄壳 app/rendering/streaming/page.tsx 导出
- * `export const dynamic = "force-dynamic"`,否则页面在构建期整体预渲染,
- * 运行时看到的是一次性返回的静态 HTML,观察不到分段到达。
+ * 关键前提(cacheComponents):三个慢区块是 Suspense 边界内未缓存的
+ * async 组件,自动成为请求时渲染的动态洞;静态壳(页头、骨架)构建期
+ * 预渲染。旧模型靠薄壳导出 force-dynamic 整页退出静态化,新模型下
+ * 「壳静态、洞动态」反而是默认结果,无需任何路由级配置。
  *
  * @module topics/rendering/streaming
  */
@@ -96,8 +97,13 @@ export default function StreamingTopic() {
 
     return (
         <TopicPage
+            path="/rendering/streaming"
             title="Streaming SSR 与 Suspense 粒度"
-            description="force-dynamic 下的真实流式渲染:静态壳先行吐出,三个不同时延的异步区块各自包 Suspense 分段到达;边界粒度决定谁阻塞谁"
+            description="cacheComponents 下的真实流式渲染:静态壳构建期预渲染先行吐出,三个不同时延的异步区块作为动态洞各自包 Suspense 分段到达;边界粒度决定谁阻塞谁"
+            references={[
+                { label: "Next.js 文档:loading.js(Suspense 的段级自动版)", href: "https://nextjs.org/docs/app/api-reference/file-conventions/loading" },
+                { label: "React 文档:<Suspense>", href: "https://react.dev/reference/react/Suspense" },
+            ]}
         >
             <TopicSection
                 title="分段到达的三个区块"
@@ -129,11 +135,14 @@ export default function StreamingTopic() {
                         每个慢区块在自己的边界内独立 resolve,分段补出、互不相干
                     </li>
                     <li>
-                        本页薄壳导出
+                        本页无需任何路由级配置:cacheComponents 下,Suspense 边界内
+                        未缓存的 async 组件自动成为请求时渲染的动态洞,壳在构建期预渲染
+                        —— build 输出里本页标为 ◐(Partial Prerender)。
+                        旧模型(Next 15 及以前)要靠薄壳导出
                         <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">
                             dynamic = &quot;force-dynamic&quot;
                         </code>
-                        :否则构建期整体预渲染,运行时拿到的是一次性静态 HTML,看不到流式效果
+                        整页退出静态化,否则构建期拍平成静态 HTML,看不到流式效果
                     </li>
                     <li>
                         dev 下观察方式:刷新页面看内容分段出现;或用

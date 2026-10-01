@@ -55,6 +55,10 @@ export async function postMessage(
 
     appendMessage({ author, content });
 
+    // 人为延迟:localhost 往返太快,pending/乐观态肉眼不可见,
+    // 教学演示需要可观测的「提交中/发送中」窗口
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
     // 写入后让该路径的缓存失效,下一个渲染读到最新列表;
     // action 返回后 Next 会自动携带刷新后的 RSC 载荷,无需手动跳转
     revalidatePath(TOPIC_PATH);

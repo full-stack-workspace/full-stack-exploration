@@ -4,11 +4,17 @@
  * ============================================================================
  *
  * 渐进增强留言板:本组件是 Server Component,每次请求时从内存存储
- * 读取留言列表并渲染;提交表单是唯一 Client 叶子(GuestbookForm),
- * 通过 useActionState 绑定 "use server" 的 postMessage action,
- * action 写入后 revalidatePath 让列表随响应一起刷新。
+ * 读取留言列表;留言板整体(表单 + 列表)是唯一 Client 叶子
+ * (GuestbookForm),列表经 props 下发、SSR 首屏即完整,乐观项在其上叠加。
  *
- * 存储是模块级内存数组(见 store.ts),重启即失,生产换数据库。
+ * React 19 表单三件套在此分工:
+ * - useActionState = 结果态:action 完成后的 ok/error
+ * - useFormStatus  = 进行态:提交按钮的 pending
+ * - useOptimistic  = 乐观态:提交即上屏,真值到达后替换、失败回滚
+ *
+ * action 写入后 revalidatePath 让列表随响应一起刷新。
+ * 存储是模块级内存数组(见 store.ts,头注有 Serverless 多实例 caveat),
+ * 重启即失,生产换 KV/DB。
  *
  * @module topics/rsc-boundary/server-actions
  */
@@ -18,44 +24,56 @@ import { TopicPage, TopicSection } from "@/components/topic/TopicPage";
 import { GuestbookForm } from "./components/GuestbookForm";
 import { listMessages } from "./store";
 
-/** 把 ISO 时间串裁成「MM-DD HH:mm:ss」展示 */
-function formatTime(iso: string): string {
-    return `${iso.slice(5, 10)} ${iso.slice(11, 19)}`;
-}
-
 export default function ServerActionsTopic() {
     // Server Component 直读存储,不经过任何 HTTP 层
     const messages = listMessages();
 
     return (
         <TopicPage
+            path="/rsc-boundary/server-actions"
             title="Server Actions 留言板"
             description="'use server' 变更 + <form action> 渐进增强:无 JS 也能提交;action 里 revalidatePath,列表随响应刷新"
+            references={[
+                { label: "Next.js 文档:Mutating Data(Server Actions)", href: "https://nextjs.org/docs/app/getting-started/mutating-data" },
+                { label: "React 文档:Server Functions", href: "https://react.dev/reference/rsc/server-functions" },
+            ]}
         >
             <TopicSection
                 title="留言板(可运行)"
                 note="留言存于模块级内存数组,服务重启即失;禁用浏览器 JS 再提交,表单依然可用"
             >
-                <GuestbookForm />
-                <ul className="mt-5 space-y-3">
-                    {messages.map((m) => (
-                        <li
-                            key={m.id}
-                            className="rounded-xl border border-neutral-200/60 p-4 dark:border-neutral-800/60"
-                        >
-                            <div className="flex items-center justify-between gap-4">
-                                <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-100">
-                                    {m.author}
-                                </p>
-                                <p className="shrink-0 text-xs text-neutral-400 dark:text-neutral-500">
-                                    {formatTime(m.createdAt)} UTC
-                                </p>
-                            </div>
-                            <p className="mt-1 text-sm leading-relaxed break-words text-neutral-600 dark:text-neutral-400">
-                                {m.content}
-                            </p>
-                        </li>
-                    ))}
+                <GuestbookForm messages={messages} />
+            </TopicSection>
+
+            <TopicSection
+                title="表单三件套的分工"
+                note="useActionState / useFormStatus / useOptimistic 不是互替品,各管一段时间轴"
+            >
+                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                    <li>
+                        <strong>useActionState = 结果态</strong>:绑定 action 后拿到「上一次提交的返回值」,
+                        驱动报错/成功提示;本页还借「每次派发都换新 state 对象」这一点,
+                        在 effect 里精确捕获成功时刻做 form.reset()
+                    </li>
+                    <li>
+                        <strong>useFormStatus = 进行态</strong>:必须是 <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">&lt;form&gt;</code> 的子孙组件(本页的 SubmitButton),
+                        读父表单本次提交的 pending 来禁用按钮、切换文案 —— 不需要 props 透传,
+                        所以它管不到 form 之外的元素
+                    </li>
+                    <li>
+                        <strong>useOptimistic = 乐观态</strong>:提交即把留言叠上列表(虚线 + 半透明 + 「发送中」),
+                        服务端确认后由 revalidatePath 带回的真值无缝顶替,失败则自动回滚、错误交给 state.error 展示
+                        —— 乐观层只活到所在 transition 结束,实现细节见 GuestbookForm 头注
+                    </li>
+                    <li>
+                        <strong>渐进增强与乐观更新的共存</strong>:乐观项必须包在 action 闭包里
+                        (与 action 同属一个 transition;在 onSubmit 里另开 startTransition 会
+                        与表单 transition 纠缠死锁),但 SSR 不会为客户端闭包渲染隐藏 action 字段,
+                        无 JS 原生 POST 会打空。解法是 mounted 开关:水合前
+                        <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">&lt;form action&gt;</code>
+                        引用 useActionState 的 dispatch(隐藏字段齐全,无 JS 可提交),
+                        水合后切换为乐观闭包 —— 实现细节见 GuestbookForm 头注
+                    </li>
                 </ul>
             </TopicSection>
 

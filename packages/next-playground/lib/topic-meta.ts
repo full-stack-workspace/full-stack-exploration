@@ -6,30 +6,27 @@
  * 薄壳页(page.tsx)通过 getTopicMetadata 从注册表派生页面 metadata,
  * 保证「首页卡片描述 / 专题页头 / <meta> 标签」三处文案同源。
  *
- * 站点品牌名集中在 SITE_NAME,与根 layout 的 title.template、
- * 顶栏品牌区保持一致。
+ * 站点品牌常量(SITE_NAME / SITE_SLOGAN / SITE_THESIS / HOME_TITLE 等)
+ * 已收敛到 @/config/site 单一数据源,这里只做 re-export 兼容存量 import,
+ * 新增代码请直接从 @/config/site 导入。
  *
  * @module lib/topic-meta
  */
 
 import type { Metadata } from "next";
 
+import { SITE_NAME } from "@/config/site";
 import { getTopicByPath } from "@/config/topics";
 
-/** 站点品牌名 */
-export const SITE_NAME = "Next Playground";
-
-/** 顶栏口号:短,能放在标记旁边 */
-export const SITE_SLOGAN = "该选哪条";
-
-/**
- * 站点论点。首页主句、页脚与 Open Graph 共用。
- * 文档负责「能做什么」,本站负责「这一页该选哪条」。
- */
-export const SITE_THESIS = "文档写能做什么。这里写该选哪条。";
-
-/** 首页 / 兜底标题,与顶栏口号一致 */
-export const HOME_TITLE = `${SITE_NAME} · ${SITE_SLOGAN}`;
+export {
+    HOME_TITLE,
+    SITE_DESCRIPTION,
+    SITE_NAME,
+    SITE_NAME_EN,
+    SITE_SLOGAN,
+    SITE_THESIS,
+    SITE_URL,
+} from "@/config/site";
 
 /**
  * 由注册表生成专题页 metadata。

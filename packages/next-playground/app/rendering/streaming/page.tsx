@@ -1,14 +1,12 @@
 /**
  * 薄壳:Streaming 专题路由。
- * force-dynamic 是演示成立的前提:阻止构建期整体预渲染,
- * 让每个请求在运行时真实经历「静态壳 → 分段补洞」的流式过程。
+ * cacheComponents 下不再需要 force-dynamic:三个慢区块是 Suspense 边界内
+ * 未缓存的 async 组件,自动成为请求时渲染的动态洞;静态壳在构建期预渲染,
+ * 「壳先行 → 分段补洞」的流式过程因此每个请求真实发生。
  */
 
 import { getTopicMetadata } from "@/lib/topic-meta";
 import StreamingTopic from "@/topics/rendering/streaming";
-
-/** 强制运行时动态渲染,否则 Suspense 分段在构建期就被拍平成静态 HTML */
-export const dynamic = "force-dynamic";
 
 export const metadata = getTopicMetadata("/rendering/streaming");
 

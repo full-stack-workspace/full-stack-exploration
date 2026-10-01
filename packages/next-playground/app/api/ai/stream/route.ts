@@ -19,8 +19,8 @@
 
 import type { NextRequest } from "next/server";
 
-// SSE 是长连接流式响应,必须禁止任何缓存/预渲染尝试
-export const dynamic = "force-dynamic";
+// Route Handler 默认每请求执行;cacheComponents 下不再有
+// route segment config,SSE 长连接天然不可能被预渲染
 
 /** 模拟 LLM 输出的预置中文技术文案 */
 const PASSAGE =

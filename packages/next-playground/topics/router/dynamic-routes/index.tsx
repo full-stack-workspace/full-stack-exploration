@@ -18,8 +18,14 @@ import { users } from "@/data/user";
 export default function DynamicRoutesTopic() {
     return (
         <TopicPage
+            path="/router/dynamic-routes"
             title="动态路由与动态 metadata"
             description="[id] 动态段保持 Server Component:generateStaticParams 预生成已知 id,generateMetadata 与页面同文件;不存在的 id 走 notFound()"
+            references={[
+                { label: "Next.js 文档:Dynamic Routes(file conventions)", href: "https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes" },
+                { label: "Next.js 文档:generateStaticParams", href: "https://nextjs.org/docs/app/api-reference/functions/generate-static-params" },
+                { label: "Next.js 文档:generateMetadata", href: "https://nextjs.org/docs/app/api-reference/functions/generate-metadata" },
+            ]}
         >
             <TopicSection
                 title="进入一条动态段详情"
@@ -30,13 +36,13 @@ export default function DynamicRoutesTopic() {
                         <Link
                             key={u.id}
                             href={`/router/dynamic-routes/${u.id}`}
-                            className="group flex items-center gap-3 rounded-xl border border-neutral-200/60 bg-neutral-50/50 p-4 transition-all hover:border-primary-200 hover:bg-white hover:shadow-md dark:border-neutral-800/60 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
+                            className="group flex items-center gap-3 rounded-xl border border-neutral-200/60 bg-neutral-50/50 p-4 transition-all hover:border-signal-400/50 hover:bg-white hover:shadow-md dark:border-neutral-800/60 dark:bg-neutral-800/50 dark:hover:bg-neutral-800"
                         >
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-600 dark:bg-primary-900/40 dark:text-primary-300">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-signal-500/10 text-sm font-bold text-signal-600 dark:bg-signal-500/15 dark:text-signal-400">
                                 {u.id}
                             </span>
                             <span>
-                                <span className="block text-sm font-medium text-neutral-900 group-hover:text-primary-600 dark:text-neutral-50 dark:group-hover:text-primary-400">
+                                <span className="block text-sm font-medium text-neutral-900 group-hover:text-signal-600 dark:text-neutral-50 dark:group-hover:text-signal-400">
                                     {u.name}
                                 </span>
                                 <span className="block text-xs text-neutral-400">
@@ -46,6 +52,64 @@ export default function DynamicRoutesTopic() {
                         </Link>
                     ))}
                 </div>
+            </TopicSection>
+
+            <TopicSection
+                title="详情页的真实代码(本站 app/router/dynamic-routes/[id]/page.tsx)"
+                note="三个导出各管一件事:预生成哪些 id、每个 id 的标题、找不到怎么办"
+            >
+                <p className="mb-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                    ① generateStaticParams:已知 id 构建期生成
+                </p>
+                <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`export function generateStaticParams() {
+    // 列出 data/user.ts 里的 6 个用户;
+    // 他们的详情在构建期就渲染成静态产物,不是每次请求现查
+    return users.map((user) => ({ id: String(user.id) }));
+}
+
+// dynamicParams 不写,默认 true:名单之外的 id 仍会进 Page,
+// 由下面的 notFound() 兜底;改成 false 则名单外直接整段 404`}
+                </pre>
+                <p className="mb-2 mt-4 text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                    ② generateMetadata:与 page 同文件,async 里 await params
+                </p>
+                <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ id: string }>;   // Next 15 起 params 是 Promise
+}): Promise<Metadata> {
+    const { id } = await params;
+    const user = getUserById(Number(id));
+    if (!user) {
+        // 404 页也给出标题,并禁止索引 —— 页面级 robots 的活例子
+        return { title: "用户未找到", robots: { index: false, follow: true } };
+    }
+    return {
+        title: \`\${user.name} - \${user.role}\`,
+        description: user.bio,
+        openGraph: { title: \`\${user.name} - \${user.role} | \${SITE_NAME}\`, type: "profile" },
+    };
+}`}
+                </pre>
+                <p className="mb-2 mt-4 text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                    ③ Page:notFound() 处理「没有这条」,而不是画空状态
+                </p>
+                <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`export default async function Page({
+    params,
+}: {
+    params: Promise<{ id: string }>;
+}) {
+    const { id } = await params;
+    const user = getUserById(Number(id));
+    if (!user) {
+        notFound(); // 交给本段 not-found.tsx,不进 error.tsx
+    }
+    return <UserDetail user={user} />;
+}`}
+                </pre>
             </TopicSection>
 
             <TopicSection

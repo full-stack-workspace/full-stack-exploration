@@ -15,12 +15,14 @@ const statusColors = {
     offline: "bg-neutral-400",
 };
 
+// 关于 memo:它只对「Client 父组件重渲染」有意义(如 UserListClient 因搜索
+// state 变化重渲染时,props 未变的卡片可跳过);在 Server Component 渲染
+// 语境下(组件树随每次请求整体重建)memo 无作用,保留是为 Client 复用场景。
 const UserCard = memo(({
     user,
     animationDelay = 0,
 }: UserCardProps) => (
         <Link
-            key={user.id}
             href={`/router/dynamic-routes/${user.id}`}
             className="animate-slide-up group block rounded-2xl border border-neutral-200/60 bg-white p-6 transition-all duration-300 hover:border-success-200/60 hover:shadow-lg dark:border-neutral-800/60 dark:bg-neutral-900 dark:hover:border-success-800/60"
             style={{ animationDelay: `${animationDelay}ms` }}

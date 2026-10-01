@@ -21,7 +21,7 @@ export default function SegmentError({
 }) {
     return (
         <div className="mx-auto max-w-6xl">
-            <p className="font-mono text-[11px] tracking-[0.18em] text-copper-600 dark:text-copper-400">
+            <p className="font-mono text-[11px] tracking-[0.18em] text-signal-600 dark:text-signal-400">
                 error.tsx
             </p>
             <h1 className="mt-3 text-2xl font-semibold tracking-tight text-ink dark:text-neutral-50">

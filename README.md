@@ -19,14 +19,14 @@
 | `vite-basic` | Vite 基础能力：插件机制、HMR、SCSS 集成 — 验证 AI 对构建工具底层配置的理解 | 5173 |
 | `vite-server` | Vite Dev Server 架构：proxy、CORS、中间件 — 探索 AI 对开发服务器配置的驾驭 | 5174 |
 | `vite-build` | 构建优化与设计系统：code splitting、bundle analysis、三层 Design Tokens 架构 — 考验 AI 对复杂样式工程和性能优化的处理 | 5175 |
-| `next-playground` | Next.js 16 工程实践演示站:专题注册表驱动的渲染策略 / RSC 边界 / 路由机制 / 数据缓存 / AI-Native 对照演示 | 3000 |
+| `next-playground` | Next.js 16 工程实践演示站(站点品牌:Next 权衡录 / Next Tradeoffs):专题注册表驱动的 RSC 边界 / 渲染策略 / 路由机制 / 数据缓存 / 安全 / AI-Native 对照演示,全站开启 Cache Components | 3000 |
 | `next-upload` | Next.js 16 全栈分片上传：Route Handlers + Web Worker hash + Zustand 状态机 + shadcn/ui — 验证 AI 在"复杂客户端状态机 + 协议设计"题型下的产出 | 3001 |
 | `react-playground` | Rsbuild + React 19 练习场：专题注册表驱动的 Hooks / 进阶 / 综合应用演示 | 3002 |
 
 ### AI Coding 亮点 · Key Highlights
 
 - **vite-build** 中的 [Design Tokens](packages/vite-build/src/styles/tokens.css) 系统完全由 AI 设计实现，采用 Primitive → Semantic → Component 三层架构，支持 `data-theme` 亮暗切换。
-- **next-playground** 展示了 AI 对 Next.js App Router 范式的理解：Server Components 优先、metadata/Open Graph API、文件系统路由、`prefers-color-scheme` 暗色模式；并已改造为注册表驱动的专题演示站（同构 react-playground)。
+- **next-playground** 展示了 AI 对 Next.js App Router 范式的理解：Server Components 优先、metadata/Open Graph API、文件系统路由、class 策略暗色模式；并已改造为注册表驱动的专题演示站「Next 权衡录」（8 大分类 37 个专题、Cache Components 全站开启、Vercel AI SDK 对照演示、Cmd+K 搜索与契约测试）。
 - **next-upload** 演示 Next.js 16 Route Handlers 处理 `multipart/form-data` + Web Worker hash + Zustand 状态机 + shadcn/ui 完整集成，验证 AI 在"复杂客户端状态机 + 协议设计"题型下的产出。
 - 所有 package 的 ESLint、TypeScript、Tailwind CSS、路径别名等工程化配置均由 AI 生成并保持一致。
 
@@ -85,7 +85,7 @@ TypeScript · pnpm workspace · esbuild · vite-bundle-analyzer
 1. **vite-basic** — 入门：Vite 插件、HMR、SCSS，观察 AI 对构建工具基础的理解
 2. **vite-server** — 进阶：Dev Server 架构、代理配置，考验 AI 对网络层配置的掌握
 3. **vite-build** — 深入：构建优化、三层 Design Tokens 系统，挑战 AI 的工程化上限
-4. **next-playground** — Next.js 工程实践演示站：App Router、Server Components、ISR、注册表驱动的专题信息架构
+4. **next-playground** — Next.js 工程实践演示站「Next 权衡录」：App Router、Server Components、Cache Components、注册表驱动的专题信息架构
 
 ## License
 

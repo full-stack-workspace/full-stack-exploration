@@ -1,17 +1,15 @@
 /**
  * ============================================================================
- * Next.js Demo - Global Styles
+ * Global Styles — Signal Lab 视觉系统
  * ============================================================================
  *
- * 本文件定义了应用程序的全局样式系统，包括：
- * - Tailwind CSS v4 自定义主题配置
- * - 自定义颜色系统
- * - 动画关键帧定义
- * - 全局样式重置
- * - 滚动条和选中文本的自定义样式
+ * 全站样式基座,包括：
+ * - Tailwind CSS v4 @theme 设计 token(站点识别色 ink/paper/signal/night 单轨)
+ * - 语义状态色(success/warning/error)与中性色阶
+ * - 动画关键帧与 View Transition 配方
+ * - 全局样式重置、滚动条与选中文本样式
  *
  * @module globals.css
- * @version 1.0.0
  */
 
 @import "tailwindcss";
@@ -27,63 +25,13 @@
  * 这些变量会被 Tailwind 自动识别并生成对应的 utility 类。
  *
  * 使用方式：
- * - 颜色：如 bg-primary-500, text-secondary-600, border-accent-200
+ * - 颜色：如 bg-signal-600, text-ink, border-mist
  * - 圆角：如 rounded-xl, rounded-2xl, rounded-full
  * - 阴影：如 shadow-lg, shadow-xl, shadow-card
  * - 动画：如 animate-fade-in, animate-slide-up
  */
 
 @theme {
-  /* ========================================================================
-   * 主要色彩系统 (Primary Colors)
-   * ========================================================================
-   * 蓝色系，用作应用程序的主色调。
-   * 适用于：按钮、链接、强调元素、hover 状态等
-   *
-   * 色值范围从 50（最浅）到 900（最深）
-   */
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-
-  /* ========================================================================
-   * 次要色彩系统 (Secondary Colors)
-   * ========================================================================
-   * 紫色系，用作辅助强调色。
-   * 适用于：次要按钮、标签、分类标签等
-   */
-  --color-secondary-50: #f5f3ff;
-  --color-secondary-100: #ede9fe;
-  --color-secondary-200: #ddd6fe;
-  --color-secondary-300: #c4b5fd;
-  --color-secondary-400: #a78bfa;
-  --color-secondary-500: #8b5cf6;
-  --color-secondary-600: #7c3aed;
-  --color-secondary-700: #6d28d9;
-  --color-secondary-800: #5b21b6;
-  --color-secondary-900: #4c1d95;
-
-  /* ========================================================================
-   * 强调色彩系统 (Accent Colors)
-   * ========================================================================
-   * 琥珀/橙黄色系，用作警示、提示等场景。
-   * 适用于：警告提示、评分星级、特色标签等
-   */
-  --color-accent-50: #fffbeb;
-  --color-accent-100: #fef3c7;
-  --color-accent-200: #fde68a;
-  --color-accent-300: #fcd34d;
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
-
   /* ========================================================================
    * 状态色彩系统 (Semantic Colors)
    * ========================================================================
@@ -94,8 +42,12 @@
    * error: 错误提示、危险操作、失败状态
    */
   --color-success-50: #ecfdf5;
+  --color-success-200: #bbf7d0;
+  --color-success-400: #4ade80;
   --color-success-500: #22c55e;
   --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-800: #166534;
 
   --color-warning-50: #fff7ed;
   --color-warning-500: #f97316;
@@ -129,27 +81,22 @@
   --color-neutral-950: #0a0a0a;
 
   /* ========================================================================
-   * 站点识别色 (Bench)
+   * 站点识别色 (Signal Lab)
    * ========================================================================
    * 壳层、首页与专题页头只用这一组，专题内部的光谱色另算。
-   * ink 是正文与标记底，copper 只标「当前这一格」，paper 是页面底。
+   * ink 是字标与标题，paper 是冷色纸底，signal 标「当前这一格」。
    */
-  --color-ink: #15202b;
-  --color-paper: #eef2f5;
-  --color-rule: #d5dee6;
-  --color-copper-400: #fb923c;
-  --color-copper-500: #c2410c;
-  --color-copper-600: #9a3412;
-
-  /* ========================================================================
-   * 背景与前景色 (Background & Foreground)
-   * ========================================================================
-   * 用于主题切换的背景色和文本色变量
-   */
-  --color-background-light: #eef2f5;
-  --color-background-dark: #0a0a0a;
-  --color-foreground-light: #171717;
-  --color-foreground-dark: #ededed;
+  --color-ink: #0c1620;
+  --color-paper: #f3f6f9;
+  --color-mist: #d7e0e8;
+  --color-rule: #d7e0e8;
+  --color-signal: #1ecad3;
+  --color-signal-400: #5ee4eb;
+  --color-signal-500: #1ecad3;
+  --color-signal-600: #12a8b0;
+  --color-night: #071018;
+  --color-panel: #ffffff;
+  --color-panel-night: #0e1822;
 
   /* ========================================================================
    * 字体系统 (Typography)
@@ -229,6 +176,7 @@
   --animate-scale-in: scale-in 0.3s ease-out forwards;
   --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
   --animate-float: float 3s ease-in-out infinite;
+  --animate-bar-rise: bar-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 
   /* ========================================================================
    * 关键帧定义 (Keyframes)
@@ -271,27 +219,39 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
+
+  /* bar-rise: 光谱刻度从底边长出，transform-origin 必须是 bottom */
+  @keyframes bar-rise {
+    from {
+      transform: scaleY(0);
+      opacity: 0.15;
+    }
+    to {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
 }
 
 /**
  * ============================================================================
  * 根级变量设置
  * ============================================================================
- * 定义 CSS 变量，用于 JavaScript 中可通过 getComputedStyle 获取的值。
+ * body 的底色/文字色直接取 Signal Lab 站点识别色,
  * 同时设置 color-scheme 以支持浏览器原生主题切换。
  */
 
 /* 亮色模式（默认） */
 :root {
-  --background: var(--color-background-light);
-  --foreground: var(--color-foreground-light);
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
   color-scheme: light;
 }
 
 /* 暗色模式：通过 .dark class 切换 */
 :root.dark {
-  --background: var(--color-background-dark);
-  --foreground: var(--color-foreground-dark);
+  --background: var(--color-night);
+  --foreground: #ededed;
   color-scheme: dark;
 }
 
@@ -334,14 +294,14 @@ body {
  * 自定义用户选中文本的背景和文字颜色
  */
 ::selection {
-  background-color: #fed7aa;
+  background-color: #b8f4f7;
   color: var(--color-ink);
 }
 
 /* 暗色模式下的选中文本样式 */
 :root.dark ::selection {
-  background-color: #9a3412;
-  color: #fff7ed;
+  background-color: #12a8b0;
+  color: #ecfeff;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -455,3 +415,118 @@ body {
 .stagger-3 { animation-delay: 300ms; }
 .stagger-4 { animation-delay: 400ms; }
 .stagger-5 { animation-delay: 500ms; }
+.stagger-6 { animation-delay: 600ms; }
+.stagger-7 { animation-delay: 700ms; }
+.stagger-8 { animation-delay: 800ms; }
+
+.animate-bar-rise {
+  transform-origin: bottom;
+  animation: var(--animate-bar-rise);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-scale-in,
+  .animate-pulse-soft,
+  .animate-float,
+  .animate-bar-rise {
+    animation: none !important;
+  }
+}
+
+/**
+ * ============================================================================
+ * View Transition 配方 (Signal Lab)
+ * ============================================================================
+ * 从 vercel-react-view-transitions 技能整套抄入,不要自写关键帧。
+ * 顶栏有 backdrop-blur,用 display:none 规避旧快照闪烁。
+ */
+
+:root {
+  --duration-exit: 150ms;
+  --duration-enter: 210ms;
+  --duration-move: 400ms;
+}
+
+@keyframes fade {
+  from { filter: blur(3px); opacity: 0; }
+  to { filter: blur(0); opacity: 1; }
+}
+
+@keyframes slide {
+  from { translate: var(--slide-offset); }
+  to { translate: 0; }
+}
+
+@keyframes slide-y {
+  from { transform: translateY(var(--slide-y-offset, 10px)); }
+  to { transform: translateY(0); }
+}
+
+::view-transition-old(.fade-out) {
+  animation: var(--duration-exit) ease-in fade reverse;
+}
+::view-transition-new(.fade-in) {
+  animation: var(--duration-enter) ease-out var(--duration-exit) both fade;
+}
+
+::view-transition-old(.slide-down) {
+  animation:
+    var(--duration-exit) ease-out both fade reverse,
+    var(--duration-exit) ease-out both slide-y reverse;
+}
+::view-transition-new(.slide-up) {
+  animation:
+    var(--duration-enter) ease-in var(--duration-exit) both fade,
+    var(--duration-move) ease-in both slide-y;
+}
+
+::view-transition-old(.nav-forward) {
+  --slide-offset: -60px;
+  animation:
+    var(--duration-exit) ease-in both fade reverse,
+    var(--duration-move) ease-in-out both slide reverse;
+}
+::view-transition-new(.nav-forward) {
+  --slide-offset: 60px;
+  animation:
+    var(--duration-enter) ease-out var(--duration-exit) both fade,
+    var(--duration-move) ease-in-out both slide;
+}
+
+::view-transition-old(.nav-back) {
+  --slide-offset: 60px;
+  animation:
+    var(--duration-exit) ease-in both fade reverse,
+    var(--duration-move) ease-in-out both slide reverse;
+}
+::view-transition-new(.nav-back) {
+  --slide-offset: -60px;
+  animation:
+    var(--duration-enter) ease-out var(--duration-exit) both fade,
+    var(--duration-move) ease-in-out both slide;
+}
+
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

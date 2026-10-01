@@ -16,7 +16,6 @@
  * @module api/basic/route
  */
 
-import type { NextRequest} from 'next/server';
 import { NextResponse } from 'next/server';
 
 /**
@@ -24,11 +23,9 @@ import { NextResponse } from 'next/server';
  *
  * 处理 GET 请求
  *
- * @param req - Next.js 封装的请求对象
  * @returns {NextResponse} JSON 格式的响应
  */
-export async function GET(req: NextRequest) {
-    console.log('req', req);
+export async function GET() {
     return NextResponse.json({ message: 'GET request' });
 }
 
@@ -37,11 +34,9 @@ export async function GET(req: NextRequest) {
  *
  * 处理 POST 请求
  *
- * @param req - Next.js 封装的请求对象
  * @returns {NextResponse} JSON 格式的响应
  */
-export async function POST(req: NextRequest) {
-    console.log('req', req);
+export async function POST() {
     return NextResponse.json({ message: 'POST request' });
 }
 
@@ -50,11 +45,9 @@ export async function POST(req: NextRequest) {
  *
  * 处理 PUT 请求（通常用于更新资源）
  *
- * @param req - Next.js 封装的请求对象
  * @returns {NextResponse} JSON 格式的响应
  */
-export async function PUT(req: NextRequest) {
-    console.log('req', req);
+export async function PUT() {
     return NextResponse.json({ message: 'PUT request' });
 }
 
@@ -63,10 +56,8 @@ export async function PUT(req: NextRequest) {
  *
  * 处理 DELETE 请求（通常用于删除资源）
  *
- * @param req - Next.js 封装的请求对象
  * @returns {NextResponse} JSON 格式的响应
  */
-export async function DELETE(req: NextRequest) {
-    console.log('req', req);
+export async function DELETE() {
     return NextResponse.json({ message: 'DELETE request' });
 }

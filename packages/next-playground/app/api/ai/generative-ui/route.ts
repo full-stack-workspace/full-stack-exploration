@@ -18,8 +18,6 @@ import { NextResponse } from "next/server";
 
 import type { ToolCallResult } from "@/topics/ai-native/generative-ui/types";
 
-export const dynamic = "force-dynamic";
-
 /** 模拟模型推理延迟 */
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

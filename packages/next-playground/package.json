@@ -5,22 +5,29 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyze": "ANALYZE=true next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "fix": "eslint --fix"
+    "fix": "eslint --fix",
+    "test": "vitest run"
   },
   "dependencies": {
+    "@ai-sdk/react": "^4.0.125",
+    "ai": "^7.0.122",
     "clsx": "^2.1.1",
     "next": "16.2.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "swr": "^2.4.1",
-    "tailwind-merge": "^3.5.0"
+    "tailwind-merge": "^3.5.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.3.7",
     "@tailwindcss/postcss": "^4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "vitest": "^2.1.8"
   }
 }

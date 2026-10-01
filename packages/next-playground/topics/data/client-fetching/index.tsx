@@ -40,8 +40,13 @@ const { data } = useSWR("/api/cart", fetcher, {
 export default function ClientFetchingTopic() {
     return (
         <TopicPage
+            path="/data/client-fetching"
             title="客户端取数与 SWR"
             description="客户端取数的正确打开方式:能在 Server Component 里 await 就别用 SWR;但会话数据、聚焦重验证、轮询、离线缓存仍是 SWR 的主场"
+            references={[
+                { label: "Next.js 文档:Fetching Data", href: "https://nextjs.org/docs/app/getting-started/fetching-data" },
+                { label: "SWR 官方文档", href: "https://swr.vercel.app" },
+            ]}
         >
             <TopicSection
                 title="两条通道先对照"

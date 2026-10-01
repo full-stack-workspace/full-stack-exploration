@@ -12,6 +12,8 @@
  * @module topics/ai-native/generative-ui
  */
 
+import Link from "next/link";
+
 import { TopicPage, TopicSection } from "@/components/topic/TopicPage";
 
 import { GenUiPlayground } from "./components/GenUiPlayground";
@@ -19,8 +21,13 @@ import { GenUiPlayground } from "./components/GenUiPlayground";
 export default function GenerativeUiTopic() {
     return (
         <TopicPage
+            path="/ai-native/generative-ui"
             title="Generative UI"
             description="模型输出结构化工具调用,UI 层做组件映射:天气卡片、股价走势图、待办清单直接渲染成真实 React 组件,与文本气泡混排在同一条消息流"
+            references={[
+                { label: "Vercel AI SDK:Generative UI 指南", href: "https://ai-sdk.dev/docs/ai-sdk-ui/generative-user-interfaces" },
+                { label: "Vercel AI SDK:Tools and Tool Calling", href: "https://ai-sdk.dev/docs/ai-sdk-core/tools-and-tool-calling" },
+            ]}
         >
             <TopicSection
                 title="工具调用渲染演练(可运行)"
@@ -49,6 +56,38 @@ export default function GenerativeUiTopic() {
                         这边讲渲染产物(工具调用 → 组件映射);两边拼起来才是完整的 Agent 前端
                     </li>
                 </ul>
+            </TopicSection>
+
+            <TopicSection
+                title="生产里不手写这个:AI SDK 的 Generative UI 原语"
+                note="本页的「工具调用 → 组件映射」正是 AI SDK tool rendering 的官方模式(ai@7)"
+            >
+                <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`// 工具定义(示意,ai@7;可运行的协议对照见 /ai-native/ai-sdk 专题):
+import { tool, type InferUITools } from "ai";
+
+const tools = {
+    getWeather: tool({
+        inputSchema: z.object({ city: z.string() }),
+        execute: async ({ city }) => fetchWeather(city),
+    }),
+};
+type MyTools = InferUITools<typeof tools>;
+
+// Client 侧(示意):useChat<UIMessage<unknown, never, MyTools>> 之后,
+// message.parts 里出现 type === "tool-getWeather" 的类型化部分,
+// 按其 state(input/output)映射 <WeatherCard /> 渲染 ——
+// 等价于本页 ToolRenderer 那张手写映射表,但协议与类型由 SDK 维护,
+// 且工具调用随流逐步到达`}
+                </pre>
+                <p className="mt-3 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    手写仍合理的场景:教学(看清「契约 + 映射表」这一层没有任何魔法)、
+                    组件渲染要接自研协议或现有数据通道、零依赖场景。
+                    生产里用 SDK 可以少维护一套工具调用的流式协议与状态机;
+                    对照本站的 SDK 落地版见
+                    <Link href="/ai-native/ai-sdk" className="mx-1 text-signal-600 underline decoration-signal-500/40 underline-offset-4 dark:text-signal-400">手写 SSE vs Vercel AI SDK</Link>
+                    专题。
+                </p>
             </TopicSection>
 
             <TopicSection

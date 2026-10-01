@@ -73,8 +73,13 @@ export function ClientCounter({ children }: { children: ReactNode }) {
 export default function RscGuideTopic() {
     return (
         <TopicPage
+            path="/rsc-boundary/guide"
             title="RSC 心智模型"
             description="为什么默认 Server:RSC 载荷是序列化的 UI 描述;每条 'use client' 边界都是一次 bundle 切点与序列化约束;Client 嵌 Server 走 children 槽"
+            references={[
+                { label: "Next.js 文档:Server and Client Components", href: "https://nextjs.org/docs/app/getting-started/server-and-client-components" },
+                { label: "React 文档:Server Components", href: "https://react.dev/reference/rsc/server-components" },
+            ]}
         >
             <TopicSection
                 title="为什么默认是 Server Component"
