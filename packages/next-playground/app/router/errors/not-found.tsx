@@ -14,7 +14,7 @@ import Link from "next/link";
 export default function SegmentNotFound() {
     return (
         <div className="mx-auto max-w-6xl">
-            <p className="font-mono text-[11px] tracking-[0.18em] text-copper-600 dark:text-copper-400">
+            <p className="font-mono text-[11px] tracking-[0.18em] text-signal-600 dark:text-signal-400">
                 not-found.tsx
             </p>
             <h1 className="mt-3 text-2xl font-semibold tracking-tight text-ink dark:text-neutral-50">
@@ -25,7 +25,7 @@ export default function SegmentNotFound() {
             </p>
             <Link
                 href="/router/errors"
-                className="mt-6 inline-flex text-sm font-medium text-ink underline decoration-copper-500 underline-offset-4 dark:text-neutral-100"
+                className="mt-6 inline-flex text-sm font-medium text-ink underline decoration-signal-500 underline-offset-4 dark:text-neutral-100"
             >
                 回到错误与未找到
             </Link>

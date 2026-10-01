@@ -22,17 +22,14 @@
 import Link from "next/link";
 import { memo } from "react";
 
+import type { Post } from "@/data/blog";
 import { cn } from "@/lib/utils";
 
 /**
- * 文章数据结构接口
+ * 文章类型统一复用 @/data/blog 的 Post(jsonplaceholder 契约),
+ * 不再维护本地 Article 副本。
  */
-export interface Article {
-    id: number;
-    title: string;
-    body: string;
-    userId?: number;
-}
+export type Article = Post;
 
 /**
  * 分类配色配置
@@ -66,6 +63,10 @@ interface ArticleCardProps {
  *
  * @param props.article - 文章数据
  * @param props.href - 跳转链接，默认值为 /router/dynamic-routes/${article.id}
+ *
+ * 关于 memo:它只对「Client 父组件重渲染」有意义 —— 父组件因 state 变化
+ * 重渲染时,props 未变的卡片可跳过;在 Server Component 渲染语境下
+ * (组件树随每次请求整体重建)memo 无作用,保留是为 Client 复用场景。
  */
 const ArticleCard = memo(({
     article,
@@ -76,12 +77,11 @@ const ArticleCard = memo(({
 
     return (
         <Link
-            key={article.id}
             href={linkHref}
             className="group relative flex flex-col rounded-2xl border border-neutral-200/80 bg-white p-6 transition-all duration-300 hover:border-neutral-300 hover:shadow-xl dark:border-neutral-800/80 dark:bg-neutral-900 dark:hover:border-neutral-700"
         >
             {/* 左侧彩色指示条 - 悬浮时显示 */}
-            <div className="absolute left-0 top-6 bottom-6 w-0.5 rounded-full bg-gradient-to-b from-primary-400 to-primary-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute left-0 top-6 bottom-6 w-0.5 rounded-full bg-gradient-to-b from-signal-400 to-signal-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             {/* 文章标签和编号 */}
             <div className="mb-4 flex items-center justify-between">
@@ -94,7 +94,7 @@ const ArticleCard = memo(({
             </div>
 
             {/* 文章标题 - 最多显示 2 行 */}
-            <h2 className="mb-3 text-lg font-semibold leading-snug text-neutral-900 line-clamp-2 transition-colors duration-200 group-hover:text-primary-600 dark:text-neutral-50 dark:group-hover:text-primary-400">
+            <h2 className="mb-3 text-lg font-semibold leading-snug text-neutral-900 line-clamp-2 transition-colors duration-200 group-hover:text-signal-600 dark:text-neutral-50 dark:group-hover:text-signal-400">
                 {article.title || "无标题文章"}
             </h2>
 
@@ -108,13 +108,13 @@ const ArticleCard = memo(({
                 {/* 作者信息 */}
                 <div className="flex items-center gap-2">
                     {/* 渐变头像装饰 */}
-                    <div className="h-7 w-7 rounded-full bg-gradient-to-br from-primary-400 to-secondary-400" />
+                    <div className="h-7 w-7 rounded-full bg-gradient-to-br from-signal-400 to-signal-600" />
                     <span className="text-xs text-neutral-500 dark:text-neutral-400">
                         作者 {article.userId || 1}
                     </span>
                 </div>
                 {/* 阅读链接 - 带箭头动画 */}
-                <span className="inline-flex items-center gap-1 text-xs font-medium text-primary-600 transition-all duration-200 group-hover:gap-2 dark:text-primary-400">
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-signal-600 transition-all duration-200 group-hover:gap-2 dark:text-signal-400">
                     阅读
                     <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

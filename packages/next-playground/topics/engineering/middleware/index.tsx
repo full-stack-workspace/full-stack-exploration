@@ -78,8 +78,12 @@ export default async function MiddlewareTopic() {
 
     return (
         <TopicPage
+            path="/engineering/middleware"
             title="Proxy 与中间件"
             description="Next 16 的 proxy.ts 固定跑在 Node;本站仍用 middleware.ts 做边缘改头演示,页面能读到同一枚请求头。matcher 之外的路由不会经过它"
+            references={[
+                { label: "Next.js 文档:proxy.ts(原 middleware.ts,file conventions)", href: "https://nextjs.org/docs/app/api-reference/file-conventions/proxy" },
+            ]}
         >
             <TopicSection
                 title="这一页读到的请求头"

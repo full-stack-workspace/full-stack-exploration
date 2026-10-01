@@ -20,7 +20,7 @@
 
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -58,6 +58,10 @@ export function StreamPlayground() {
     const [error, setError] = useState<string | null>(null);
     // AbortController 存 ref:取消动作不需要触发渲染
     const abortRef = useRef<AbortController | null>(null);
+
+    // 卸载清理:流式中途导航离开也要中断 fetch —— 否则组件没了,
+    // 服务端还在推送 token(真实场景 = 上游 LLM 继续计费),与「取消即省计费」相悖
+    useEffect(() => () => abortRef.current?.abort(), []);
 
     /** 开始一轮流式请求 */
     const start = async () => {

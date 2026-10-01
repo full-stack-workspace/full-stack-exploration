@@ -34,8 +34,13 @@ const loadBoundaryNote = (): Promise<string> =>
 export default function PropsBoundaryTopic() {
     return (
         <TopicPage
+            path="/rsc-boundary/props-boundary"
             title="Server/Client 边界"
             description="page 保持 Server Component 预渲染,交互(搜索/添加)下沉到 Client Component;初始数据以 props 跨越边界"
+            references={[
+                { label: "Next.js 文档:Server and Client Components(组合与 props)", href: "https://nextjs.org/docs/app/getting-started/server-and-client-components" },
+                { label: "React 文档:use()(解开跨边界的 Promise)", href: "https://react.dev/reference/react/use" },
+            ]}
         >
             <TopicSection
                 title="边界对照:Server 外壳 + Client 交互叶子"
@@ -58,20 +63,20 @@ export default function PropsBoundaryTopic() {
                         </thead>
                         <tbody className="text-neutral-600 dark:text-neutral-400">
                             <tr className="border-b border-rule/80 dark:border-neutral-800">
-                                <td className="py-2 pr-4">字符串、数字、普通对象、数组</td>
-                                <td className="py-2">能。上面的用户列表就是这样传进去的</td>
+                                <td className="py-2 pr-4">string / number / boolean / null / undefined、可序列化的普通对象与数组</td>
+                                <td className="py-2">Flight 原生支持。上面的用户列表就是这样传进去的</td>
+                            </tr>
+                            <tr className="border-b border-rule/80 dark:border-neutral-800">
+                                <td className="py-2 pr-4">Date、Map、Set、BigInt、TypedArray / ArrayBuffer、RegExp</td>
+                                <td className="py-2">Flight 原生支持。Date 能传,但跨时区序列化后语义要留心,团队约定传 ISO 字符串也常见</td>
                             </tr>
                             <tr className="border-b border-rule/80 dark:border-neutral-800">
                                 <td className="py-2 pr-4">Promise</td>
-                                <td className="py-2">能。Client 用 use() 解开,必须有 Suspense</td>
-                            </tr>
-                            <tr className="border-b border-rule/80 dark:border-neutral-800">
-                                <td className="py-2 pr-4">函数、类实例、Map / Set</td>
-                                <td className="py-2">不能。要动作就改成 Server Action,或把交互留在客户端</td>
+                                <td className="py-2">Flight 原生支持。Client 用 use() 解开,必须有 Suspense</td>
                             </tr>
                             <tr>
-                                <td className="py-2 pr-4">Date</td>
-                                <td className="py-2">不能。先改成 ISO 字符串再传</td>
+                                <td className="py-2 pr-4">普通函数、类实例、Symbol、WeakMap / WeakSet</td>
+                                <td className="py-2">真的不能。要动作就改成 Server Action,或把交互留在客户端</td>
                             </tr>
                         </tbody>
                     </table>

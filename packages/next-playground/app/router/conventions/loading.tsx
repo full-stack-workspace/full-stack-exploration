@@ -17,16 +17,15 @@
 export default function Loading() {
     // 与专题页 TopicSection 外形对齐的骨架,避免加载时布局跳动
     return (
-        <div className="mx-auto w-full max-w-5xl animate-pulse">
-            {/* 页头骨架:竖条 + 标题行 + 描述行 */}
-            <div className="mb-8 border-l-4 border-sky-200 pl-4 dark:border-sky-800">
-                <div className="h-7 w-56 rounded bg-neutral-200 dark:bg-neutral-800" />
-                <div className="mt-2 h-4 w-full max-w-xl rounded bg-neutral-200 dark:bg-neutral-800" />
+        <div className="mx-auto w-full max-w-6xl animate-pulse">
+            <div className="mb-10 max-w-3xl">
+                <div className="h-1 w-10 rounded-full bg-signal/40" />
+                <div className="mt-5 h-7 w-56 rounded-md bg-mist dark:bg-neutral-800" />
+                <div className="mt-3 h-4 w-full max-w-xl rounded-md bg-mist dark:bg-neutral-800" />
             </div>
-            {/* 分区卡片骨架 */}
-            <div className="space-y-6">
-                <div className="h-40 rounded-2xl bg-neutral-200/70 dark:bg-neutral-800/70" />
-                <div className="h-64 rounded-2xl bg-neutral-200/70 dark:bg-neutral-800/70" />
+            <div className="space-y-5">
+                <div className="h-40 rounded-xl border border-mist bg-panel dark:border-neutral-800 dark:bg-panel-night" />
+                <div className="h-64 rounded-xl border border-mist bg-panel dark:border-neutral-800 dark:bg-panel-night" />
             </div>
         </div>
     );

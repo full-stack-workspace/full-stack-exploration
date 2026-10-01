@@ -20,14 +20,11 @@
 import { useCallback, useState } from "react";
 import useSWR from "swr";
 
+import type { Post } from "@/data/blog";
 import { cn } from "@/lib/utils";
 
-/** jsonplaceholder 文章结构(只取演示需要的字段) */
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-}
+/** 演示只渲染三列:从 @/data/blog 的 Post 上 Pick,不再另维护一份结构 */
+type PostSummary = Pick<Post, "id" | "title" | "body">;
 
 /** 轮询间隔:3s,足够短到能直观看到请求计数上涨 */
 const POLL_INTERVAL = 3000;
@@ -86,10 +83,10 @@ export function SwrPlayground() {
     const countingFetcher = useCallback(async (url: string) => {
         setFetchCount((c) => c + 1);
         const res = await fetch(url);
-        return (await res.json()) as Post;
+        return (await res.json()) as PostSummary;
     }, []);
 
-    const { data, error, isLoading, isValidating } = useSWR<Post>(
+    const { data, error, isLoading, isValidating } = useSWR<PostSummary>(
         "https://jsonplaceholder.typicode.com/posts/1",
         countingFetcher,
         {

@@ -18,10 +18,15 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Source_Sans_3, Syne } from "next/font/google";
 
-import Footer from "../components/Footer";
-import { SiteShell } from "../components/shell/SiteShell";
-import { ThemeProvider } from "../components/ThemeProvider";
-import { HOME_TITLE, SITE_NAME, SITE_THESIS } from "../lib/topic-meta";
+import Footer from "@/components/Footer";
+import { SiteShell } from "@/components/shell/SiteShell";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import {
+  HOME_TITLE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/config/site";
 
 /* 拉丁文用 Syne 做字标与光谱刻度;中文落到 --font-sans 的苹方/思源 */
 const display = Syne({
@@ -54,12 +59,12 @@ const mono = IBM_Plex_Mono({
  * - metadataBase 为相对路径 metadata 提供基础 URL
  */
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: HOME_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
-  description: `${SITE_THESIS} 渲染光谱、Server/Client 边界、路由、缓存与 AI 流式体验,按专题做成可运行的对照。`,
+  description: SITE_DESCRIPTION,
   keywords: [
     "Next.js",
     "React",
@@ -69,9 +74,9 @@ export const metadata: Metadata = {
     "Streaming",
     "AI-Native",
   ],
-  authors: [{ name: "Next Playground" }],
-  creator: "Next Playground",
-  publisher: "Next Playground",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   robots: {
     index: true,
     follow: true,
@@ -81,14 +86,18 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     siteName: SITE_NAME,
     title: HOME_TITLE,
-    description: SITE_THESIS,
+    description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
     title: HOME_TITLE,
+    description: SITE_DESCRIPTION,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
     shortcut: "/favicon.ico",
   },
 };
@@ -108,7 +117,7 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-paper dark:bg-neutral-950">
+      <body className="flex min-h-full flex-col bg-paper dark:bg-night">
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var t=localStorage.getItem('theme');var p=window.matchMedia('(prefers-color-scheme: dark)').matches;var e=t||(p?'dark':'light');document.documentElement.classList.add(e)})()`,

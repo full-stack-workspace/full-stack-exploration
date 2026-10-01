@@ -4,7 +4,7 @@ This file  provides context for AI coding assistants (Cursor, GitHub Copilot, Cl
 
 ## Project Overview
 
-The **full-stack-exploration** is a **pnpm workspace monorepo** for learning and demonstrating Vite, Tailwind CSS, React, Vue, and Next.js. It contains four independent packages with no interdependencies.
+The **full-stack-exploration** is a **pnpm workspace monorepo** for learning and demonstrating Vite, Tailwind CSS, React, Vue, and Next.js. It contains seven independent packages with no interdependencies.
 
 ## Common Commands
 
@@ -14,6 +14,8 @@ pnpm dev:basic                                        # Vite + Vue 3 (port 5173)
 pnpm dev:server                                       # Vite + React 19 + shadcn/ui (port 5174)
 pnpm dev:vite-build                                   # Vite + React 19 + Ant Design (port 5175)
 pnpm dev:next                                         # Next.js 16 (port 3000)
+pnpm dev:upload                                       # Next.js 16 chunked upload (port 3001)
+pnpm dev:infra-fe                                     # infra-fe package
 pnpm dev:playground                                   # Rsbuild + React 19 playground (port 3002)
 pnpm build                                            # Build all packages
 pnpm type-check                                       # Type-check all packages
@@ -24,19 +26,22 @@ Within `packages/next-playground`:
 pnpm -C packages/next-playground dev                         # Next.js dev server
 pnpm -C packages/next-playground lint                        # ESLint
 pnpm -C packages/next-playground fix                         # ESLint --fix
+pnpm -C packages/next-playground test                        # 注册表契约测试(vitest run,纯 node 环境)
+pnpm -C packages/next-playground analyze                     # bundle 分析(ANALYZE=true + --webpack,报告在 .next/analyze/)
 ```
 
 ## Package Architecture
 
-### next-playground — Next.js 16 工程实践演示站
+### next-playground — Next.js 16 工程实践演示站(站点品牌:Next 权衡录 / Next Tradeoffs)
 
-**Tech stack:** Next.js 16, React 19, Tailwind CSS 4, SWR, clsx + tailwind-merge
+**Tech stack:** Next.js 16(**cacheComponents 全站开启**), React 19, Tailwind CSS 4, SWR, ai + @ai-sdk/react + zod(AI 专题), Vitest 2(注册表契约测试), clsx + tailwind-merge
 
 **Directory conventions:**
-- `config/topics.tsx` — **专题注册表(全站单一数据源)**:顶栏、侧边栏、首页卡片、页面 metadata 全部从 `TOPICS`/`CATEGORIES` 派生;新增专题 = topics/ 内容 + app/ 薄壳 + 注册一行(详见包 README)
-- `app/` — App Router **薄壳路由**(只导出 metadata 与渲染约定如 `revalidate`,内容在 `topics/`)与 Route Handler(`app/api/`)
-- `topics/<category>/<name>/` — 专题真实内容;category 为 `rendering` / `rsc-boundary` / `router` / `data` / `metadata` / `engineering` / `ai-native` 七类,co-locate 演示组件
-- `components/` — 共享组件:`shell/SiteShell`(Client,注册表驱动的顶栏+侧边栏壳层)、`topic/TopicPage`(TopicPage/TopicSection 专题骨架)、`ThemeProvider`
+- `config/site.ts` — **站点品牌单一数据源**(站点名 Next 权衡录 / Next Tradeoffs、slogan、论点、og 描述、SITE_URL);根 layout metadata、顶栏/页脚品牌区、首页 Hero、OG 图、sitemap/robots 全部从这里派生
+- `config/topics.tsx` — **专题注册表(全站单一数据源)**:顶栏、侧边栏、首页卡片、Cmd+K 搜索、页面 metadata 全部从 `TOPICS`/`CATEGORIES` 派生;新增专题 = topics/ 内容 + app/ 薄壳 + 注册一行(详见包 README);`config/topics.test.ts` 为注册表契约测试(纯 node 环境 vitest,`pnpm test`)
+- `app/` — App Router **薄壳路由**(只导出 metadata;cacheComponents 下**不再导出** `revalidate`/`dynamic` 等 route segment config,缓存声明下沉到取数函数上的 `"use cache"` + `cacheLife`,内容在 `topics/`)与 Route Handler(`app/api/`);另有 `opengraph-image.tsx`(动态 OG 图)、`not-found.tsx`、`global-error.tsx`、`sitemap.ts`、`robots.ts`
+- `topics/<category>/<name>/` — 专题真实内容;category 为 `rsc-boundary` / `rendering` / `router` / `data` / `metadata` / `engineering` / `security` / `ai-native` 八类,co-locate 演示组件;rsc-boundary/rendering/data 三类的 `check` 末页为理解检验(CheckList 问答)
+- `components/` — 共享组件:`shell/SiteShell`(Client,注册表驱动的顶栏+侧边栏壳层)与 `shell/SearchPalette`(Cmd+K 搜索)、`topic/TopicPage`(TopicPage/TopicSection 专题骨架,必填 `path`,带面包屑与 related 相关专题 chips)与 `topic/CheckList`、`home/`(SpectrumHero/CategoryMap)、`ui/Panel`、`ThemeProvider`
 - `middleware.ts` — 包根中间件演示(matcher 只命中 `/engineering/middleware`,加自定义响应头;Next 16 已将约定更名为 proxy,本站保留旧名并在专题页说明)
 - `data/` — Static mock data and data access functions (e.g., `getUserById`;`getPosts` 用 React `cache()` 记忆化)
 - `types/` — TypeScript interfaces (no runtime code)
@@ -44,10 +49,11 @@ pnpm -C packages/next-playground fix                         # ESLint --fix
 
 **Key patterns:**
 - Pages default to **Server Components**; opt into client with `"use client"` only when using state/effects/browser APIs
+- **cacheComponents 关键约束(最易踩)**:禁止 `export const dynamic` / `revalidate` 等 route segment config;动态 API(`cookies()`/`headers()`/`connection()`)必须待在 Suspense 洞内;渲染期不裸写 `new Date()`——要么进 `"use cache"` 产物随缓存复用,要么进 Suspense 洞按请求现算
 - **注册表 ≠ 路由**:App Router 路由由文件系统决定,注册表只驱动导航与元信息;不做 catch-all 查表渲染
 - 页面标题用 metadata API:薄壳页 `export const metadata = getTopicMetadata(path)` 读注册表,套根 layout 的 `title.template`;无 react-playground 的 DocumentTitle 机制
 - 旧路径(`/blog`、`/user`、`/ai-models`、`/about`)由 `next.config.ts` 的 `redirects()` 301 到新专题路由
-- Data fetching uses **SWR** for client-side or direct `fetch` in async Server Components (ISR page with `revalidate = 60`)
+- Data fetching uses **SWR** for client-side or direct `fetch` in async Server Components;ISR 语义由取数函数上的 `"use cache"` + `cacheLife({ revalidate: 60 })` 表达(见 /rendering/isr)
 - The `cn()` function from `lib/utils.ts` combines `clsx` (conditional classes) + `tailwind-merge` (conflict resolution); always prefer `cn()` over template literals for className
 - `@/` path alias maps to the package root (configured in `tsconfig.json` paths)
 - Tailwind CSS v4 uses `@theme` in `globals.css` to define design tokens (colors, radii, shadows, animations) — do not use `tailwind.config.js`
@@ -95,7 +101,7 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 
 Both `vite-build` and `next-playground` implement design tokens, but differently:
 - **vite-build** (`tokens.css`): Pure CSS custom properties with a three-layer architecture (Primitive → Semantic → Component); theme switching via `data-theme` attribute on `<html>`
-- **next-playground** (`globals.css`): Tailwind CSS v4 `@theme` directive, which auto-generates utility classes; theme switching via `prefers-color-scheme` media query
+- **next-playground** (`globals.css`): Tailwind CSS v4 `@theme` directive, which auto-generates utility classes; theme switching via 手写 `ThemeProvider`(class 策略,`.dark` 挂在 `<html>`,localStorage → prefers-color-scheme 兜底,body 内联脚本防闪烁)
 
 ## Code Commenting Standards
 

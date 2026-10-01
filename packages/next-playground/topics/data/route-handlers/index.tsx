@@ -16,8 +16,12 @@ import { ApiPlayground } from "./components/ApiPlayground";
 export default function RouteHandlersTopic() {
     return (
         <TopicPage
+            path="/data/route-handlers"
             title="Route Handler"
             description="GET/POST/PUT/DELETE 四方法端点;Route Handler 与页面取数相互独立,各自直连外部服务避免构建期自调用"
+            references={[
+                { label: "Next.js 文档:Route Handler(file conventions/route)", href: "https://nextjs.org/docs/app/api-reference/file-conventions/route" },
+            ]}
         >
             <TopicSection
                 title="调用 /api/basic"

@@ -12,6 +12,8 @@
  * @module topics/ai-native/agent-page
  */
 
+import Link from "next/link";
+
 import { TopicPage, TopicSection } from "@/components/topic/TopicPage";
 
 import { AgentPlayground } from "./components/AgentPlayground";
@@ -19,8 +21,13 @@ import { AgentPlayground } from "./components/AgentPlayground";
 export default function AgentPageTopic() {
     return (
         <TopicPage
+            path="/ai-native/agent-page"
             title="Agent 长任务页"
             description="多步 Agent 任务流的过程可视化:SSE 推送步骤事件,前端渲染 pending/running/done 时间线;串行 vs 并行墙钟对照,取消即省计费"
+            references={[
+                { label: "Vercel AI SDK:useChat(Chatbot 指南)", href: "https://ai-sdk.dev/docs/ai-sdk-ui/chatbot" },
+                { label: "Vercel AI SDK:streamText(Generating Text)", href: "https://ai-sdk.dev/docs/ai-sdk-core/generating-text" },
+            ]}
         >
             <TopicSection
                 title="长任务演练(可运行)"
@@ -50,6 +57,51 @@ export default function AgentPageTopic() {
                         性能分类下的 AI-Native 专题,本页只落地「墙钟对照」这一项
                     </li>
                 </ul>
+            </TopicSection>
+
+            <TopicSection
+                title="生产里不手写这个:AI SDK 的 data parts"
+                note="手写版的价值是理解协议;生产里步骤事件交给 createUIMessageStream 的 transient data parts"
+            >
+                <pre className="overflow-x-auto rounded-xl bg-neutral-900 p-4 text-xs leading-relaxed text-neutral-100 dark:bg-neutral-950">
+{`// Route Handler 侧(示意,ai@7;可运行版见 /ai-native/ai-sdk 专题):
+import {
+    createUIMessageStream,
+    createUIMessageStreamResponse,
+    streamText,
+    toUIMessageStream,
+} from "ai";
+
+export async function POST() {
+    return createUIMessageStreamResponse({
+        stream: createUIMessageStream({
+            execute: async ({ writer }) => {
+                // transient data part:推到前端但不进消息历史,
+                // 正是本页「步骤时间线」事件的官方载体
+                writer.write({
+                    type: "data-step",
+                    data: { step: "retrieve", status: "running" },
+                    transient: true,
+                });
+                const result = streamText({ model, prompt });
+                writer.merge(toUIMessageStream({ stream: result.stream }));
+            },
+        }),
+    });
+}
+
+// Client 侧(示意):useChat 的 onData 回调逐条收到 data-step,
+// 按 step/status 渲染时间线,替代手写的帧解析
+useChat({ transport, onData: (part) => renderStep(part) });`}
+                </pre>
+                <p className="mt-3 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    手写仍合理的场景:教学(像本页这样把帧格式摊开)、协议定制(事件语义与 AI SDK
+                    的消息模型不匹配)、零依赖场景(不想为一次演示引入 SDK)。
+                    其余情况让 SDK 管帧边界、取消传播与 provider 差异,业务代码只管「发什么步骤」;
+                    对照本站的 SDK 落地版见
+                    <Link href="/ai-native/ai-sdk" className="mx-1 text-signal-600 underline decoration-signal-500/40 underline-offset-4 dark:text-signal-400">手写 SSE vs Vercel AI SDK</Link>
+                    专题。
+                </p>
             </TopicSection>
 
             <TopicSection

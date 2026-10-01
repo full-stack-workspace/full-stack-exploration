@@ -18,8 +18,6 @@
 
 import type { NextRequest } from "next/server";
 
-export const dynamic = "force-dynamic";
-
 /** 步骤事件载荷(与前端 AgentPlayground 的解析契约) */
 interface StepEvent {
     /** 步骤 id,前端按 id 更新时间线节点 */

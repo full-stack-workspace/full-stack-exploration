@@ -3,8 +3,8 @@
  * BrandMark — 站点标识
  * ============================================================================
  *
- * 五根从左到右渐次升高的刻度，落在墨色方印上，最右侧一根是铜色。
- * 它是首页那把渲染尺子的缩小版：左边静、右边动，铜色标出「当前这一格」。
+ * 五根从左到右渐次升高的刻度，落在墨色方印上，最右侧一根是磷光。
+ * 它是首页那把渲染尺子的缩小版：左边静、右边动，signal 标出「当前这一格」。
  * 图形与 app/icon.svg 保持一致。
  *
  * @module components/BrandMark
@@ -29,13 +29,13 @@ export function BrandMark({ className = "h-9 w-9" }: BrandMarkProps) {
     const id = rawId.replace(/:/g, "");
     const clip = `${id}-clip`;
 
-    // 底边对齐,高度递增,最后一根用铜色标出光谱右端
+    // 底边对齐,高度递增,最后一根用磷光标出光谱右端
     const bars = [
         { x: 5.5, h: 7, fill: "#fff", opacity: 0.38 },
         { x: 10.4, h: 10, fill: "#fff", opacity: 0.55 },
         { x: 15.3, h: 13, fill: "#fff", opacity: 0.72 },
         { x: 20.2, h: 16, fill: "#fff", opacity: 0.88 },
-        { x: 25.1, h: 19, fill: "#E8A07A", opacity: 1 },
+        { x: 25.1, h: 19, fill: "#1ECAD3", opacity: 1 },
     ];
 
     return (
@@ -51,7 +51,7 @@ export function BrandMark({ className = "h-9 w-9" }: BrandMarkProps) {
                 </clipPath>
             </defs>
             <g clipPath={`url(#${clip})`}>
-                <rect width="32" height="32" fill="#15202B" />
+                <rect width="32" height="32" fill="#0C1620" />
                 {bars.map((bar) => (
                     <rect
                         key={bar.x}

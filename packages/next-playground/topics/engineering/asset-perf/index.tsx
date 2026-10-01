@@ -88,8 +88,14 @@ const HeavyChart = dynamic(() => import("./HeavyChart"), {
 export default function AssetPerfTopic() {
     return (
         <TopicPage
+            path="/engineering/asset-perf"
             title="Image/Font 与包体治理"
             description="next/image 的尺寸/懒加载/格式协商、next/font 的自托管零 CLS,以及动态 import 与客户端边界下沉的包体治理"
+            references={[
+                { label: "Next.js 文档:<Image> 组件", href: "https://nextjs.org/docs/app/api-reference/components/image" },
+                { label: "Next.js 文档:next/font", href: "https://nextjs.org/docs/app/api-reference/components/font" },
+                { label: "Next.js 文档:Lazy Loading 指南", href: "https://nextjs.org/docs/app/guides/lazy-loading" },
+            ]}
         >
             <TopicSection
                 title="图片:本站的 <img> 是反面教材(lint 可证)"

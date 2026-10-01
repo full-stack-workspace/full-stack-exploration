@@ -62,6 +62,7 @@ const STAGES: SpectrumStage[] = [
             "内容对所有访客一致,且更新以「天/周」计:文档、营销页、博客正文",
             "流量越大越划算:渲染成本与请求量彻底脱钩",
             "需要最强 SEO 与最稳 TTFB 的落地页",
+            "本页自身即是 SSG 实例:无取数、无动态 API,构建期预渲染后永久静态",
         ],
     },
     {
@@ -77,7 +78,7 @@ const STAGES: SpectrumStage[] = [
         when: [
             "内容会更新但能容忍分钟级延迟:文章列表、商品目录、榜单",
             "想要 SSG 的成本,又不想每次改内容都重新部署",
-            "配合 revalidateTag 可按事件精确失效,逼近实时",
+            "本站实现:取数函数标 \"use cache\" + cacheLife({ revalidate: 60 });配合 cacheTag/revalidateTag 可按事件精确失效,逼近实时",
         ],
         href: "/rendering/isr",
     },
@@ -128,7 +129,7 @@ const STAGES: SpectrumStage[] = [
         when: [
             "一页之内动静悬殊:商品页(描述静态 + 推荐/库存动态)是教科书场景",
             "想把「按路由选策略」细化到「按组件选策略」",
-            "Next 16 起经 cacheComponents 开启,详见 PPR 专题",
+            "本站已全站开启 cacheComponents:PPR 专题即是活演示(壳静洞动可刷新验证)",
         ],
         href: "/rendering/ppr",
     },
@@ -141,8 +142,13 @@ const STAGES: SpectrumStage[] = [
 export default function SpectrumTopic() {
     return (
         <TopicPage
+            path="/rendering/spectrum"
             title="渲染光谱梳理"
             description="SSG → ISR → SSR → Streaming → PPR 不是五个开关而是一条光谱:按首字节来源、数据新鲜度与服务器成本定位每格,按路由甚至按组件混用"
+            references={[
+                { label: "Next.js 文档:Caching(Cache Components 默认模型)", href: "https://nextjs.org/docs/app/getting-started/caching" },
+                { label: "Next.js 文档:Incremental Static Regeneration 指南", href: "https://nextjs.org/docs/app/guides/incremental-static-regeneration" },
+            ]}
         >
             {/* 光谱总览:五格色块横向排列,移动端纵向堆叠 */}
             <TopicSection
@@ -198,7 +204,7 @@ export default function SpectrumTopic() {
                             {stage.href && (
                                 <Link
                                     href={stage.href}
-                                    className="mt-3 inline-block text-xs font-medium text-ink underline decoration-copper-500 underline-offset-4 dark:text-neutral-100"
+                                    className="mt-3 inline-block text-xs font-medium text-ink underline decoration-signal-500 underline-offset-4 dark:text-neutral-100"
                                 >
                                     打开这一格
                                 </Link>
@@ -240,21 +246,23 @@ export default function SpectrumTopic() {
             {/* 心智模型:光谱不是开关 */}
             <TopicSection
                 title="渲染是光谱,不是开关"
-                note="同一应用按路由混用;Next 16 起 PPR 甚至可按组件混用"
+                note="同一应用按路由混用;本站开启 Cache Components 后更可按组件混用"
             >
                 <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                     <li>
-                        策略的粒度是<strong>路由段</strong>:每个 page/layout 用
+                        旧模型(Next 15 及以前)策略的粒度是<strong>路由段</strong>:每个 page/layout 用
                         <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">dynamic</code>
                         /
                         <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">revalidate</code>
                         各自声明,一个站点同时存在 SSG 文档页、ISR 列表页、SSR 仪表盘是常态
                     </li>
                     <li>
-                        不要问「这个项目用 SSR 还是 SSG」,要问「这个路由的数据,变化频率 × 个性化程度 × SEO 要求,落在光谱哪一格」
+                        本站现行(cacheComponents):路由段配置已移除,缓存声明下沉到组件/函数上的
+                        <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">&quot;use cache&quot;</code>
+                        —— 同一页内静态壳与动态洞共存,build 输出用 ○ / ◐ / ƒ 标注每条的落点
                     </li>
                     <li>
-                        Next 16 的 Cache Components(PPR)把粒度进一步细化到<strong>组件</strong>:静态壳与动态洞同页共存,见 PPR 专题
+                        不要问「这个项目用 SSR 还是 SSG」,要问「这个路由的数据,变化频率 × 个性化程度 × SEO 要求,落在光谱哪一格」
                     </li>
                     <li>
                         选型的默认方向是「尽量靠左」:能用静态就不要动态,动态部分用 Suspense 隔离成洞,而不是把整页拖下水

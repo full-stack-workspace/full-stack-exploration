@@ -24,13 +24,14 @@ import { TopicPage, TopicSection } from "@/components/topic/TopicPage";
 
 /** 静态 metadata:根 layout 的 title.default + title.template */
 const STATIC_CODE = `// app/layout.tsx —— 根布局,全站 metadata 的根
+// 品牌常量全部来自 config/site.ts(品牌单一数据源)
 export const metadata: Metadata = {
-    metadataBase: new URL("http://localhost:3000"),
+    metadataBase: new URL(SITE_URL),   // 部署后自动取 VERCEL_URL
     title: {
-        default: "Next Playground · 该选哪条", // 无标题页面兜底
-        template: "%s | Next Playground",           // 子页标题自动套后缀
+        default: HOME_TITLE,           // "Next 权衡录 · 把选型放到同一把尺子上"
+        template: \`%s | \${SITE_NAME}\`, // 子页标题自动套后缀
     },
-    description: "按专题组织的 Next.js 16 工程实践站点:……",
+    description: SITE_DESCRIPTION,
     openGraph: { type: "website", locale: "zh_CN", /* … */ },
     icons: { icon: "/favicon.ico" },
 };`;
@@ -90,8 +91,13 @@ app/
 export default function MetadataGuideTopic() {
     return (
         <TopicPage
+            path="/metadata/guide"
             title="metadata 流水线"
             description="静态 metadata / generateMetadata / 约定文件的合并顺序;本站 title.template 与 getTopicMetadata 的真实例子"
+            references={[
+                { label: "Next.js 文档:Metadata and OG Images", href: "https://nextjs.org/docs/app/getting-started/metadata-and-og-images" },
+                { label: "Next.js 文档:generateMetadata", href: "https://nextjs.org/docs/app/api-reference/functions/generate-metadata" },
+            ]}
         >
             <TopicSection
                 title="三条通道:静态导出 → 动态函数 → 约定文件"
@@ -150,7 +156,7 @@ export default function MetadataGuideTopic() {
                         <strong>title.template 是例外</strong>:子段给出标题主体(如
                         「约定文件对照」),离它最近的父级 template 负责拼接,最终产出
                         <code className="mx-1 rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-800">
-                            约定文件对照 | Next Playground
+                            约定文件对照 | Next 权衡录
                         </code>
                         —— 子段自己也能再定义 template,形成多级模板链
                     </li>

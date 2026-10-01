@@ -98,10 +98,11 @@ export default function UserListClient({ initialUsers }: UserListClientProps) {
                             <div className="relative">
                                 <input
                                     type="search"
+                                    aria-label="搜索成员"
                                     placeholder="搜索成员..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="h-10 w-64 rounded-xl border border-neutral-200 bg-neutral-50 pl-10 pr-4 text-sm focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-neutral-800 dark:bg-neutral-900 dark:focus:border-primary-600"
+                                    className="h-10 w-64 rounded-xl border border-neutral-200 bg-neutral-50 pl-10 pr-4 text-sm focus:border-signal-400 focus:outline-none focus:ring-2 focus:ring-signal-500/20 dark:border-neutral-800 dark:bg-neutral-900 dark:focus:border-signal-600"
                                 />
                                 <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -118,7 +119,7 @@ export default function UserListClient({ initialUsers }: UserListClientProps) {
                             <button
                                 onClick={handleAddMember}
                                 disabled={isAdding}
-                                className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary-600 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="inline-flex h-10 items-center gap-2 rounded-xl bg-signal-600 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-signal-600/90 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <svg
                                     className={`h-4 w-4 ${isAdding ? "animate-spin" : ""}`}

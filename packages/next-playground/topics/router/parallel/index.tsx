@@ -19,8 +19,13 @@ import { SHOTS } from "./shots";
 export default function ParallelTopic() {
     return (
         <TopicPage
+            path="/router/parallel"
             title="平行路由与拦截"
             description="同一条 URL,两种渲染:从列表点进去是弹层(列表不卸载),刷新或硬导航是完整页。@modal 负责槽,(.)shot 负责拦截,default.tsx 保证直接打开列表时槽是空的"
+            references={[
+                { label: "Next.js 文档:Parallel Routes(file conventions)", href: "https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes" },
+                { label: "Next.js 文档:Intercepting Routes(file conventions)", href: "https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes" },
+            ]}
         >
             <TopicSection
                 title="从列表点进去"
@@ -31,7 +36,7 @@ export default function ParallelTopic() {
                         <li key={shot.id}>
                             <Link
                                 href={`/router/parallel/shot/${shot.id}`}
-                                className="flex h-full flex-col justify-between border border-rule px-4 py-4 transition-colors hover:border-copper-500 dark:border-neutral-700"
+                                className="flex h-full flex-col justify-between border border-rule px-4 py-4 transition-colors hover:border-signal-500 dark:border-neutral-700"
                             >
                                 <span className="font-display text-2xl font-semibold tracking-[-0.03em] text-ink dark:text-neutral-50">
                                     {shot.label}
