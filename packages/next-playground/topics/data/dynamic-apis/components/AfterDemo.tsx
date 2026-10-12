@@ -33,17 +33,27 @@ export function AfterDemo() {
     const [count, setCount] = useState<number | null>(null);
     const [observation, setObservation] = useState<AfterObservation | null>(null);
     const [pending, setPending] = useState(false);
+    const [failed, setFailed] = useState(false);
 
     const readCount = async () => {
-        const res = await fetch("/api/after-demo");
-        const data = (await res.json()) as { delayedWrites: number };
-        setCount(data.delayedWrites);
+        try {
+            const res = await fetch("/api/after-demo");
+            if (!res.ok) {throw new Error(`HTTP ${res.status}`);}
+            const data = (await res.json()) as { delayedWrites: number };
+            setCount(data.delayedWrites);
+            setFailed(false);
+        } catch {
+            // 端点不可达:给出可见提示,不再让 Promise 静默拒绝
+            setFailed(true);
+        }
     };
 
     const triggerPost = async () => {
         setPending(true);
+        setFailed(false);
         try {
             const res = await fetch("/api/after-demo", { method: "POST" });
+            if (!res.ok) {throw new Error(`HTTP ${res.status}`);}
             const data = (await res.json()) as {
                 delayedWritesAtResponse: number;
             };
@@ -54,12 +64,16 @@ export function AfterDemo() {
             // after() 回调里人为延迟了 300ms,等 400ms 再读必能看到 +1
             await new Promise((resolve) => setTimeout(resolve, 400));
             const check = await fetch("/api/after-demo");
+            if (!check.ok) {throw new Error(`HTTP ${check.status}`);}
             const checked = (await check.json()) as { delayedWrites: number };
             setCount(checked.delayedWrites);
             setObservation({
                 atResponse: data.delayedWritesAtResponse,
                 afterDelay: checked.delayedWrites,
             });
+        } catch {
+            // 任一环节失败(POST/重读不可达):界面给出提示,不再静默
+            setFailed(true);
         } finally {
             setPending(false);
         }
@@ -84,6 +98,11 @@ export function AfterDemo() {
                 {count !== null && (
                     <p className="font-mono text-xs text-neutral-600 dark:text-neutral-300">
                         delayedWrites = {count}
+                    </p>
+                )}
+                {failed && (
+                    <p className="text-xs text-rose-600 dark:text-rose-400">
+                        请求失败:请确认 dev server 已启动(/api/after-demo 不可达)
                     </p>
                 )}
             </div>
