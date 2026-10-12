@@ -50,6 +50,13 @@ export function ApiPlayground() {
             });
             const body = await res.text();
             setResult({ method, status: res.status, body });
+        } catch (err) {
+            // 网络层失败(/api/basic 不可达):状态码记 0,错误信息进结果区
+            setResult({
+                method,
+                status: 0,
+                body: `网络错误:${err instanceof Error ? err.message : String(err)}`,
+            });
         } finally {
             setPending(null);
         }

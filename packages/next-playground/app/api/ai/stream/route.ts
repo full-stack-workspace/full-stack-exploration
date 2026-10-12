@@ -63,10 +63,13 @@ export async function GET(req: NextRequest) {
                     encoder.encode(`data: ${JSON.stringify({ token })}\n\n`),
                 );
             }
+            // cancel 回调触发后流已关闭,此时再 close() 会抛 TypeError
+            // (Invalid state: Controller is already closed);
+            // 只有正常跑完全程才主动收尾(enqueue [DONE] + close)
             if (!cancelled && !req.signal.aborted) {
                 controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+                controller.close();
             }
-            controller.close();
         },
         cancel() {
             // 浏览器 abort/断开会触发这里;标记后 start 循环在下一个 tick 退出

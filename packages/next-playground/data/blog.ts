@@ -66,15 +66,20 @@ const FALLBACK_POSTS: Post[] = [
  * 数据获取(cache() 记忆化)
  * ================================================================ */
 
+/** 外部 API 超时阈值:源站挂起(不响应也不断连)时快速落入本地兜底,不拖住构建/再生 */
+const FETCH_TIMEOUT_MS = 10_000;
+
 /**
  * 获取博客文章列表及来源标记(记忆化)
  *
- * 同一渲染周期内多次调用只请求一次;失败时返回本地兜底数据,
- * source 为 "fallback",调用方可据此渲染提示条。
+ * 同一渲染周期内多次调用只请求一次;失败或超时(AbortSignal.timeout)
+ * 时返回本地兜底数据,source 为 "fallback",调用方可据此渲染提示条。
  */
 export const getPostsWithStatus = cache(async (): Promise<PostsResult> => {
   try {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
     if (!res.ok) {
       throw new Error(`jsonplaceholder responded ${res.status}`);
     }

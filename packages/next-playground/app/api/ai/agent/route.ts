@@ -60,6 +60,14 @@ export async function GET(req: NextRequest) {
                 controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));
             };
             const aborted = () => cancelled || req.signal.aborted;
+            // 幂等收尾:cancel 回调触发后流已关闭,重复 close() 会抛
+            // TypeError(Invalid state),所有退出路径统一走 finish()
+            let closed = false;
+            const finish = () => {
+                if (closed || cancelled) {return;}
+                closed = true;
+                controller.close();
+            };
             /** 推进一个步骤:running → sleep → done;断开即返回 false 终止流水线 */
             const runStep = async (step: string, running: string, done: string, cost: number) => {
                 if (aborted()) {return false;}
@@ -71,23 +79,23 @@ export async function GET(req: NextRequest) {
             };
 
             // 1. 规划 → 2. 检索(RAG):所有模式下都一样
-            if (!(await runStep("plan", "拆解任务、规划执行步骤", "已生成 3 步执行计划", 500))) {controller.close(); return;}
-            if (!(await runStep("rag", "检索知识库,召回相关片段", "召回 4 条相关文档片段", 700))) {controller.close(); return;}
+            if (!(await runStep("plan", "拆解任务、规划执行步骤", "已生成 3 步执行计划", 500))) {finish(); return;}
+            if (!(await runStep("rag", "检索知识库,召回相关片段", "召回 4 条相关文档片段", 700))) {finish(); return;}
 
             // 3. 工具调用:串行 = 3×800ms 墙钟;并行 = max 800ms 墙钟
             if (mode === "serial") {
                 for (const tool of TOOL_STEPS) {
                     if (!(await runStep(tool.id, `调用工具:${tool.label}`, `${tool.label}完成`, TOOL_COST_MS))) {
-                        controller.close();
+                        finish();
                         return;
                     }
                 }
             } else {
-                if (aborted()) {controller.close(); return;}
+                if (aborted()) {finish(); return;}
                 // 并行:三个 running 同时发出,等待最长的一个,再同时 done
                 for (const tool of TOOL_STEPS) {emit(tool.id, "running", `并行调用:${tool.label}`);}
                 await sleep(TOOL_COST_MS);
-                if (aborted()) {controller.close(); return;}
+                if (aborted()) {finish(); return;}
                 for (const tool of TOOL_STEPS) {emit(tool.id, "done", `${tool.label}完成`);}
             }
 
@@ -95,15 +103,18 @@ export async function GET(req: NextRequest) {
             if (skipValidate) {
                 emit("validate", "skipped", "已跳过校验:墙钟减半,但产出未经核对(快但错的取舍)");
             } else if (!(await runStep("validate", "交叉校验工具产出的一致性", "校验通过,无冲突数据", 400))) {
-                controller.close();
+                finish();
                 return;
             }
 
             // 5. 汇总
-            if (!(await runStep("summary", "汇总各步骤产出,生成最终回答", "任务完成", 600))) {controller.close(); return;}
+            if (!(await runStep("summary", "汇总各步骤产出,生成最终回答", "任务完成", 600))) {finish(); return;}
 
-            controller.enqueue(encoder.encode("data: [DONE]\n\n"));
-            controller.close();
+            // 收尾:[DONE] 只在未断开时补发;finish() 幂等关闭流
+            if (!aborted()) {
+                controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+            }
+            finish();
         },
         cancel() {
             // 前端取消:真实场景在此取消进行中的工具调用与 LLM 请求

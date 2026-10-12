@@ -77,6 +77,7 @@ export function AgentPlayground() {
     const [phase, setPhase] = useState<Phase>("idle");
     const [steps, setSteps] = useState<Record<StepId, StepState>>(initialSteps);
     const [wallClock, setWallClock] = useState<number | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const abortRef = useRef<AbortController | null>(null);
 
     // 卸载清理:任务运行中导航离开也要中断 fetch,
@@ -100,7 +101,13 @@ export function AgentPlayground() {
                 if (!line.startsWith("data:")) {continue;}
                 const data = line.slice(5).trim();
                 if (data === "[DONE]") {continue;}
-                const evt = JSON.parse(data) as StepEvent;
+                // 畸形帧(半帧拼接错位/服务端异常行):跳过这一帧,不中断整个流
+                let evt: StepEvent;
+                try {
+                    evt = JSON.parse(data) as StepEvent;
+                } catch {
+                    continue;
+                }
                 setSteps((prev) => ({
                     ...prev,
                     [evt.step]: { status: evt.status, detail: evt.detail, at: evt.elapsed },
@@ -118,6 +125,7 @@ export function AgentPlayground() {
         setSteps(initialSteps());
         setPhase("running");
         setWallClock(null);
+        setError(null);
         const startedAt = performance.now();
 
         try {
@@ -129,12 +137,15 @@ export function AgentPlayground() {
             await consume(res);
             setWallClock(performance.now() - startedAt);
             setPhase("done");
-        } catch {
+        } catch (err) {
             if (controller.signal.aborted) {
                 // 取消:剩余步骤停在 running/pending,直观看到「后面不再执行」
                 setWallClock(performance.now() - startedAt);
                 setPhase("aborted");
             } else {
+                // 非取消类失败(网络断开/HTTP 错误):给出可见的错误提示,
+                // 与 StreamPlayground 的 error 分支对齐,不再静默回到 idle
+                setError(err instanceof Error ? err.message : String(err));
                 setPhase("idle");
             }
         }
@@ -208,6 +219,13 @@ export function AgentPlayground() {
                     </span>
                 )}
             </div>
+
+            {/* 错误提示:非取消类失败时可见(样式与 StreamPlayground 对齐) */}
+            {error && (
+                <p className="rounded-xl border border-rose-200 bg-rose-50/60 px-4 py-2.5 text-sm text-rose-600 dark:border-rose-800/60 dark:bg-rose-950/30 dark:text-rose-400">
+                    请求失败:{error}
+                </p>
+            )}
 
             {/* 步骤时间线 */}
             <ol className="space-y-1.5">
