@@ -26,6 +26,7 @@ import {
     type UIMessage,
 } from "ai";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
+import { NextResponse } from "next/server";
 
 // Route Handler 默认每请求执行;cacheComponents 下不再有
 // route segment config,SSE 长连接天然不可能被预渲染
@@ -92,14 +93,34 @@ const mockModel = new MockLanguageModelV3({
  * 响应是 UI Message Stream(text/event-stream,帧为 JSON 编码的 UIMessageChunk)。
  *
  * @param req - 请求对象;body 里的消息历史经 convertToModelMessages 转成模型消息
+ *   入口校验:非 JSON body 或 messages 非数组 → 400;形状不符 UIMessage 契约 → 422
  * @returns UI Message Stream 响应,供 useChat 消费
  */
 export async function POST(req: Request) {
-    const { messages }: { messages: UIMessage[] } = await req.json();
+    // 非合法 JSON body:框架兜底会返回 HTML 500 页,对客户端不友好,显式 400
+    let body: unknown;
+    try {
+        body = await req.json();
+    } catch {
+        return NextResponse.json({ error: "请求体不是合法 JSON" }, { status: 400 });
+    }
+
+    const messages = (body as { messages?: unknown }).messages;
+    if (!Array.isArray(messages)) {
+        return NextResponse.json({ error: "messages 必须是 UIMessage 数组" }, { status: 400 });
+    }
+
+    // 形状细节交给 convertToModelMessages 校验,抛错即 422
+    let modelMessages: Awaited<ReturnType<typeof convertToModelMessages>>;
+    try {
+        modelMessages = await convertToModelMessages(messages as UIMessage[]);
+    } catch {
+        return NextResponse.json({ error: "messages 形状不符合 UIMessage 契约" }, { status: 422 });
+    }
 
     const result = streamText({
         model: mockModel,
-        messages: await convertToModelMessages(messages),
+        messages: modelMessages,
     });
 
     // 模型流(TextStreamPart)→ UI 消息流(UIMessageChunk)→ SSE Response;
