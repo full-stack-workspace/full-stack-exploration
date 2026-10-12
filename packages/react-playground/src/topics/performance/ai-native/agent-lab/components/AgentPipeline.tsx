@@ -10,7 +10,7 @@
  * @module topics/performance/ai-native/agent-lab/components/AgentPipeline
  */
 
-import { memo, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { Button, Slider, Switch } from 'antd';
 
 type Phase = 'idle' | 'thinking' | 'tools' | 'generating' | 'done' | 'stopped';
@@ -68,6 +68,16 @@ export const AgentPipeline = memo(() => {
         timersRef.current.forEach((id) => window.clearTimeout(id));
         timersRef.current = [];
     };
+
+    // 卸载清理:任务跑到一半切走路由时,残留定时器不再对已卸载组件 setState
+    useEffect(() => {
+        return () => {
+            cancelledRef.current = true;
+            clearTimers();
+        };
+        // clearTimers 只读写 ref,挂载时的闭包即正确行为
+         
+    }, []);
 
     const after = (ms: number, fn: () => void) => {
         const fireAt = nowAbsRef.current + ms;

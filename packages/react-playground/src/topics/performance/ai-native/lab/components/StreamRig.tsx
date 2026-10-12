@@ -9,7 +9,7 @@
  * @module topics/performance/ai-native/lab/components/StreamRig
  */
 
-import { memo, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { Button, Slider, Switch } from 'antd';
 
 const FILLER = '好的，我来帮你看一下这个问题。'.split('');
@@ -63,6 +63,16 @@ export const StreamRig = memo(() => {
             flushTimerRef.current = null;
         }
     };
+
+    // 卸载清理:流式播放中途切走路由时,残留定时器不再对已卸载组件 setState
+    useEffect(() => {
+        return () => {
+            cancelledRef.current = true;
+            clearTimers();
+        };
+        // clearTimers 只读写 ref,挂载时的闭包即正确行为
+         
+    }, []);
 
     const flushPaint = (now: number) => {
         displayedRef.current += pendingRef.current;
