@@ -55,8 +55,8 @@ export const ProductList: React.FC<{ products: ProductItem[] }> = ({ products })
             {Object.entries(productByCategory).map(([category, productList]) => (
                 <div key={category} className="space-y-2">
                     <Category category={category} />
-                    {productList.map((product, index) => (
-                        <ProductItemComponent key={index} {...product} />
+                    {productList.map((product) => (
+                        <ProductItemComponent key={product.id} {...product} />
                     ))}
                 </div>
             ))}
