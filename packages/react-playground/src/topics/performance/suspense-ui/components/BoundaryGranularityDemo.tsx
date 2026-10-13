@@ -13,7 +13,7 @@
  * @module topics/performance/suspense-ui/components/BoundaryGranularityDemo
  */
 
-import { memo, Suspense, useState, useTransition } from 'react';
+import { memo, Suspense, useEffect, useRef, useState, useTransition } from 'react';
 import { Button, Segmented, Tag } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 
@@ -48,7 +48,17 @@ const WholeSkeleton = () => (
  */
 export const BoundaryGranularityDemo = memo(() => {
     const [split, setSplit] = useState(true);
-    const [resources, setResources] = useState<AreaResources>(() => createAreaResources());
+    // 初始资源在挂载 effect 中创建:渲染期(state initializer)创建会在
+    // StrictMode 下双发请求;ref 守卫保证双跑 effect 也只创建一次
+    const [resources, setResources] = useState<AreaResources | null>(null);
+    const createdRef = useRef(false);
+    useEffect(() => {
+        if (createdRef.current) {
+            return;
+        }
+        createdRef.current = true;
+        setResources(createAreaResources());
+    }, []);
     const [isPending, startTransition] = useTransition();
 
     // 重载叠加 transition:旧内容保持可见,新资源就绪后一次性切换
@@ -74,7 +84,10 @@ export const BoundaryGranularityDemo = memo(() => {
             </div>
 
             <div className={isPending ? 'opacity-60 transition-opacity' : 'transition-opacity'}>
-                {split ? (
+                {resources === null ? (
+                    // 初始资源尚未创建(挂载 effect 中创建):先出整体骨架
+                    <WholeSkeleton />
+                ) : split ? (
                     // 细粒度边界:快区不被慢区拖累
                     <div className="grid gap-4 lg:grid-cols-2">
                         <Suspense fallback={<ResultSkeleton label="快区" />}>
