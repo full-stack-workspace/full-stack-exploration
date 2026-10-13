@@ -14,7 +14,7 @@
  * @module topics/performance/suspense-ui/components/NoFallbackFlashDemo
  */
 
-import { memo, Suspense, useState, useTransition } from 'react';
+import { memo, Suspense, useEffect, useRef, useState, useTransition } from 'react';
 import { Segmented, Tag } from 'antd';
 
 import { wrapPromise } from '../../lab/resource';
@@ -42,9 +42,19 @@ export const NoFallbackFlashDemo = memo(
     }: NoFallbackFlashDemoProps) => {
         const [useTransitionMode, setUseTransitionMode] = useState(true);
         const [query, setQuery] = useState<Query>('cache');
-        const [resource, setResource] = useState<SuspenseResource<SearchResponse>>(() =>
-            createResource('cache'),
-        );
+        // 初始资源在挂载 effect 中创建:渲染期(state initializer)创建会在
+        // StrictMode 下双发请求;ref 守卫保证双跑 effect 也只创建一次
+        const [resource, setResource] = useState<SuspenseResource<SearchResponse> | null>(null);
+        const createdRef = useRef(false);
+        useEffect(() => {
+            if (createdRef.current) {
+                return;
+            }
+            createdRef.current = true;
+            setResource(createResource('cache'));
+            // createResource 是注入的初始工厂;换查询走 handleQueryChange 事件处理器
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
         const [isPending, startTransition] = useTransition();
 
         const handleQueryChange = (next: Query) => {
@@ -79,9 +89,13 @@ export const NoFallbackFlashDemo = memo(
                 />
 
                 <div className={isPending ? 'opacity-60 transition-opacity' : 'transition-opacity'}>
-                    <Suspense fallback={<ResultSkeleton label="查询结果" />}>
-                        <ResultReader resource={resource} label="查询结果" />
-                    </Suspense>
+                    {resource === null ? (
+                        <ResultSkeleton label="查询结果" />
+                    ) : (
+                        <Suspense fallback={<ResultSkeleton label="查询结果" />}>
+                            <ResultReader resource={resource} label="查询结果" />
+                        </Suspense>
+                    )}
                 </div>
             </div>
         );

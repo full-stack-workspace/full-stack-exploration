@@ -14,10 +14,10 @@ import {
 
 interface Props {
     item: TodoItem;
-    onToggle: () => void;
-    onDelete: () => void;
-    onEdit: (text: string) => void;
-    onPriorityChange: (priority: Priority) => void;
+    onToggle: (id: string) => void;
+    onDelete: (id: string) => void;
+    onEdit: (id: string, text: string) => void;
+    onPriorityChange: (id: string, priority: Priority) => void;
 }
 
 const TodoItemComponent: React.FC<Props> = ({
@@ -46,7 +46,7 @@ const TodoItemComponent: React.FC<Props> = ({
 
     const commitEdit = () => {
         const trimmed = draft.trim();
-        if (trimmed && trimmed !== item.text) {onEdit(trimmed);}
+        if (trimmed && trimmed !== item.text) {onEdit(item.id, trimmed);}
         else {setDraft(item.text);}
         setEditing(false);
     };
@@ -58,7 +58,7 @@ const TodoItemComponent: React.FC<Props> = ({
 
     const cyclePriority = () => {
         const next = PRIORITIES[(PRIORITIES.indexOf(item.priority) + 1) % PRIORITIES.length];
-        onPriorityChange(next);
+        onPriorityChange(item.id, next);
     };
 
     return (
@@ -68,7 +68,7 @@ const TodoItemComponent: React.FC<Props> = ({
             {/* Checkbox */}
             <button
                 type="button"
-                onClick={onToggle}
+                onClick={() => onToggle(item.id)}
                 className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 transition-all ${
                     item.completed
                         ? 'border-emerald-500 bg-emerald-500 text-white'
@@ -139,7 +139,7 @@ const TodoItemComponent: React.FC<Props> = ({
             {/* Delete */}
             <button
                 type="button"
-                onClick={onDelete}
+                onClick={() => onDelete(item.id)}
                 className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-slate-300 opacity-0 group-hover:opacity-100 hover:bg-rose-50 hover:text-rose-500 transition-all dark:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-rose-400"
                 aria-label="删除任务"
             >

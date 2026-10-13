@@ -1,3 +1,12 @@
+/**
+ * ============================================================================
+ * types.ts — 待办事项共享类型与优先级配置
+ * ============================================================================
+ *
+ * TodoItem / Priority / FilterType 类型,PRIORITIES 顺序与 PRIORITY_CONFIG 样式表。
+ *
+ * @module topics/apps/todo/types
+ */
 export interface TodoItem {
     id: string;
     text: string;

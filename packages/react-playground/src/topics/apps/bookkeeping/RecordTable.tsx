@@ -1,3 +1,12 @@
+/**
+ * ============================================================================
+ * RecordTable.tsx — 记账记录表格
+ * ============================================================================
+ *
+ * 按日期范围筛选、展示与删除记账记录(antd Table)。
+ *
+ * @module topics/apps/bookkeeping/RecordTable
+ */
 import React from 'react';
 import { Table, Tag, Button, Popconfirm, DatePicker, Space } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';

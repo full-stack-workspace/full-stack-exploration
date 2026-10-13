@@ -1,3 +1,12 @@
+/**
+ * ============================================================================
+ * types.ts — 记账应用共享类型与常量
+ * ============================================================================
+ *
+ * BookkeepingRecord 记录结构、DateRange、收支分类清单与 localStorage key。
+ *
+ * @module topics/apps/bookkeeping/types
+ */
 import type { Dayjs } from 'dayjs';
 
 export interface BookkeepingRecord {

@@ -16,7 +16,7 @@ import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { TopicNav } from '../../../../components/TopicNav';
 import { COMPONENT_COMM_NAV_LINKS, COMPONENT_COMM_NAV_TITLE } from '../nav';
-import { RelatedTopics } from '../components/RelatedTopics';
+import { RelatedTopics } from '../../../../components/RelatedTopics';
 import { CommandRefDemo } from './components/CommandRefDemo';
 import { DrillingVsSlotDemo } from './components/DrillingVsSlotDemo';
 import { LiftStateDemo } from './components/LiftStateDemo';

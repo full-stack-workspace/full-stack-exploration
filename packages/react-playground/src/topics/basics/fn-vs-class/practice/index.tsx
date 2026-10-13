@@ -16,7 +16,7 @@ import { CodeBlock } from '../../../../components/CodeBlock';
 import { ComparePane } from '../components/ComparePane';
 import { TopicNav } from '../../../../components/TopicNav';
 import { FN_VS_CLASS_NAV_LINKS, FN_VS_CLASS_NAV_TITLE } from '../nav';
-import { RelatedTopics } from '../components/RelatedTopics';
+import { RelatedTopics } from '../../../../components/RelatedTopics';
 import { WatchClass } from './WatchClass';
 import { WatchFn } from './WatchFn';
 
@@ -92,7 +92,7 @@ function useQuote(symbolId: string | null) {
                             useRequest。class 没有同等的「切开再组合」单位。
                         </li>
                     </ul>
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/hooks/custom-hooks-guide',

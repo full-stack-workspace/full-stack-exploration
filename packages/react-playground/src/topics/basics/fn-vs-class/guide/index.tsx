@@ -19,7 +19,7 @@ import { Diagram } from '../../../../components/Diagram';
 import { FlowList, type FlowStep } from '../../../../components/FlowList';
 import { TopicNav } from '../../../../components/TopicNav';
 import { FN_VS_CLASS_NAV_LINKS, FN_VS_CLASS_NAV_TITLE } from '../nav';
-import { RelatedTopics } from '../components/RelatedTopics';
+import { RelatedTopics } from '../../../../components/RelatedTopics';
 
 const P = ({ children }: { children: ReactNode }) => (
     <p className="text-sm leading-relaxed text-gray-600 dark:text-slate-300">{children}</p>
@@ -184,7 +184,7 @@ function handleLater() {
                         看起来总是最新,是因为盒子被偷偷改写,事件顺序一乱就无法对照「当时屏幕上是什么」。演练页第 1
                         节可以亲手点。
                     </P>
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/hooks/use-state',
@@ -232,7 +232,7 @@ useEffect(() => {
                         </strong>
                         。函数组件允许(也要求)每个同步关系一个 effect / 一个自定义 Hook。
                     </P>
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/hooks/use-effect',
@@ -274,7 +274,7 @@ const displayName = user.name.toUpperCase();
                         列表专题的 key 重置、组件通信专题的「详情
                         key=ticket.id」是同一条规则。class 没有更优雅的 API,只是更习惯把 props 再存一遍。
                     </P>
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/basics/list-key',
@@ -311,7 +311,7 @@ const { quote, status } = useQuote(selectedId);`}
                         <code className="mx-1 rounded bg-gray-100 px-1 font-mono text-[11px] dark:bg-slate-800">renderHook</code>
                         单独跑,不必挂一整棵 class 树。看板实战页把这组对比做成可运行的两栏。
                     </P>
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/hooks/custom-hooks-guide',
@@ -393,7 +393,7 @@ const { quote, status } = useQuote(selectedId);`}
                 title="8. 唯一还该写 class 的地方"
                 note="讲解要点:React 19 的 componentDidCatch / getDerivedStateFromError 仍只有 class。这不是推荐你继续用 class 写页面,而是承认「捕获渲染期异常」还在这条旧 API 上。"
             >
-                <RelatedTopics
+                <RelatedTopics tone="indigo"
                     items={[
                         {
                             to: '/advanced/error-boundary',
@@ -427,7 +427,7 @@ const { quote, status } = useQuote(selectedId);`}
                         把时钟和请求堆在实例上,右边函数组件拆
                         useClock / useQuote —— 行为对齐,可维护性不对齐。
                     </P>
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/basics/fn-vs-class-playground',
