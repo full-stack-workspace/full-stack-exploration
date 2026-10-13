@@ -18,7 +18,7 @@ import { Diagram } from '../../../../components/Diagram';
 import { FlowList, type FlowStep } from '../../../../components/FlowList';
 import { TopicNav } from '../../../../components/TopicNav';
 import { COMPONENT_COMM_NAV_LINKS, COMPONENT_COMM_NAV_TITLE } from '../nav';
-import { RelatedTopics } from '../components/RelatedTopics';
+import { RelatedTopics } from '../../../../components/RelatedTopics';
 
 const P = ({ children }: { children: ReactNode }) => (
     <p className="text-sm leading-relaxed text-gray-600 dark:text-slate-300">{children}</p>
