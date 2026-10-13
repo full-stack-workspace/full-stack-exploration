@@ -1,3 +1,12 @@
+/**
+ * ============================================================================
+ * index.tsx — 应用入口
+ * ============================================================================
+ *
+ * 挂载 React 根节点:StrictMode + Relay 环境 + 全局样式。
+ *
+ * @module index
+ */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RelayEnvironmentProvider } from 'react-relay';
