@@ -545,6 +545,13 @@ export const TOPICS: TopicMeta[] = [
         element: lazy(() => import('../topics/architecture/ssr')),
     },
     {
+        path: '/architecture/map',
+        title: '阅读地图',
+        category: 'architecture',
+        description: '已经写过的专题去哪读，源码章以后加在哪',
+        element: lazy(() => import('../topics/architecture/map')),
+    },
+    {
         path: '/architecture/check',
         title: '理解检验',
         category: 'architecture',

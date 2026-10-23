@@ -82,6 +82,7 @@ describe('专题注册表', () => {
             '/architecture/scheduler',
             '/architecture/events',
             '/architecture/ssr',
+            '/architecture/map',
             '/architecture/check',
         ]);
 

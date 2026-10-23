@@ -21,6 +21,7 @@ export type ArchitectureTopicKey =
     | 'scheduler'
     | 'events'
     | 'ssr'
+    | 'map'
     | 'check';
 
 export interface SeriesLink {
@@ -30,7 +31,7 @@ export interface SeriesLink {
 }
 
 export interface ArchitectureSeries {
-    id: 'why' | 'fiber' | 'update' | 'entry' | 'review';
+    id: 'why' | 'fiber' | 'update' | 'entry' | 'next' | 'review';
     title: string;
     links: readonly SeriesLink[];
 }
@@ -71,6 +72,11 @@ export const ARCHITECTURE_SERIES: readonly ArchitectureSeries[] = [
             { key: 'events', to: '/architecture/events', label: '合成事件' },
             { key: 'ssr', to: '/architecture/ssr', label: 'SSR 与水合' },
         ],
+    },
+    {
+        id: 'next',
+        title: '接着读',
+        links: [{ key: 'map', to: '/architecture/map', label: '阅读地图' }],
     },
     {
         id: 'review',

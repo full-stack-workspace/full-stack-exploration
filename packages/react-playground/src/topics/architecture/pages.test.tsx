@@ -51,18 +51,10 @@ describe('内部机制页面', () => {
         expect(screen.getByRole('heading', { name })).toBeInTheDocument();
     });
 
-    it('总览页链到列表、事件、调度演练和 RSC', () => {
+    it('运行时总览不再充当系列索引', () => {
         renderPage(RuntimeMap);
-        expect(screen.getByRole('link', { name: '列表与 key' })).toHaveAttribute('href', '/basics/list-key');
-        expect(screen.getByRole('link', { name: '事件与合成事件' })).toHaveAttribute('href', '/basics/event');
-        expect(screen.getByRole('link', { name: 'useTransition × useDeferredValue' })).toHaveAttribute(
-            'href',
-            '/performance/transition-deferred',
-        );
-        expect(screen.getByRole('link', { name: 'RSC · 深度梳理' })).toHaveAttribute(
-            'href',
-            '/advanced/rsc-guide',
-        );
+        expect(screen.queryByRole('link', { name: '列表与 key' })).not.toBeInTheDocument();
+        expect(screen.queryByText('/architecture/source/work-loop')).not.toBeInTheDocument();
     });
 
     it('Render 页先讲可让出可丢弃的循环，再保留比对演示', () => {

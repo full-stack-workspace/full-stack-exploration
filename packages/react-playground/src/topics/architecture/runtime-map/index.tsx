@@ -154,44 +154,6 @@ react-dom
                 </Stack>
             </TopicSection>
 
-            <TopicSection
-                title="6. 九页各自收口在哪,以及不要重复读的页"
-                note="讲解要点:顺着因果读。已经有结论的专题用链接跳过去,不在这里再写一遍规则。"
-            >
-                <Stack>
-                    <Diagram caption="本系列的阅读顺序">
-                        {`运行时总览          你在这里:三个包、两种树、两个阶段
-Fiber               三指针为什么能暂停;双缓冲
-Render              beginWork / completeWork;按 key 复用
-Commit              mutation → layout → 绘制后的 passive
-更新队列            setState 入环;批处理;函数式更新
-Hooks 链表          调用顺序就是槽位;条件调用为什么串位
-Scheduler           Lane 与 5ms 时间片;MessageChannel
-合成事件            根容器上的一个监听,沿 return 模拟传播
-SSR 与水合          另一台渲染器:先有 HTML,再把 Fiber 绑上去
-理解检验            六十道问答,用要点检验前面九页`}
-                    </Diagram>
-                    <P>
-                        列表身份的使用规则在
-                        <Link className="mx-1 text-cyan-700 underline underline-offset-2 dark:text-cyan-300" to="/basics/list-key">
-                            列表与 key
-                        </Link>
-                        。原生监听和 `stopPropagation` 的坑在
-                        <Link className="mx-1 text-cyan-700 underline underline-offset-2 dark:text-cyan-300" to="/basics/event">
-                            事件与合成事件
-                        </Link>
-                        。`useTransition` 的交互演练在
-                        <Link className="mx-1 text-cyan-700 underline underline-offset-2 dark:text-cyan-300" to="/performance/transition-deferred">
-                            useTransition × useDeferredValue
-                        </Link>
-                        。Server Component 与 SSR 不是一回事,边界在
-                        <Link className="mx-1 text-cyan-700 underline underline-offset-2 dark:text-cyan-300" to="/advanced/rsc-guide">
-                            RSC · 深度梳理
-                        </Link>
-                        。
-                    </P>
-                </Stack>
-            </TopicSection>
         </TopicPage>
     );
 });
