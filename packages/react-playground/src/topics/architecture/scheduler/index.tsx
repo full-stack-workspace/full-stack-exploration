@@ -27,7 +27,18 @@ const SchedulerPage = memo(() => {
             <SeriesNav current="scheduler" />
 
             <TopicSection
-                title="1. 两套优先级,不要合成一个词"
+                title="1. 只留一套会漏掉一种失败"
+                note="讲解要点:Lane 管这一轮算谁。Scheduler 管这一轮何时把主线程还回去。"
+            >
+                <Stack>
+                    <P>
+                        只留 Lane，紧急更新进了这一轮仍可能把帧占满。只留 Scheduler，不知道该把哪些更新留到下一轮。expirationTime 一次渲染很难让多次更新各自进出，所以后来用 Lane 做挑选。
+                    </P>
+                </Stack>
+            </TopicSection>
+
+            <TopicSection
+                title="2. 两套优先级,不要合成一个词"
                 note="讲解要点:Lane 是位掩码,描述更新的种类。Scheduler 的 Immediate / UserBlocking / Normal / Low / Idle 描述任务何时抢占。"
             >
                 <Stack>
@@ -55,7 +66,7 @@ ensureRootIsScheduled
             </TopicSection>
 
             <TopicSection
-                title="2. 5 毫秒是让出点,不是渲染的工期"
+                title="3. 5 毫秒是让出点,不是渲染的工期"
                 note="讲解要点:下面的按钮按固定成本扣预算。真实实现用 performance.now,宿主是 MessageChannel,不是 requestIdleCallback。"
             >
                 <Stack>
@@ -74,7 +85,7 @@ ensureRootIsScheduled
             </TopicSection>
 
             <TopicSection
-                title="3. 饥饿与过期"
+                title="4. 饥饿与过期"
                 note="讲解要点:过渡更新不能永远让路。Lane 上带过期时间,过期后升级,避免低优先级被连续的点击饿死。"
             >
                 <Stack>
