@@ -489,6 +489,13 @@ export const TOPICS: TopicMeta[] = [
         element: lazy(() => import('../topics/architecture/fiber')),
     },
     {
+        path: '/architecture/double-buffer',
+        title: '双缓冲',
+        category: 'architecture',
+        description: 'current 保持完整，workInProgress 可以丢掉，Commit 才发布',
+        element: lazy(() => import('../topics/architecture/double-buffer')),
+    },
+    {
         path: '/architecture/render',
         title: 'Render',
         category: 'architecture',
