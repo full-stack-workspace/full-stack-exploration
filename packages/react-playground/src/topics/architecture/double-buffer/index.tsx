@@ -31,9 +31,9 @@ const DoubleBufferPage = memo(() => {
             >
                 <Stack>
                     <P>
-                        每个 Fiber 节点都有两棵镜像：<code>current</code> 指向已经发布、正挂在屏幕逻辑上的那一棵；协调器在 Render 阶段改的是{' '}
-                        <code>workInProgress</code> 这棵草稿树。两棵通过 <code>alternate</code> 互相引用——下次更新复用节点时，在 alternate
-                        上接着写，不必从零分配。
+                        React 同时维护两棵 Fiber 树：<code>current</code> 是已经发布、与屏幕和 DOM 对齐的那一棵；<code>workInProgress</code>{' '}
+                        是这次更新正在计算的草稿树，Render 阶段只改它。两棵树上逻辑位置相同的节点，通过各自的 <code>alternate</code>{' '}
+                        互相指着——下次更新复用节点时，在 alternate 那一侧接着写，不必从零分配。
                     </P>
                     <Diagram caption="双缓冲：两棵树，一次只发布一棵">
                         {`root.current ──→ [ current 树 ]  ← 用户与 DOM 对齐的事实
