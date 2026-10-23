@@ -140,15 +140,16 @@ react-dom
             </TopicSection>
 
             <TopicSection
-                title="5. 两套优先级,不要合成一个词"
-                note="讲解要点:Lane 回答「这批更新有多急、能不能跟别的更新并在同一次渲染」。Scheduler 优先级回答「这个计算任务何时抢到主线程」。"
+                title="5. 两套优先级各管一段"
+                note="讲解要点:Lane 决定哪些更新进入这一轮，Scheduler 决定何时把主线程还回去。失败模式在 Scheduler 页。"
             >
                 <Stack>
                     <P>
-                        用户输入、`startTransition`、`useDeferredValue` 在协调器里落成不同的 Lane。Lane 是按位划分的整数,一次渲染可以带上一组 Lane。调度器那边只有大约五档:Immediate、UserBlocking、Normal、Low、Idle,外加一个约 5ms 的时间片。`scheduleUpdateOnFiber` 在边界上做映射。
-                    </P>
-                    <P>
-                        因此「高优先级打断低优先级」发生在两层。协调器可以选择丢掉正在进行的低 Lane 渲染,改渲高 Lane;调度器可以在 5ms 后把主线程还给浏览器,让点击先被处理。产品侧的 `startTransition` 属于前者,时间切片属于后者。性能专题里的 transition 演练讲的是用法,本系列的 Scheduler 页讲这两层怎么对接。
+                        Lane 决定哪些更新进入这一轮，Scheduler 决定这一轮什么时候把主线程还回去。两种失败模式写在
+                        <Link className="mx-1 text-fuchsia-700 underline underline-offset-2 dark:text-fuchsia-300" to="/architecture/scheduler">
+                            Scheduler
+                        </Link>
+                        。
                     </P>
                 </Stack>
             </TopicSection>

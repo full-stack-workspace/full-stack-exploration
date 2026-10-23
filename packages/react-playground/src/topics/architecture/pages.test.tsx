@@ -87,6 +87,25 @@ describe('内部机制页面', () => {
         expect(screen.getByRole('heading', { name: '1. 三个指针走完整棵树' })).toBeInTheDocument();
     });
 
+    it('Scheduler 写明只留一套优先级会漏掉的失败', () => {
+        renderPage(SchedulerPage);
+        expect(screen.getByRole('heading', { name: '1. 只留一套会漏掉一种失败' })).toBeInTheDocument();
+        expect(screen.getByText(/紧急更新进了这一轮仍可能把帧占满/)).toBeInTheDocument();
+        expect(screen.getByText(/不知道该把哪些更新留到下一轮/)).toBeInTheDocument();
+        expect(screen.getByText(/后来用 Lane 做挑选/)).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: '走一个工作单元' })).toBeInTheDocument();
+    });
+
+    it('运行时总览把两套优先级指到 Scheduler', () => {
+        renderPage(RuntimeMap);
+        expect(screen.queryByRole('heading', { name: '5. 两套优先级,不要合成一个词' })).not.toBeInTheDocument();
+        const links = screen.getAllByRole('link', { name: 'Scheduler' });
+        expect(links.length).toBeGreaterThan(0);
+        for (const link of links) {
+            expect(link).toHaveAttribute('href', '/architecture/scheduler');
+        }
+    });
+
     it('理解检验给出要点,并链回 Fiber 与函数组件梳理', () => {
         renderPage(InterviewPage);
         expect(screen.getAllByText('要点').length).toBeGreaterThanOrEqual(50);
