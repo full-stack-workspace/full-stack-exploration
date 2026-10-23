@@ -1,11 +1,21 @@
-# 内部机制分类
+# 原理与架构分类
 
-十页顺着一次更新往下走,页头 `components/SeriesNav.tsx`(cyan):
+十四页顺着一次更新往下走,页头 `components/SeriesNav.tsx`(fuchsia):
 
-1. **一次更新** — 运行时总览 → Fiber → Render → Commit
-2. **状态与调度** — 更新队列 → Hooks 链表 → Scheduler
-3. **入口** — 合成事件 → SSR 与水合
-4. **复盘** — 理解检验(六十道问答,七组;先要点自测,再对照展开,链回前面各页)
+1. 设计约束
+2. 运行时总览
+3. 工作单元
+4. Fiber
+5. 双缓冲
+6. Render
+7. Commit
+8. 更新队列
+9. Hooks 链表
+10. Scheduler
+11. 合成事件
+12. SSR 与水合
+13. 阅读地图
+14. 理解检验(题库八组、六十四道题;先要点自测,再对照展开,链回前面各页)
 
 新增子专题:改 `series.ts` + `config/topics.tsx`。
 

@@ -61,14 +61,18 @@ const WorkUnitPage = memo(() => {
   updateQueue  → 挂在这颗节点上的待处理更新
   lanes        → 这次更新占用的优先级车道
 
-遍历顺序、双缓冲、alternate 在下一页展开。`}
+遍历顺序见 Fiber 页；双缓冲与 alternate 见双缓冲页。`}
                     </Diagram>
                     <P>
                         链表怎样深度优先走完整棵树，见{' '}
                         <Link to="/architecture/fiber" className="underline underline-offset-2">
                             Fiber
+                        </Link>{' '}
+                        页的步进演示；current 与 workInProgress 两棵树见{' '}
+                        <Link to="/architecture/double-buffer" className="underline underline-offset-2">
+                            双缓冲
                         </Link>
-                        页的步进演示；这一页只建立「进度在节点上」的前提。
+                        页。这一页只建立「进度在节点上」的前提。
                     </P>
                 </Stack>
             </TopicSection>

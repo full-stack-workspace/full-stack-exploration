@@ -65,7 +65,7 @@ pnpm -C packages/react-playground relay         # 重新生成 Relay artifacts
 站点由 `src/config/topics.tsx` **注册表**单一驱动。新增专题只需两步:
 
 1. 新建 `src/topics/<category>/<name>/index.tsx`,默认导出页面组件
-   - `<category>` 为 `basics` / `hooks` / `advanced` / `apps` / `agent` / `performance` 之一
+   - `<category>` 为 `basics` / `hooks` / `advanced` / `architecture` / `apps` / `agent` / `performance` 之一
    - 页面骨架使用 `TopicPage` / `TopicSection`(见 `src/components/TopicPage.tsx`)
    - 站内跳转一律用 `Link` / `useNavigate`,不要写 `<a href>`
 2. 在 `TOPICS` 数组中注册一行(`path` 必须是 `<category.basePath>/<name>`)
