@@ -72,6 +72,7 @@ describe('专题注册表', () => {
         expect(paths).toEqual([
             '/architecture/constraints',
             '/architecture/runtime-map',
+            '/architecture/work-unit',
             '/architecture/fiber',
             '/architecture/render',
             '/architecture/commit',

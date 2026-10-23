@@ -475,6 +475,13 @@ export const TOPICS: TopicMeta[] = [
         element: lazy(() => import('../topics/architecture/runtime-map')),
     },
     {
+        path: '/architecture/work-unit',
+        title: '工作单元',
+        category: 'architecture',
+        description: '进度记在节点上，调用栈清空之后还能从 child、sibling、return 接着做',
+        element: lazy(() => import('../topics/architecture/work-unit')),
+    },
+    {
         path: '/architecture/fiber',
         title: 'Fiber',
         category: 'architecture',
