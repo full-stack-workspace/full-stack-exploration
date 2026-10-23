@@ -26,31 +26,16 @@ const FiberPage = memo(() => {
         >
             <SeriesNav current="fiber" />
 
-            <TopicSection
-                title="1. 栈协调器停不下来"
-                note="讲解要点:React 16 之前的协调是同步递归。调用栈在返回之前,主线程不能去处理点击。"
-            >
-                <Stack>
-                    <P>
-                        旧的 Stack Reconciler 用 JavaScript 调用栈遍历组件树。父函数调用子函数,子函数再调用孙函数,整棵树返回之后更新才结束。树一大,这一次调用就超过一帧。浏览器排不上点击、也画不出下一帧,用户看到的是卡住,不是「渲染很努力」。
-                    </P>
-                    <Diagram caption="递归调用栈没有安全的暂停点">
-                        {`reconcile(App)
-  reconcile(Header)
-    reconcile(Title)      ← 调用栈里同时压着三帧
-  reconcile(List)
-    reconcile(Item) ...   ← 必须等最深的返回,才能处理点击
-
-想暂停?调用栈不属于 React,中途 return 就丢了「走到哪」。`}
-                    </Diagram>
-                    <P>
-                        Fiber 把这一帧调用栈上的信息收进节点自己:子节点是谁、下一个兄弟是谁、父节点是谁。遍历改成循环。循环每走一步都可以看时间还够不够,不够就把「下一个工作单元」记在根上,下次从那里继续。
-                    </P>
-                </Stack>
-            </TopicSection>
+            <P>
+                栈协调器为什么停不下来，写在
+                <Link className="mx-1 text-fuchsia-700 underline underline-offset-2 dark:text-fuchsia-300" to="/architecture/constraints">
+                    设计约束
+                </Link>
+                。
+            </P>
 
             <TopicSection
-                title="2. 三个指针走完整棵树"
+                title="1. 三个指针走完整棵树"
                 note="讲解要点:child 是第一个孩子,sibling 把孩子串成链表,return 是父节点。深度优先,不依赖调用栈。"
             >
                 <Stack>
@@ -75,7 +60,7 @@ const FiberPage = memo(() => {
             </TopicSection>
 
             <TopicSection
-                title="3. 字段里真正要记住的"
+                title="2. 字段里真正要记住的"
                 note="讲解要点:不必背完整的 Fiber 类型。身份、链表、双缓冲、状态、副作用五组就覆盖后面几页。"
             >
                 <Stack>
@@ -106,29 +91,12 @@ const FiberPage = memo(() => {
                     <P>
                         React 16 的笔记里常见 `effectTag` 和 `nextEffect`。React 18 之后副作用用位标记 `flags`,子树是否值得在提交阶段走进去用 `subtreeFlags`。名字换了,职责还是「Render 阶段只打标,Commit 阶段才执行」。
                     </P>
-                </Stack>
-            </TopicSection>
-
-            <TopicSection
-                title="4. 双缓冲:屏幕上永远是一棵完整的树"
-                note="讲解要点:计算发生在 workInProgress。提交时切换 root.current,不是边算边改屏幕上的节点。"
-            >
-                <Stack>
-                    <Diagram caption="alternate 把两棵树的对应节点缝在一起">
-                        {`current                         workInProgress
-(已提交,stateNode 在屏幕上)      (这一轮正在填)
-   App ◄──── alternate ────► App'
-    │                          │
- Header ◄── alternate ───► Header'
-
-Render 只写右边。
-Commit: root.current = App'
-左边那棵留着,成为下一轮的 workInProgress,节点被复用。`}
-                    </Diagram>
                     <P>
-                        中断或丢弃一次渲染,丢掉的是右边这棵还没提交的副本,屏幕上的 current 不动。这就是「Render 可以重做,用户不会看到写了一半的 DOM」。切换指针发生在 Commit,和 DOM 变更放在同一段同步工作里,避免树和屏幕各说各话。
-                    </P>
-                    <P>
+                        屏幕上那棵树为什么不能边算边改，写在
+                        <Link className="mx-1 text-fuchsia-700 underline underline-offset-2 dark:text-fuchsia-300" to="/architecture/double-buffer">
+                            双缓冲
+                        </Link>
+                        。
                         对组件作者,JSX、props、state 这些表面模型没有换成另一套。变的是运行时可以把渲染拆开、可以丢掉未提交的工作。并发特性(`startTransition`、Suspense)都站在这对树上,用法见
                         <Link className="mx-1 text-cyan-700 underline underline-offset-2 dark:text-cyan-300" to="/performance/render-scheduling-guide">
                             渲染调度深入梳理

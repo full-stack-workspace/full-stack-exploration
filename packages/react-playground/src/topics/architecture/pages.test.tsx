@@ -65,6 +65,20 @@ describe('内部机制页面', () => {
         );
     });
 
+    it('Fiber 页把栈协调和双缓冲交给前面的架构页', () => {
+        renderPage(FiberPage);
+        expect(screen.queryByRole('heading', { name: '1. 栈协调器停不下来' })).not.toBeInTheDocument();
+        expect(screen.queryByText('alternate 把两棵树的对应节点缝在一起')).not.toBeInTheDocument();
+        for (const link of screen.getAllByRole('link', { name: '设计约束' })) {
+            expect(link).toHaveAttribute('href', '/architecture/constraints');
+        }
+        for (const link of screen.getAllByRole('link', { name: '双缓冲' })) {
+            expect(link).toHaveAttribute('href', '/architecture/double-buffer');
+        }
+        expect(screen.getByRole('button', { name: '下一步' })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: '1. 三个指针走完整棵树' })).toBeInTheDocument();
+    });
+
     it('理解检验给出要点,并链回 Fiber 与函数组件梳理', () => {
         renderPage(InterviewPage);
         expect(screen.getAllByText('要点').length).toBeGreaterThanOrEqual(50);
