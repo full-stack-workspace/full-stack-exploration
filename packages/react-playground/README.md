@@ -22,7 +22,7 @@ React 文档告诉你 API **能做什么**。这个站点练的是另一件事:*
 | **React 基础** | JSX 渲染、事件、列表 key、函数组件如何覆盖类组件能力;末页用问答检验这几块(RSC 题保留,专题本身在进阶) |
 | **Hooks** | 内置 Hook 与 React 19 Actions 逐个击破,再组合成领域 Hook(`useUserSearch` 等);末页用问答检验,较难题标星级和考察点 |
 | **进阶专题** | Context、Error Boundary、组件通信决策、Relay 数据层、RSC 与 Client Component 的边界(练习场内只做规则示意)、ViewTransition 与 Activity;末页用问答检验通道和失败边界 |
-| **原理与架构** | 迁入的运行时页面：Fiber、Render / Commit、更新队列、Hooks 链表、Scheduler、事件与水合；末页用问答检验 |
+| **原理与架构** | 设计约束、Fiber 架构，以及迁入的运行时页面：Render / Commit、更新队列、Hooks 链表、Scheduler、事件与水合；末页用问答检验 |
 | **性能优化** | 原则约定、指标(含 AI-Native / Agent)、架构分区、实现规则、排查与上线档案;渲染调度仍是实现阶段的一块;React Compiler 单独一页讲开/不开的判断;末页用问答检验体系,资深题标星级和考察点 |
 | **Agent 实战** | SSE → Runtime Store(不依赖 React)→ `useSyncExternalStore` → UI |
 | **综合应用** | Todo / 购物车 / 记账 — 把上面的判断落到一块完整 UI |

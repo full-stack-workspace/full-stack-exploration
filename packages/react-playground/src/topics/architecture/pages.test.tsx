@@ -100,8 +100,11 @@ describe('内部机制页面', () => {
 
     it('理解检验给出要点,并链回 Fiber 与函数组件梳理', () => {
         renderPage(InterviewPage);
+        expect(screen.getByText(/64 道问答/)).toBeInTheDocument();
         expect(screen.getAllByText('要点').length).toBeGreaterThanOrEqual(50);
-        expect(screen.getByRole('heading', { name: '1. 为什么 React 要用 Fiber 换掉栈协调器？' })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: '1. 渲染期间为什么不能改屏幕上那棵树' })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: '5. 为什么 React 要用 Fiber 换掉栈协调器？' })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: '设计判断' })).toBeInTheDocument();
         expect(screen.getByRole('heading', { name: '架构与 Fiber' })).toBeInTheDocument();
         expect(screen.getAllByRole('link', { name: 'Fiber' }).length).toBeGreaterThan(0);
         const guideLinks = screen.getAllByRole('link', { name: '函数组件与类组件' });
