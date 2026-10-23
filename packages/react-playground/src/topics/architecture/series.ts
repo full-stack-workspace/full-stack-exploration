@@ -13,6 +13,7 @@ export type ArchitectureTopicKey =
     | 'runtime-map'
     | 'work-unit'
     | 'fiber'
+    | 'double-buffer'
     | 'render'
     | 'commit'
     | 'update-queue'
@@ -49,6 +50,7 @@ export const ARCHITECTURE_SERIES: readonly ArchitectureSeries[] = [
         links: [
             { key: 'work-unit', to: '/architecture/work-unit', label: '工作单元' },
             { key: 'fiber', to: '/architecture/fiber', label: 'Fiber' },
+            { key: 'double-buffer', to: '/architecture/double-buffer', label: '双缓冲' },
         ],
     },
     {

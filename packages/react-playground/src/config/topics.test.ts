@@ -74,6 +74,7 @@ describe('专题注册表', () => {
             '/architecture/runtime-map',
             '/architecture/work-unit',
             '/architecture/fiber',
+            '/architecture/double-buffer',
             '/architecture/render',
             '/architecture/commit',
             '/architecture/update-queue',
