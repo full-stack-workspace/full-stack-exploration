@@ -555,7 +555,7 @@ export const TOPICS: TopicMeta[] = [
         path: '/architecture/check',
         title: '理解检验',
         category: 'architecture',
-        description: '六十道问答,用来检验前面九页是否掌握。先用要点自答,再对照展开,卡住就回到对应的梳理和演示',
+        description: '六十四道题,覆盖本分类各专题。先用要点自答,再对照展开,卡住就回到对应的梳理和演示',
         element: lazy(() => import('../topics/architecture/check')),
     },
 

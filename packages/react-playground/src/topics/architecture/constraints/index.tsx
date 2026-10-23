@@ -50,11 +50,11 @@ const ConstraintsPage = memo(() => {
             <TopicSection title="Fiber 是为了还能停下来">
                 <Stack>
                     <P>
-                        工作单元把遍历从调用栈里拆出来，才能在单元之间让出主线程。下一页从{' '}
+                        工作单元把遍历从调用栈里拆出来，才能在单元之间让出主线程。数据结构在{' '}
                         <Link to="/architecture/fiber" className="underline underline-offset-2">
                             Fiber
                         </Link>{' '}
-                        的数据结构讲起。
+                        页展开，顺序在运行时总览与工作单元之后。
                     </P>
                 </Stack>
             </TopicSection>
