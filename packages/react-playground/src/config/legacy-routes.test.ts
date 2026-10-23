@@ -56,7 +56,7 @@ describe('旧路径重定向', () => {
     it('内部机制旧地址落到原理与架构', () => {
         expect(resolveLegacyRedirect('/internals/fiber')).toBe('/architecture/fiber');
         expect(resolveLegacyRedirect('/internals/interview')).toBe('/architecture/check');
-        expect(resolveLegacyRedirect('/internals')).toBe('/architecture/runtime-map');
+        expect(resolveLegacyRedirect('/internals')).toBe('/architecture/constraints');
         expect(resolveLegacyRedirect('/internals/runtime-map')).toBe('/architecture/runtime-map');
     });
 

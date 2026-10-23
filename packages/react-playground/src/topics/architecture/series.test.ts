@@ -19,11 +19,11 @@ describe('原理与架构系列目录', () => {
         });
     });
 
-    it('运行时总览是分类第一页', () => {
+    it('设计约束是分类第一页', () => {
         const paths = TOPICS.filter((t) => t.category === 'architecture').map((t) => t.path);
-        expect(paths[0]).toBe('/architecture/runtime-map');
+        expect(paths[0]).toBe('/architecture/constraints');
         expect(paths[paths.length - 1]).toBe('/architecture/check');
-        expect(paths).toHaveLength(10);
+        expect(paths).toHaveLength(11);
         expect(ARCHITECTURE_SERIES.flatMap((series) => series.links.map((link) => link.to)).join(' ')).not.toContain(
             '/architecture/source/',
         );
