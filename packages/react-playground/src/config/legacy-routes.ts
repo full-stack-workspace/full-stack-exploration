@@ -26,7 +26,7 @@ export const LEGACY_REDIRECTS: Record<string, string> = {
     // RSC 专题从 basics 挪到 advanced:必须先于 '/topics/basics/*' 通配命中
     '/topics/basics/rsc-guide': '/advanced/rsc-guide',
     '/topics/basics/rsc-boundary': '/advanced/rsc-boundary',
-    '/internals': '/architecture/runtime-map',
+    '/internals': '/architecture/constraints',
     '/internals/interview': '/architecture/check',
 };
 

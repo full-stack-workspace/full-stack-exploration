@@ -9,6 +9,7 @@
  */
 
 export type ArchitectureTopicKey =
+    | 'constraints'
     | 'runtime-map'
     | 'fiber'
     | 'render'
@@ -36,7 +37,10 @@ export const ARCHITECTURE_SERIES: readonly ArchitectureSeries[] = [
     {
         id: 'why',
         title: '为什么',
-        links: [{ key: 'runtime-map', to: '/architecture/runtime-map', label: '运行时总览' }],
+        links: [
+            { key: 'constraints', to: '/architecture/constraints', label: '设计约束' },
+            { key: 'runtime-map', to: '/architecture/runtime-map', label: '运行时总览' },
+        ],
     },
     {
         id: 'fiber',

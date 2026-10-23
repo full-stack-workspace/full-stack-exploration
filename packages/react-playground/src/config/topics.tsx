@@ -461,6 +461,13 @@ export const TOPICS: TopicMeta[] = [
 
     /* ---- 原理与架构 ---- */
     {
+        path: '/architecture/constraints',
+        title: '设计约束',
+        category: 'architecture',
+        description: '主线程的一帧、屏幕上的完整树、更新的缓急，这三条一起把栈协调器逼停',
+        element: lazy(() => import('../topics/architecture/constraints')),
+    },
+    {
         path: '/architecture/runtime-map',
         title: '运行时总览',
         category: 'architecture',

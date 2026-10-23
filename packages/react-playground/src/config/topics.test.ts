@@ -70,6 +70,7 @@ describe('专题注册表', () => {
 
         const paths = TOPICS.filter((t) => t.category === 'architecture').map((t) => t.path);
         expect(paths).toEqual([
+            '/architecture/constraints',
             '/architecture/runtime-map',
             '/architecture/fiber',
             '/architecture/render',
