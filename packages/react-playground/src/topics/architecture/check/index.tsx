@@ -3,7 +3,7 @@
  * 原理与架构 · 理解检验(/architecture/check)
  * ============================================================================
  *
- * 六十道问答,用来把前面九页再检验一遍。要点可见,展开默认收着。
+ * 六十四道问答,用来把前面系列页再检验一遍。要点可见,展开默认收着。
  * 说法和前面九页一致:事件池已移除,副作用用 flags,虚拟 DOM 不是性能捷径。
  *
  * @module topics/architecture/check
@@ -20,7 +20,7 @@ const InterviewPage = memo(() => {
     return (
         <CheckList
             title="原理与架构 · 理解检验"
-            description={`${QUESTION_COUNT} 道问答,分成架构、Render、Commit、状态、调度、事件和 SSR 七组。先用要点检验自己,再对照展开`}
+            description={`${QUESTION_COUNT} 道问答,分成设计判断、架构、Render、Commit、状态、调度、事件和 SSR 八组。先用要点检验自己,再对照展开`}
             intro="同一组里的题会互相引用。说法和梳理页一致:事件池是 React 16 的行为,提交标记是 flags,虚拟 DOM 不是「对象比 DOM 快」,Context 不会自动跳过中间组件。"
             groups={NUMBERED_GROUPS}
             nav={<SeriesNav current="check" />}

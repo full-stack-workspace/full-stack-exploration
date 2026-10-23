@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * index — 七组题库与连续序号
+ * index — 八组题库与连续序号
  * ============================================================================
  *
  * 序号在这里一次性编好,页面和测试都读 QUESTION_COUNT,避免目录和正文各数一遍。
@@ -9,6 +9,7 @@
  */
 
 import { ARCHITECTURE } from './architecture';
+import { DESIGN } from './design';
 import { COMMIT } from './commit';
 import { EVENTS } from './events';
 import { MODEL } from './model';
@@ -18,6 +19,12 @@ import { STATE } from './state';
 import type { InterviewGroup, NumberedGroup } from './types';
 
 export const INTERVIEW_GROUPS: readonly InterviewGroup[] = [
+    {
+        id: 'g-design',
+        title: '设计判断',
+        blurb: '先问为什么必须长成这样，再回到后面的机制题。',
+        questions: DESIGN,
+    },
     {
         id: 'g-arch',
         title: '架构与 Fiber',
