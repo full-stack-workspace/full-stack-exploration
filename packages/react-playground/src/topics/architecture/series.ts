@@ -11,6 +11,7 @@
 export type ArchitectureTopicKey =
     | 'constraints'
     | 'runtime-map'
+    | 'work-unit'
     | 'fiber'
     | 'render'
     | 'commit'
@@ -45,7 +46,10 @@ export const ARCHITECTURE_SERIES: readonly ArchitectureSeries[] = [
     {
         id: 'fiber',
         title: 'Fiber 架构',
-        links: [{ key: 'fiber', to: '/architecture/fiber', label: 'Fiber' }],
+        links: [
+            { key: 'work-unit', to: '/architecture/work-unit', label: '工作单元' },
+            { key: 'fiber', to: '/architecture/fiber', label: 'Fiber' },
+        ],
     },
     {
         id: 'update',
