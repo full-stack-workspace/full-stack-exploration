@@ -315,7 +315,7 @@ const GROUPS: readonly CheckGroup[] = [
                 points: ['服务端算完可以让首字节带上内容,但占服务器时间。', '纯静态能缓存的页面不必每次重算。', '交互仍然发生在浏览器,服务端渲染不解决点击后的长任务。'],
                 related: [
                     { to: '/performance/architecture-guide', label: '架构关键路径' },
-                    { to: '/internals/ssr', label: 'SSR 与水合' },
+                    { to: '/architecture/ssr', label: 'SSR 与水合' },
                 ],
                 difficulty: 5,
                 focus: '首屏和交互、服务器成本是不同的账',

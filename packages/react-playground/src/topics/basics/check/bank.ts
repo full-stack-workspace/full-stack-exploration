@@ -43,7 +43,7 @@ const GROUPS: readonly CheckGroup[] = [
                     '渲染期间发请求、改外部变量,重跑就会重复。',
                     '改 DOM、订阅、请求放到提交之后,或放到事件里。',
                 ],
-                related: [{ to: '/internals/render', label: 'Render' }],
+                related: [{ to: '/architecture/render', label: 'Render' }],
                 body: [
                     '开发环境的 StrictMode 会多跑一次渲染,并发渲染也可能在提交前把函数再执行一遍然后丢掉。渲染里如果改了页面标题、发出了请求,这些事不会跟着丢掉的那次计算一起消失。',
                     '正确的位置取决于时机。用户点击引起的请求放在事件里。需要在绘制后订阅,放在 useEffect。必须在绘制前量布局,放在 useLayoutEffect。渲染函数只负责根据这一次的输入返回描述。',
@@ -162,7 +162,7 @@ const GROUPS: readonly CheckGroup[] = [
                 ],
                 related: [
                     { to: '/basics/list-key', label: '列表与 key' },
-                    { to: '/internals/render', label: 'Render' },
+                    { to: '/architecture/render', label: 'Render' },
                 ],
                 body: [
                     '稳定 key 的价值先是认人,然后才是少做 DOM。认对了人,状态跟着那一项走。DOM 要不要移动,看的是旧序号和已经放置的位置,不是「只要顺序变了就全部挪」。',
@@ -278,7 +278,7 @@ const GROUPS: readonly CheckGroup[] = [
                 ],
                 related: [
                     { to: '/basics/event', label: '事件与合成事件' },
-                    { to: '/internals/update-queue', label: '更新队列' },
+                    { to: '/architecture/update-queue', label: '更新队列' },
                 ],
                 difficulty: 4,
                 focus: '批处理的边界,以及函数式更新为什么仍然能看见彼此',
@@ -406,7 +406,7 @@ const GROUPS: readonly CheckGroup[] = [
                 ],
                 related: [
                     { to: '/advanced/rsc-guide', label: 'RSC 梳理' },
-                    { to: '/internals/ssr', label: 'SSR 与水合' },
+                    { to: '/architecture/ssr', label: 'SSR 与水合' },
                 ],
                 difficulty: 4,
                 focus: '代码在哪执行,和 HTML 从哪来,是两个问题',

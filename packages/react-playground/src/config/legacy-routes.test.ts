@@ -5,6 +5,9 @@
  * 且所有迁移目标都必须存在于专题注册表,防止目标页再改名后漂移。
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { describe, expect, it } from 'vitest';
 
 import { LEGACY_REDIRECTS, LEGACY_PREFIX_REDIRECTS, resolveLegacyRedirect } from './legacy-routes';
@@ -48,5 +51,26 @@ describe('旧路径重定向', () => {
                 expect(resolveLegacyRedirect(t.path.replace(to, from))).toBe(t.path);
             });
         });
+    });
+
+    it('内部机制旧地址落到原理与架构', () => {
+        expect(resolveLegacyRedirect('/internals/fiber')).toBe('/architecture/fiber');
+        expect(resolveLegacyRedirect('/internals/interview')).toBe('/architecture/check');
+        expect(resolveLegacyRedirect('/internals')).toBe('/architecture/runtime-map');
+        expect(resolveLegacyRedirect('/internals/runtime-map')).toBe('/architecture/runtime-map');
+    });
+
+    it('基础、Hooks、性能和 Compiler 不再链接 /internals/', () => {
+        const files = [
+            'src/topics/basics/check/bank.ts',
+            'src/topics/hooks/check/core.ts',
+            'src/topics/hooks/check/rest.ts',
+            'src/topics/performance/check/bank.ts',
+            'src/topics/performance/react-compiler/index.tsx',
+        ];
+        for (const file of files) {
+            const source = readFileSync(join(__dirname, '..', '..', file), 'utf8');
+            expect(source).not.toContain('/internals/');
+        }
     });
 });
