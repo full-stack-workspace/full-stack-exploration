@@ -27,7 +27,18 @@ const RenderPage = memo(() => {
             <SeriesNav current="render" />
 
             <TopicSection
-                title="1. 一个工作单元里的向下和向上"
+                title="1. 协调循环可以让出，也可以丢掉"
+                note="讲解要点:向下 beginWork，向上 completeWork。间隙可以让出。算到一半的 workInProgress 可以整段丢掉。"
+            >
+                <Stack>
+                    <P>
+                        一次更新是循环。向下 beginWork 展开一个单元，向上 completeWork 收口一个单元。时间不够就把下一个单元记下来。算到一半的 workInProgress 可以整段丢掉，再从 current 重来。因此 Render 是推测性的。
+                    </P>
+                </Stack>
+            </TopicSection>
+
+            <TopicSection
+                title="2. 一个工作单元里的向下和向上"
                 note="讲解要点:beginWork 决定孩子是谁;completeWork 在回溯时为宿主节点准备 DOM,并把副作用标记交给父节点。"
             >
                 <Stack>
@@ -51,7 +62,7 @@ const RenderPage = memo(() => {
             </TopicSection>
 
             <TopicSection
-                title="2. 两条假设,把树比较从立方降到线性"
+                title="3. 两条假设,把树比较从立方降到线性"
                 note="讲解要点:算法故意不求最优编辑距离。类型不同就整棵换掉;列表靠 key 认身份。"
             >
                 <Stack>
@@ -72,7 +83,7 @@ key 不同  →  当成另一个身份,同样是删除 + 新建`}
             </TopicSection>
 
             <TopicSection
-                title="3. 多个孩子:先吃掉相同前缀,再按 key 查表"
+                title="4. 多个孩子:先吃掉相同前缀,再按 key 查表"
                 note="讲解要点:从左向右,key 还一致就原地复用。错位之后按 key 找回旧序号,只有旧序号比已放置位置更小的节点才标记为移动。"
             >
                 <Stack>
@@ -88,7 +99,7 @@ key 不同  →  当成另一个身份,同样是删除 + 新建`}
             </TopicSection>
 
             <TopicSection
-                title="4. bailout:子树可以整段跳过"
+                title="5. bailout:子树可以整段跳过"
                 note="讲解要点:props 浅比较没变、自己也没有待处理更新、也没有消费到变化的 Context,就可以复用整棵子 Fiber。"
             >
                 <Stack>
@@ -102,7 +113,7 @@ key 不同  →  当成另一个身份,同样是删除 + 新建`}
             </TopicSection>
 
             <TopicSection
-                title="5. 这段计算可以被扔掉"
+                title="6. 这段计算可以被扔掉"
                 note="讲解要点:Render 没有把结果写进 current,也没有改屏幕。更高优先级的更新进来时,未完成的 workInProgress 可以废弃重来。"
             >
                 <Stack>

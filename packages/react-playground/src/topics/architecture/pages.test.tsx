@@ -65,6 +65,14 @@ describe('内部机制页面', () => {
         );
     });
 
+    it('Render 页先讲可让出可丢弃的循环，再保留比对演示', () => {
+        renderPage(RenderPage);
+        expect(screen.getByRole('heading', { name: '1. 协调循环可以让出，也可以丢掉' })).toBeInTheDocument();
+        expect(screen.getByText(/Render 是推测性的/)).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: '2. 一个工作单元里的向下和向上' })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: '尾部插入 e' })).toBeInTheDocument();
+    });
+
     it('Fiber 页把栈协调和双缓冲交给前面的架构页', () => {
         renderPage(FiberPage);
         expect(screen.queryByRole('heading', { name: '1. 栈协调器停不下来' })).not.toBeInTheDocument();
