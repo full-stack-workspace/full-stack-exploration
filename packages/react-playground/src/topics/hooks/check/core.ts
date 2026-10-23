@@ -41,7 +41,7 @@ export const STATE_QUESTIONS: readonly CheckQuestion[] = [
         title: 'React 18 的 createRoot 在哪些地方会把多次 setState 收成一次渲染？',
         note: '批处理合并渲染次数,不合并更新对象。',
         points: ['事件、超时、Promise 里都会批。', '遗留的 ReactDOM.render 根在超时里不批。', 'flushSync 会在回调结束时立刻提交。'],
-        related: [{ to: '/internals/update-queue', label: '更新队列' }],
+        related: [{ to: '/architecture/update-queue', label: '更新队列' }],
         difficulty: 3,
         focus: '批处理边界随根的创建方式变化',
         body: [
@@ -189,7 +189,7 @@ export const REF_QUESTIONS: readonly CheckQuestion[] = [
         points: ['渲染可以重做,所以不能在渲染时把 ref 指到尚未提交的节点。', 'mutation 阶段插入 DOM 之后,ref 才指向它。', '要在绘制前量尺寸,用 useLayoutEffect。'],
         related: [
             { to: '/hooks/use-ref', label: 'useRef' },
-            { to: '/internals/commit', label: 'Commit' },
+            { to: '/architecture/commit', label: 'Commit' },
         ],
         difficulty: 4,
         focus: 'ref 的写入时机',

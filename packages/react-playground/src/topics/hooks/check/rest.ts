@@ -182,7 +182,7 @@ export const LAYOUT_QUESTIONS: readonly CheckQuestion[] = [
         title: 'useInsertionEffect 和 useLayoutEffect 谁更早？给谁用？',
         note: '它是样式库的缝,不是业务里的另一个 layout。',
         points: ['insertion 在 mutation 阶段,早于 layout 读尺寸。', '给 CSS-in-JS 在量布局之前插入 style。', '不要在里面 setState 或读布局。'],
-        related: [{ to: '/internals/commit', label: 'Commit' }],
+        related: [{ to: '/architecture/commit', label: 'Commit' }],
         difficulty: 4,
         focus: '三条 effect 的顺序',
         body: [
@@ -296,7 +296,7 @@ export const MEMO_QUESTIONS: readonly CheckQuestion[] = [
         title: 'React Compiler 会让手写的 useMemo 都变成多余吗？规则还在吗？',
         note: '它在构建时帮你遵守规则。',
         points: ['编译结果仍然按固定顺序调用 Hook。', '自动记忆化是为了让跳过渲染的条件成立。', '运行时次数变化的 Hook 仍然不合法。'],
-        related: [{ to: '/internals/hooks-impl', label: 'Hooks 链表' }],
+        related: [{ to: '/architecture/hooks-impl', label: 'Hooks 链表' }],
         difficulty: 4,
         focus: '编译优化和链表身份是两层',
         body: [
@@ -379,7 +379,7 @@ export const CUSTOM_QUESTIONS: readonly CheckQuestion[] = [
         title: '为什么 if 里面不能调用 useState？use 为什么可以？',
         note: '身份是第几次调用。',
         points: ['更新时按序号取链表上的槽。', '中间多一次调用,后面的 Hook 读到别人的状态。', 'use 不占这种槽,所以可以写在条件里。'],
-        related: [{ to: '/internals/hooks-impl', label: 'Hooks 链表' }],
+        related: [{ to: '/architecture/hooks-impl', label: 'Hooks 链表' }],
         difficulty: 4,
         focus: '槽位身份和 use 的例外',
         body: [
@@ -462,7 +462,7 @@ export const CONCURRENT_QUESTIONS: readonly CheckQuestion[] = [
         title: 'use(promise) 和 useEffect 请求有什么差别？',
         note: '一个在渲染中读取,一个在提交后执行。',
         points: ['未完成时 use 会挂起,由 Suspense 显示后备。', '完成后从缓存读,不占 useState 槽。', '获取动作要能重入,不能每次渲染都发一个无法去重的请求。'],
-        related: [{ to: '/internals/hooks-impl', label: 'Hooks 链表' }],
+        related: [{ to: '/architecture/hooks-impl', label: 'Hooks 链表' }],
         difficulty: 5,
         focus: '渲染中的读取和提交后的副作用',
         body: [

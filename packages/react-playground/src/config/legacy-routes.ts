@@ -26,6 +26,8 @@ export const LEGACY_REDIRECTS: Record<string, string> = {
     // RSC 专题从 basics 挪到 advanced:必须先于 '/topics/basics/*' 通配命中
     '/topics/basics/rsc-guide': '/advanced/rsc-guide',
     '/topics/basics/rsc-boundary': '/advanced/rsc-boundary',
+    '/internals': '/architecture/runtime-map',
+    '/internals/interview': '/architecture/check',
 };
 
 /* ---- 前缀通配:basePath 统一为裸前缀前的整组迁移 ---- */
@@ -33,6 +35,7 @@ export const LEGACY_PREFIX_REDIRECTS: ReadonlyArray<{ from: string; to: string }
     { from: '/topics/basics', to: '/basics' },
     { from: '/topics/hooks', to: '/hooks' },
     { from: '/topics/advanced', to: '/advanced' },
+    { from: '/internals', to: '/architecture' },
 ];
 
 /**

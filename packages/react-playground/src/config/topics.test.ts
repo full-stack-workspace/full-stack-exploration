@@ -58,4 +58,41 @@ describe('专题注册表', () => {
         expect(getCategoryByPath('/')).toBeUndefined();
         expect(getCategoryByPath('/not-exists')).toBeUndefined();
     });
+
+    it('原理与架构取代内部机制，进阶专题路径不变', () => {
+        expect(CATEGORIES.map((c) => c.key)).not.toContain('internals');
+        expect(CATEGORIES.map((c) => c.key)).toContain('architecture');
+        const advancedIndex = CATEGORIES.findIndex((c) => c.key === 'advanced');
+        const architectureIndex = CATEGORIES.findIndex((c) => c.key === 'architecture');
+        const performanceIndex = CATEGORIES.findIndex((c) => c.key === 'performance');
+        expect(architectureIndex).toBe(advancedIndex + 1);
+        expect(performanceIndex).toBe(architectureIndex + 1);
+
+        const paths = TOPICS.filter((t) => t.category === 'architecture').map((t) => t.path);
+        expect(paths).toEqual([
+            '/architecture/runtime-map',
+            '/architecture/fiber',
+            '/architecture/render',
+            '/architecture/commit',
+            '/architecture/update-queue',
+            '/architecture/hooks-impl',
+            '/architecture/scheduler',
+            '/architecture/events',
+            '/architecture/ssr',
+            '/architecture/check',
+        ]);
+
+        expect(TOPICS.filter((t) => t.category === 'advanced').map((t) => t.path)).toEqual([
+            '/advanced/component-comm-guide',
+            '/advanced/component-comm-playground',
+            '/advanced/component-comm-practice',
+            '/advanced/context',
+            '/advanced/error-boundary',
+            '/advanced/relay',
+            '/advanced/rsc-guide',
+            '/advanced/rsc-boundary',
+            '/advanced/view-transition-activity',
+            '/advanced/check',
+        ]);
+    });
 });

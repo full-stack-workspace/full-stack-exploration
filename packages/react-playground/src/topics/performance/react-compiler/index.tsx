@@ -222,7 +222,7 @@ function LegacyTicker({ feed }) {
                                 why: '函数引用何时需要稳定;Compiler 时代它的大部分用法退场',
                             },
                             {
-                                to: '/internals/hooks-impl',
+                                to: '/architecture/hooks-impl',
                                 label: 'Hooks 链表',
                                 why: 'Compiler 注入的 useMemoCache 也是链表节点 —— 看完手写缓存,再看编译器把缓存挂在哪',
                             },
