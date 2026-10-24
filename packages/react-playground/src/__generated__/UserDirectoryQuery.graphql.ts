@@ -1,7 +1,6 @@
 /**
- * @generated SignedSource<<19beba06123149da9adfcf62aad1d316>>
+ * @generated SignedSource<<5dbb925b1d10243494afe6a7a96a6c6c>>
  * @lightSyntaxTransform
- * @nogrep
  */
 
 /* tslint:disable */
@@ -56,7 +55,7 @@ return {
         "name": "users",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
+          (v0/*:: as any*/),
           {
             "args": null,
             "kind": "FragmentSpread",
@@ -73,7 +72,7 @@ return {
         "name": "posts",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
+          (v0/*:: as any*/),
           {
             "args": null,
             "kind": "FragmentSpread",
@@ -100,8 +99,8 @@ return {
         "name": "users",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
+          (v0/*:: as any*/),
+          (v1/*:: as any*/),
           {
             "alias": null,
             "args": null,
@@ -127,7 +126,7 @@ return {
         "name": "posts",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
+          (v0/*:: as any*/),
           {
             "alias": null,
             "args": null,
@@ -157,8 +156,8 @@ return {
             "name": "author",
             "plural": false,
             "selections": [
-              (v1/*: any*/),
-              (v0/*: any*/)
+              (v1/*:: as any*/),
+              (v0/*:: as any*/)
             ],
             "storageKey": null
           }

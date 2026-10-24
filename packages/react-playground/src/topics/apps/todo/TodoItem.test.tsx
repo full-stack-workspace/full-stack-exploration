@@ -95,7 +95,7 @@ describe('TodoItem — 交互', () => {
             />,
         );
         fireEvent.click(screen.getByTitle('点击切换优先级'));
-        expect(onPriorityChange).toHaveBeenCalledWith('medium');
+        expect(onPriorityChange).toHaveBeenCalledWith('test-id', 'medium');
         u1();
 
         onPriorityChange.mockClear();
@@ -109,7 +109,7 @@ describe('TodoItem — 交互', () => {
             />,
         );
         fireEvent.click(screen.getByTitle('点击切换优先级'));
-        expect(onPriorityChange).toHaveBeenCalledWith('high');
+        expect(onPriorityChange).toHaveBeenCalledWith('test-id', 'high');
     });
 
     it('双击文本进入编辑模式，出现输入框', () => {
@@ -128,7 +128,7 @@ describe('TodoItem — 交互', () => {
         fireEvent.change(input, { target: { value: '修改后的任务' } });
         fireEvent.keyDown(input, { key: 'Enter' });
 
-        expect(onEdit).toHaveBeenCalledWith('修改后的任务');
+        expect(onEdit).toHaveBeenCalledWith('test-id', '修改后的任务');
     });
 
     it('编辑后按 Escape 取消，不触发 onEdit，文本恢复原值', () => {

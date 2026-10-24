@@ -217,13 +217,15 @@ const Todo = memo(() => {
                     ) : (
                         <ul className="space-y-2">
                             {filtered.map(todo => (
+                                // 回调直接传 id 回传形式的稳定引用(useCallback),
+                                // 不再用内联箭头函数 —— 否则每次渲染都是新引用,TodoItem 的 memo 失效
                                 <TodoItemComponent
                                     key={todo.id}
                                     item={todo}
-                                    onToggle={() => toggleTodo(todo.id)}
-                                    onDelete={() => deleteTodo(todo.id)}
-                                    onEdit={text => editTodo(todo.id, text)}
-                                    onPriorityChange={p => changePriority(todo.id, p)}
+                                    onToggle={toggleTodo}
+                                    onDelete={deleteTodo}
+                                    onEdit={editTodo}
+                                    onPriorityChange={changePriority}
                                 />
                             ))}
                         </ul>

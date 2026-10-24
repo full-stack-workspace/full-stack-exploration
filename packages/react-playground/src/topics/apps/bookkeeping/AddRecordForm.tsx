@@ -1,3 +1,12 @@
+/**
+ * ============================================================================
+ * AddRecordForm.tsx — 新增记账记录表单
+ * ============================================================================
+ *
+ * 收入/支出类型切换、分类、金额、日期与备注的录入表单。
+ *
+ * @module topics/apps/bookkeeping/AddRecordForm
+ */
 import React, { useState, useCallback } from 'react';
 import { Form, Input, InputNumber, Select, DatePicker, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';

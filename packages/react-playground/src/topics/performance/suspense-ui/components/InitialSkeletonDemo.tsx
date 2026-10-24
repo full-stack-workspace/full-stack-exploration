@@ -13,7 +13,7 @@
  * @module topics/performance/suspense-ui/components/InitialSkeletonDemo
  */
 
-import { memo, Suspense, lazy, useState } from 'react';
+import { memo, Suspense, lazy, useEffect, useRef, useState } from 'react';
 import type { ComponentType } from 'react';
 import { Button } from 'antd';
 
@@ -56,10 +56,20 @@ export const InitialSkeletonDemo = memo(
     }: InitialSkeletonDemoProps) => {
         // chunk 资源:key 变化强制重挂,反复观察加载过程
         const [chunkKey, setChunkKey] = useState(0);
-        // 数据资源:在事件处理器中创建(发起请求即创建),绝不放渲染期
-        const [resource, setResource] = useState<SuspenseResource<SearchResponse>>(() =>
-            createResource(),
-        );
+        // 数据资源:初始资源在挂载 effect 中创建 —— 放渲染期(state initializer)
+        // 会在 StrictMode 下双发请求;resource.ts 约定「事件处理器/effect 中创建」,
+        // ref 守卫保证 StrictMode 双跑 effect 也只创建一次
+        const [resource, setResource] = useState<SuspenseResource<SearchResponse> | null>(null);
+        const createdRef = useRef(false);
+        useEffect(() => {
+            if (createdRef.current) {
+                return;
+            }
+            createdRef.current = true;
+            setResource(createResource());
+            // createResource 是注入的初始工厂;「重新加载」走按钮的事件处理器
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
         return (
             <div className="grid gap-6 lg:grid-cols-2">
@@ -90,9 +100,13 @@ export const InitialSkeletonDemo = memo(
                             重新加载
                         </Button>
                     </div>
-                    <Suspense fallback={<ResultSkeleton label="数据资源" />}>
-                        <ResultReader resource={resource} label="数据资源" />
-                    </Suspense>
+                    {resource === null ? (
+                        <ResultSkeleton label="数据资源" />
+                    ) : (
+                        <Suspense fallback={<ResultSkeleton label="数据资源" />}>
+                            <ResultReader resource={resource} label="数据资源" />
+                        </Suspense>
+                    )}
                 </div>
             </div>
         );

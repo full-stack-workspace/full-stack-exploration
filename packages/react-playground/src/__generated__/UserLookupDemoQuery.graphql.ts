@@ -1,7 +1,6 @@
 /**
- * @generated SignedSource<<3bd73f0d459e045a3d63ec16cd481431>>
+ * @generated SignedSource<<67a115471a309108aa51e10e5159a570>>
  * @lightSyntaxTransform
- * @nogrep
  */
 
 /* tslint:disable */
@@ -82,20 +81,20 @@ v1 = [
 ];
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": (v0/*:: as any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "UserLookupDemoQuery",
-    "selections": (v1/*: any*/),
+    "selections": (v1/*:: as any*/),
     "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": (v0/*:: as any*/),
     "kind": "Operation",
     "name": "UserLookupDemoQuery",
-    "selections": (v1/*: any*/)
+    "selections": (v1/*:: as any*/)
   },
   "params": {
     "cacheID": "67a418f070e161bfc049f72b2b8c4f15",

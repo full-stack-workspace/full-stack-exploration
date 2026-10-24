@@ -15,33 +15,17 @@
  */
 
 import React, { memo, useMemo, useRef, useState } from 'react';
-import type { ReactNode } from 'react';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { FlowList, MEMO_BAILOUT_STEPS, USEMEMO_CACHE_STEPS } from '../../../components/FlowList';
+import { ProbeCard } from '../../../components/ProbeCard';
 import { Input } from '../../../components/Input';
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
 
 /* =================================================================
  * 展示卡片
  * ================================================================ */
-
-interface ProbeCardProps {
-    title: string;
-    children: ReactNode;
-}
-
-const ProbeCard = memo(({ title, children }: ProbeCardProps) => {
-    return (
-        <div className="rounded-card border border-gray-100 bg-gray-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-            <p className="text-xs font-medium text-gray-700 dark:text-slate-200">{title}</p>
-            <div className="mt-2">{children}</div>
-        </div>
-    );
-});
-
-ProbeCard.displayName = 'ProbeCard';
 
 /* =================================================================
  * memo 子组件:默认浅比较每个 prop。对象引用一换就会重跑。

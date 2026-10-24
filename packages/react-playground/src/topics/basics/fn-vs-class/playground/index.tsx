@@ -15,7 +15,7 @@ import { TopicPage, TopicSection } from '../../../../components/TopicPage';
 import { CodeBlock } from '../../../../components/CodeBlock';
 import { TopicNav } from '../../../../components/TopicNav';
 import { FN_VS_CLASS_NAV_LINKS, FN_VS_CLASS_NAV_TITLE } from '../nav';
-import { RelatedTopics } from '../components/RelatedTopics';
+import { RelatedTopics } from '../../../../components/RelatedTopics';
 import { DerivedStateDemo } from './components/DerivedStateDemo';
 import { EffectVsLifecycleDemo } from './components/EffectVsLifecycleDemo';
 import { SnapshotThisDemo } from './components/SnapshotThisDemo';
@@ -53,7 +53,7 @@ setTimeout(() => setLater(count), 800);                          // 快照`}
             >
                 <div className="space-y-4">
                     <DerivedStateDemo />
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/basics/list-key',
@@ -71,7 +71,7 @@ setTimeout(() => setLater(count), 800);                          // 快照`}
             >
                 <div className="space-y-4">
                     <EffectVsLifecycleDemo />
-                    <RelatedTopics
+                    <RelatedTopics tone="indigo"
                         items={[
                             {
                                 to: '/hooks/use-effect',

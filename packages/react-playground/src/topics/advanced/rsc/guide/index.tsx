@@ -20,7 +20,7 @@ import { Diagram } from '../../../../components/Diagram';
 import { FlowList, type FlowStep } from '../../../../components/FlowList';
 import { TopicNav } from '../../../../components/TopicNav';
 import { RSC_NAV_LINKS, RSC_NAV_NOTE, RSC_NAV_TITLE } from '../nav';
-import { RelatedTopics } from '../../../basics/fn-vs-class/components/RelatedTopics';
+import { RelatedTopics } from '../../../../components/RelatedTopics';
 
 const P = ({ children }: { children: ReactNode }) => (
     <p className="text-sm leading-relaxed text-gray-600 dark:text-slate-300">{children}</p>
@@ -589,7 +589,7 @@ export async function addToCart(productId: string) {
                 title="15. 到示意里把边界切一遍"
                 note="玩法在下一页:给商品页的五块指定 Server 或 Client,并打开「筛选 import 推荐」。结论是规则判断,页面不会变成服务器。"
             >
-                <RelatedTopics
+                <RelatedTopics tone="indigo"
                     items={[
                         {
                             to: '/advanced/rsc-boundary',

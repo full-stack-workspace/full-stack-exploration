@@ -139,6 +139,13 @@ export function useRequest<TData, TParams extends unknown[] = []>(
                         emit({ type: 'stale', requestId });
                         return;
                     }
+                    // 与 .catch 分支对齐:cancel 后对方仍正常 resolve 时,
+                    // 结果不落库、不触发 onSuccess
+                    if (controller.signal.aborted) {
+                        setLoading(false);
+                        emit({ type: 'cancel', requestId });
+                        return;
+                    }
                     setData(nextData);
                     setLoading(false);
                     emit({ type: 'success', requestId });

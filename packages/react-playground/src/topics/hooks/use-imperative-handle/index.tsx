@@ -11,11 +11,12 @@
  */
 
 import { memo, useImperativeHandle, useRef, useState } from 'react';
-import type { ReactNode, Ref } from 'react';
+import type { Ref } from 'react';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { FlowList, IMPERATIVE_HANDLE_STEPS } from '../../../components/FlowList';
+import { ProbeCard } from '../../../components/ProbeCard';
 import { Input } from '../../../components/Input';
 import { TopicPage, TopicSection } from '../../../components/TopicPage';
 
@@ -36,22 +37,6 @@ interface AnnounceHandle {
 /* =================================================================
  * 展示卡片
  * ================================================================ */
-
-interface ProbeCardProps {
-    title: string;
-    children: ReactNode;
-}
-
-const ProbeCard = memo(({ title, children }: ProbeCardProps) => {
-    return (
-        <div className="rounded-card border border-gray-100 bg-gray-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-            <p className="text-xs font-medium text-gray-700 dark:text-slate-200">{title}</p>
-            <div className="mt-2">{children}</div>
-        </div>
-    );
-});
-
-ProbeCard.displayName = 'ProbeCard';
 
 /* =================================================================
  * 子组件:内部握 DOM,对外只给三条命令

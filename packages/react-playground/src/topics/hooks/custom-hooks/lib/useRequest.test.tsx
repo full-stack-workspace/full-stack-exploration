@@ -109,6 +109,30 @@ describe('useRequest', () => {
         expect(events.map((e) => e.type)).toEqual(['start', 'cancel']);
     });
 
+    it('cancel 后 asyncFn 忽略 signal 正常 resolve:结果不落库、不触发 onSuccess', async () => {
+        const deferred = createDeferred<string>();
+        const onSuccess = vi.fn();
+        const events: UseRequestEvent[] = [];
+
+        const { result } = renderHook(() =>
+            useRequest(() => deferred.promise, {
+                manual: true,
+                onSuccess,
+                onEvent: (e) => events.push(e),
+            }),
+        );
+
+        act(() => result.current.run());
+        // asyncFn 不响应 signal(真实项目里部分 SDK 如此),cancel 后仍正常 resolve
+        act(() => result.current.cancel());
+        await act(async () => deferred.resolve('迟到的结果'));
+
+        expect(result.current.loading).toBe(false);
+        expect(result.current.data).toBeUndefined();
+        expect(onSuccess).not.toHaveBeenCalled();
+        expect(events.map((e) => e.type)).toEqual(['start', 'cancel']);
+    });
+
     it('refresh 复用上一次 run 的参数', async () => {
         const asyncFn = vi.fn((_ctx: RequestContext, keyword: string) =>
             Promise.resolve(`结果:${keyword}`),
