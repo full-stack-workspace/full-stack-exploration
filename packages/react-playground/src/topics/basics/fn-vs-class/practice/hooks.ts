@@ -21,7 +21,10 @@ export function useClock(delayMs: number): number {
 
     useEffect(() => {
         const id = window.setInterval(() => setNow(Date.now()), delayMs);
+
+        // 清除定时器
         return () => window.clearInterval(id);
+
     }, [delayMs]);
 
     return now;

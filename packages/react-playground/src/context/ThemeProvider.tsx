@@ -26,6 +26,7 @@ interface ThemeActions {
     toggleTheme: () => void;
 }
 
+// createContext 用来创建通道，本身没有数据，只是树上的一个名字
 const ThemeStateContext = createContext<Theme | null>(null);
 const ThemeActionsContext = createContext<ThemeActions | null>(null);
 
@@ -87,6 +88,9 @@ interface ThemeProviderProps {
 }
 
 /**
+ * Provider 在某一层提供 value，覆盖范围是这棵子树,不是整个应用
+ * 所有子组件都可以通过 use 读取到这个 value
+ *
  * @example
  * <ThemeProvider>
  *   <App />
@@ -95,6 +99,8 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children }: ThemeProviderProps) {
     const [theme, setThemeState] = useState<Theme>(readStoredTheme);
 
+    // 每次 theme 变化时，应用主题类名，并持久化
+    // 这里使用 useLayoutEffect 是因为我们希望在 DOM 更新之前应用主题类名，避免闪烁
     useLayoutEffect(() => {
         applyThemeClass(theme);
         persistTheme(theme);
