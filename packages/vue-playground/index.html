@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="%SITE_DESCRIPTION%" />
+        <title>%SITE_TITLE%</title>
+        <script>
+            // 防闪烁:首帧渲染前确定暗色模式(localStorage → prefers-color-scheme 兜底)
+            // 与 src/composables/useDark.ts 的判定逻辑保持一致
+            (function () {
+                var stored = localStorage.getItem('vue-playground-theme');
+                var dark =
+                    stored === 'dark' ||
+                    (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                if (dark) document.documentElement.classList.add('dark');
+            })();
+        </script>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>

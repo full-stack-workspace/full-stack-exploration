@@ -11,6 +11,7 @@
     "dev:upload": "pnpm -C packages/next-upload dev",
     "dev:infra-fe": "pnpm -C packages/infra-fe dev",
     "dev:playground": "pnpm -C packages/react-playground dev",
+    "dev:vue-playground": "pnpm -C packages/vue-playground dev",
     "build:basic": "pnpm -C packages/vite-basic build",
     "build:server": "pnpm -C packages/vite-server build",
     "build:vite-build": "pnpm -C packages/vite-build build",
@@ -18,11 +19,13 @@
     "build:next": "pnpm -C packages/next-playground build",
     "build:infra-fe": "pnpm -C packages/infra-fe build",
     "build:playground": "pnpm -C packages/react-playground build",
+    "build:vue-playground": "pnpm -C packages/vue-playground build",
     "preview:basic": "pnpm -C packages/vite-basic preview",
     "preview:server": "pnpm -C packages/vite-server preview",
     "preview:vite-build": "pnpm -C packages/vite-build preview",
     "preview:next": "pnpm -C packages/next-playground preview",
     "preview:playground": "pnpm -C packages/react-playground preview",
+    "preview:vue-playground": "pnpm -C packages/vue-playground preview",
     "lint": "pnpm -r lint",
     "fix": "pnpm -r fix",
     "build": "pnpm -r build",
@@ -48,6 +51,9 @@
     ],
     "packages/react-playground/**/*.{ts,tsx,js,jsx}": [
       "bash -c 'cd packages/react-playground && args=(); for f in \"$@\"; do args+=(\"${f##*packages/react-playground/}\"); done; eslint --fix --no-warn-ignored \"${args[@]}\"' --"
+    ],
+    "packages/vue-playground/**/*.{ts,tsx,js,jsx,vue}": [
+      "bash -c 'cd packages/vue-playground && args=(); for f in \"$@\"; do args+=(\"${f##*packages/vue-playground/}\"); done; eslint --fix --no-warn-ignored \"${args[@]}\"' --"
     ]
   },
   "engines": {
