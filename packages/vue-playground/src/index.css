@@ -1,0 +1,92 @@
+/**
+ * ============================================================================
+ * index.css — Tailwind v4 入口与设计令牌
+ * ============================================================================
+ *
+ * Tailwind CSS v4 用 @theme 定义设计令牌(自动生成工具类),
+ * 暗色模式为 class 策略(@custom-variant dark),配合 useDark composable
+ * 与 index.html 内联脚本使用。
+ *
+ * 品牌双色:primary 围绕 Vue 绿 #42b883;ink 围绕 Vue 藏青 #35495e
+ * (标题/强调文字用,替代纯黑,带上品牌气质)。
+ *
+ * @module index.css
+ */
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* primary 色阶:以 Vue 绿 #42b883 为 500 */
+    --color-primary-50: #f0fdf6;
+    --color-primary-100: #dcfcee;
+    --color-primary-200: #bbf7dd;
+    --color-primary-300: #86efbe;
+    --color-primary-400: #4ade98;
+    --color-primary-500: #42b883;
+    --color-primary-600: #35a371;
+    --color-primary-700: #2c8a5f;
+    --color-primary-800: #267350;
+    --color-primary-900: #1f5c41;
+    --color-primary-950: #123324;
+
+    /* ink 色阶:以 Vue 藏青 #35495e 为 700,用于标题与强调文字 */
+    --color-ink-50: #f5f7f9;
+    --color-ink-100: #e8edf1;
+    --color-ink-200: #cdd8e0;
+    --color-ink-300: #a5b8c6;
+    --color-ink-400: #75909f;
+    --color-ink-500: #557182;
+    --color-ink-600: #455e6f;
+    --color-ink-700: #35495e;
+    --color-ink-800: #2c3d4e;
+    --color-ink-900: #273543;
+    --color-ink-950: #1a232d;
+}
+
+/* 生产级细节:抗锯齿、选区色、可见焦点环 */
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: var(--color-primary-200);
+    color: var(--color-ink-900);
+}
+.dark ::selection {
+    background: var(--color-primary-800);
+    color: var(--color-primary-50);
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* 侧边栏等窄滚动条弱化 */
+nav::-webkit-scrollbar,
+.thin-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+nav::-webkit-scrollbar-thumb,
+.thin-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-gray-200);
+    border-radius: 3px;
+}
+.dark nav::-webkit-scrollbar-thumb,
+.dark .thin-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-gray-700);
+}
+
+/* 尊重减弱动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -4,7 +4,7 @@ This file  provides context for AI coding assistants (Cursor, GitHub Copilot, Cl
 
 ## Project Overview
 
-The **full-stack-exploration** is a **pnpm workspace monorepo** for learning and demonstrating Vite, Tailwind CSS, React, Vue, and Next.js. It contains seven independent packages with no interdependencies.
+The **full-stack-exploration** is a **pnpm workspace monorepo** for learning and demonstrating Vite, Tailwind CSS, React, Vue, and Next.js. It contains eight independent packages with no interdependencies.
 
 ## Common Commands
 
@@ -17,6 +17,7 @@ pnpm dev:next                                         # Next.js 16 (port 3000)
 pnpm dev:upload                                       # Next.js 16 chunked upload (port 3001)
 pnpm dev:infra-fe                                     # infra-fe package
 pnpm dev:playground                                   # Rsbuild + React 19 playground (port 3002)
+pnpm dev:vue-playground                               # Vite + Vue 3 + Pinia playground (port 5176)
 pnpm build                                            # Build all packages
 pnpm type-check                                       # Type-check all packages
 ```
@@ -109,6 +110,26 @@ React 19 with `react-router-dom`, Tailwind CSS 4, Ant Design 6, Zustand state ma
 - Tests: jsdom environment, 70% coverage thresholds, `pnpm test:run` for CI mode;`src/config/topics.test.ts` 校验注册表完整性
 - Standalone package-level `eslint.config.js` (eslint-plugin-react + react-hooks); does NOT extend the root Next-oriented config
 - Git hooks (husky/commitlint/lint-staged) are inherited from the workspace root — the package has none of its own
+
+### vue-playground — Vite + Vue 3 练习场(站点品牌:Vue 权衡录 / Vue Tradeoffs)
+
+**Tech stack:** Vite 8, Vue 3(`<script setup>` SFC), TypeScript strict + vue-tsc, vue-router 5, Pinia, Element Plus(表单/表格/抽屉等控件,对照 react-playground 的 antd 角色), Tailwind CSS 4, Vitest 2 + @vue/test-utils
+
+**Directory conventions:**
+- `src/config/site.ts` — **站点品牌单一数据源**(站点名 Vue 权衡录 / Vue Tradeoffs、slogan、SITE_URL);index.html 标题与描述经 `vite.config.ts` 的 `transformIndexHtml` 占位符注入,顶栏品牌区、首页 Hero、路由 afterEach 的 document.title 全部从这里派生
+- `src/config/topics.ts` — **专题注册表(全站单一数据源)**:路由(vue-router 懒加载)、顶部导航、首页卡片、面包屑全部从 `TOPICS`/`CATEGORIES` 派生;新增专题 = `topics/<category>/<name>/` 目录 + 注册一行;`topics.test.ts` 为注册表契约测试(path 唯一、category 存在、basePath 前缀匹配)
+- `src/topics/<category>/<name>/` — 专题内容;category 为 `basics` / `reactivity` / `composables` / `advanced` / `state` / `architecture` / `apps` / `performance` 八类,分类末页为 `check/` 理解检验(分期计划见 `docs/vue-playground-design.md`)
+- `src/components/` — 共享组件:`TopicPage`(必填 `path`,面包屑+页头)与 `TopicSection` 专题骨架、`TopicNav` 多页专题页头互链横幅(配色取注册表 CategoryTheme.banner)、`TopicCard`、`BrandMark`、`Loading`
+- `src/composables/` — `useDark`(class 策略暗色模式,localStorage → prefers-color-scheme,index.html 内联脚本防闪烁)
+
+**Key patterns:**
+- 专题分类:basics 基础 / reactivity 响应式 / composables 组合式函数 / advanced 进阶 / state 状态管理(Pinia)/ architecture 原理 / apps 综合应用(与 react-playground 同名对照)/ performance 性能
+- **注册表 = 路由 = 导航**:路由由 `router/index.ts` 从 `TOPICS` 派生,不手写第二份路由表;document.title 在 `afterEach` 写入,专题页格式「专题 · 分类 · Vue 权衡录」
+- 壳层约定:品牌区不占 h1(每页仅内容区一个 h1);Header 前有「跳到主内容」skip link(落点 `#main-content`);md 以下顶栏导航收起为 Element Plus Drawer;`/:pathMatch(.*)*` 渲染 NotFound(不静默跳回首页)
+- Port **5176**(5173-5175 被 vite-* 占用,3000-3002 被 next-*/react-playground 占用)
+- Styling: Tailwind v4 `@theme` 令牌(primary 色阶围绕 Vue 绿 #42b883),`@custom-variant dark` class 策略;Element Plus 暗色 css-vars 与 .dark 配套
+- 状态管理一律 Pinia;Vuex 已进入维护期,只在决策类专题中提及,不做演示
+- Standalone package-level `eslint.config.js`(eslint-plugin-vue flat/recommended + @typescript-eslint/parser);不继承根 Next 向配置
 
 ### next-upload — Next.js 16 全栈分片上传
 

@@ -22,6 +22,7 @@
 | `next-playground` | Next.js 16 工程实践演示站(站点品牌:Next 权衡录 / Next Tradeoffs):专题注册表驱动的 RSC 边界 / 渲染策略 / 路由机制 / 数据缓存 / 安全 / AI-Native 对照演示,全站开启 Cache Components | 3000 |
 | `next-upload` | Next.js 16 全栈分片上传：Route Handlers + Web Worker hash + Zustand 状态机 + shadcn/ui — 验证 AI 在"复杂客户端状态机 + 协议设计"题型下的产出 | 3001 |
 | `react-playground` | Rsbuild + React 19 练习场：专题注册表驱动的 Hooks / 进阶 / 综合应用演示 | 3002 |
+| `vue-playground` | Vite + Vue 3 + TypeScript 练习场(站点品牌:Vue 权衡录 / Vue Tradeoffs):专题注册表驱动的响应式 / 组合式函数 / Pinia / 性能对照演示 | 5176 |
 
 ### AI Coding 亮点 · Key Highlights
 
