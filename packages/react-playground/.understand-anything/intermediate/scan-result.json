@@ -1,0 +1,3628 @@
+{
+  "name": "full-stack-exploration",
+  "description": "一个用于学习 Vite、Tailwind CSS、React 和 Next.js 的 pnpm workspace monorepo 练习场，包含七个相互独立的子包（Vite + Vue 3 基础、Vite Dev Server 架构、构建优化与三层 Design Tokens、Next.js 16 工程实践演示站、Next.js 全栈分片上传、Rsbuild + React 练习场、infra-fe），由 AI 辅助生成，系统性验证 AI Coding 在真实前端工程中的架构设计、代码生成质量与工具链集成边界。 Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
+  "languages": [
+    "css",
+    "csv",
+    "graphql",
+    "html",
+    "javascript",
+    "json",
+    "markdown",
+    "mts",
+    "python",
+    "shell",
+    "typescript",
+    "txt",
+    "unknown",
+    "vue",
+    "xml",
+    "yaml"
+  ],
+  "frameworks": [
+    "React",
+    "Vue",
+    "Next.js",
+    "Vite",
+    "Vitest",
+    "Tailwind CSS",
+    "Zustand"
+  ],
+  "files": [
+    {
+      "path": "eslint.config.js",
+      "language": "javascript",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "index.html",
+      "language": "html",
+      "sizeLines": 56,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 70,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postcss.config.js",
+      "language": "javascript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "public/robots.txt",
+      "language": "txt",
+      "sizeLines": 7,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "public/sitemap.xml",
+      "language": "xml",
+      "sizeLines": 369,
+      "fileCategory": "config"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 83,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "RELAY_SETUP.md",
+      "language": "markdown",
+      "sizeLines": 85,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "relay.config.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "rsbuild.config.ts",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/gen-sitemap.mjs",
+      "language": "javascript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/__generated__/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/__generated__/PostCard_post.graphql.ts",
+      "language": "typescript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/__generated__/UserCard_user.graphql.ts",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/__generated__/UserDirectoryQuery.graphql.ts",
+      "language": "typescript",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/__generated__/UserLookupDemoQuery.graphql.ts",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/App.tsx",
+      "language": "typescript",
+      "sizeLines": 330,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/BackToTop.test.tsx",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/BackToTop.tsx",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/BrandMark.tsx",
+      "language": "typescript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/check/assertCheck.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/check/CheckAnswer.tsx",
+      "language": "typescript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/check/CheckList.tsx",
+      "language": "typescript",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/check/followAnchor.ts",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/check/level.ts",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/check/numberGroups.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/check/types.ts",
+      "language": "typescript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/CodeBlock.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Diagram.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/DocumentTitle.test.tsx",
+      "language": "typescript",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/DocumentTitle.tsx",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/FlowList.tsx",
+      "language": "typescript",
+      "sizeLines": 150,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/HeaderActions.test.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/HeaderActions.tsx",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Input.test.tsx",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Input.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Loading.tsx",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TopicCard.tsx",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TopicNav.test.tsx",
+      "language": "typescript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TopicNav.tsx",
+      "language": "typescript",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TopicPage.tsx",
+      "language": "typescript",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/config/legacy-routes.test.ts",
+      "language": "typescript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/config/legacy-routes.ts",
+      "language": "typescript",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/config/site.ts",
+      "language": "typescript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/config/topics.test.ts",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/config/topics.tsx",
+      "language": "typescript",
+      "sizeLines": 715,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/context/AppProviders.tsx",
+      "language": "typescript",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/context/ThemeProvider.test.tsx",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/context/ThemeProvider.tsx",
+      "language": "typescript",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/context/UserProvider.test.tsx",
+      "language": "typescript",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/context/UserProvider.tsx",
+      "language": "typescript",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/env.d.ts",
+      "language": "typescript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useLocalStorage.test.ts",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useLocalStorage.ts",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/index.css",
+      "language": "css",
+      "sizeLines": 34,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/index.tsx",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/monitor/AppErrorBoundary.tsx",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/Home/index.tsx",
+      "language": "typescript",
+      "sizeLines": 275,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/NotFound/index.tsx",
+      "language": "typescript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/relay/Environment.ts",
+      "language": "typescript",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/schema.graphql",
+      "language": "graphql",
+      "sizeLines": 22,
+      "fileCategory": "data"
+    },
+    {
+      "path": "src/test/example.test.ts",
+      "language": "typescript",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/test/README.md",
+      "language": "markdown",
+      "sizeLines": 171,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/test/setupTests.ts",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/test/utils.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/TODOS.md",
+      "language": "markdown",
+      "sizeLines": 23,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/topics/advanced/check/bank.test.ts",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/check/bank.ts",
+      "language": "typescript",
+      "sizeLines": 633,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/components/RelatedTopics.tsx",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/guide/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 415,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/nav.tsx",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/components/CommandRefDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/components/DrillingVsSlotDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/components/LiftStateDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/components/PropsCallbackDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/components/SiteContextProbe.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/components/UrlStateDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/components/WrongSyncDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/playground/index.tsx",
+      "language": "typescript",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/practice/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/practice/index.tsx",
+      "language": "typescript",
+      "sizeLines": 281,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/component-comm/practice/tickets.ts",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/context/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/context/index.tsx",
+      "language": "typescript",
+      "sizeLines": 474,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/components/BombWidget.tsx",
+      "language": "typescript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/components/CatchScopeDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/components/DemoErrorBoundary.tsx",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/components/IsolationDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/components/NestedGranularityDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/components/ResetRecoveryDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/components/RethrowDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/error-boundary/index.tsx",
+      "language": "typescript",
+      "sizeLines": 463,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/relay/components/PostCard.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/relay/components/UserCard.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/relay/components/UserDirectory.tsx",
+      "language": "typescript",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/relay/components/UserLookupDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/relay/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/relay/index.tsx",
+      "language": "typescript",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/boundary/components/BoundaryBoard.tsx",
+      "language": "typescript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/boundary/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/boundary/index.tsx",
+      "language": "typescript",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/boundary/model.test.ts",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/boundary/model.ts",
+      "language": "typescript",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/guide/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 623,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/rsc/nav.tsx",
+      "language": "typescript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/view-transition-activity/components/ActivityLab.tsx",
+      "language": "typescript",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/view-transition-activity/components/LabPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/view-transition-activity/components/ManualTransitionDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/view-transition-activity/components/TransitionTypePlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/view-transition-activity/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/advanced/view-transition-activity/index.tsx",
+      "language": "typescript",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/components/ControlBar.tsx",
+      "language": "typescript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/components/EventLogPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/components/MessageBubble.tsx",
+      "language": "typescript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/components/MessageList.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/components/PartRenderer.tsx",
+      "language": "typescript",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/components/RenderBadge.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/components/RunStatusBadge.tsx",
+      "language": "typescript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/agent-chat/index.tsx",
+      "language": "typescript",
+      "sizeLines": 195,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/nav.tsx",
+      "language": "typescript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/react-adapter/hooks.test.tsx",
+      "language": "typescript",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/react-adapter/hooks.ts",
+      "language": "typescript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/react-adapter/RuntimeProvider.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/MockSseClient.test.ts",
+      "language": "typescript",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/MockSseClient.ts",
+      "language": "typescript",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/reducer.ts",
+      "language": "typescript",
+      "sizeLines": 197,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/RuntimeStore.test.ts",
+      "language": "typescript",
+      "sizeLines": 202,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/RuntimeStore.ts",
+      "language": "typescript",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/script.test.ts",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/script.ts",
+      "language": "typescript",
+      "sizeLines": 237,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/runtime/types.ts",
+      "language": "typescript",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/agent/sync-store-guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 584,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/AddRecordForm.test.tsx",
+      "language": "typescript",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/AddRecordForm.tsx",
+      "language": "typescript",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/index.tsx",
+      "language": "typescript",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/README.md",
+      "language": "markdown",
+      "sizeLines": 291,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/RecordTable.test.tsx",
+      "language": "typescript",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/RecordTable.tsx",
+      "language": "typescript",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/SummaryCards.test.tsx",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/SummaryCards.tsx",
+      "language": "typescript",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/bookkeeping/types.ts",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/shopping-cart/allShoppingCartProducts.tsx",
+      "language": "typescript",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/shopping-cart/index.tsx",
+      "language": "typescript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/shopping-cart/interface.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/shopping-cart/ProductList.tsx",
+      "language": "typescript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/shopping-cart/SearchBar.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/index.tsx",
+      "language": "typescript",
+      "sizeLines": 274,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/Todo.test.tsx",
+      "language": "typescript",
+      "sizeLines": 236,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/TodoComposer.test.tsx",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/TodoComposer.tsx",
+      "language": "typescript",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/TodoFilterBar.test.tsx",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/TodoFilterBar.tsx",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/TodoItem.test.tsx",
+      "language": "typescript",
+      "sizeLines": 165,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/TodoItem.tsx",
+      "language": "typescript",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/apps/todo/types.ts",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/AGENTS.md",
+      "language": "markdown",
+      "sizeLines": 26,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/topics/architecture/check/bank.test.ts",
+      "language": "typescript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/architecture.ts",
+      "language": "typescript",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/commit.ts",
+      "language": "typescript",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/design.ts",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/events.ts",
+      "language": "typescript",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/index.ts",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/model.ts",
+      "language": "typescript",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/render.ts",
+      "language": "typescript",
+      "sizeLines": 185,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/scheduler.ts",
+      "language": "typescript",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/state.ts",
+      "language": "typescript",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/bank/types.ts",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/commit/index.tsx",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/commit/TimingDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/components/Prose.tsx",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/components/SeriesNav.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/constraints/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/constraints/index.tsx",
+      "language": "typescript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/constraints/YieldCompare.tsx",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/demos.test.tsx",
+      "language": "typescript",
+      "sizeLines": 189,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/double-buffer/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/double-buffer/index.tsx",
+      "language": "typescript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/events/index.tsx",
+      "language": "typescript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/events/PathDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/fiber/index.tsx",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/fiber/WalkDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/hooks-impl/HookSlots.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/hooks-impl/index.tsx",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/map/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/map/index.tsx",
+      "language": "typescript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/pages.test.tsx",
+      "language": "typescript",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/render/DiffDemo.test.ts",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/render/DiffDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/render/index.tsx",
+      "language": "typescript",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/runtime-map/index.tsx",
+      "language": "typescript",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/scheduler/index.tsx",
+      "language": "typescript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/scheduler/SliceModel.tsx",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/series.test.ts",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/series.ts",
+      "language": "typescript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/ssr/index.tsx",
+      "language": "typescript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/update-queue/index.tsx",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/update-queue/QueueDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/work-unit/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/architecture/work-unit/index.tsx",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/check/bank.test.ts",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/check/bank.ts",
+      "language": "typescript",
+      "sizeLines": 513,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/components/BatchingDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/components/BubblingDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/components/EventLog.tsx",
+      "language": "typescript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/components/NativeMixDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/components/PoolingHistoryDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/components/SpecialCasesDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/components/SyntheticInspectDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/event/index.tsx",
+      "language": "typescript",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/components/ComparePane.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/components/RelatedTopics.tsx",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/guide/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 452,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/nav.tsx",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/playground/components/DerivedStateDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/playground/components/EffectVsLifecycleDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/playground/components/SnapshotThisDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/playground/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/playground/index.tsx",
+      "language": "typescript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/practice/hooks.ts",
+      "language": "typescript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/practice/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/practice/index.tsx",
+      "language": "typescript",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/practice/quotes.ts",
+      "language": "typescript",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/practice/WatchClass.tsx",
+      "language": "typescript",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fn-vs-class/practice/WatchFn.tsx",
+      "language": "typescript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fragment/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/fragment/index.tsx",
+      "language": "typescript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/components/AsyncStatusDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/components/ConditionalDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/components/ConfigDrivenDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 214,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/components/ElementNatureDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/components/ExpressionDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/components/ListRenderDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 150,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/components/PermissionDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/jsx-render/index.tsx",
+      "language": "typescript",
+      "sizeLines": 232,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/list-key/components/DynamicKeyDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/list-key/components/IdentityExperiment.tsx",
+      "language": "typescript",
+      "sizeLines": 180,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/list-key/components/KeyRulesDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/list-key/components/ResetStateDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/basics/list-key/index.tsx",
+      "language": "typescript",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/actions/components/ActionStateForm.tsx",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/actions/components/FormActionBasic.tsx",
+      "language": "typescript",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/actions/components/FormStatusDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/actions/components/OptimisticLists.tsx",
+      "language": "typescript",
+      "sizeLines": 218,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/actions/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/actions/index.tsx",
+      "language": "typescript",
+      "sizeLines": 243,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/actions/mock.ts",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/check/bank.test.ts",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/check/bank.ts",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/check/core.ts",
+      "language": "typescript",
+      "sizeLines": 255,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/check/rest.ts",
+      "language": "typescript",
+      "sizeLines": 543,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/composition/index.tsx",
+      "language": "typescript",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/composition/mockUserApi.ts",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/composition/useUserSearch.ts",
+      "language": "typescript",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 492,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/index.ts",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useDebouncedValue.test.tsx",
+      "language": "typescript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useDebouncedValue.ts",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useEventListener.test.tsx",
+      "language": "typescript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useEventListener.ts",
+      "language": "typescript",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useInterval.test.tsx",
+      "language": "typescript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useInterval.ts",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useLocalStorage.test.tsx",
+      "language": "typescript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useLocalStorage.ts",
+      "language": "typescript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useMediaQuery.test.tsx",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useMediaQuery.ts",
+      "language": "typescript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/usePrevious.test.tsx",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/usePrevious.ts",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useRequest.test.tsx",
+      "language": "typescript",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useRequest.ts",
+      "language": "typescript",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useToggle.test.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/lib/useToggle.ts",
+      "language": "typescript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/nav.tsx",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/DebouncedDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/EventListenerDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/IntervalDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/LocalStorageDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/MediaQueryDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/PreviousDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/RequestDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/components/ToggleDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/custom-hooks/playground/index.tsx",
+      "language": "typescript",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-callback/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-callback/index.tsx",
+      "language": "typescript",
+      "sizeLines": 413,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-effect/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-effect/index.tsx",
+      "language": "typescript",
+      "sizeLines": 287,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-imperative-handle/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-imperative-handle/index.tsx",
+      "language": "typescript",
+      "sizeLines": 429,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-layout-effect/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-layout-effect/index.tsx",
+      "language": "typescript",
+      "sizeLines": 270,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-memo/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-memo/index.tsx",
+      "language": "typescript",
+      "sizeLines": 467,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-reducer/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-reducer/index.tsx",
+      "language": "typescript",
+      "sizeLines": 545,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-ref/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-ref/index.tsx",
+      "language": "typescript",
+      "sizeLines": 452,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-state/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/hooks/use-state/index.tsx",
+      "language": "typescript",
+      "sizeLines": 365,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/AGENTS.md",
+      "language": "markdown",
+      "sizeLines": 17,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/topics/performance/ai-native/agent-lab/components/AgentPipeline.tsx",
+      "language": "typescript",
+      "sizeLines": 292,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/agent-lab/components/QualityTradeoff.tsx",
+      "language": "typescript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/agent-lab/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/agent-lab/index.tsx",
+      "language": "typescript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/guide/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/lab/components/StreamRig.tsx",
+      "language": "typescript",
+      "sizeLines": 250,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/lab/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/lab/index.tsx",
+      "language": "typescript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/ai-native/nav.tsx",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/check/bank.test.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/check/bank.ts",
+      "language": "typescript",
+      "sizeLines": 673,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/components/AmberTopics.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/components/Prose.tsx",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/components/SeriesNav.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/architecture/components/RegionBoard.tsx",
+      "language": "typescript",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/architecture/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/architecture/index.tsx",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/components/PactCard.tsx",
+      "language": "typescript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/diagnose/components/ShipRecord.tsx",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/diagnose/components/SymptomPath.tsx",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/diagnose/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/diagnose/index.tsx",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/guide/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 201,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/implement/components/OwnershipDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/implement/components/ScaleDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/implement/components/WaterfallDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/implement/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/implement/index.tsx",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/metrics-lab/components/CausalChain.tsx",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/metrics-lab/components/SceneMetrics.tsx",
+      "language": "typescript",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/metrics-lab/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/governance/metrics-lab/index.tsx",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/FrameMeter.tsx",
+      "language": "typescript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/mockSearchApi.ts",
+      "language": "typescript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/resource.test.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/resource.ts",
+      "language": "typescript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/slow.ts",
+      "language": "typescript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/SlowList.tsx",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/useFrameStats.test.tsx",
+      "language": "typescript",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/lab/useFrameStats.ts",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/react-compiler/components/MemoNoiseDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/react-compiler/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/react-compiler/index.tsx",
+      "language": "typescript",
+      "sizeLines": 244,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/render-scheduling-guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 469,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/series.test.ts",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/series.ts",
+      "language": "typescript",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/suspense-ui/components/BoundaryGranularityDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/suspense-ui/components/InitialSkeletonDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/suspense-ui/components/LazyDocPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/suspense-ui/components/NoFallbackFlashDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/suspense-ui/components/ResultReader.tsx",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/suspense-ui/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/suspense-ui/index.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/transition-deferred/components/HeavyChartPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/transition-deferred/components/InputLagDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 156,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/transition-deferred/components/StaleSearchDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/transition-deferred/components/TabSwitchDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/transition-deferred/index.test.tsx",
+      "language": "typescript",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/topics/performance/transition-deferred/index.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/vitest.d.ts",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tailwind.config.js",
+      "language": "javascript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "TESTING.md",
+      "language": "markdown",
+      "sizeLines": 170,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "sizeLines": 38,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 377,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "very-large",
+  "importMap": {
+    "eslint.config.js": [],
+    "index.html": [],
+    "package.json": [],
+    "postcss.config.js": [],
+    "public/robots.txt": [],
+    "public/sitemap.xml": [],
+    "README.md": [],
+    "RELAY_SETUP.md": [],
+    "relay.config.json": [],
+    "rsbuild.config.ts": [
+      "src/config/site.ts"
+    ],
+    "scripts/gen-sitemap.mjs": [],
+    "src/__generated__/.gitkeep": [],
+    "src/__generated__/PostCard_post.graphql.ts": [],
+    "src/__generated__/UserCard_user.graphql.ts": [],
+    "src/__generated__/UserDirectoryQuery.graphql.ts": [],
+    "src/__generated__/UserLookupDemoQuery.graphql.ts": [],
+    "src/App.tsx": [
+      "src/components/BackToTop.tsx",
+      "src/components/BrandMark.tsx",
+      "src/components/DocumentTitle.tsx",
+      "src/components/HeaderActions.tsx",
+      "src/components/Loading.tsx",
+      "src/config/legacy-routes.ts",
+      "src/config/site.ts",
+      "src/config/topics.tsx",
+      "src/context/AppProviders.tsx",
+      "src/context/ThemeProvider.tsx",
+      "src/index.css",
+      "src/monitor/AppErrorBoundary.tsx",
+      "src/pages/Home/index.tsx",
+      "src/pages/NotFound/index.tsx"
+    ],
+    "src/components/BackToTop.test.tsx": [
+      "src/components/BackToTop.tsx"
+    ],
+    "src/components/BackToTop.tsx": [],
+    "src/components/BrandMark.tsx": [],
+    "src/components/check/assertCheck.ts": [
+      "src/components/check/types.ts"
+    ],
+    "src/components/check/CheckAnswer.tsx": [
+      "src/components/check/level.ts",
+      "src/components/check/types.ts"
+    ],
+    "src/components/check/CheckList.tsx": [
+      "src/components/check/CheckAnswer.tsx",
+      "src/components/check/followAnchor.ts",
+      "src/components/check/level.ts",
+      "src/components/check/types.ts",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/components/check/followAnchor.ts": [],
+    "src/components/check/level.ts": [
+      "src/components/check/types.ts"
+    ],
+    "src/components/check/numberGroups.ts": [
+      "src/components/check/types.ts"
+    ],
+    "src/components/check/types.ts": [],
+    "src/components/CodeBlock.tsx": [],
+    "src/components/Diagram.tsx": [],
+    "src/components/DocumentTitle.test.tsx": [
+      "src/components/DocumentTitle.tsx",
+      "src/config/site.ts",
+      "src/config/topics.tsx"
+    ],
+    "src/components/DocumentTitle.tsx": [
+      "src/config/site.ts",
+      "src/config/topics.tsx"
+    ],
+    "src/components/FlowList.tsx": [],
+    "src/components/HeaderActions.test.tsx": [
+      "src/components/HeaderActions.tsx",
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx"
+    ],
+    "src/components/HeaderActions.tsx": [
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx"
+    ],
+    "src/components/Input.test.tsx": [
+      "src/components/Input.tsx",
+      "src/test/utils.tsx"
+    ],
+    "src/components/Input.tsx": [],
+    "src/components/Loading.tsx": [],
+    "src/components/TopicCard.tsx": [
+      "src/config/topics.tsx"
+    ],
+    "src/components/TopicNav.test.tsx": [
+      "src/components/TopicNav.tsx",
+      "src/config/topics.tsx",
+      "src/test/utils.tsx",
+      "src/topics/advanced/component-comm/nav.tsx",
+      "src/topics/advanced/rsc/nav.tsx",
+      "src/topics/agent/nav.tsx",
+      "src/topics/basics/fn-vs-class/nav.tsx",
+      "src/topics/hooks/custom-hooks/nav.tsx",
+      "src/topics/performance/ai-native/nav.tsx"
+    ],
+    "src/components/TopicNav.tsx": [
+      "src/config/topics.tsx"
+    ],
+    "src/components/TopicPage.tsx": [],
+    "src/config/legacy-routes.test.ts": [
+      "src/config/legacy-routes.ts",
+      "src/config/topics.tsx"
+    ],
+    "src/config/legacy-routes.ts": [],
+    "src/config/site.ts": [],
+    "src/config/topics.test.ts": [
+      "src/config/topics.tsx"
+    ],
+    "src/config/topics.tsx": [],
+    "src/context/AppProviders.tsx": [
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx"
+    ],
+    "src/context/ThemeProvider.test.tsx": [
+      "src/context/ThemeProvider.tsx"
+    ],
+    "src/context/ThemeProvider.tsx": [],
+    "src/context/UserProvider.test.tsx": [
+      "src/context/UserProvider.tsx"
+    ],
+    "src/context/UserProvider.tsx": [],
+    "src/env.d.ts": [],
+    "src/hooks/useLocalStorage.test.ts": [
+      "src/hooks/useLocalStorage.ts"
+    ],
+    "src/hooks/useLocalStorage.ts": [],
+    "src/index.css": [],
+    "src/index.tsx": [
+      "src/App.tsx",
+      "src/index.css",
+      "src/relay/Environment.ts"
+    ],
+    "src/monitor/AppErrorBoundary.tsx": [],
+    "src/pages/Home/index.tsx": [
+      "src/components/TopicCard.tsx",
+      "src/config/site.ts",
+      "src/config/topics.tsx"
+    ],
+    "src/pages/NotFound/index.tsx": [
+      "src/config/site.ts",
+      "src/config/topics.tsx"
+    ],
+    "src/relay/Environment.ts": [],
+    "src/schema.graphql": [],
+    "src/test/example.test.ts": [],
+    "src/test/README.md": [],
+    "src/test/setupTests.ts": [],
+    "src/test/utils.tsx": [
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx"
+    ],
+    "src/TODOS.md": [],
+    "src/topics/advanced/check/bank.test.ts": [
+      "src/components/check/assertCheck.ts",
+      "src/config/topics.tsx",
+      "src/topics/advanced/check/bank.ts",
+      "src/topics/advanced/check/index.tsx"
+    ],
+    "src/topics/advanced/check/bank.ts": [
+      "src/components/check/numberGroups.ts",
+      "src/components/check/types.ts"
+    ],
+    "src/topics/advanced/check/index.tsx": [
+      "src/components/check/CheckList.tsx",
+      "src/topics/advanced/check/bank.ts"
+    ],
+    "src/topics/advanced/component-comm/components/RelatedTopics.tsx": [],
+    "src/topics/advanced/component-comm/guide/index.test.tsx": [
+      "src/topics/advanced/component-comm/guide/index.tsx"
+    ],
+    "src/topics/advanced/component-comm/guide/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/FlowList.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/advanced/component-comm/components/RelatedTopics.tsx",
+      "src/topics/advanced/component-comm/nav.tsx"
+    ],
+    "src/topics/advanced/component-comm/nav.tsx": [
+      "src/components/TopicNav.tsx"
+    ],
+    "src/topics/advanced/component-comm/playground/components/CommandRefDemo.tsx": [
+      "src/components/Input.tsx"
+    ],
+    "src/topics/advanced/component-comm/playground/components/DrillingVsSlotDemo.tsx": [],
+    "src/topics/advanced/component-comm/playground/components/LiftStateDemo.tsx": [],
+    "src/topics/advanced/component-comm/playground/components/PropsCallbackDemo.tsx": [
+      "src/components/Input.tsx"
+    ],
+    "src/topics/advanced/component-comm/playground/components/SiteContextProbe.tsx": [
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx"
+    ],
+    "src/topics/advanced/component-comm/playground/components/UrlStateDemo.tsx": [],
+    "src/topics/advanced/component-comm/playground/components/WrongSyncDemo.tsx": [
+      "src/components/Input.tsx"
+    ],
+    "src/topics/advanced/component-comm/playground/index.test.tsx": [
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx",
+      "src/topics/advanced/component-comm/playground/index.tsx"
+    ],
+    "src/topics/advanced/component-comm/playground/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/advanced/component-comm/components/RelatedTopics.tsx",
+      "src/topics/advanced/component-comm/nav.tsx",
+      "src/topics/advanced/component-comm/playground/components/CommandRefDemo.tsx",
+      "src/topics/advanced/component-comm/playground/components/DrillingVsSlotDemo.tsx",
+      "src/topics/advanced/component-comm/playground/components/LiftStateDemo.tsx",
+      "src/topics/advanced/component-comm/playground/components/PropsCallbackDemo.tsx",
+      "src/topics/advanced/component-comm/playground/components/SiteContextProbe.tsx",
+      "src/topics/advanced/component-comm/playground/components/UrlStateDemo.tsx",
+      "src/topics/advanced/component-comm/playground/components/WrongSyncDemo.tsx"
+    ],
+    "src/topics/advanced/component-comm/practice/index.test.tsx": [
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx",
+      "src/topics/advanced/component-comm/practice/index.tsx"
+    ],
+    "src/topics/advanced/component-comm/practice/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Input.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/context/UserProvider.tsx",
+      "src/topics/advanced/component-comm/nav.tsx",
+      "src/topics/advanced/component-comm/practice/tickets.ts"
+    ],
+    "src/topics/advanced/component-comm/practice/tickets.ts": [],
+    "src/topics/advanced/context/index.test.tsx": [
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx",
+      "src/topics/advanced/context/index.tsx"
+    ],
+    "src/topics/advanced/context/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/TopicPage.tsx",
+      "src/context/ThemeProvider.tsx",
+      "src/context/UserProvider.tsx"
+    ],
+    "src/topics/advanced/error-boundary/components/BombWidget.tsx": [],
+    "src/topics/advanced/error-boundary/components/CatchScopeDemo.tsx": [
+      "src/topics/advanced/error-boundary/components/DemoErrorBoundary.tsx"
+    ],
+    "src/topics/advanced/error-boundary/components/DemoErrorBoundary.tsx": [],
+    "src/topics/advanced/error-boundary/components/IsolationDemo.tsx": [
+      "src/topics/advanced/error-boundary/components/BombWidget.tsx",
+      "src/topics/advanced/error-boundary/components/DemoErrorBoundary.tsx"
+    ],
+    "src/topics/advanced/error-boundary/components/NestedGranularityDemo.tsx": [
+      "src/topics/advanced/error-boundary/components/BombWidget.tsx",
+      "src/topics/advanced/error-boundary/components/DemoErrorBoundary.tsx"
+    ],
+    "src/topics/advanced/error-boundary/components/ResetRecoveryDemo.tsx": [
+      "src/topics/advanced/error-boundary/components/DemoErrorBoundary.tsx"
+    ],
+    "src/topics/advanced/error-boundary/components/RethrowDemo.tsx": [
+      "src/topics/advanced/error-boundary/components/DemoErrorBoundary.tsx"
+    ],
+    "src/topics/advanced/error-boundary/index.test.tsx": [
+      "src/topics/advanced/error-boundary/index.tsx"
+    ],
+    "src/topics/advanced/error-boundary/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/FlowList.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/advanced/error-boundary/components/CatchScopeDemo.tsx",
+      "src/topics/advanced/error-boundary/components/IsolationDemo.tsx",
+      "src/topics/advanced/error-boundary/components/NestedGranularityDemo.tsx",
+      "src/topics/advanced/error-boundary/components/ResetRecoveryDemo.tsx",
+      "src/topics/advanced/error-boundary/components/RethrowDemo.tsx"
+    ],
+    "src/topics/advanced/relay/components/PostCard.tsx": [
+      "src/__generated__/PostCard_post.graphql.ts"
+    ],
+    "src/topics/advanced/relay/components/UserCard.tsx": [
+      "src/__generated__/UserCard_user.graphql.ts"
+    ],
+    "src/topics/advanced/relay/components/UserDirectory.tsx": [
+      "src/__generated__/UserDirectoryQuery.graphql.ts",
+      "src/topics/advanced/relay/components/PostCard.tsx",
+      "src/topics/advanced/relay/components/UserCard.tsx"
+    ],
+    "src/topics/advanced/relay/components/UserLookupDemo.tsx": [
+      "src/__generated__/UserLookupDemoQuery.graphql.ts"
+    ],
+    "src/topics/advanced/relay/index.test.tsx": [
+      "src/relay/Environment.ts",
+      "src/topics/advanced/relay/index.tsx"
+    ],
+    "src/topics/advanced/relay/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/advanced/relay/components/UserDirectory.tsx",
+      "src/topics/advanced/relay/components/UserLookupDemo.tsx"
+    ],
+    "src/topics/advanced/rsc/boundary/components/BoundaryBoard.tsx": [
+      "src/topics/advanced/rsc/boundary/model.ts"
+    ],
+    "src/topics/advanced/rsc/boundary/index.test.tsx": [
+      "src/topics/advanced/rsc/boundary/index.tsx"
+    ],
+    "src/topics/advanced/rsc/boundary/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/advanced/rsc/boundary/components/BoundaryBoard.tsx",
+      "src/topics/advanced/rsc/nav.tsx"
+    ],
+    "src/topics/advanced/rsc/boundary/model.test.ts": [
+      "src/topics/advanced/rsc/boundary/model.ts"
+    ],
+    "src/topics/advanced/rsc/boundary/model.ts": [],
+    "src/topics/advanced/rsc/guide/index.test.tsx": [
+      "src/topics/advanced/rsc/guide/index.tsx"
+    ],
+    "src/topics/advanced/rsc/guide/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/FlowList.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/advanced/rsc/nav.tsx",
+      "src/topics/basics/fn-vs-class/components/RelatedTopics.tsx"
+    ],
+    "src/topics/advanced/rsc/nav.tsx": [
+      "src/components/TopicNav.tsx"
+    ],
+    "src/topics/advanced/view-transition-activity/components/ActivityLab.tsx": [
+      "src/topics/advanced/view-transition-activity/components/LabPanel.tsx"
+    ],
+    "src/topics/advanced/view-transition-activity/components/LabPanel.tsx": [],
+    "src/topics/advanced/view-transition-activity/components/ManualTransitionDemo.tsx": [],
+    "src/topics/advanced/view-transition-activity/components/TransitionTypePlayground.tsx": [],
+    "src/topics/advanced/view-transition-activity/index.test.tsx": [
+      "src/topics/advanced/view-transition-activity/components/ActivityLab.tsx",
+      "src/topics/advanced/view-transition-activity/index.tsx"
+    ],
+    "src/topics/advanced/view-transition-activity/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/advanced/view-transition-activity/components/ActivityLab.tsx",
+      "src/topics/advanced/view-transition-activity/components/ManualTransitionDemo.tsx",
+      "src/topics/advanced/view-transition-activity/components/TransitionTypePlayground.tsx"
+    ],
+    "src/topics/agent/agent-chat/components/ControlBar.tsx": [
+      "src/topics/agent/agent-chat/components/RenderBadge.tsx",
+      "src/topics/agent/runtime/MockSseClient.ts"
+    ],
+    "src/topics/agent/agent-chat/components/EventLogPanel.tsx": [
+      "src/topics/agent/agent-chat/components/RenderBadge.tsx"
+    ],
+    "src/topics/agent/agent-chat/components/MessageBubble.tsx": [
+      "src/topics/agent/agent-chat/components/PartRenderer.tsx",
+      "src/topics/agent/agent-chat/components/RenderBadge.tsx",
+      "src/topics/agent/react-adapter/hooks.ts"
+    ],
+    "src/topics/agent/agent-chat/components/MessageList.tsx": [
+      "src/topics/agent/agent-chat/components/MessageBubble.tsx",
+      "src/topics/agent/agent-chat/components/RenderBadge.tsx",
+      "src/topics/agent/react-adapter/hooks.ts"
+    ],
+    "src/topics/agent/agent-chat/components/PartRenderer.tsx": [
+      "src/topics/agent/agent-chat/components/RenderBadge.tsx",
+      "src/topics/agent/react-adapter/hooks.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/agent-chat/components/RenderBadge.tsx": [],
+    "src/topics/agent/agent-chat/components/RunStatusBadge.tsx": [
+      "src/topics/agent/agent-chat/components/RenderBadge.tsx",
+      "src/topics/agent/react-adapter/hooks.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/agent-chat/index.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/agent/agent-chat/index.tsx"
+    ],
+    "src/topics/agent/agent-chat/index.tsx": [
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/agent/agent-chat/components/ControlBar.tsx",
+      "src/topics/agent/agent-chat/components/EventLogPanel.tsx",
+      "src/topics/agent/agent-chat/components/MessageList.tsx",
+      "src/topics/agent/agent-chat/components/RunStatusBadge.tsx",
+      "src/topics/agent/nav.tsx",
+      "src/topics/agent/react-adapter/hooks.ts",
+      "src/topics/agent/react-adapter/RuntimeProvider.tsx",
+      "src/topics/agent/runtime/MockSseClient.ts",
+      "src/topics/agent/runtime/script.ts"
+    ],
+    "src/topics/agent/nav.tsx": [
+      "src/components/TopicNav.tsx"
+    ],
+    "src/topics/agent/react-adapter/hooks.test.tsx": [
+      "src/topics/agent/react-adapter/hooks.ts",
+      "src/topics/agent/react-adapter/RuntimeProvider.tsx",
+      "src/topics/agent/runtime/RuntimeStore.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/react-adapter/hooks.ts": [
+      "src/topics/agent/react-adapter/RuntimeProvider.tsx",
+      "src/topics/agent/runtime/RuntimeStore.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/react-adapter/RuntimeProvider.tsx": [
+      "src/topics/agent/runtime/RuntimeStore.ts"
+    ],
+    "src/topics/agent/runtime/MockSseClient.test.ts": [
+      "src/topics/agent/runtime/MockSseClient.ts",
+      "src/topics/agent/runtime/script.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/runtime/MockSseClient.ts": [
+      "src/topics/agent/runtime/script.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/runtime/reducer.ts": [
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/runtime/RuntimeStore.test.ts": [
+      "src/topics/agent/runtime/RuntimeStore.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/runtime/RuntimeStore.ts": [
+      "src/topics/agent/runtime/reducer.ts",
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/runtime/script.test.ts": [
+      "src/topics/agent/runtime/RuntimeStore.ts",
+      "src/topics/agent/runtime/script.ts"
+    ],
+    "src/topics/agent/runtime/script.ts": [
+      "src/topics/agent/runtime/types.ts"
+    ],
+    "src/topics/agent/runtime/types.ts": [],
+    "src/topics/agent/sync-store-guide/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/agent/nav.tsx"
+    ],
+    "src/topics/apps/bookkeeping/AddRecordForm.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/apps/bookkeeping/AddRecordForm.tsx",
+      "src/topics/apps/bookkeeping/types.ts"
+    ],
+    "src/topics/apps/bookkeeping/AddRecordForm.tsx": [
+      "src/topics/apps/bookkeeping/types.ts"
+    ],
+    "src/topics/apps/bookkeeping/index.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/apps/bookkeeping/index.tsx",
+      "src/topics/apps/bookkeeping/types.ts"
+    ],
+    "src/topics/apps/bookkeeping/index.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/hooks/useLocalStorage.ts",
+      "src/topics/apps/bookkeeping/AddRecordForm.tsx",
+      "src/topics/apps/bookkeeping/RecordTable.tsx",
+      "src/topics/apps/bookkeeping/SummaryCards.tsx",
+      "src/topics/apps/bookkeeping/types.ts"
+    ],
+    "src/topics/apps/bookkeeping/README.md": [],
+    "src/topics/apps/bookkeeping/RecordTable.test.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/test/utils.tsx",
+      "src/topics/apps/bookkeeping/RecordTable.tsx",
+      "src/topics/apps/bookkeeping/types.ts"
+    ],
+    "src/topics/apps/bookkeeping/RecordTable.tsx": [
+      "src/topics/apps/bookkeeping/types.ts"
+    ],
+    "src/topics/apps/bookkeeping/SummaryCards.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/apps/bookkeeping/SummaryCards.tsx"
+    ],
+    "src/topics/apps/bookkeeping/SummaryCards.tsx": [],
+    "src/topics/apps/bookkeeping/types.ts": [],
+    "src/topics/apps/shopping-cart/allShoppingCartProducts.tsx": [
+      "src/topics/apps/shopping-cart/interface.ts"
+    ],
+    "src/topics/apps/shopping-cart/index.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/topics/apps/shopping-cart/allShoppingCartProducts.tsx",
+      "src/topics/apps/shopping-cart/interface.ts",
+      "src/topics/apps/shopping-cart/ProductList.tsx",
+      "src/topics/apps/shopping-cart/SearchBar.tsx"
+    ],
+    "src/topics/apps/shopping-cart/interface.ts": [],
+    "src/topics/apps/shopping-cart/ProductList.tsx": [
+      "src/topics/apps/shopping-cart/interface.ts"
+    ],
+    "src/topics/apps/shopping-cart/SearchBar.tsx": [
+      "src/topics/apps/shopping-cart/interface.ts"
+    ],
+    "src/topics/apps/todo/index.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/hooks/useLocalStorage.ts",
+      "src/topics/apps/todo/TodoComposer.tsx",
+      "src/topics/apps/todo/TodoFilterBar.tsx",
+      "src/topics/apps/todo/TodoItem.tsx",
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/Todo.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/apps/todo/index.tsx",
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/TodoComposer.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/apps/todo/TodoComposer.tsx",
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/TodoComposer.tsx": [
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/TodoFilterBar.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/apps/todo/TodoFilterBar.tsx",
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/TodoFilterBar.tsx": [
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/TodoItem.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/apps/todo/TodoItem.tsx",
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/TodoItem.tsx": [
+      "src/topics/apps/todo/types.ts"
+    ],
+    "src/topics/apps/todo/types.ts": [],
+    "src/topics/architecture/AGENTS.md": [],
+    "src/topics/architecture/check/bank.test.ts": [
+      "src/topics/architecture/check/bank/index.ts"
+    ],
+    "src/topics/architecture/check/bank/architecture.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/commit.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/design.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/events.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/index.ts": [
+      "src/topics/architecture/check/bank/architecture.ts",
+      "src/topics/architecture/check/bank/commit.ts",
+      "src/topics/architecture/check/bank/design.ts",
+      "src/topics/architecture/check/bank/events.ts",
+      "src/topics/architecture/check/bank/model.ts",
+      "src/topics/architecture/check/bank/render.ts",
+      "src/topics/architecture/check/bank/scheduler.ts",
+      "src/topics/architecture/check/bank/state.ts",
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/model.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/render.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/scheduler.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/state.ts": [
+      "src/topics/architecture/check/bank/types.ts"
+    ],
+    "src/topics/architecture/check/bank/types.ts": [],
+    "src/topics/architecture/check/index.tsx": [
+      "src/components/check/CheckList.tsx",
+      "src/topics/architecture/check/bank/index.ts",
+      "src/topics/architecture/components/SeriesNav.tsx"
+    ],
+    "src/topics/architecture/commit/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/commit/TimingDemo.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx"
+    ],
+    "src/topics/architecture/commit/TimingDemo.tsx": [],
+    "src/topics/architecture/components/Prose.tsx": [],
+    "src/topics/architecture/components/SeriesNav.tsx": [
+      "src/topics/architecture/series.ts"
+    ],
+    "src/topics/architecture/constraints/index.test.tsx": [
+      "src/topics/architecture/constraints/index.tsx"
+    ],
+    "src/topics/architecture/constraints/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx",
+      "src/topics/architecture/constraints/YieldCompare.tsx"
+    ],
+    "src/topics/architecture/constraints/YieldCompare.tsx": [],
+    "src/topics/architecture/demos.test.tsx": [
+      "src/topics/architecture/commit/TimingDemo.tsx",
+      "src/topics/architecture/events/PathDemo.tsx",
+      "src/topics/architecture/fiber/WalkDemo.tsx",
+      "src/topics/architecture/hooks-impl/HookSlots.tsx",
+      "src/topics/architecture/scheduler/SliceModel.tsx",
+      "src/topics/architecture/update-queue/QueueDemo.tsx"
+    ],
+    "src/topics/architecture/double-buffer/index.test.tsx": [
+      "src/topics/architecture/double-buffer/index.tsx"
+    ],
+    "src/topics/architecture/double-buffer/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx"
+    ],
+    "src/topics/architecture/events/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx",
+      "src/topics/architecture/events/PathDemo.tsx"
+    ],
+    "src/topics/architecture/events/PathDemo.tsx": [],
+    "src/topics/architecture/fiber/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx",
+      "src/topics/architecture/fiber/WalkDemo.tsx"
+    ],
+    "src/topics/architecture/fiber/WalkDemo.tsx": [],
+    "src/topics/architecture/hooks-impl/HookSlots.tsx": [],
+    "src/topics/architecture/hooks-impl/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx",
+      "src/topics/architecture/hooks-impl/HookSlots.tsx"
+    ],
+    "src/topics/architecture/map/index.test.tsx": [
+      "src/config/topics.tsx",
+      "src/topics/architecture/map/index.tsx"
+    ],
+    "src/topics/architecture/map/index.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx"
+    ],
+    "src/topics/architecture/pages.test.tsx": [
+      "src/topics/architecture/check/index.tsx",
+      "src/topics/architecture/commit/index.tsx",
+      "src/topics/architecture/events/index.tsx",
+      "src/topics/architecture/fiber/index.tsx",
+      "src/topics/architecture/hooks-impl/index.tsx",
+      "src/topics/architecture/render/index.tsx",
+      "src/topics/architecture/runtime-map/index.tsx",
+      "src/topics/architecture/scheduler/index.tsx",
+      "src/topics/architecture/ssr/index.tsx",
+      "src/topics/architecture/update-queue/index.tsx"
+    ],
+    "src/topics/architecture/render/DiffDemo.test.ts": [
+      "src/topics/architecture/render/DiffDemo.tsx"
+    ],
+    "src/topics/architecture/render/DiffDemo.tsx": [],
+    "src/topics/architecture/render/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx",
+      "src/topics/architecture/render/DiffDemo.tsx"
+    ],
+    "src/topics/architecture/runtime-map/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/FlowList.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx"
+    ],
+    "src/topics/architecture/scheduler/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx",
+      "src/topics/architecture/scheduler/SliceModel.tsx"
+    ],
+    "src/topics/architecture/scheduler/SliceModel.tsx": [],
+    "src/topics/architecture/series.test.ts": [
+      "src/config/topics.tsx",
+      "src/topics/architecture/series.ts"
+    ],
+    "src/topics/architecture/series.ts": [],
+    "src/topics/architecture/ssr/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx"
+    ],
+    "src/topics/architecture/update-queue/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx",
+      "src/topics/architecture/update-queue/QueueDemo.tsx"
+    ],
+    "src/topics/architecture/update-queue/QueueDemo.tsx": [],
+    "src/topics/architecture/work-unit/index.test.tsx": [
+      "src/topics/architecture/work-unit/index.tsx"
+    ],
+    "src/topics/architecture/work-unit/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/architecture/components/Prose.tsx",
+      "src/topics/architecture/components/SeriesNav.tsx"
+    ],
+    "src/topics/basics/check/bank.test.ts": [
+      "src/components/check/assertCheck.ts",
+      "src/config/topics.tsx",
+      "src/topics/basics/check/bank.ts",
+      "src/topics/basics/check/index.tsx"
+    ],
+    "src/topics/basics/check/bank.ts": [
+      "src/components/check/numberGroups.ts",
+      "src/components/check/types.ts"
+    ],
+    "src/topics/basics/check/index.tsx": [
+      "src/components/check/CheckList.tsx",
+      "src/topics/basics/check/bank.ts"
+    ],
+    "src/topics/basics/event/components/BatchingDemo.tsx": [
+      "src/topics/basics/event/components/EventLog.tsx"
+    ],
+    "src/topics/basics/event/components/BubblingDemo.tsx": [
+      "src/topics/basics/event/components/EventLog.tsx"
+    ],
+    "src/topics/basics/event/components/EventLog.tsx": [],
+    "src/topics/basics/event/components/NativeMixDemo.tsx": [
+      "src/topics/basics/event/components/EventLog.tsx"
+    ],
+    "src/topics/basics/event/components/PoolingHistoryDemo.tsx": [
+      "src/topics/basics/event/components/EventLog.tsx"
+    ],
+    "src/topics/basics/event/components/SpecialCasesDemo.tsx": [
+      "src/topics/basics/event/components/EventLog.tsx"
+    ],
+    "src/topics/basics/event/components/SyntheticInspectDemo.tsx": [
+      "src/topics/basics/event/components/EventLog.tsx"
+    ],
+    "src/topics/basics/event/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/basics/event/components/BatchingDemo.tsx",
+      "src/topics/basics/event/components/BubblingDemo.tsx",
+      "src/topics/basics/event/components/NativeMixDemo.tsx",
+      "src/topics/basics/event/components/PoolingHistoryDemo.tsx",
+      "src/topics/basics/event/components/SpecialCasesDemo.tsx",
+      "src/topics/basics/event/components/SyntheticInspectDemo.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/components/ComparePane.tsx": [],
+    "src/topics/basics/fn-vs-class/components/RelatedTopics.tsx": [],
+    "src/topics/basics/fn-vs-class/guide/index.test.tsx": [
+      "src/topics/basics/fn-vs-class/guide/index.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/guide/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/FlowList.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/basics/fn-vs-class/components/RelatedTopics.tsx",
+      "src/topics/basics/fn-vs-class/nav.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/nav.tsx": [
+      "src/components/TopicNav.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/playground/components/DerivedStateDemo.tsx": [
+      "src/components/Input.tsx",
+      "src/topics/basics/fn-vs-class/components/ComparePane.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/playground/components/EffectVsLifecycleDemo.tsx": [
+      "src/topics/basics/fn-vs-class/components/ComparePane.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/playground/components/SnapshotThisDemo.tsx": [
+      "src/topics/basics/fn-vs-class/components/ComparePane.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/playground/index.test.tsx": [
+      "src/topics/basics/fn-vs-class/playground/index.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/playground/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/basics/fn-vs-class/components/RelatedTopics.tsx",
+      "src/topics/basics/fn-vs-class/nav.tsx",
+      "src/topics/basics/fn-vs-class/playground/components/DerivedStateDemo.tsx",
+      "src/topics/basics/fn-vs-class/playground/components/EffectVsLifecycleDemo.tsx",
+      "src/topics/basics/fn-vs-class/playground/components/SnapshotThisDemo.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/practice/hooks.ts": [
+      "src/topics/basics/fn-vs-class/practice/quotes.ts"
+    ],
+    "src/topics/basics/fn-vs-class/practice/index.test.tsx": [
+      "src/topics/basics/fn-vs-class/practice/index.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/practice/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/basics/fn-vs-class/components/ComparePane.tsx",
+      "src/topics/basics/fn-vs-class/components/RelatedTopics.tsx",
+      "src/topics/basics/fn-vs-class/nav.tsx",
+      "src/topics/basics/fn-vs-class/practice/WatchClass.tsx",
+      "src/topics/basics/fn-vs-class/practice/WatchFn.tsx"
+    ],
+    "src/topics/basics/fn-vs-class/practice/quotes.ts": [],
+    "src/topics/basics/fn-vs-class/practice/WatchClass.tsx": [
+      "src/components/Input.tsx",
+      "src/topics/basics/fn-vs-class/practice/quotes.ts"
+    ],
+    "src/topics/basics/fn-vs-class/practice/WatchFn.tsx": [
+      "src/components/Input.tsx",
+      "src/topics/basics/fn-vs-class/practice/hooks.ts",
+      "src/topics/basics/fn-vs-class/practice/quotes.ts"
+    ],
+    "src/topics/basics/fragment/index.test.tsx": [
+      "src/topics/basics/fragment/index.tsx"
+    ],
+    "src/topics/basics/fragment/index.tsx": [
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/basics/jsx-render/components/AsyncStatusDemo.tsx": [],
+    "src/topics/basics/jsx-render/components/ConditionalDemo.tsx": [],
+    "src/topics/basics/jsx-render/components/ConfigDrivenDemo.tsx": [],
+    "src/topics/basics/jsx-render/components/ElementNatureDemo.tsx": [],
+    "src/topics/basics/jsx-render/components/ExpressionDemo.tsx": [],
+    "src/topics/basics/jsx-render/components/ListRenderDemo.tsx": [],
+    "src/topics/basics/jsx-render/components/PermissionDemo.tsx": [],
+    "src/topics/basics/jsx-render/index.test.tsx": [
+      "src/topics/basics/jsx-render/index.tsx"
+    ],
+    "src/topics/basics/jsx-render/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/basics/jsx-render/components/AsyncStatusDemo.tsx",
+      "src/topics/basics/jsx-render/components/ConditionalDemo.tsx",
+      "src/topics/basics/jsx-render/components/ConfigDrivenDemo.tsx",
+      "src/topics/basics/jsx-render/components/ElementNatureDemo.tsx",
+      "src/topics/basics/jsx-render/components/ExpressionDemo.tsx",
+      "src/topics/basics/jsx-render/components/ListRenderDemo.tsx",
+      "src/topics/basics/jsx-render/components/PermissionDemo.tsx"
+    ],
+    "src/topics/basics/list-key/components/DynamicKeyDemo.tsx": [],
+    "src/topics/basics/list-key/components/IdentityExperiment.tsx": [],
+    "src/topics/basics/list-key/components/KeyRulesDemo.tsx": [],
+    "src/topics/basics/list-key/components/ResetStateDemo.tsx": [],
+    "src/topics/basics/list-key/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/basics/list-key/components/DynamicKeyDemo.tsx",
+      "src/topics/basics/list-key/components/IdentityExperiment.tsx",
+      "src/topics/basics/list-key/components/KeyRulesDemo.tsx",
+      "src/topics/basics/list-key/components/ResetStateDemo.tsx"
+    ],
+    "src/topics/hooks/actions/components/ActionStateForm.tsx": [
+      "src/topics/hooks/actions/mock.ts"
+    ],
+    "src/topics/hooks/actions/components/FormActionBasic.tsx": [
+      "src/topics/hooks/actions/mock.ts"
+    ],
+    "src/topics/hooks/actions/components/FormStatusDemo.tsx": [
+      "src/topics/hooks/actions/mock.ts"
+    ],
+    "src/topics/hooks/actions/components/OptimisticLists.tsx": [
+      "src/topics/hooks/actions/mock.ts"
+    ],
+    "src/topics/hooks/actions/index.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/hooks/actions/components/ActionStateForm.tsx",
+      "src/topics/hooks/actions/components/FormStatusDemo.tsx",
+      "src/topics/hooks/actions/components/OptimisticLists.tsx",
+      "src/topics/hooks/actions/index.tsx"
+    ],
+    "src/topics/hooks/actions/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/hooks/actions/components/ActionStateForm.tsx",
+      "src/topics/hooks/actions/components/FormActionBasic.tsx",
+      "src/topics/hooks/actions/components/FormStatusDemo.tsx",
+      "src/topics/hooks/actions/components/OptimisticLists.tsx"
+    ],
+    "src/topics/hooks/actions/mock.ts": [],
+    "src/topics/hooks/check/bank.test.ts": [
+      "src/components/check/assertCheck.ts",
+      "src/config/topics.tsx",
+      "src/topics/hooks/check/bank.ts",
+      "src/topics/hooks/check/index.tsx"
+    ],
+    "src/topics/hooks/check/bank.ts": [
+      "src/components/check/numberGroups.ts",
+      "src/components/check/types.ts",
+      "src/topics/hooks/check/core.ts",
+      "src/topics/hooks/check/rest.ts"
+    ],
+    "src/topics/hooks/check/core.ts": [
+      "src/components/check/types.ts"
+    ],
+    "src/topics/hooks/check/index.tsx": [
+      "src/components/check/CheckList.tsx",
+      "src/topics/hooks/check/bank.ts"
+    ],
+    "src/topics/hooks/check/rest.ts": [
+      "src/components/check/types.ts"
+    ],
+    "src/topics/hooks/custom-hooks/composition/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/hooks/custom-hooks/composition/mockUserApi.ts",
+      "src/topics/hooks/custom-hooks/composition/useUserSearch.ts",
+      "src/topics/hooks/custom-hooks/lib/index.ts",
+      "src/topics/hooks/custom-hooks/nav.tsx"
+    ],
+    "src/topics/hooks/custom-hooks/composition/mockUserApi.ts": [],
+    "src/topics/hooks/custom-hooks/composition/useUserSearch.ts": [
+      "src/topics/hooks/custom-hooks/composition/mockUserApi.ts",
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/guide/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/hooks/custom-hooks/nav.tsx"
+    ],
+    "src/topics/hooks/custom-hooks/lib/index.ts": [],
+    "src/topics/hooks/custom-hooks/lib/useDebouncedValue.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/useDebouncedValue.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/useDebouncedValue.ts": [],
+    "src/topics/hooks/custom-hooks/lib/useEventListener.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/useEventListener.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/useEventListener.ts": [],
+    "src/topics/hooks/custom-hooks/lib/useInterval.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/useInterval.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/useInterval.ts": [],
+    "src/topics/hooks/custom-hooks/lib/useLocalStorage.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/useLocalStorage.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/useLocalStorage.ts": [],
+    "src/topics/hooks/custom-hooks/lib/useMediaQuery.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/useMediaQuery.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/useMediaQuery.ts": [],
+    "src/topics/hooks/custom-hooks/lib/usePrevious.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/usePrevious.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/usePrevious.ts": [],
+    "src/topics/hooks/custom-hooks/lib/useRequest.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/useRequest.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/useRequest.ts": [],
+    "src/topics/hooks/custom-hooks/lib/useToggle.test.tsx": [
+      "src/topics/hooks/custom-hooks/lib/useToggle.ts"
+    ],
+    "src/topics/hooks/custom-hooks/lib/useToggle.ts": [],
+    "src/topics/hooks/custom-hooks/nav.tsx": [
+      "src/components/TopicNav.tsx"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/DebouncedDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/EventListenerDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/IntervalDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/LocalStorageDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/MediaQueryDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/PreviousDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/RequestDemo.tsx": [
+      "src/topics/hooks/custom-hooks/composition/mockUserApi.ts",
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/components/ToggleDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts"
+    ],
+    "src/topics/hooks/custom-hooks/playground/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/hooks/custom-hooks/nav.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/DebouncedDemo.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/EventListenerDemo.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/IntervalDemo.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/LocalStorageDemo.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/MediaQueryDemo.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/PreviousDemo.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/RequestDemo.tsx",
+      "src/topics/hooks/custom-hooks/playground/components/ToggleDemo.tsx"
+    ],
+    "src/topics/hooks/use-callback/index.test.tsx": [
+      "src/topics/hooks/use-callback/index.tsx"
+    ],
+    "src/topics/hooks/use-callback/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/hooks/use-effect/index.test.tsx": [
+      "src/topics/hooks/use-effect/index.tsx"
+    ],
+    "src/topics/hooks/use-effect/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/Input.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/hooks/use-imperative-handle/index.test.tsx": [
+      "src/topics/hooks/use-imperative-handle/index.tsx"
+    ],
+    "src/topics/hooks/use-imperative-handle/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/Input.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/hooks/use-layout-effect/index.test.tsx": [
+      "src/topics/hooks/use-layout-effect/index.tsx"
+    ],
+    "src/topics/hooks/use-layout-effect/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/hooks/use-memo/index.test.tsx": [
+      "src/topics/hooks/use-memo/index.tsx"
+    ],
+    "src/topics/hooks/use-memo/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/Input.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/hooks/use-reducer/index.test.tsx": [
+      "src/topics/hooks/use-reducer/index.tsx"
+    ],
+    "src/topics/hooks/use-reducer/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/Input.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/hooks/use-ref/index.test.tsx": [
+      "src/topics/hooks/use-ref/index.tsx"
+    ],
+    "src/topics/hooks/use-ref/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/Input.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/hooks/use-state/index.test.tsx": [
+      "src/topics/hooks/use-state/index.tsx"
+    ],
+    "src/topics/hooks/use-state/index.tsx": [
+      "src/components/FlowList.tsx",
+      "src/components/Input.tsx",
+      "src/components/TopicPage.tsx"
+    ],
+    "src/topics/performance/AGENTS.md": [],
+    "src/topics/performance/ai-native/agent-lab/components/AgentPipeline.tsx": [],
+    "src/topics/performance/ai-native/agent-lab/components/QualityTradeoff.tsx": [],
+    "src/topics/performance/ai-native/agent-lab/index.test.tsx": [
+      "src/topics/performance/ai-native/agent-lab/index.tsx"
+    ],
+    "src/topics/performance/ai-native/agent-lab/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicNav.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/ai-native/agent-lab/components/AgentPipeline.tsx",
+      "src/topics/performance/ai-native/agent-lab/components/QualityTradeoff.tsx",
+      "src/topics/performance/ai-native/nav.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx"
+    ],
+    "src/topics/performance/ai-native/guide/index.test.tsx": [
+      "src/topics/performance/ai-native/guide/index.tsx"
+    ],
+    "src/topics/performance/ai-native/guide/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx"
+    ],
+    "src/topics/performance/ai-native/lab/components/StreamRig.tsx": [],
+    "src/topics/performance/ai-native/lab/index.test.tsx": [
+      "src/topics/performance/ai-native/lab/index.tsx"
+    ],
+    "src/topics/performance/ai-native/lab/index.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/ai-native/lab/components/StreamRig.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx"
+    ],
+    "src/topics/performance/ai-native/nav.tsx": [
+      "src/components/TopicNav.tsx"
+    ],
+    "src/topics/performance/check/bank.test.ts": [
+      "src/components/check/assertCheck.ts",
+      "src/config/topics.tsx",
+      "src/topics/performance/check/bank.ts",
+      "src/topics/performance/check/index.tsx"
+    ],
+    "src/topics/performance/check/bank.ts": [
+      "src/components/check/numberGroups.ts",
+      "src/components/check/types.ts"
+    ],
+    "src/topics/performance/check/index.tsx": [
+      "src/components/check/CheckList.tsx",
+      "src/topics/performance/check/bank.ts",
+      "src/topics/performance/components/SeriesNav.tsx"
+    ],
+    "src/topics/performance/components/AmberTopics.tsx": [],
+    "src/topics/performance/components/Prose.tsx": [],
+    "src/topics/performance/components/SeriesNav.tsx": [
+      "src/topics/performance/series.ts"
+    ],
+    "src/topics/performance/governance/architecture/components/RegionBoard.tsx": [],
+    "src/topics/performance/governance/architecture/index.test.tsx": [
+      "src/topics/performance/governance/architecture/index.tsx"
+    ],
+    "src/topics/performance/governance/architecture/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/governance/architecture/components/RegionBoard.tsx"
+    ],
+    "src/topics/performance/governance/components/PactCard.tsx": [],
+    "src/topics/performance/governance/diagnose/components/ShipRecord.tsx": [],
+    "src/topics/performance/governance/diagnose/components/SymptomPath.tsx": [],
+    "src/topics/performance/governance/diagnose/index.test.tsx": [
+      "src/topics/performance/governance/diagnose/index.tsx"
+    ],
+    "src/topics/performance/governance/diagnose/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/governance/diagnose/components/ShipRecord.tsx",
+      "src/topics/performance/governance/diagnose/components/SymptomPath.tsx"
+    ],
+    "src/topics/performance/governance/guide/index.test.tsx": [
+      "src/topics/performance/governance/guide/index.tsx"
+    ],
+    "src/topics/performance/governance/guide/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/FlowList.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/governance/components/PactCard.tsx"
+    ],
+    "src/topics/performance/governance/implement/components/OwnershipDemo.tsx": [],
+    "src/topics/performance/governance/implement/components/ScaleDemo.tsx": [],
+    "src/topics/performance/governance/implement/components/WaterfallDemo.tsx": [],
+    "src/topics/performance/governance/implement/index.test.tsx": [
+      "src/topics/performance/governance/implement/index.tsx"
+    ],
+    "src/topics/performance/governance/implement/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/governance/implement/components/OwnershipDemo.tsx",
+      "src/topics/performance/governance/implement/components/ScaleDemo.tsx",
+      "src/topics/performance/governance/implement/components/WaterfallDemo.tsx"
+    ],
+    "src/topics/performance/governance/metrics-lab/components/CausalChain.tsx": [
+      "src/components/Diagram.tsx"
+    ],
+    "src/topics/performance/governance/metrics-lab/components/SceneMetrics.tsx": [],
+    "src/topics/performance/governance/metrics-lab/index.test.tsx": [
+      "src/topics/performance/governance/metrics-lab/index.tsx"
+    ],
+    "src/topics/performance/governance/metrics-lab/index.tsx": [
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/governance/metrics-lab/components/CausalChain.tsx",
+      "src/topics/performance/governance/metrics-lab/components/SceneMetrics.tsx"
+    ],
+    "src/topics/performance/lab/FrameMeter.tsx": [],
+    "src/topics/performance/lab/mockSearchApi.ts": [],
+    "src/topics/performance/lab/resource.test.ts": [
+      "src/topics/performance/lab/resource.ts"
+    ],
+    "src/topics/performance/lab/resource.ts": [],
+    "src/topics/performance/lab/slow.ts": [],
+    "src/topics/performance/lab/SlowList.tsx": [
+      "src/topics/performance/lab/slow.ts"
+    ],
+    "src/topics/performance/lab/useFrameStats.test.tsx": [
+      "src/topics/performance/lab/useFrameStats.ts"
+    ],
+    "src/topics/performance/lab/useFrameStats.ts": [],
+    "src/topics/performance/react-compiler/components/MemoNoiseDemo.tsx": [],
+    "src/topics/performance/react-compiler/index.test.tsx": [
+      "src/test/utils.tsx",
+      "src/topics/performance/react-compiler/components/MemoNoiseDemo.tsx",
+      "src/topics/performance/react-compiler/index.tsx"
+    ],
+    "src/topics/performance/react-compiler/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/AmberTopics.tsx",
+      "src/topics/performance/components/Prose.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/react-compiler/components/MemoNoiseDemo.tsx"
+    ],
+    "src/topics/performance/render-scheduling-guide/index.tsx": [
+      "src/components/CodeBlock.tsx",
+      "src/components/Diagram.tsx",
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/SeriesNav.tsx"
+    ],
+    "src/topics/performance/series.test.ts": [
+      "src/config/topics.tsx",
+      "src/topics/performance/series.ts"
+    ],
+    "src/topics/performance/series.ts": [],
+    "src/topics/performance/suspense-ui/components/BoundaryGranularityDemo.tsx": [
+      "src/topics/performance/lab/mockSearchApi.ts",
+      "src/topics/performance/lab/resource.ts",
+      "src/topics/performance/suspense-ui/components/ResultReader.tsx"
+    ],
+    "src/topics/performance/suspense-ui/components/InitialSkeletonDemo.tsx": [
+      "src/topics/performance/lab/mockSearchApi.ts",
+      "src/topics/performance/lab/resource.ts",
+      "src/topics/performance/suspense-ui/components/ResultReader.tsx"
+    ],
+    "src/topics/performance/suspense-ui/components/LazyDocPanel.tsx": [],
+    "src/topics/performance/suspense-ui/components/NoFallbackFlashDemo.tsx": [
+      "src/topics/performance/lab/mockSearchApi.ts",
+      "src/topics/performance/lab/resource.ts",
+      "src/topics/performance/suspense-ui/components/ResultReader.tsx"
+    ],
+    "src/topics/performance/suspense-ui/components/ResultReader.tsx": [
+      "src/topics/performance/lab/mockSearchApi.ts",
+      "src/topics/performance/lab/resource.ts"
+    ],
+    "src/topics/performance/suspense-ui/index.test.tsx": [
+      "src/topics/performance/lab/mockSearchApi.ts",
+      "src/topics/performance/lab/resource.ts",
+      "src/topics/performance/suspense-ui/components/InitialSkeletonDemo.tsx",
+      "src/topics/performance/suspense-ui/components/NoFallbackFlashDemo.tsx"
+    ],
+    "src/topics/performance/suspense-ui/index.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/suspense-ui/components/BoundaryGranularityDemo.tsx",
+      "src/topics/performance/suspense-ui/components/InitialSkeletonDemo.tsx",
+      "src/topics/performance/suspense-ui/components/NoFallbackFlashDemo.tsx"
+    ],
+    "src/topics/performance/transition-deferred/components/HeavyChartPanel.tsx": [
+      "src/topics/performance/lab/SlowList.tsx"
+    ],
+    "src/topics/performance/transition-deferred/components/InputLagDemo.tsx": [
+      "src/topics/performance/lab/FrameMeter.tsx",
+      "src/topics/performance/lab/SlowList.tsx",
+      "src/topics/performance/lab/useFrameStats.ts"
+    ],
+    "src/topics/performance/transition-deferred/components/StaleSearchDemo.tsx": [
+      "src/topics/hooks/custom-hooks/lib/index.ts",
+      "src/topics/performance/lab/mockSearchApi.ts"
+    ],
+    "src/topics/performance/transition-deferred/components/TabSwitchDemo.tsx": [],
+    "src/topics/performance/transition-deferred/index.test.tsx": [
+      "src/topics/performance/lab/mockSearchApi.ts",
+      "src/topics/performance/transition-deferred/components/InputLagDemo.tsx",
+      "src/topics/performance/transition-deferred/components/StaleSearchDemo.tsx"
+    ],
+    "src/topics/performance/transition-deferred/index.tsx": [
+      "src/components/TopicPage.tsx",
+      "src/topics/performance/components/SeriesNav.tsx",
+      "src/topics/performance/transition-deferred/components/InputLagDemo.tsx",
+      "src/topics/performance/transition-deferred/components/StaleSearchDemo.tsx",
+      "src/topics/performance/transition-deferred/components/TabSwitchDemo.tsx"
+    ],
+    "src/vitest.d.ts": [],
+    "tailwind.config.js": [],
+    "TESTING.md": [],
+    "tsconfig.json": [],
+    "vitest.config.ts": []
+  }
+}

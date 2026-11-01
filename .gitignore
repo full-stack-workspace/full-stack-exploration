@@ -36,3 +36,7 @@ packages/next-upload/fixture/
 
 # Test coverage
 coverage/
+
+# understand-anything 工具产物(知识图谱保留,临时/回收站目录忽略)
+**/.understand-anything/tmp/
+**/.understand-anything/.trash-*/
