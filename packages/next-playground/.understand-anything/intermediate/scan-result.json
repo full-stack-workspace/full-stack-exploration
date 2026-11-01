@@ -1,0 +1,1673 @@
+{
+  "name": "next-playground",
+  "description": "Next.js 16 工程实践演示站(站点品牌:Next 权衡录 / Next Tradeoffs):专题注册表驱动的 RSC 边界/渲染策略/路由机制/数据缓存/安全/AI-Native 对照演示,全站开启 Cache Components",
+  "languages": [
+    "css",
+    "csv",
+    "graphql",
+    "html",
+    "javascript",
+    "json",
+    "markdown",
+    "mts",
+    "python",
+    "shell",
+    "typescript",
+    "txt",
+    "unknown",
+    "vue",
+    "xml",
+    "yaml"
+  ],
+  "frameworks": [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "SWR",
+    "ai",
+    "Vitest",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "app/ai-native/agent-page/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/ai-native/ai-sdk/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/ai-native/generative-ui/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/ai-native/streaming-endpoint/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api/after-demo/route.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api/ai/agent/route.ts",
+      "language": "typescript",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api/ai/generative-ui/route.ts",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api/ai/sdk-chat/route.ts",
+      "language": "typescript",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api/ai/stream/route.ts",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api/basic/route.ts",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api/blog/route.ts",
+      "language": "typescript",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/data/cache-layers/page.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/data/check/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/data/client-fetching/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/data/dynamic-apis/page.tsx",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/data/forms/page.tsx",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/data/revalidation/page.tsx",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/data/route-handlers/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/engineering/asset-perf/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/engineering/build-deploy/page.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/engineering/caching-strategy/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/engineering/middleware/page.tsx",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/global-error.tsx",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/globals.css",
+      "language": "css",
+      "sizeLines": 532,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/metadata/crawl/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/metadata/guide/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/not-found.tsx",
+      "language": "typescript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/opengraph-image.tsx",
+      "language": "typescript",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/page.tsx",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/check/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/isr/page.tsx",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/ppr/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/spectrum/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/ssr/page.tsx",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/streaming/page.tsx",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/view-transition/page.tsx",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/view-transition/scenes/a/page.tsx",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/view-transition/scenes/b/page.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rendering/view-transition/scenes/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/robots.ts",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/conventions/loading.tsx",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/conventions/page.tsx",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/dynamic-routes/[id]/page.tsx",
+      "language": "typescript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/dynamic-routes/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/admin/page.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/error.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/forbidden.tsx",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/locked/page.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/missing/page.tsx",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/not-found.tsx",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/page.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/errors/unauthorized.tsx",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/i18n/[lang]/page.tsx",
+      "language": "typescript",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/i18n/page.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/navigation/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/parallel/@modal/(.)shot/[id]/page.tsx",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/parallel/@modal/default.tsx",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/parallel/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/parallel/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/parallel/shot/[id]/page.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/route-groups/(demo)/alpha/page.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/route-groups/(demo)/beta/page.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/route-groups/(demo)/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/router/route-groups/page.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rsc-boundary/check/page.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rsc-boundary/guide/page.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rsc-boundary/props-boundary/page.tsx",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/rsc-boundary/server-actions/page.tsx",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/security/boundaries/page.tsx",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/security/headers/page.tsx",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/sitemap.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/ArticleCard.tsx",
+      "language": "typescript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/BrandMark.tsx",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "language": "typescript",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/home/CategoryMap.tsx",
+      "language": "typescript",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/home/SpectrumHero.tsx",
+      "language": "typescript",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/shell/SearchPalette.tsx",
+      "language": "typescript",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/shell/SiteShell.tsx",
+      "language": "typescript",
+      "sizeLines": 294,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/ThemeProvider.tsx",
+      "language": "typescript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/topic/CheckList.tsx",
+      "language": "typescript",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/topic/DirectionalTransition.tsx",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/topic/TopicPage.tsx",
+      "language": "typescript",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/ui/Panel.tsx",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/UserCard.tsx",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "components/UserListClient.tsx",
+      "language": "typescript",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "config/site.ts",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "config/topics.test.ts",
+      "language": "typescript",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "config/topics.tsx",
+      "language": "typescript",
+      "sizeLines": 574,
+      "fileCategory": "code"
+    },
+    {
+      "path": "data/blog.ts",
+      "language": "typescript",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "data/user.ts",
+      "language": "typescript",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "language": "javascript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/demo-header.ts",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/security-headers.ts",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/topic-meta.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/utils.ts",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "middleware.ts",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "next.config.ts",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 33,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "language": "javascript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 92,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "topics/ai-native/agent-page/components/AgentPlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 243,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/agent-page/index.tsx",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/ai-sdk/components/RawStreamViewer.tsx",
+      "language": "typescript",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/ai-sdk/components/SdkChatPlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/ai-sdk/index.tsx",
+      "language": "typescript",
+      "sizeLines": 265,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/generative-ui/components/GenUiPlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/generative-ui/components/StockCard.tsx",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/generative-ui/components/TodoCard.tsx",
+      "language": "typescript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/generative-ui/components/WeatherCard.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/generative-ui/index.tsx",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/generative-ui/types.ts",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/streaming-endpoint/components/StreamPlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/ai-native/streaming-endpoint/index.tsx",
+      "language": "typescript",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/cache-layers/components/RouterCacheDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/cache-layers/index.tsx",
+      "language": "typescript",
+      "sizeLines": 249,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/client-fetching/components/SwrPlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 157,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/client-fetching/index.tsx",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/actions.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/components/AfterDemo.tsx",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/components/ConnectionPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/components/CookieControls.tsx",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/components/CookiePanel.tsx",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/components/HeadersPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/constants.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/dynamic-apis/index.tsx",
+      "language": "typescript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/forms/actions.ts",
+      "language": "typescript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/forms/components/CreatePostForm.tsx",
+      "language": "typescript",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/forms/components/NaiveForm.tsx",
+      "language": "typescript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/forms/index.tsx",
+      "language": "typescript",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/forms/schema.ts",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/revalidation/actions.ts",
+      "language": "typescript",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/revalidation/cached-posts.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/revalidation/components/InvalidateButtons.tsx",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/revalidation/index.tsx",
+      "language": "typescript",
+      "sizeLines": 214,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/route-handlers/components/ApiPlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/data/route-handlers/index.tsx",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/engineering/asset-perf/index.tsx",
+      "language": "typescript",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/engineering/build-deploy/index.tsx",
+      "language": "typescript",
+      "sizeLines": 212,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/engineering/caching-strategy/index.tsx",
+      "language": "typescript",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/engineering/middleware/index.tsx",
+      "language": "typescript",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/metadata/crawl/index.tsx",
+      "language": "typescript",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/metadata/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 259,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/isr/cached-posts.ts",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/isr/index.tsx",
+      "language": "typescript",
+      "sizeLines": 207,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/ppr/index.tsx",
+      "language": "typescript",
+      "sizeLines": 275,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/spectrum/index.tsx",
+      "language": "typescript",
+      "sizeLines": 274,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/ssr/index.tsx",
+      "language": "typescript",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/streaming/index.tsx",
+      "language": "typescript",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rendering/view-transition/index.tsx",
+      "language": "typescript",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/conventions/index.tsx",
+      "language": "typescript",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/dynamic-routes/index.tsx",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/dynamic-routes/UserDetail.tsx",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/errors/index.tsx",
+      "language": "typescript",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/errors/TriggerError.tsx",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/i18n/dictionaries.ts",
+      "language": "typescript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/i18n/index.tsx",
+      "language": "typescript",
+      "sizeLines": 222,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/navigation/components/NavigationPlayground.tsx",
+      "language": "typescript",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/navigation/index.tsx",
+      "language": "typescript",
+      "sizeLines": 187,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/parallel/components/ShotPageContent.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/parallel/index.tsx",
+      "language": "typescript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/parallel/ShotModal.tsx",
+      "language": "typescript",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/parallel/shots.ts",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/router/route-groups/index.tsx",
+      "language": "typescript",
+      "sizeLines": 199,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/check/index.tsx",
+      "language": "typescript",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/guide/index.tsx",
+      "language": "typescript",
+      "sizeLines": 206,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/props-boundary/index.tsx",
+      "language": "typescript",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/props-boundary/PromiseSlot.tsx",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/server-actions/actions.ts",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/server-actions/components/GuestbookForm.tsx",
+      "language": "typescript",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/server-actions/index.tsx",
+      "language": "typescript",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/rsc-boundary/server-actions/store.ts",
+      "language": "typescript",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/security/boundaries/ClientEnvCells.tsx",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/security/boundaries/index.tsx",
+      "language": "typescript",
+      "sizeLines": 271,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/security/headers/index.tsx",
+      "language": "typescript",
+      "sizeLines": 222,
+      "fileCategory": "code"
+    },
+    {
+      "path": "topics/security/headers/LiveHeaders.tsx",
+      "language": "typescript",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "sizeLines": 34,
+      "fileCategory": "config"
+    },
+    {
+      "path": "types/user.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vitest.config.mts",
+      "language": "mts",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 181,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "very-large",
+  "importMap": {
+    "app/ai-native/agent-page/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/ai-native/agent-page/index.tsx"
+    ],
+    "app/ai-native/ai-sdk/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/ai-native/ai-sdk/index.tsx"
+    ],
+    "app/ai-native/generative-ui/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/ai-native/generative-ui/index.tsx"
+    ],
+    "app/ai-native/streaming-endpoint/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/ai-native/streaming-endpoint/index.tsx"
+    ],
+    "app/api/after-demo/route.ts": [],
+    "app/api/ai/agent/route.ts": [],
+    "app/api/ai/generative-ui/route.ts": [
+      "topics/ai-native/generative-ui/types.ts"
+    ],
+    "app/api/ai/sdk-chat/route.ts": [],
+    "app/api/ai/stream/route.ts": [],
+    "app/api/basic/route.ts": [],
+    "app/api/blog/route.ts": [
+      "data/blog.ts"
+    ],
+    "app/data/cache-layers/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/data/cache-layers/index.tsx"
+    ],
+    "app/data/check/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/data/check/index.tsx"
+    ],
+    "app/data/client-fetching/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/data/client-fetching/index.tsx"
+    ],
+    "app/data/dynamic-apis/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/data/dynamic-apis/index.tsx"
+    ],
+    "app/data/forms/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/data/forms/index.tsx"
+    ],
+    "app/data/revalidation/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/data/revalidation/index.tsx"
+    ],
+    "app/data/route-handlers/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/data/route-handlers/index.tsx"
+    ],
+    "app/engineering/asset-perf/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/engineering/asset-perf/index.tsx"
+    ],
+    "app/engineering/build-deploy/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/engineering/build-deploy/index.tsx"
+    ],
+    "app/engineering/caching-strategy/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/engineering/caching-strategy/index.tsx"
+    ],
+    "app/engineering/middleware/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/engineering/middleware/index.tsx"
+    ],
+    "app/global-error.tsx": [],
+    "app/globals.css": [],
+    "app/layout.tsx": [
+      "app/globals.css",
+      "components/Footer.tsx",
+      "components/shell/SiteShell.tsx",
+      "components/ThemeProvider.tsx",
+      "config/site.ts"
+    ],
+    "app/metadata/crawl/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/metadata/crawl/index.tsx"
+    ],
+    "app/metadata/guide/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/metadata/guide/index.tsx"
+    ],
+    "app/not-found.tsx": [],
+    "app/opengraph-image.tsx": [
+      "config/site.ts"
+    ],
+    "app/page.tsx": [
+      "components/home/CategoryMap.tsx",
+      "components/home/SpectrumHero.tsx",
+      "components/topic/DirectionalTransition.tsx"
+    ],
+    "app/rendering/check/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rendering/check/index.tsx"
+    ],
+    "app/rendering/isr/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rendering/isr/cached-posts.ts",
+      "topics/rendering/isr/index.tsx"
+    ],
+    "app/rendering/ppr/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rendering/ppr/index.tsx"
+    ],
+    "app/rendering/spectrum/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rendering/spectrum/index.tsx"
+    ],
+    "app/rendering/ssr/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rendering/ssr/index.tsx"
+    ],
+    "app/rendering/streaming/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rendering/streaming/index.tsx"
+    ],
+    "app/rendering/view-transition/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rendering/view-transition/index.tsx"
+    ],
+    "app/rendering/view-transition/scenes/a/page.tsx": [],
+    "app/rendering/view-transition/scenes/b/page.tsx": [],
+    "app/rendering/view-transition/scenes/layout.tsx": [],
+    "app/robots.ts": [
+      "config/site.ts"
+    ],
+    "app/router/conventions/loading.tsx": [],
+    "app/router/conventions/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/router/conventions/index.tsx"
+    ],
+    "app/router/dynamic-routes/[id]/page.tsx": [
+      "data/user.ts",
+      "lib/topic-meta.ts",
+      "topics/router/dynamic-routes/UserDetail.tsx"
+    ],
+    "app/router/dynamic-routes/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/router/dynamic-routes/index.tsx"
+    ],
+    "app/router/errors/admin/page.tsx": [],
+    "app/router/errors/error.tsx": [],
+    "app/router/errors/forbidden.tsx": [],
+    "app/router/errors/locked/page.tsx": [],
+    "app/router/errors/missing/page.tsx": [],
+    "app/router/errors/not-found.tsx": [],
+    "app/router/errors/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/router/errors/index.tsx"
+    ],
+    "app/router/errors/unauthorized.tsx": [],
+    "app/router/i18n/[lang]/page.tsx": [
+      "topics/router/i18n/dictionaries.ts"
+    ],
+    "app/router/i18n/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/router/i18n/index.tsx"
+    ],
+    "app/router/navigation/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/router/navigation/index.tsx"
+    ],
+    "app/router/parallel/@modal/(.)shot/[id]/page.tsx": [
+      "topics/router/parallel/ShotModal.tsx",
+      "topics/router/parallel/shots.ts"
+    ],
+    "app/router/parallel/@modal/default.tsx": [],
+    "app/router/parallel/layout.tsx": [],
+    "app/router/parallel/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/router/parallel/index.tsx"
+    ],
+    "app/router/parallel/shot/[id]/page.tsx": [
+      "topics/router/parallel/components/ShotPageContent.tsx",
+      "topics/router/parallel/shots.ts"
+    ],
+    "app/router/route-groups/(demo)/alpha/page.tsx": [],
+    "app/router/route-groups/(demo)/beta/page.tsx": [],
+    "app/router/route-groups/(demo)/layout.tsx": [],
+    "app/router/route-groups/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/router/route-groups/index.tsx"
+    ],
+    "app/rsc-boundary/check/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rsc-boundary/check/index.tsx"
+    ],
+    "app/rsc-boundary/guide/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rsc-boundary/guide/index.tsx"
+    ],
+    "app/rsc-boundary/props-boundary/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rsc-boundary/props-boundary/index.tsx"
+    ],
+    "app/rsc-boundary/server-actions/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/rsc-boundary/server-actions/index.tsx"
+    ],
+    "app/security/boundaries/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/security/boundaries/index.tsx"
+    ],
+    "app/security/headers/page.tsx": [
+      "lib/topic-meta.ts",
+      "topics/security/headers/index.tsx"
+    ],
+    "app/sitemap.ts": [
+      "config/site.ts",
+      "config/topics.tsx"
+    ],
+    "components/ArticleCard.tsx": [
+      "data/blog.ts",
+      "lib/utils.ts"
+    ],
+    "components/BrandMark.tsx": [],
+    "components/Footer.tsx": [
+      "components/BrandMark.tsx",
+      "config/site.ts",
+      "config/topics.tsx"
+    ],
+    "components/home/CategoryMap.tsx": [
+      "components/home/SpectrumHero.tsx",
+      "components/ui/Panel.tsx",
+      "config/topics.tsx",
+      "lib/utils.ts"
+    ],
+    "components/home/SpectrumHero.tsx": [
+      "components/ui/Panel.tsx",
+      "config/site.ts",
+      "config/topics.tsx",
+      "lib/utils.ts"
+    ],
+    "components/shell/SearchPalette.tsx": [
+      "config/topics.tsx",
+      "lib/utils.ts"
+    ],
+    "components/shell/SiteShell.tsx": [
+      "components/BrandMark.tsx",
+      "components/shell/SearchPalette.tsx",
+      "components/ThemeProvider.tsx",
+      "config/topics.tsx",
+      "lib/topic-meta.ts",
+      "lib/utils.ts"
+    ],
+    "components/ThemeProvider.tsx": [],
+    "components/topic/CheckList.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "components/topic/DirectionalTransition.tsx": [],
+    "components/topic/TopicPage.tsx": [
+      "components/topic/DirectionalTransition.tsx",
+      "components/ui/Panel.tsx",
+      "config/topics.tsx"
+    ],
+    "components/ui/Panel.tsx": [
+      "lib/utils.ts"
+    ],
+    "components/UserCard.tsx": [
+      "lib/utils.ts",
+      "types/user.ts"
+    ],
+    "components/UserListClient.tsx": [
+      "components/UserCard.tsx",
+      "types/user.ts"
+    ],
+    "config/site.ts": [],
+    "config/topics.test.ts": [
+      "config/topics.tsx"
+    ],
+    "config/topics.tsx": [],
+    "data/blog.ts": [],
+    "data/user.ts": [
+      "types/user.ts"
+    ],
+    "eslint.config.mjs": [],
+    "lib/demo-header.ts": [],
+    "lib/security-headers.ts": [],
+    "lib/topic-meta.ts": [
+      "config/site.ts",
+      "config/topics.tsx"
+    ],
+    "lib/utils.ts": [],
+    "middleware.ts": [
+      "lib/demo-header.ts"
+    ],
+    "next.config.ts": [
+      "lib/security-headers.ts"
+    ],
+    "package.json": [],
+    "postcss.config.mjs": [],
+    "README.md": [],
+    "topics/ai-native/agent-page/components/AgentPlayground.tsx": [
+      "lib/utils.ts"
+    ],
+    "topics/ai-native/agent-page/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/ai-native/agent-page/components/AgentPlayground.tsx"
+    ],
+    "topics/ai-native/ai-sdk/components/RawStreamViewer.tsx": [],
+    "topics/ai-native/ai-sdk/components/SdkChatPlayground.tsx": [
+      "lib/utils.ts"
+    ],
+    "topics/ai-native/ai-sdk/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/ai-native/ai-sdk/components/RawStreamViewer.tsx",
+      "topics/ai-native/ai-sdk/components/SdkChatPlayground.tsx"
+    ],
+    "topics/ai-native/generative-ui/components/GenUiPlayground.tsx": [
+      "lib/utils.ts",
+      "topics/ai-native/generative-ui/components/StockCard.tsx",
+      "topics/ai-native/generative-ui/components/TodoCard.tsx",
+      "topics/ai-native/generative-ui/components/WeatherCard.tsx",
+      "topics/ai-native/generative-ui/types.ts"
+    ],
+    "topics/ai-native/generative-ui/components/StockCard.tsx": [
+      "lib/utils.ts",
+      "topics/ai-native/generative-ui/types.ts"
+    ],
+    "topics/ai-native/generative-ui/components/TodoCard.tsx": [
+      "lib/utils.ts",
+      "topics/ai-native/generative-ui/types.ts"
+    ],
+    "topics/ai-native/generative-ui/components/WeatherCard.tsx": [
+      "topics/ai-native/generative-ui/types.ts"
+    ],
+    "topics/ai-native/generative-ui/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/ai-native/generative-ui/components/GenUiPlayground.tsx"
+    ],
+    "topics/ai-native/generative-ui/types.ts": [],
+    "topics/ai-native/streaming-endpoint/components/StreamPlayground.tsx": [
+      "lib/utils.ts"
+    ],
+    "topics/ai-native/streaming-endpoint/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/ai-native/streaming-endpoint/components/StreamPlayground.tsx"
+    ],
+    "topics/data/cache-layers/components/RouterCacheDemo.tsx": [],
+    "topics/data/cache-layers/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/data/cache-layers/components/RouterCacheDemo.tsx"
+    ],
+    "topics/data/check/index.tsx": [
+      "components/topic/CheckList.tsx",
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/data/client-fetching/components/SwrPlayground.tsx": [
+      "data/blog.ts",
+      "lib/utils.ts"
+    ],
+    "topics/data/client-fetching/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/data/client-fetching/components/SwrPlayground.tsx"
+    ],
+    "topics/data/dynamic-apis/actions.ts": [
+      "topics/data/dynamic-apis/constants.ts"
+    ],
+    "topics/data/dynamic-apis/components/AfterDemo.tsx": [],
+    "topics/data/dynamic-apis/components/ConnectionPanel.tsx": [],
+    "topics/data/dynamic-apis/components/CookieControls.tsx": [
+      "topics/data/dynamic-apis/actions.ts"
+    ],
+    "topics/data/dynamic-apis/components/CookiePanel.tsx": [
+      "topics/data/dynamic-apis/components/CookieControls.tsx",
+      "topics/data/dynamic-apis/constants.ts"
+    ],
+    "topics/data/dynamic-apis/components/HeadersPanel.tsx": [],
+    "topics/data/dynamic-apis/constants.ts": [],
+    "topics/data/dynamic-apis/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/data/dynamic-apis/components/AfterDemo.tsx",
+      "topics/data/dynamic-apis/components/ConnectionPanel.tsx",
+      "topics/data/dynamic-apis/components/CookiePanel.tsx",
+      "topics/data/dynamic-apis/components/HeadersPanel.tsx"
+    ],
+    "topics/data/forms/actions.ts": [
+      "topics/data/forms/schema.ts"
+    ],
+    "topics/data/forms/components/CreatePostForm.tsx": [
+      "lib/utils.ts",
+      "topics/data/forms/actions.ts",
+      "topics/data/forms/schema.ts"
+    ],
+    "topics/data/forms/components/NaiveForm.tsx": [
+      "topics/data/forms/actions.ts",
+      "topics/data/forms/schema.ts"
+    ],
+    "topics/data/forms/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/data/forms/components/CreatePostForm.tsx",
+      "topics/data/forms/components/NaiveForm.tsx"
+    ],
+    "topics/data/forms/schema.ts": [],
+    "topics/data/revalidation/actions.ts": [
+      "topics/data/revalidation/cached-posts.ts"
+    ],
+    "topics/data/revalidation/cached-posts.ts": [
+      "data/blog.ts"
+    ],
+    "topics/data/revalidation/components/InvalidateButtons.tsx": [
+      "topics/data/revalidation/actions.ts"
+    ],
+    "topics/data/revalidation/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/data/revalidation/cached-posts.ts",
+      "topics/data/revalidation/components/InvalidateButtons.tsx"
+    ],
+    "topics/data/route-handlers/components/ApiPlayground.tsx": [
+      "lib/utils.ts"
+    ],
+    "topics/data/route-handlers/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/data/route-handlers/components/ApiPlayground.tsx"
+    ],
+    "topics/engineering/asset-perf/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/engineering/build-deploy/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/engineering/caching-strategy/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/engineering/middleware/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "lib/demo-header.ts"
+    ],
+    "topics/metadata/crawl/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/metadata/guide/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rendering/check/index.tsx": [
+      "components/topic/CheckList.tsx",
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rendering/isr/cached-posts.ts": [
+      "data/blog.ts"
+    ],
+    "topics/rendering/isr/index.tsx": [
+      "components/ArticleCard.tsx",
+      "components/topic/TopicPage.tsx",
+      "topics/rendering/isr/cached-posts.ts"
+    ],
+    "topics/rendering/ppr/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rendering/spectrum/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "lib/utils.ts"
+    ],
+    "topics/rendering/ssr/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rendering/streaming/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rendering/view-transition/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/router/conventions/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/router/dynamic-routes/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "data/user.ts"
+    ],
+    "topics/router/dynamic-routes/UserDetail.tsx": [
+      "types/user.ts"
+    ],
+    "topics/router/errors/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/router/errors/TriggerError.tsx"
+    ],
+    "topics/router/errors/TriggerError.tsx": [],
+    "topics/router/i18n/dictionaries.ts": [],
+    "topics/router/i18n/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/router/navigation/components/NavigationPlayground.tsx": [],
+    "topics/router/navigation/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/router/navigation/components/NavigationPlayground.tsx"
+    ],
+    "topics/router/parallel/components/ShotPageContent.tsx": [
+      "topics/router/parallel/shots.ts"
+    ],
+    "topics/router/parallel/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/router/parallel/shots.ts"
+    ],
+    "topics/router/parallel/ShotModal.tsx": [
+      "topics/router/parallel/shots.ts"
+    ],
+    "topics/router/parallel/shots.ts": [],
+    "topics/router/route-groups/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rsc-boundary/check/index.tsx": [
+      "components/topic/CheckList.tsx",
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rsc-boundary/guide/index.tsx": [
+      "components/topic/TopicPage.tsx"
+    ],
+    "topics/rsc-boundary/props-boundary/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "components/UserListClient.tsx",
+      "data/user.ts",
+      "topics/rsc-boundary/props-boundary/PromiseSlot.tsx"
+    ],
+    "topics/rsc-boundary/props-boundary/PromiseSlot.tsx": [],
+    "topics/rsc-boundary/server-actions/actions.ts": [
+      "topics/rsc-boundary/server-actions/store.ts"
+    ],
+    "topics/rsc-boundary/server-actions/components/GuestbookForm.tsx": [
+      "lib/utils.ts",
+      "topics/rsc-boundary/server-actions/actions.ts",
+      "topics/rsc-boundary/server-actions/store.ts"
+    ],
+    "topics/rsc-boundary/server-actions/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/rsc-boundary/server-actions/components/GuestbookForm.tsx",
+      "topics/rsc-boundary/server-actions/store.ts"
+    ],
+    "topics/rsc-boundary/server-actions/store.ts": [],
+    "topics/security/boundaries/ClientEnvCells.tsx": [],
+    "topics/security/boundaries/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "topics/security/boundaries/ClientEnvCells.tsx"
+    ],
+    "topics/security/headers/index.tsx": [
+      "components/topic/TopicPage.tsx",
+      "lib/security-headers.ts",
+      "topics/security/headers/LiveHeaders.tsx"
+    ],
+    "topics/security/headers/LiveHeaders.tsx": [],
+    "tsconfig.json": [],
+    "types/user.ts": [],
+    "vitest.config.mts": []
+  }
+}

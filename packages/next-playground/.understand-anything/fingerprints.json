@@ -1,0 +1,6810 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "3bad22babdfb19371266afa51fff00419fd86b6f",
+  "generatedAt": "2026-11-01T00:59:57.792Z",
+  "files": {
+    "app/ai-native/agent-page/page.tsx": {
+      "filePath": "app/ai-native/agent-page/page.tsx",
+      "contentHash": "1f8a7d3c66a11b6b86a07c16826ba1da4e7ee3ae4dac8ce69f1864d980c81f08",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/ai-native/agent-page",
+          "specifiers": [
+            "AgentPageTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/ai-native/ai-sdk/page.tsx": {
+      "filePath": "app/ai-native/ai-sdk/page.tsx",
+      "contentHash": "4c9c5f11e7810dcb1f28bdfde598c1c76504cfeef8e0073efa3e3f8168338acb",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/ai-native/ai-sdk",
+          "specifiers": [
+            "AiSdkTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/ai-native/generative-ui/page.tsx": {
+      "filePath": "app/ai-native/generative-ui/page.tsx",
+      "contentHash": "097482eecbc25d7a3cc9c01a394e2f3d2e8168c1f24b5c747c529882c1e02f02",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/ai-native/generative-ui",
+          "specifiers": [
+            "GenerativeUiTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/ai-native/streaming-endpoint/page.tsx": {
+      "filePath": "app/ai-native/streaming-endpoint/page.tsx",
+      "contentHash": "031f735c045ce6da1ebaa417a4bcb09582aac6b85c7e944c4210dda10264cdf5",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/ai-native/streaming-endpoint",
+          "specifiers": [
+            "StreamingEndpointTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/after-demo/route.ts": {
+      "filePath": "app/api/after-demo/route.ts",
+      "contentHash": "55c95c56b48e572e220c762c146f28f2c4407e5a876f831591588315e0d9b1ae",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "POST",
+          "params": [],
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "after",
+            "NextResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "GET",
+        "POST"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/ai/agent/route.ts": {
+      "filePath": "app/api/ai/agent/route.ts",
+      "contentHash": "202aef036f80975b959f4834b09daf50fc6c4ac21e35e83870d96a3d0d036e35",
+      "functions": [
+        {
+          "name": "sleep",
+          "params": [
+            "ms"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "GET",
+          "params": [
+            "req"
+          ],
+          "exported": true,
+          "lineCount": 74
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextRequest"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 122,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/ai/generative-ui/route.ts": {
+      "filePath": "app/api/ai/generative-ui/route.ts",
+      "contentHash": "aad62f0693e1349581004a2fedad57f2ad7b849dbcc563c790bcd264e5810030",
+      "functions": [
+        {
+          "name": "sleep",
+          "params": [
+            "ms"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "decideWeather",
+          "params": [
+            "query"
+          ],
+          "returnType": "ToolCallResult",
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "decideStock",
+          "params": [],
+          "returnType": "ToolCallResult",
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "decideTodo",
+          "params": [],
+          "returnType": "ToolCallResult",
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "GET",
+          "params": [
+            "req"
+          ],
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextRequest"
+          ]
+        },
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/topics/ai-native/generative-ui/types",
+          "specifiers": [
+            "ToolCallResult"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/ai/sdk-chat/route.ts": {
+      "filePath": "app/api/ai/sdk-chat/route.ts",
+      "contentHash": "38b9109628d4b1461dc24e0d626c693469d5b67204e85cab4fbffd4ffa0b1802",
+      "functions": [
+        {
+          "name": "POST",
+          "params": [
+            "req"
+          ],
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "ai",
+          "specifiers": [
+            "convertToModelMessages",
+            "createUIMessageStreamResponse",
+            "streamText",
+            "toUIMessageStream",
+            "UIMessage"
+          ]
+        },
+        {
+          "source": "ai/test",
+          "specifiers": [
+            "MockLanguageModelV3",
+            "simulateReadableStream"
+          ]
+        }
+      ],
+      "exports": [
+        "POST"
+      ],
+      "totalLines": 111,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/ai/stream/route.ts": {
+      "filePath": "app/api/ai/stream/route.ts",
+      "contentHash": "1405bcc9388be64e6d674743449e30b7e6e82108ae4210f990aecab2ed4dc23b",
+      "functions": [
+        {
+          "name": "nextDelay",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "sleep",
+          "params": [
+            "ms"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "GET",
+          "params": [
+            "req"
+          ],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextRequest"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/basic/route.ts": {
+      "filePath": "app/api/basic/route.ts",
+      "contentHash": "4fc6f8fdd645e83b3080da55d002bb26d0cb064028469bea4666f3c59d999a96",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "POST",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "PUT",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "DELETE",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "app/api/blog/route.ts": {
+      "filePath": "app/api/blog/route.ts",
+      "contentHash": "6280051f5309fe3ca0472f7783737a2cc693435edf77fb73972b8b9933c0c05c",
+      "functions": [
+        {
+          "name": "GET",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/data/blog",
+          "specifiers": [
+            "getPostsWithStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "GET"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "app/data/cache-layers/page.tsx": {
+      "filePath": "app/data/cache-layers/page.tsx",
+      "contentHash": "ffcf468bd3234df01225c5ac5e678d1628310d1bcd46efc569c2b6d07d71b132",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/data/cache-layers",
+          "specifiers": [
+            "CacheLayersTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "app/data/check/page.tsx": {
+      "filePath": "app/data/check/page.tsx",
+      "contentHash": "a2fcebc71655828cb1cf8eb0c713d5a12de35db08c63c158133b57a76c61d888",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/data/check",
+          "specifiers": [
+            "DataCheckTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/data/client-fetching/page.tsx": {
+      "filePath": "app/data/client-fetching/page.tsx",
+      "contentHash": "1de2bfa56d38a02074c0c653c56d21e7e3f6610b3c4489e978867f5c86f7fec3",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/data/client-fetching",
+          "specifiers": [
+            "ClientFetchingTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/data/dynamic-apis/page.tsx": {
+      "filePath": "app/data/dynamic-apis/page.tsx",
+      "contentHash": "16aec8bf83743a33726374915d792ea73c00510cc15a533ac13a068948d8815f",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/data/dynamic-apis",
+          "specifiers": [
+            "DynamicApisTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "app/data/forms/page.tsx": {
+      "filePath": "app/data/forms/page.tsx",
+      "contentHash": "6ffbd36edb2595023ee64c7efdfb388b26cb7a038762bfd44bc59620daeefc8f",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/data/forms",
+          "specifiers": [
+            "FormsTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "app/data/revalidation/page.tsx": {
+      "filePath": "app/data/revalidation/page.tsx",
+      "contentHash": "22d75c687ecb5ba62edc50ebf1c7ee9683416ba8ae04a3cba3c664e2461736ac",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/data/revalidation",
+          "specifiers": [
+            "RevalidationTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "app/data/route-handlers/page.tsx": {
+      "filePath": "app/data/route-handlers/page.tsx",
+      "contentHash": "3d04c187b4ce71358327ed1ed860ad9dd02b5f889a04e0e77630a0f82a7b8312",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/data/route-handlers",
+          "specifiers": [
+            "RouteHandlersTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/engineering/asset-perf/page.tsx": {
+      "filePath": "app/engineering/asset-perf/page.tsx",
+      "contentHash": "d166d3bbaff4681f39fdfd5c5fbdf60d1d65ba0c8f1d2abe3e40bce61ee5bbed",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/engineering/asset-perf",
+          "specifiers": [
+            "AssetPerfTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/engineering/build-deploy/page.tsx": {
+      "filePath": "app/engineering/build-deploy/page.tsx",
+      "contentHash": "f614ead2004c340053798d26b896b3ea2c052f06a19a515c22edb778cd6fc83e",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/engineering/build-deploy",
+          "specifiers": [
+            "BuildDeployTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "app/engineering/caching-strategy/page.tsx": {
+      "filePath": "app/engineering/caching-strategy/page.tsx",
+      "contentHash": "2891479eaa7c83be685b770b3500624f426b0a79b5d8a0afe96c5ad9ecbd349b",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/engineering/caching-strategy",
+          "specifiers": [
+            "CachingStrategyTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/engineering/middleware/page.tsx": {
+      "filePath": "app/engineering/middleware/page.tsx",
+      "contentHash": "d97b4fdb30eac84826d2436e7a77742516bd861a7e5f1916def33b2ad062909c",
+      "functions": [
+        {
+          "name": "MiddlewareDynamicBody",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "connection"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/engineering/middleware",
+          "specifiers": [
+            "MiddlewareTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "app/global-error.tsx": {
+      "filePath": "app/global-error.tsx",
+      "contentHash": "e85d1b1caf072548258f1da7fa7c569635742972fbe1920e4d8df3e70921156d",
+      "functions": [
+        {
+          "name": "GlobalError",
+          "params": [
+            "{\n    reset,\n}"
+          ],
+          "exported": true,
+          "lineCount": 67
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "GlobalError"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "app/globals.css": {
+      "filePath": "app/globals.css",
+      "contentHash": "19f193e8aab8ddab996ea89ef2bd28411f1ad818efe8da8da599872426edd3b9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 533,
+      "hasStructuralAnalysis": false
+    },
+    "app/layout.tsx": {
+      "filePath": "app/layout.tsx",
+      "contentHash": "34a0603fd4c281c17053703949a526f5529c36c3a3e56f7e3a467a53cedb91d1",
+      "functions": [
+        {
+          "name": "RootLayout",
+          "params": [
+            "{\n  children,\n}"
+          ],
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./globals.css",
+          "specifiers": []
+        },
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/font/google",
+          "specifiers": [
+            "IBM_Plex_Mono",
+            "Source_Sans_3",
+            "Syne"
+          ]
+        },
+        {
+          "source": "@/components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "@/components/shell/SiteShell",
+          "specifiers": [
+            "SiteShell"
+          ]
+        },
+        {
+          "source": "@/components/ThemeProvider",
+          "specifiers": [
+            "ThemeProvider"
+          ]
+        },
+        {
+          "source": "@/config/site",
+          "specifiers": [
+            "HOME_TITLE",
+            "SITE_DESCRIPTION",
+            "SITE_NAME",
+            "SITE_URL"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "RootLayout"
+      ],
+      "totalLines": 134,
+      "hasStructuralAnalysis": true
+    },
+    "app/metadata/crawl/page.tsx": {
+      "filePath": "app/metadata/crawl/page.tsx",
+      "contentHash": "572c79cc8f24b35b586646183538185261a6f27635a38da6dfcb126ebebb6b37",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/metadata/crawl",
+          "specifiers": [
+            "CrawlTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/metadata/guide/page.tsx": {
+      "filePath": "app/metadata/guide/page.tsx",
+      "contentHash": "569f74319db19a5166ceff9cc7acc445506603a36017bd023a9306a4986001ee",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/metadata/guide",
+          "specifiers": [
+            "MetadataGuideTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/not-found.tsx": {
+      "filePath": "app/not-found.tsx",
+      "contentHash": "c35bae86a813c30e57b182e4ef82b64080e70534cf18b6078545a6f73a03c6cb",
+      "functions": [
+        {
+          "name": "NotFound",
+          "params": [],
+          "exported": true,
+          "lineCount": 43
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "NotFound"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "app/opengraph-image.tsx": {
+      "filePath": "app/opengraph-image.tsx",
+      "contentHash": "af35ac1b196c3fc005a22542da34f9cf1ce1c35d27c096d869a93c301165a00d",
+      "functions": [
+        {
+          "name": "OpengraphImage",
+          "params": [],
+          "exported": true,
+          "lineCount": 77
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/og",
+          "specifiers": [
+            "ImageResponse"
+          ]
+        },
+        {
+          "source": "@/config/site",
+          "specifiers": [
+            "SITE_NAME",
+            "SITE_NAME_EN",
+            "SITE_THESIS"
+          ]
+        }
+      ],
+      "exports": [
+        "alt",
+        "size",
+        "contentType",
+        "OpengraphImage"
+      ],
+      "totalLines": 109,
+      "hasStructuralAnalysis": true
+    },
+    "app/page.tsx": {
+      "filePath": "app/page.tsx",
+      "contentHash": "213d38ea65b2f04dc88fd945c09bf76b061ed36d340e3180d4fa5c9a63aa3d9b",
+      "functions": [
+        {
+          "name": "Home",
+          "params": [],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/home/CategoryMap",
+          "specifiers": [
+            "CategoryMap"
+          ]
+        },
+        {
+          "source": "@/components/home/SpectrumHero",
+          "specifiers": [
+            "SpectrumHero"
+          ]
+        },
+        {
+          "source": "@/components/topic/DirectionalTransition",
+          "specifiers": [
+            "DirectionalTransition"
+          ]
+        }
+      ],
+      "exports": [
+        "Home"
+      ],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/check/page.tsx": {
+      "filePath": "app/rendering/check/page.tsx",
+      "contentHash": "91cbc7b0e05a76f2d5c4dd6da6948f63fcba84ff246774b58440484b297af218",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/check",
+          "specifiers": [
+            "RenderingCheckTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/isr/page.tsx": {
+      "filePath": "app/rendering/isr/page.tsx",
+      "contentHash": "f5c8f13fd412bd3906322330f232d2ae8cd828075007d160a92629fa32f975bd",
+      "functions": [
+        {
+          "name": "generateMetadata",
+          "params": [],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/isr",
+          "specifiers": [
+            "IsrTopic"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/isr/cached-posts",
+          "specifiers": [
+            "getIsrPosts"
+          ]
+        }
+      ],
+      "exports": [
+        "generateMetadata",
+        "Page"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/ppr/page.tsx": {
+      "filePath": "app/rendering/ppr/page.tsx",
+      "contentHash": "79f4e83a32a92ca7aa2b96dcc7e0ed7cdd19758b45642e2f6ac85d647df03a37",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/ppr",
+          "specifiers": [
+            "PprTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/spectrum/page.tsx": {
+      "filePath": "app/rendering/spectrum/page.tsx",
+      "contentHash": "fa795336c80a04cdf57bd75417ab21cb1f991e6cdcfe24e5394bbd734b00f541",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/spectrum",
+          "specifiers": [
+            "SpectrumTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/ssr/page.tsx": {
+      "filePath": "app/rendering/ssr/page.tsx",
+      "contentHash": "5089c2bf34fbd096e329a2f61f0437d806824d486cb7db75c83227c3f644ed13",
+      "functions": [
+        {
+          "name": "SsrDynamicBody",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "connection"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/ssr",
+          "specifiers": [
+            "SsrTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/streaming/page.tsx": {
+      "filePath": "app/rendering/streaming/page.tsx",
+      "contentHash": "8e76728a1c2b56bb228cd82c9aa32d055bf549f78e1f1882384452920a3b317a",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/streaming",
+          "specifiers": [
+            "StreamingTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/view-transition/page.tsx": {
+      "filePath": "app/rendering/view-transition/page.tsx",
+      "contentHash": "8ec482bca54fa5d7364887bbce5ae90a61ec1bcd07b0ba8126c828c342574c3b",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rendering/view-transition",
+          "specifiers": [
+            "ViewTransitionTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/view-transition/scenes/a/page.tsx": {
+      "filePath": "app/rendering/view-transition/scenes/a/page.tsx",
+      "contentHash": "ee8a612a3e3563c64d3b0614c622356fc7fe6a62db19ecc14a85be105a9558d4",
+      "functions": [
+        {
+          "name": "SceneA",
+          "params": [],
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "SceneA"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/view-transition/scenes/b/page.tsx": {
+      "filePath": "app/rendering/view-transition/scenes/b/page.tsx",
+      "contentHash": "ab074cfb71e8d7af20bde82b5bfc8aca89be7de4d6533fbfe596cb74eb2e0aef",
+      "functions": [
+        {
+          "name": "SceneB",
+          "params": [],
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "SceneB"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "app/rendering/view-transition/scenes/layout.tsx": {
+      "filePath": "app/rendering/view-transition/scenes/layout.tsx",
+      "contentHash": "57fbc5e7b6963323c4610cb94480df7c7a818b151e3b1250fbedc803b129b0d1",
+      "functions": [
+        {
+          "name": "ScenesLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ViewTransition"
+          ]
+        }
+      ],
+      "exports": [
+        "ScenesLayout"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "app/robots.ts": {
+      "filePath": "app/robots.ts",
+      "contentHash": "5d13d0ce1353021984319c29a852d6f3c9025a2dd71588bfdcca8216e13d1caa",
+      "functions": [
+        {
+          "name": "robots",
+          "params": [],
+          "returnType": "MetadataRoute.Robots",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "MetadataRoute"
+          ]
+        },
+        {
+          "source": "@/config/site",
+          "specifiers": [
+            "SITE_URL"
+          ]
+        }
+      ],
+      "exports": [
+        "robots"
+      ],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/conventions/loading.tsx": {
+      "filePath": "app/router/conventions/loading.tsx",
+      "contentHash": "970eda3c4eb2e5dadc2aba0bc2aa473fa83186df95ad9c22e1c123f25bfac385",
+      "functions": [
+        {
+          "name": "Loading",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "Loading"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/conventions/page.tsx": {
+      "filePath": "app/router/conventions/page.tsx",
+      "contentHash": "5d58ec7940f76a527de73c632bf31762f04152a0c042afc25fccb5861a7b9a71",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/router/conventions",
+          "specifiers": [
+            "ConventionsTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/dynamic-routes/[id]/page.tsx": {
+      "filePath": "app/router/dynamic-routes/[id]/page.tsx",
+      "contentHash": "a7146ded8bbea42bc584b0515cf98f390ef3235733f5224257613caab2c385da",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{\n    params,\n}"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "Page",
+          "params": [
+            "{\n    params,\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "@/data/user",
+          "specifiers": [
+            "getUserById",
+            "users"
+          ]
+        },
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "SITE_NAME"
+          ]
+        },
+        {
+          "source": "@/topics/router/dynamic-routes/UserDetail",
+          "specifiers": [
+            "UserDetail"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "Page"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/dynamic-routes/page.tsx": {
+      "filePath": "app/router/dynamic-routes/page.tsx",
+      "contentHash": "5c115720494353eac605b8dff8fa49c4c06b94380e687a6c288954a47cad2419",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/router/dynamic-routes",
+          "specifiers": [
+            "DynamicRoutesTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/admin/page.tsx": {
+      "filePath": "app/router/errors/admin/page.tsx",
+      "contentHash": "9bb0ada4cce412a84d49c43dbb5e3a1e3e2b2f43e282f782889b74eb8ff8b9ce",
+      "functions": [
+        {
+          "name": "Gate",
+          "params": [],
+          "returnType": "Promise<never>",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "AdminPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "forbidden"
+          ]
+        },
+        {
+          "source": "next/server",
+          "specifiers": [
+            "connection"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        }
+      ],
+      "exports": [
+        "AdminPage"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/error.tsx": {
+      "filePath": "app/router/errors/error.tsx",
+      "contentHash": "882ad271af6cdd7e2123ac5704f93e7eb939f2b44751cdbcd4bb20d4aba44725",
+      "functions": [
+        {
+          "name": "SegmentError",
+          "params": [
+            "{\n    error,\n    reset,\n}"
+          ],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "SegmentError"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/forbidden.tsx": {
+      "filePath": "app/router/errors/forbidden.tsx",
+      "contentHash": "4f9920d986c8e9c4ed10f3607e63d6b39b4335f38c633b4ec5f73f0488d4c6de",
+      "functions": [
+        {
+          "name": "SegmentForbidden",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "SegmentForbidden"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/locked/page.tsx": {
+      "filePath": "app/router/errors/locked/page.tsx",
+      "contentHash": "f7e45b3667f28de5d2213a90aaa9637cfc836e8f8692f25ea7f897c5658f0bbf",
+      "functions": [
+        {
+          "name": "Gate",
+          "params": [],
+          "returnType": "Promise<never>",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "LockedPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "unauthorized"
+          ]
+        },
+        {
+          "source": "next/server",
+          "specifiers": [
+            "connection"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        }
+      ],
+      "exports": [
+        "LockedPage"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/missing/page.tsx": {
+      "filePath": "app/router/errors/missing/page.tsx",
+      "contentHash": "743c98c865cba3fa10c3131f3665b9a5aced61cb915324e8c972ecc4367aad99",
+      "functions": [
+        {
+          "name": "MissingPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        }
+      ],
+      "exports": [
+        "MissingPage"
+      ],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/not-found.tsx": {
+      "filePath": "app/router/errors/not-found.tsx",
+      "contentHash": "e9886ec6a9baa195344d0bd3b6031cd8c52ec0749cb815130598f07a337fc3e6",
+      "functions": [
+        {
+          "name": "SegmentNotFound",
+          "params": [],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "SegmentNotFound"
+      ],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/page.tsx": {
+      "filePath": "app/router/errors/page.tsx",
+      "contentHash": "58a8842375ec3925f3e06e48aab908a1129cb59953fdd038f4882396924503ad",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/router/errors",
+          "specifiers": [
+            "ErrorsTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/errors/unauthorized.tsx": {
+      "filePath": "app/router/errors/unauthorized.tsx",
+      "contentHash": "dc1170ec6542fe777722c9852a06e6cf19b34723cb7634756488efdf424831e6",
+      "functions": [
+        {
+          "name": "SegmentUnauthorized",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        }
+      ],
+      "exports": [
+        "SegmentUnauthorized"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/i18n/[lang]/page.tsx": {
+      "filePath": "app/router/i18n/[lang]/page.tsx",
+      "contentHash": "f9c65f61eeb31b82f60347b3cb7ff5ea70ef13bc67c2ad7d8bb0da54e738e610",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{ params }"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "LangPage",
+          "params": [
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "Content",
+          "params": [
+            "{ params }"
+          ],
+          "exported": false,
+          "lineCount": 45
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/topics/router/i18n/dictionaries",
+          "specifiers": [
+            "getDictionary",
+            "getOtherLocale",
+            "Locale",
+            "LOCALES"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "LangPage"
+      ],
+      "totalLines": 101,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/i18n/page.tsx": {
+      "filePath": "app/router/i18n/page.tsx",
+      "contentHash": "b8cf3959111d885fc6b99101f0d316f21f246e84d429f7d5c529c680ed898c90",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/router/i18n",
+          "specifiers": [
+            "I18nTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/navigation/page.tsx": {
+      "filePath": "app/router/navigation/page.tsx",
+      "contentHash": "c6540e6fdd5f54d77c12baab841f3dc37f605c35d9435aabb2ff47c4ab831a18",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/router/navigation",
+          "specifiers": [
+            "NavigationTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/parallel/@modal/(.)shot/[id]/page.tsx": {
+      "filePath": "app/router/parallel/@modal/(.)shot/[id]/page.tsx",
+      "contentHash": "5eca5ba8f8e481ed400af4ff03fe69af393afd32c34f68498cbb83affd53d94e",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "InterceptedShotPage",
+          "params": [
+            "{\n    params,\n}"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "@/topics/router/parallel/ShotModal",
+          "specifiers": [
+            "ShotModal"
+          ]
+        },
+        {
+          "source": "@/topics/router/parallel/shots",
+          "specifiers": [
+            "getShot",
+            "SHOTS"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "InterceptedShotPage"
+      ],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/parallel/@modal/default.tsx": {
+      "filePath": "app/router/parallel/@modal/default.tsx",
+      "contentHash": "459d41f0d02b09ddc71cd0aa635c7a51e54c1682b8fb26bd28e6d45c2b067773",
+      "functions": [
+        {
+          "name": "ModalDefault",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ModalDefault"
+      ],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/parallel/layout.tsx": {
+      "filePath": "app/router/parallel/layout.tsx",
+      "contentHash": "3459abd1cf1c15a205795afd9923d329805aa44a26b35bc6c5f4e13ffa44a507",
+      "functions": [
+        {
+          "name": "ParallelLayout",
+          "params": [
+            "{\n    children,\n    modal,\n}"
+          ],
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "ParallelLayout"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/parallel/page.tsx": {
+      "filePath": "app/router/parallel/page.tsx",
+      "contentHash": "d86dcc545c909d44deb53698c558b928b1e673e51a629cf2bc44fb128ecff9ce",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/router/parallel",
+          "specifiers": [
+            "ParallelTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/parallel/shot/[id]/page.tsx": {
+      "filePath": "app/router/parallel/shot/[id]/page.tsx",
+      "contentHash": "917daf97052a58a7a3d318dcf43ba072a1c1d2e64b250d9361209d84ce6b44f9",
+      "functions": [
+        {
+          "name": "generateStaticParams",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "generateMetadata",
+          "params": [
+            "{\n    params,\n}"
+          ],
+          "returnType": "Promise<Metadata>",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "ShotPage",
+          "params": [
+            "{ params }"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "notFound"
+          ]
+        },
+        {
+          "source": "@/topics/router/parallel/components/ShotPageContent",
+          "specifiers": [
+            "ShotPageContent"
+          ]
+        },
+        {
+          "source": "@/topics/router/parallel/shots",
+          "specifiers": [
+            "getShot",
+            "SHOTS"
+          ]
+        }
+      ],
+      "exports": [
+        "generateStaticParams",
+        "generateMetadata",
+        "ShotPage"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/route-groups/(demo)/alpha/page.tsx": {
+      "filePath": "app/router/route-groups/(demo)/alpha/page.tsx",
+      "contentHash": "1a245cd3ba30ffa94c5d5979bc3fbcbe9b1debc164f3f2a780662c1eb73fdfba",
+      "functions": [
+        {
+          "name": "AlphaPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "AlphaPage"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/route-groups/(demo)/beta/page.tsx": {
+      "filePath": "app/router/route-groups/(demo)/beta/page.tsx",
+      "contentHash": "0c74e74cd4214aebca664c387149ff6b23c6721d6c59cc15e9c956685e23adc3",
+      "functions": [
+        {
+          "name": "BetaPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "BetaPage"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/route-groups/(demo)/layout.tsx": {
+      "filePath": "app/router/route-groups/(demo)/layout.tsx",
+      "contentHash": "988383001eaef4f1f13ff803f33c20710805eecd9cfc1b5523287db7bbcb7e03",
+      "functions": [
+        {
+          "name": "DemoGroupLayout",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 30
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "DemoGroupLayout"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "app/router/route-groups/page.tsx": {
+      "filePath": "app/router/route-groups/page.tsx",
+      "contentHash": "d56d08b415b31133e9b3c153f58dd643f62300ac504a5b27fa1c589f0660875f",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/router/route-groups",
+          "specifiers": [
+            "RouteGroupsTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "app/rsc-boundary/check/page.tsx": {
+      "filePath": "app/rsc-boundary/check/page.tsx",
+      "contentHash": "4a9603f3acec2e4e0c6ee2d3c58a46b7d94b33825b19085e4cb19934a0ed8fe1",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rsc-boundary/check",
+          "specifiers": [
+            "RscBoundaryCheckTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "app/rsc-boundary/guide/page.tsx": {
+      "filePath": "app/rsc-boundary/guide/page.tsx",
+      "contentHash": "5039f4406e217ff7e121d7c04ab1e90acf6d40d9c1f11ea4f8e7129c057f2627",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rsc-boundary/guide",
+          "specifiers": [
+            "RscGuideTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "app/rsc-boundary/props-boundary/page.tsx": {
+      "filePath": "app/rsc-boundary/props-boundary/page.tsx",
+      "contentHash": "33c0866d55cdfa449a03ea95186bff024bebd7695c5ee81908d889c0643dc134",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rsc-boundary/props-boundary",
+          "specifiers": [
+            "PropsBoundaryTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "app/rsc-boundary/server-actions/page.tsx": {
+      "filePath": "app/rsc-boundary/server-actions/page.tsx",
+      "contentHash": "a2d706383d6fb3da834907c5cb6cb205a2f0dc149f4b5fd0ae439adb4918de1f",
+      "functions": [
+        {
+          "name": "ServerActionsDynamicBody",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "connection"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/rsc-boundary/server-actions",
+          "specifiers": [
+            "ServerActionsTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "app/security/boundaries/page.tsx": {
+      "filePath": "app/security/boundaries/page.tsx",
+      "contentHash": "d997b922e6d27c45473b98f5981f8951f34158f06eb34345d6ff2ea98bd3573f",
+      "functions": [
+        {
+          "name": "BoundariesDynamicBody",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "connection"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/security/boundaries",
+          "specifiers": [
+            "SecurityBoundariesTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "app/security/headers/page.tsx": {
+      "filePath": "app/security/headers/page.tsx",
+      "contentHash": "95bf653b8cd1e9bb9f751007c8db17e0762d009b1326b82ba5e7ec76290bbde5",
+      "functions": [
+        {
+          "name": "Page",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "getTopicMetadata"
+          ]
+        },
+        {
+          "source": "@/topics/security/headers",
+          "specifiers": [
+            "SecurityHeadersTopic"
+          ]
+        }
+      ],
+      "exports": [
+        "metadata",
+        "Page"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "app/sitemap.ts": {
+      "filePath": "app/sitemap.ts",
+      "contentHash": "f98f7372d3dfafe61885c51fc3884eb7c52a6da59f6e53c50e389c8018823c17",
+      "functions": [
+        {
+          "name": "sitemap",
+          "params": [],
+          "returnType": "MetadataRoute.Sitemap",
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "MetadataRoute"
+          ]
+        },
+        {
+          "source": "@/config/site",
+          "specifiers": [
+            "SITE_URL"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "TOPICS"
+          ]
+        }
+      ],
+      "exports": [
+        "sitemap"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "components/ArticleCard.tsx": {
+      "filePath": "components/ArticleCard.tsx",
+      "contentHash": "bc6117f7cc73de11219eac2e60086098236b6bf6a75a6a91633ebe5f2bbc9dba",
+      "functions": [
+        {
+          "name": "getCategoryColor",
+          "params": [
+            "id"
+          ],
+          "exported": false,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "@/data/blog",
+          "specifiers": [
+            "Post"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 130,
+      "hasStructuralAnalysis": true
+    },
+    "components/BrandMark.tsx": {
+      "filePath": "components/BrandMark.tsx",
+      "contentHash": "e236c868d00aeeaa7fbb451c2231534be9bd689fe08d70a84824a06e5f5aa600",
+      "functions": [
+        {
+          "name": "BrandMark",
+          "params": [
+            "{ className = \"h-9 w-9\" }"
+          ],
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useId"
+          ]
+        }
+      ],
+      "exports": [
+        "BrandMark"
+      ],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "components/Footer.tsx": {
+      "filePath": "components/Footer.tsx",
+      "contentHash": "237c9320b608a0b3dbe143502505ad21836e174f22a9a9cf4a60f0d66b329350",
+      "functions": [
+        {
+          "name": "getCopyrightYear",
+          "params": [],
+          "returnType": "Promise<number>",
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "Footer",
+          "params": [],
+          "exported": true,
+          "lineCount": 80
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/config/site",
+          "specifiers": [
+            "SITE_NAME",
+            "SITE_SLOGAN",
+            "SITE_THESIS"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "CATEGORIES",
+            "getCategoryFirstPath",
+            "TOPICS"
+          ]
+        },
+        {
+          "source": "./BrandMark",
+          "specifiers": [
+            "BrandMark"
+          ]
+        }
+      ],
+      "exports": [
+        "Footer"
+      ],
+      "totalLines": 127,
+      "hasStructuralAnalysis": true
+    },
+    "components/home/CategoryMap.tsx": {
+      "filePath": "components/home/CategoryMap.tsx",
+      "contentHash": "c11a18cef63f8fb04d1201e0d9eccae2b618a5cddfa44c1da4cab821c4e3dbb9",
+      "functions": [
+        {
+          "name": "CategoryTile",
+          "params": [
+            "{\n    category,\n    featured,\n    stagger,\n}"
+          ],
+          "exported": false,
+          "lineCount": 56
+        },
+        {
+          "name": "CategoryMap",
+          "params": [],
+          "exported": true,
+          "lineCount": 29
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "CATEGORIES",
+            "CategoryMeta",
+            "getTopicsByCategory"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../ui/Panel",
+          "specifiers": [
+            "Panel"
+          ]
+        },
+        {
+          "source": "./SpectrumHero",
+          "specifiers": [
+            "MiniSpectrum"
+          ]
+        }
+      ],
+      "exports": [
+        "CategoryMap"
+      ],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "components/home/SpectrumHero.tsx": {
+      "filePath": "components/home/SpectrumHero.tsx",
+      "contentHash": "c1e44f160686a73ad40ce2e009d5c2b2f70c3d4ddef4334761bf2304a5cbcc30",
+      "functions": [
+        {
+          "name": "MiniSpectrum",
+          "params": [],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "SpectrumRuler",
+          "params": [],
+          "exported": false,
+          "lineCount": 54
+        },
+        {
+          "name": "SpectrumHero",
+          "params": [],
+          "exported": true,
+          "lineCount": 40
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/config/site",
+          "specifiers": [
+            "SITE_NAME_EN",
+            "SITE_SLOGAN",
+            "SITE_THESIS"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "CATEGORIES",
+            "getCategoryFirstPath",
+            "TOPICS"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../ui/Panel",
+          "specifiers": [
+            "Panel"
+          ]
+        }
+      ],
+      "exports": [
+        "RULER",
+        "MiniSpectrum",
+        "SpectrumHero"
+      ],
+      "totalLines": 171,
+      "hasStructuralAnalysis": true
+    },
+    "components/shell/SearchPalette.tsx": {
+      "filePath": "components/shell/SearchPalette.tsx",
+      "contentHash": "84521eabbcd343172e6799730e46fa4617b6ec9dba83f45fdb2e88ac079d8128",
+      "functions": [
+        {
+          "name": "SearchPalette",
+          "params": [],
+          "exported": true,
+          "lineCount": 152
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useMemo",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "TopicMeta"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "getCategoryMeta",
+            "TOPICS"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "SearchPalette"
+      ],
+      "totalLines": 220,
+      "hasStructuralAnalysis": true
+    },
+    "components/shell/SiteShell.tsx": {
+      "filePath": "components/shell/SiteShell.tsx",
+      "contentHash": "368529a27de6c144569daf1157cfd303d1550d9adf64f58ce45399cadfbaeaa9",
+      "functions": [
+        {
+          "name": "Brand",
+          "params": [],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "ThemeToggle",
+          "params": [],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "DirectoryMenu",
+          "params": [
+            "{\n    open,\n    pathname,\n    onNavigate,\n}"
+          ],
+          "exported": false,
+          "lineCount": 65
+        },
+        {
+          "name": "SiteShell",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 136
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "usePathname"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/components/BrandMark",
+          "specifiers": [
+            "BrandMark"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "CATEGORIES",
+            "getCategoryByPath",
+            "getCategoryFirstPath",
+            "getTopicsByCategory"
+          ]
+        },
+        {
+          "source": "@/lib/topic-meta",
+          "specifiers": [
+            "SITE_NAME",
+            "SITE_SLOGAN"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../ThemeProvider",
+          "specifiers": [
+            "useTheme"
+          ]
+        },
+        {
+          "source": "./SearchPalette",
+          "specifiers": [
+            "SearchPalette"
+          ]
+        }
+      ],
+      "exports": [
+        "SiteShell"
+      ],
+      "totalLines": 295,
+      "hasStructuralAnalysis": true
+    },
+    "components/ThemeProvider.tsx": {
+      "filePath": "components/ThemeProvider.tsx",
+      "contentHash": "26dab93a5de44b45d7eda586db5a882c7cf3fe60eb1154874e2c1d2d9cdbc0ce",
+      "functions": [
+        {
+          "name": "useTheme",
+          "params": [],
+          "returnType": "ThemeContextValue",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "getInitialTheme",
+          "params": [],
+          "returnType": "Theme",
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "ThemeProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "createContext",
+            "useCallback",
+            "useContext",
+            "useEffect",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "ThemeProvider",
+        "useTheme"
+      ],
+      "totalLines": 125,
+      "hasStructuralAnalysis": true
+    },
+    "components/topic/CheckList.tsx": {
+      "filePath": "components/topic/CheckList.tsx",
+      "contentHash": "60c1b0dd1ad4cb3d0c50be9dfee9ca0834240ec29be96a3987517566c6c7e5b5",
+      "functions": [
+        {
+          "name": "stars",
+          "params": [
+            "level"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "CheckList",
+          "params": [
+            "{ groups }"
+          ],
+          "exported": true,
+          "lineCount": 82
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "./TopicPage",
+          "specifiers": [
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "CheckList"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "components/topic/DirectionalTransition.tsx": {
+      "filePath": "components/topic/DirectionalTransition.tsx",
+      "contentHash": "202d0da5b00f408151051ceae7dcdd4429b3fbad0e0e728660d193d3f18bfc65",
+      "functions": [
+        {
+          "name": "DirectionalTransition",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ViewTransition"
+          ]
+        }
+      ],
+      "exports": [
+        "DirectionalTransition"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "components/topic/TopicPage.tsx": {
+      "filePath": "components/topic/TopicPage.tsx",
+      "contentHash": "0d9aa439522e2c893be6611cc9cb9b4dd7bfc72cb65328a71c16e331ea37cc52",
+      "functions": [
+        {
+          "name": "TopicPage",
+          "params": [
+            "{ path, title, description, references, children }"
+          ],
+          "exported": true,
+          "lineCount": 81
+        },
+        {
+          "name": "TopicSection",
+          "params": [
+            "{ title, note, children }"
+          ],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "@/components/ui/Panel",
+          "specifiers": [
+            "Panel"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "getCategoryByPath",
+            "getCategoryFirstPath",
+            "getRelatedTopics",
+            "getTopicByPath"
+          ]
+        },
+        {
+          "source": "./DirectionalTransition",
+          "specifiers": [
+            "DirectionalTransition"
+          ]
+        }
+      ],
+      "exports": [
+        "TopicPage",
+        "TopicSection"
+      ],
+      "totalLines": 155,
+      "hasStructuralAnalysis": true
+    },
+    "components/ui/Panel.tsx": {
+      "filePath": "components/ui/Panel.tsx",
+      "contentHash": "93d1ab1f790ce12d0cac9ef4a9080caa769b6ba8f6ed2eda86b92b555de41293",
+      "functions": [
+        {
+          "name": "Panel",
+          "params": [
+            "{ children, className, hover = false }"
+          ],
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "Panel"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "components/UserCard.tsx": {
+      "filePath": "components/UserCard.tsx",
+      "contentHash": "7b8461b3597def683b9b15e83cf35d798dcf18643c5227a92e3ac411699998a8",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "@/types/user",
+          "specifiers": [
+            "User"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "components/UserListClient.tsx": {
+      "filePath": "components/UserListClient.tsx",
+      "contentHash": "2e6efbb8ad5f2774eff1373358e6328fbe4e346afd1c639fe4ab1da3f8f0d875",
+      "functions": [
+        {
+          "name": "UserListClient",
+          "params": [
+            "{ initialUsers }"
+          ],
+          "exported": true,
+          "lineCount": 117
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useMemo",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/types/user",
+          "specifiers": [
+            "User"
+          ]
+        },
+        {
+          "source": "./UserCard",
+          "specifiers": [
+            "UserCard"
+          ]
+        }
+      ],
+      "exports": [
+        "UserListClient"
+      ],
+      "totalLines": 170,
+      "hasStructuralAnalysis": true
+    },
+    "config/site.ts": {
+      "filePath": "config/site.ts",
+      "contentHash": "92d4ef5ec0f50a17f8460dceda651d0f6b5bcba735ee2c197c04063f17d982a1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "SITE_NAME",
+        "SITE_NAME_EN",
+        "SITE_SLOGAN",
+        "SITE_THESIS",
+        "SITE_DESCRIPTION",
+        "HOME_TITLE",
+        "SITE_URL"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "config/topics.test.ts": {
+      "filePath": "config/topics.test.ts",
+      "contentHash": "45a75d1d2913f934ee3c153154c066aa3b2cbbed76bed918e72582a57e83198e",
+      "functions": [
+        {
+          "name": "unescapeEntities",
+          "params": [
+            "s"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "topicContentFile",
+          "params": [
+            "topicPath"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 2
+        },
+        {
+          "name": "routeShellFile",
+          "params": [
+            "topicPath"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:fs",
+          "specifiers": [
+            "existsSync",
+            "readFileSync"
+          ]
+        },
+        {
+          "source": "node:path",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": "node:url",
+          "specifiers": [
+            "fileURLToPath"
+          ]
+        },
+        {
+          "source": "vitest",
+          "specifiers": [
+            "describe",
+            "expect",
+            "it"
+          ]
+        },
+        {
+          "source": "./topics",
+          "specifiers": [
+            "CATEGORIES",
+            "TOPICS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 135,
+      "hasStructuralAnalysis": true
+    },
+    "config/topics.tsx": {
+      "filePath": "config/topics.tsx",
+      "contentHash": "613e0d5576cc3413f9214d650f4708be51c92b0afaac1d6875678e0e5e5ed81c",
+      "functions": [
+        {
+          "name": "getCategoryMeta",
+          "params": [
+            "key"
+          ],
+          "returnType": "CategoryMeta | undefined",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "getTopicsByCategory",
+          "params": [
+            "category",
+            "{ includePlanned = false }"
+          ],
+          "returnType": "TopicMeta[]",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "getCategoryByPath",
+          "params": [
+            "pathname"
+          ],
+          "returnType": "CategoryMeta | undefined",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "getTopicByPath",
+          "params": [
+            "pathname"
+          ],
+          "returnType": "TopicMeta | undefined",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "getRelatedTopics",
+          "params": [
+            "pathname"
+          ],
+          "returnType": "TopicMeta[]",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "getCategoryFirstPath",
+          "params": [
+            "key"
+          ],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "CATEGORIES",
+        "TOPICS",
+        "getCategoryMeta",
+        "getTopicsByCategory",
+        "getCategoryByPath",
+        "getTopicByPath",
+        "getRelatedTopics",
+        "getCategoryFirstPath"
+      ],
+      "totalLines": 575,
+      "hasStructuralAnalysis": true
+    },
+    "data/blog.ts": {
+      "filePath": "data/blog.ts",
+      "contentHash": "a745e415e128460c044c20d06cd25eaa586722b712451fe4449c2f281c1c4da2",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "cache"
+          ]
+        }
+      ],
+      "exports": [
+        "getPostsWithStatus",
+        "getPosts"
+      ],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "data/user.ts": {
+      "filePath": "data/user.ts",
+      "contentHash": "661320f55ee45d93eefefe843ee0fb447ab686a07f1bbd95b102ddcf864b1fe2",
+      "functions": [
+        {
+          "name": "getUserById",
+          "params": [
+            "id"
+          ],
+          "returnType": "User | undefined",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/types/user",
+          "specifiers": [
+            "User"
+          ]
+        }
+      ],
+      "exports": [
+        "users",
+        "getUserById"
+      ],
+      "totalLines": 120,
+      "hasStructuralAnalysis": true
+    },
+    "eslint.config.mjs": {
+      "filePath": "eslint.config.mjs",
+      "contentHash": "ca0288214b3e8336c4daf1df3a0b1acd1327f264ecf1d3933a72a802a10ea5b0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "default"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "lib/demo-header.ts": {
+      "filePath": "lib/demo-header.ts",
+      "contentHash": "4bbc5e3d25720afbc813e5f23d6b36df507901762fdb23520c834a8959dd87fc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "DEMO_HEADER"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "lib/security-headers.ts": {
+      "filePath": "lib/security-headers.ts",
+      "contentHash": "85b066d3bb71c6ff7ad440cfc34c0145e85b70fa4745d871893be11832f68b97",
+      "functions": [
+        {
+          "name": "buildDemoCsp",
+          "params": [],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "buildDemoCsp",
+        "SECURITY_HEADERS"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "lib/topic-meta.ts": {
+      "filePath": "lib/topic-meta.ts",
+      "contentHash": "0f934b31a0f127a0ddecc34cf7412f067d3ef9d1f9b0816ff22f33e42df87c0a",
+      "functions": [
+        {
+          "name": "getTopicMetadata",
+          "params": [
+            "path"
+          ],
+          "returnType": "Metadata",
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next",
+          "specifiers": [
+            "Metadata"
+          ]
+        },
+        {
+          "source": "@/config/site",
+          "specifiers": [
+            "SITE_NAME"
+          ]
+        },
+        {
+          "source": "@/config/topics",
+          "specifiers": [
+            "getTopicByPath"
+          ]
+        }
+      ],
+      "exports": [
+        "HOME_TITLE",
+        "SITE_DESCRIPTION",
+        "SITE_NAME",
+        "SITE_NAME_EN",
+        "SITE_SLOGAN",
+        "SITE_THESIS",
+        "SITE_URL",
+        "getTopicMetadata"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "lib/utils.ts": {
+      "filePath": "lib/utils.ts",
+      "contentHash": "abf7211afd3f4e75fd23086a83d9bed2176763b07addcad4e594bbd0aff4f660",
+      "functions": [
+        {
+          "name": "cn",
+          "params": [
+            "...inputs"
+          ],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "clsx",
+          "specifiers": [
+            "ClassValue",
+            "clsx"
+          ]
+        },
+        {
+          "source": "tailwind-merge",
+          "specifiers": [
+            "twMerge"
+          ]
+        }
+      ],
+      "exports": [
+        "cn"
+      ],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "middleware.ts": {
+      "filePath": "middleware.ts",
+      "contentHash": "d4a04ff5dd27c7d57d66f4cb24d4f984dcf99038edac34392fe12650892f3f32",
+      "functions": [
+        {
+          "name": "middleware",
+          "params": [
+            "request"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "NextRequest",
+            "NextResponse"
+          ]
+        },
+        {
+          "source": "@/lib/demo-header",
+          "specifiers": [
+            "DEMO_HEADER"
+          ]
+        }
+      ],
+      "exports": [
+        "middleware",
+        "config"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "next.config.ts": {
+      "filePath": "next.config.ts",
+      "contentHash": "044739e2330cdc3e0f2f5c3de63ab5b01d5c7de2ce7af660e5de1c7449b84a34",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@next/bundle-analyzer",
+          "specifiers": [
+            "withBundleAnalyzer"
+          ]
+        },
+        {
+          "source": "next",
+          "specifiers": [
+            "NextConfig"
+          ]
+        },
+        {
+          "source": "./lib/security-headers",
+          "specifiers": [
+            "SECURITY_HEADERS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "48495e052b782e4efc777608712dbbd45ce1c935743f3e78d64f8f6d2ac0e637",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "postcss.config.mjs": {
+      "filePath": "postcss.config.mjs",
+      "contentHash": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "1bf847fe9ad6d5a3961826058257f72607f67ce1d432b4f682045700517dfc49",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 93,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/agent-page/components/AgentPlayground.tsx": {
+      "filePath": "topics/ai-native/agent-page/components/AgentPlayground.tsx",
+      "contentHash": "1e76cf6d66b1cd32981ee665703b7b3787ca2262eabcd50735d15ba0420f496c",
+      "functions": [
+        {
+          "name": "initialSteps",
+          "params": [],
+          "returnType": "Record<StepId, StepState>",
+          "exported": false,
+          "lineCount": 2
+        },
+        {
+          "name": "fmtSec",
+          "params": [
+            "ms"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "AgentPlayground",
+          "params": [],
+          "exported": true,
+          "lineCount": 170
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "AgentPlayground"
+      ],
+      "totalLines": 244,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/agent-page/index.tsx": {
+      "filePath": "topics/ai-native/agent-page/index.tsx",
+      "contentHash": "469e0b6d99081d990aa86b5aaf0d4376a7ba64aaaa57617a72725a1ac2f3cf51",
+      "functions": [
+        {
+          "name": "AgentPageTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 108
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/AgentPlayground",
+          "specifiers": [
+            "AgentPlayground"
+          ]
+        }
+      ],
+      "exports": [
+        "AgentPageTopic"
+      ],
+      "totalLines": 129,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/ai-sdk/components/RawStreamViewer.tsx": {
+      "filePath": "topics/ai-native/ai-sdk/components/RawStreamViewer.tsx",
+      "contentHash": "48a83d014c09c95d9bdb72d9e9b3b13780d858ef7373d2010eb233457093ebdb",
+      "functions": [
+        {
+          "name": "RawStreamViewer",
+          "params": [],
+          "exported": true,
+          "lineCount": 73
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "RawStreamViewer"
+      ],
+      "totalLines": 105,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/ai-sdk/components/SdkChatPlayground.tsx": {
+      "filePath": "topics/ai-native/ai-sdk/components/SdkChatPlayground.tsx",
+      "contentHash": "31120ee119d695bc0559fb3cb674f92ac3ccb6ec5000083bcd3aa345414cd843",
+      "functions": [
+        {
+          "name": "messageText",
+          "params": [
+            "parts"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "SdkChatPlayground",
+          "params": [],
+          "exported": true,
+          "lineCount": 92
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ai-sdk/react",
+          "specifiers": [
+            "useChat"
+          ]
+        },
+        {
+          "source": "ai",
+          "specifiers": [
+            "DefaultChatTransport"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "SdkChatPlayground"
+      ],
+      "totalLines": 149,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/ai-sdk/index.tsx": {
+      "filePath": "topics/ai-native/ai-sdk/index.tsx",
+      "contentHash": "97e48042bfb2c1f9ee3273139d225ec906a58be8088365dacdff66a43173955e",
+      "functions": [
+        {
+          "name": "AiSdkTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 166
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/RawStreamViewer",
+          "specifiers": [
+            "RawStreamViewer"
+          ]
+        },
+        {
+          "source": "./components/SdkChatPlayground",
+          "specifiers": [
+            "SdkChatPlayground"
+          ]
+        }
+      ],
+      "exports": [
+        "AiSdkTopic"
+      ],
+      "totalLines": 266,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/generative-ui/components/GenUiPlayground.tsx": {
+      "filePath": "topics/ai-native/generative-ui/components/GenUiPlayground.tsx",
+      "contentHash": "5c8d04b42d5799dae6b30aa4622adb7fcf3ccb90f394b74e03aad6573851c168",
+      "functions": [
+        {
+          "name": "ToolRenderer",
+          "params": [
+            "{ result }"
+          ],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "GenUiPlayground",
+          "params": [],
+          "exported": true,
+          "lineCount": 122
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "ToolCallResult"
+          ]
+        },
+        {
+          "source": "./StockCard",
+          "specifiers": [
+            "StockCard"
+          ]
+        },
+        {
+          "source": "./TodoCard",
+          "specifiers": [
+            "TodoCard"
+          ]
+        },
+        {
+          "source": "./WeatherCard",
+          "specifiers": [
+            "WeatherCard"
+          ]
+        }
+      ],
+      "exports": [
+        "GenUiPlayground"
+      ],
+      "totalLines": 177,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/generative-ui/components/StockCard.tsx": {
+      "filePath": "topics/ai-native/generative-ui/components/StockCard.tsx",
+      "contentHash": "a33b7d2cd7b24479f20b3f6a3639b8846607b7d505556a3c697e80c8dcd94896",
+      "functions": [
+        {
+          "name": "toPolyline",
+          "params": [
+            "points"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "StockCard",
+          "params": [
+            "{ payload }"
+          ],
+          "exported": true,
+          "lineCount": 40
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "StockPayload"
+          ]
+        }
+      ],
+      "exports": [
+        "StockCard"
+      ],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/generative-ui/components/TodoCard.tsx": {
+      "filePath": "topics/ai-native/generative-ui/components/TodoCard.tsx",
+      "contentHash": "5b6ac8b7c14453d34d549b286cce0f4a82ee9cb08e02a11d85cef8f553fa00dd",
+      "functions": [
+        {
+          "name": "TodoCard",
+          "params": [
+            "{ payload }"
+          ],
+          "exported": true,
+          "lineCount": 40
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "TodoPayload"
+          ]
+        }
+      ],
+      "exports": [
+        "TodoCard"
+      ],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/generative-ui/components/WeatherCard.tsx": {
+      "filePath": "topics/ai-native/generative-ui/components/WeatherCard.tsx",
+      "contentHash": "961fa9c0f5e1269dcef9986e16a9b14d50e6c81abc41d30b9b935f6e225be8bf",
+      "functions": [
+        {
+          "name": "WeatherCard",
+          "params": [
+            "{ payload }"
+          ],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types",
+          "specifiers": [
+            "WeatherPayload"
+          ]
+        }
+      ],
+      "exports": [
+        "WeatherCard"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/generative-ui/index.tsx": {
+      "filePath": "topics/ai-native/generative-ui/index.tsx",
+      "contentHash": "671125c5aba6c14620bcb793b67ddb1f43c14edcb26514fdda4845b9512270df",
+      "functions": [
+        {
+          "name": "GenerativeUiTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 94
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/GenUiPlayground",
+          "specifiers": [
+            "GenUiPlayground"
+          ]
+        }
+      ],
+      "exports": [
+        "GenerativeUiTopic"
+      ],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/generative-ui/types.ts": {
+      "filePath": "topics/ai-native/generative-ui/types.ts",
+      "contentHash": "47ce7d18e05525a4189b5b71b572a4056823615bd1b655faa873723c844f2df8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/streaming-endpoint/components/StreamPlayground.tsx": {
+      "filePath": "topics/ai-native/streaming-endpoint/components/StreamPlayground.tsx",
+      "contentHash": "9ba9cd8cfffc4c26bd84b2c774ebbbfb3a2026f82de6f251cb88db7cf75c939b",
+      "functions": [
+        {
+          "name": "fmtMs",
+          "params": [
+            "ms"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "StreamPlayground",
+          "params": [],
+          "exported": true,
+          "lineCount": 149
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "StreamPlayground"
+      ],
+      "totalLines": 201,
+      "hasStructuralAnalysis": true
+    },
+    "topics/ai-native/streaming-endpoint/index.tsx": {
+      "filePath": "topics/ai-native/streaming-endpoint/index.tsx",
+      "contentHash": "7f12fbdd7aed15b012e42d6396582228d05293e2d504f0a7eff80c851cb971d2",
+      "functions": [
+        {
+          "name": "StreamingEndpointTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 114
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/StreamPlayground",
+          "specifiers": [
+            "StreamPlayground"
+          ]
+        }
+      ],
+      "exports": [
+        "StreamingEndpointTopic"
+      ],
+      "totalLines": 137,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/cache-layers/components/RouterCacheDemo.tsx": {
+      "filePath": "topics/data/cache-layers/components/RouterCacheDemo.tsx",
+      "contentHash": "8445ff6d93a4a2038e539d2779d3e7de2733b6ca53f753632f1dc4f64f30cd09",
+      "functions": [
+        {
+          "name": "RouterCacheDemo",
+          "params": [],
+          "exported": true,
+          "lineCount": 43
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "RouterCacheDemo"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/cache-layers/index.tsx": {
+      "filePath": "topics/data/cache-layers/index.tsx",
+      "contentHash": "fa0232e1803c981a2030c418a60f886335255b8ba21dc71157b0335ee5852167",
+      "functions": [
+        {
+          "name": "CacheLayersTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 178
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/RouterCacheDemo",
+          "specifiers": [
+            "RouterCacheDemo"
+          ]
+        }
+      ],
+      "exports": [
+        "CacheLayersTopic"
+      ],
+      "totalLines": 250,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/check/index.tsx": {
+      "filePath": "topics/data/check/index.tsx",
+      "contentHash": "dfbd6434a5900b806bc56e93f21369323d96defbd148d9e78fab405167188718",
+      "functions": [
+        {
+          "name": "DataCheckTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 43
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/CheckList",
+          "specifiers": [
+            "CheckGroup",
+            "CheckList"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "DataCheckTopic"
+      ],
+      "totalLines": 175,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/client-fetching/components/SwrPlayground.tsx": {
+      "filePath": "topics/data/client-fetching/components/SwrPlayground.tsx",
+      "contentHash": "d1ebebb0668545377acf74fad7a2c8f446100a2daf9d7aa2adc241a5906b602a",
+      "functions": [
+        {
+          "name": "Toggle",
+          "params": [
+            "{\n    label,\n    desc,\n    on,\n    onChange,\n}"
+          ],
+          "exported": false,
+          "lineCount": 42
+        },
+        {
+          "name": "SwrPlayground",
+          "params": [],
+          "exported": true,
+          "lineCount": 82
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useState"
+          ]
+        },
+        {
+          "source": "swr",
+          "specifiers": [
+            "useSWR"
+          ]
+        },
+        {
+          "source": "@/data/blog",
+          "specifiers": [
+            "Post"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "SwrPlayground"
+      ],
+      "totalLines": 158,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/client-fetching/index.tsx": {
+      "filePath": "topics/data/client-fetching/index.tsx",
+      "contentHash": "e5a0605d1c059ecc5d861b37b320e74b3fd80adb5f23a33855ba7863eeadefd8",
+      "functions": [
+        {
+          "name": "ClientFetchingTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 74
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/SwrPlayground",
+          "specifiers": [
+            "SwrPlayground"
+          ]
+        }
+      ],
+      "exports": [
+        "ClientFetchingTopic"
+      ],
+      "totalLines": 114,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/actions.ts": {
+      "filePath": "topics/data/dynamic-apis/actions.ts",
+      "contentHash": "ebb9960719321c5a335e159c98ed8747bf67b09043495e184bee3b2c845fc995",
+      "functions": [
+        {
+          "name": "setDemoCookie",
+          "params": [],
+          "returnType": "Promise<void>",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "clearDemoCookie",
+          "params": [],
+          "returnType": "Promise<void>",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/cache",
+          "specifiers": [
+            "refresh"
+          ]
+        },
+        {
+          "source": "next/headers",
+          "specifiers": [
+            "cookies"
+          ]
+        },
+        {
+          "source": "./constants",
+          "specifiers": [
+            "DEMO_COOKIE"
+          ]
+        }
+      ],
+      "exports": [
+        "setDemoCookie",
+        "clearDemoCookie"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/components/AfterDemo.tsx": {
+      "filePath": "topics/data/dynamic-apis/components/AfterDemo.tsx",
+      "contentHash": "34ad456225271b8c56ca99e7ab3013f03fffff100bb91c405875f019a7d9abbf",
+      "functions": [
+        {
+          "name": "AfterDemo",
+          "params": [],
+          "exported": true,
+          "lineCount": 78
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "AfterDemo"
+      ],
+      "totalLines": 110,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/components/ConnectionPanel.tsx": {
+      "filePath": "topics/data/dynamic-apis/components/ConnectionPanel.tsx",
+      "contentHash": "2d88f3492d42f9c4e7fe17e0e4eabea91d60a7e91c402a7d285d227ee86cc1ce",
+      "functions": [
+        {
+          "name": "ConnectionPanel",
+          "params": [],
+          "exported": true,
+          "lineCount": 30
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            "connection"
+          ]
+        }
+      ],
+      "exports": [
+        "ConnectionPanel"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/components/CookieControls.tsx": {
+      "filePath": "topics/data/dynamic-apis/components/CookieControls.tsx",
+      "contentHash": "96306b3718521bbba268af8dec2bddf5d4f2e29024ec432d6a07361af0217490",
+      "functions": [
+        {
+          "name": "SetButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "ClearButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "CookieControls",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-dom",
+          "specifiers": [
+            "useFormStatus"
+          ]
+        },
+        {
+          "source": "../actions",
+          "specifiers": [
+            "clearDemoCookie",
+            "setDemoCookie"
+          ]
+        }
+      ],
+      "exports": [
+        "CookieControls"
+      ],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/components/CookiePanel.tsx": {
+      "filePath": "topics/data/dynamic-apis/components/CookiePanel.tsx",
+      "contentHash": "37d9bb24c3f9e5e9633aefcd65d8b25f7b6551f7b819322b9f1acf9bd8ead581",
+      "functions": [
+        {
+          "name": "CookiePanel",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/headers",
+          "specifiers": [
+            "cookies"
+          ]
+        },
+        {
+          "source": "../constants",
+          "specifiers": [
+            "DEMO_COOKIE"
+          ]
+        },
+        {
+          "source": "./CookieControls",
+          "specifiers": [
+            "CookieControls"
+          ]
+        }
+      ],
+      "exports": [
+        "CookiePanel"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/components/HeadersPanel.tsx": {
+      "filePath": "topics/data/dynamic-apis/components/HeadersPanel.tsx",
+      "contentHash": "63198b212d1863c5ad63b48ab1defdf98c043f577f9758547e656a5126f6abdb",
+      "functions": [
+        {
+          "name": "HeadersPanel",
+          "params": [],
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/headers",
+          "specifiers": [
+            "headers"
+          ]
+        }
+      ],
+      "exports": [
+        "HeadersPanel"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/constants.ts": {
+      "filePath": "topics/data/dynamic-apis/constants.ts",
+      "contentHash": "7bad27680271371f0e5630224f21e04944740b68fde33a18d287d902b75ab655",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "DEMO_COOKIE"
+      ],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/dynamic-apis/index.tsx": {
+      "filePath": "topics/data/dynamic-apis/index.tsx",
+      "contentHash": "5262a2421c83b677c374f6cabe362565a4e1713c6f34fa6034ed341f89571a77",
+      "functions": [
+        {
+          "name": "PanelFallback",
+          "params": [
+            "{ label }"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "DynamicApisTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 99
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/AfterDemo",
+          "specifiers": [
+            "AfterDemo"
+          ]
+        },
+        {
+          "source": "./components/ConnectionPanel",
+          "specifiers": [
+            "ConnectionPanel"
+          ]
+        },
+        {
+          "source": "./components/CookiePanel",
+          "specifiers": [
+            "CookiePanel"
+          ]
+        },
+        {
+          "source": "./components/HeadersPanel",
+          "specifiers": [
+            "HeadersPanel"
+          ]
+        }
+      ],
+      "exports": [
+        "DynamicApisTopic"
+      ],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/forms/actions.ts": {
+      "filePath": "topics/data/forms/actions.ts",
+      "contentHash": "681b45726de2418afc624f23658c8f4e64fa0a07e4143fb01b7be9c831aee23d",
+      "functions": [
+        {
+          "name": "createPost",
+          "params": [
+            "prevState",
+            "formData"
+          ],
+          "returnType": "Promise<CreatePostState>",
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "createPostNaive",
+          "params": [
+            "prevState",
+            "formData"
+          ],
+          "returnType": "Promise<NaivePostState>",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        },
+        {
+          "source": "./schema",
+          "specifiers": [
+            "createPostSchema",
+            "CreatePostState",
+            "NaivePostState"
+          ]
+        }
+      ],
+      "exports": [
+        "createPost",
+        "createPostNaive"
+      ],
+      "totalLines": 88,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/forms/components/CreatePostForm.tsx": {
+      "filePath": "topics/data/forms/components/CreatePostForm.tsx",
+      "contentHash": "09075a6b56bd8cda67876f81bae974359fe0fe5f9243cfee527778f00db3ddc2",
+      "functions": [
+        {
+          "name": "SubmitButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "FieldErrors",
+          "params": [
+            "{ errors }"
+          ],
+          "exported": false,
+          "lineCount": 15
+        },
+        {
+          "name": "inputClass",
+          "params": [
+            "hasError"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "CreatePostForm",
+          "params": [],
+          "exported": true,
+          "lineCount": 101
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useActionState",
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "react-dom",
+          "specifiers": [
+            "useFormStatus"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../actions",
+          "specifiers": [
+            "createPost"
+          ]
+        },
+        {
+          "source": "../schema",
+          "specifiers": [
+            "BODY_MAX",
+            "BODY_MIN",
+            "CATEGORIES",
+            "INITIAL_CREATE_POST_STATE",
+            "TITLE_MAX"
+          ]
+        }
+      ],
+      "exports": [
+        "CreatePostForm"
+      ],
+      "totalLines": 175,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/forms/components/NaiveForm.tsx": {
+      "filePath": "topics/data/forms/components/NaiveForm.tsx",
+      "contentHash": "2239f8647c2d719f9aa04f080df1fd741cce875f650c99b616770969abaa18ad",
+      "functions": [
+        {
+          "name": "SubmitButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "NaiveForm",
+          "params": [],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useActionState"
+          ]
+        },
+        {
+          "source": "react-dom",
+          "specifiers": [
+            "useFormStatus"
+          ]
+        },
+        {
+          "source": "../actions",
+          "specifiers": [
+            "createPostNaive"
+          ]
+        },
+        {
+          "source": "../schema",
+          "specifiers": [
+            "INITIAL_NAIVE_STATE"
+          ]
+        }
+      ],
+      "exports": [
+        "NaiveForm"
+      ],
+      "totalLines": 88,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/forms/index.tsx": {
+      "filePath": "topics/data/forms/index.tsx",
+      "contentHash": "a19f2b7a3587c8ca0fd20a3c3401d8e8de36e1453b5294ea5bd3342ca6a45970",
+      "functions": [
+        {
+          "name": "FormsTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 111
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/CreatePostForm",
+          "specifiers": [
+            "CreatePostForm"
+          ]
+        },
+        {
+          "source": "./components/NaiveForm",
+          "specifiers": [
+            "NaiveForm"
+          ]
+        }
+      ],
+      "exports": [
+        "FormsTopic"
+      ],
+      "totalLines": 140,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/forms/schema.ts": {
+      "filePath": "topics/data/forms/schema.ts",
+      "contentHash": "8c70c844d046048f3008deabefb30dd2b6dfe89ac69675320bf8c69a90481be9",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zod",
+          "specifiers": [
+            "z"
+          ]
+        }
+      ],
+      "exports": [
+        "TITLE_MAX",
+        "BODY_MIN",
+        "BODY_MAX",
+        "CATEGORIES",
+        "createPostSchema",
+        "INITIAL_CREATE_POST_STATE",
+        "INITIAL_NAIVE_STATE"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/revalidation/actions.ts": {
+      "filePath": "topics/data/revalidation/actions.ts",
+      "contentHash": "7771638a0f3496bf5b092078b731840715def5f469fc1fb6406429183b30692c",
+      "functions": [
+        {
+          "name": "invalidateWithRevalidateTag",
+          "params": [],
+          "returnType": "Promise<void>",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "invalidateWithUpdateTag",
+          "params": [],
+          "returnType": "Promise<void>",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/cache",
+          "specifiers": [
+            "refresh",
+            "revalidateTag",
+            "updateTag"
+          ]
+        },
+        {
+          "source": "./cached-posts",
+          "specifiers": [
+            "REVALIDATION_TAG"
+          ]
+        }
+      ],
+      "exports": [
+        "invalidateWithRevalidateTag",
+        "invalidateWithUpdateTag"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/revalidation/cached-posts.ts": {
+      "filePath": "topics/data/revalidation/cached-posts.ts",
+      "contentHash": "b77a8e169a4749f450db48379bb8904cf10cbeddeec1ea6bb7c2a40239f1fa2b",
+      "functions": [
+        {
+          "name": "getTaggedPosts",
+          "params": [],
+          "returnType": "Promise<TaggedPostsData>",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/cache",
+          "specifiers": [
+            "cacheLife",
+            "cacheTag"
+          ]
+        },
+        {
+          "source": "@/data/blog",
+          "specifiers": [
+            "getPostsWithStatus",
+            "Post",
+            "PostsSource"
+          ]
+        }
+      ],
+      "exports": [
+        "REVALIDATION_TAG",
+        "getTaggedPosts"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/revalidation/components/InvalidateButtons.tsx": {
+      "filePath": "topics/data/revalidation/components/InvalidateButtons.tsx",
+      "contentHash": "a1b45292331e04128119ff7a5538e0908d9fa000f4cfa9472e6248184ec4a33d",
+      "functions": [
+        {
+          "name": "TriggerButton",
+          "params": [
+            "{ label }"
+          ],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "InvalidateButtons",
+          "params": [],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-dom",
+          "specifiers": [
+            "useFormStatus"
+          ]
+        },
+        {
+          "source": "../actions",
+          "specifiers": [
+            "invalidateWithRevalidateTag",
+            "invalidateWithUpdateTag"
+          ]
+        }
+      ],
+      "exports": [
+        "InvalidateButtons"
+      ],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/revalidation/index.tsx": {
+      "filePath": "topics/data/revalidation/index.tsx",
+      "contentHash": "0908ff24d10c4d20986e60ae7c036d5e765e0245c90a37f1340192438d3ee20e",
+      "functions": [
+        {
+          "name": "RevalidationTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 166
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./cached-posts",
+          "specifiers": [
+            "getTaggedPosts",
+            "REVALIDATION_TAG"
+          ]
+        },
+        {
+          "source": "./components/InvalidateButtons",
+          "specifiers": [
+            "InvalidateButtons"
+          ]
+        }
+      ],
+      "exports": [
+        "RevalidationTopic"
+      ],
+      "totalLines": 215,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/route-handlers/components/ApiPlayground.tsx": {
+      "filePath": "topics/data/route-handlers/components/ApiPlayground.tsx",
+      "contentHash": "08368b843b6e1de561f82b1914b9c7078e489976e5f62f778ac1a1b114bac446",
+      "functions": [
+        {
+          "name": "ApiPlayground",
+          "params": [],
+          "exported": true,
+          "lineCount": 49
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "ApiPlayground"
+      ],
+      "totalLines": 84,
+      "hasStructuralAnalysis": true
+    },
+    "topics/data/route-handlers/index.tsx": {
+      "filePath": "topics/data/route-handlers/index.tsx",
+      "contentHash": "da1e9a1df48b2fb21ef549a6b78b871f61c37417009729d50de7ed06d6a41540",
+      "functions": [
+        {
+          "name": "RouteHandlersTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 70
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/ApiPlayground",
+          "specifiers": [
+            "ApiPlayground"
+          ]
+        }
+      ],
+      "exports": [
+        "RouteHandlersTopic"
+      ],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "topics/engineering/asset-perf/index.tsx": {
+      "filePath": "topics/engineering/asset-perf/index.tsx",
+      "contentHash": "392a9bf707c25866b016e39236049ba172a5bd11552e8ff0f39f70975f3564ba",
+      "functions": [
+        {
+          "name": "AssetPerfTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 83
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "AssetPerfTopic"
+      ],
+      "totalLines": 171,
+      "hasStructuralAnalysis": true
+    },
+    "topics/engineering/build-deploy/index.tsx": {
+      "filePath": "topics/engineering/build-deploy/index.tsx",
+      "contentHash": "be73e55453e0207d38df340f02625c234857282a9501e36e4e969126648e1cb4",
+      "functions": [
+        {
+          "name": "BuildDeployTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 115
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "BuildDeployTopic"
+      ],
+      "totalLines": 213,
+      "hasStructuralAnalysis": true
+    },
+    "topics/engineering/caching-strategy/index.tsx": {
+      "filePath": "topics/engineering/caching-strategy/index.tsx",
+      "contentHash": "ccbdb32ee73ee3c52e2261eb697fdb959b0adbd56b859bcd0a630b75cc7f8b65",
+      "functions": [
+        {
+          "name": "CachingStrategyTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 118
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "CachingStrategyTopic"
+      ],
+      "totalLines": 177,
+      "hasStructuralAnalysis": true
+    },
+    "topics/engineering/middleware/index.tsx": {
+      "filePath": "topics/engineering/middleware/index.tsx",
+      "contentHash": "71954d8ceef6fae802dc6d3d5fb8b4a47e1549c09b99fd4e22c9e3c7283e6db2",
+      "functions": [
+        {
+          "name": "MiddlewareTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 157
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/headers",
+          "specifiers": [
+            "headers"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "@/lib/demo-header",
+          "specifiers": [
+            "DEMO_HEADER"
+          ]
+        }
+      ],
+      "exports": [
+        "MiddlewareTopic"
+      ],
+      "totalLines": 231,
+      "hasStructuralAnalysis": true
+    },
+    "topics/metadata/crawl/index.tsx": {
+      "filePath": "topics/metadata/crawl/index.tsx",
+      "contentHash": "abc4fe41c023df0a75e01ba9343919e143d2bd2e8d08f6a218b44bb7b9f7daf6",
+      "functions": [
+        {
+          "name": "CrawlTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 95
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "CrawlTopic"
+      ],
+      "totalLines": 120,
+      "hasStructuralAnalysis": true
+    },
+    "topics/metadata/guide/index.tsx": {
+      "filePath": "topics/metadata/guide/index.tsx",
+      "contentHash": "2b7a5a59f587107904b5f90552d1627f9c2a3bc7c15cf60e4cf6c53d15c90969",
+      "functions": [
+        {
+          "name": "MetadataGuideTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 169
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "MetadataGuideTopic"
+      ],
+      "totalLines": 260,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/check/index.tsx": {
+      "filePath": "topics/rendering/check/index.tsx",
+      "contentHash": "5f754d583192711de3eb8d9f884f448f5edd630c814061530fd3e8f5e79f161d",
+      "functions": [
+        {
+          "name": "RenderingCheckTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 43
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/CheckList",
+          "specifiers": [
+            "CheckGroup",
+            "CheckList"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "RenderingCheckTopic"
+      ],
+      "totalLines": 179,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/isr/cached-posts.ts": {
+      "filePath": "topics/rendering/isr/cached-posts.ts",
+      "contentHash": "b9853963b044eb0cec4c363d3b8372d9ce6e131e691476689c07bea7529ec052",
+      "functions": [
+        {
+          "name": "getIsrPosts",
+          "params": [],
+          "returnType": "Promise<IsrPostsData>",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/cache",
+          "specifiers": [
+            "cacheLife",
+            "cacheTag"
+          ]
+        },
+        {
+          "source": "@/data/blog",
+          "specifiers": [
+            "getPostsWithStatus",
+            "Post",
+            "PostsSource"
+          ]
+        }
+      ],
+      "exports": [
+        "getIsrPosts"
+      ],
+      "totalLines": 48,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/isr/index.tsx": {
+      "filePath": "topics/rendering/isr/index.tsx",
+      "contentHash": "b8e353d74e11f54027c4ca7a848e8cf596fb03f13583c4bef09a9d88a7d21565",
+      "functions": [
+        {
+          "name": "IsrTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 150
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/ArticleCard",
+          "specifiers": [
+            "ArticleCard"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./cached-posts",
+          "specifiers": [
+            "getIsrPosts"
+          ]
+        }
+      ],
+      "exports": [
+        "IsrTopic"
+      ],
+      "totalLines": 208,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/ppr/index.tsx": {
+      "filePath": "topics/rendering/ppr/index.tsx",
+      "contentHash": "d6019a76eb5dcb3500cfdc096ae9bac059c65947f5da818a036d527681a58846",
+      "functions": [
+        {
+          "name": "sleep",
+          "params": [
+            "ms"
+          ],
+          "exported": false,
+          "lineCount": 2
+        },
+        {
+          "name": "CachedShellPanel",
+          "params": [],
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "DynamicHole",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "HoleSkeleton",
+          "params": [],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "PprTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 122
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/cache",
+          "specifiers": [
+            "cacheLife",
+            "cacheTag"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "PprTopic"
+      ],
+      "totalLines": 276,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/spectrum/index.tsx": {
+      "filePath": "topics/rendering/spectrum/index.tsx",
+      "contentHash": "903476a71974a64c64524f56314fd5450297ca3d2a87152aa0dd61e135ee8e3e",
+      "functions": [
+        {
+          "name": "SpectrumTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 133
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        }
+      ],
+      "exports": [
+        "SpectrumTopic"
+      ],
+      "totalLines": 275,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/ssr/index.tsx": {
+      "filePath": "topics/rendering/ssr/index.tsx",
+      "contentHash": "43ee23ba05cd6770a60639cd0978ade4170c55c2757a4c2a8b2ee78b8d3bcdf0",
+      "functions": [
+        {
+          "name": "SsrTopic",
+          "params": [
+            "{ renderedAt, requestId }"
+          ],
+          "exported": true,
+          "lineCount": 65
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "SsrTopic"
+      ],
+      "totalLines": 97,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/streaming/index.tsx": {
+      "filePath": "topics/rendering/streaming/index.tsx",
+      "contentHash": "d90c3386c23d411745e8bcc364137acbf8c8029b5cc000af63ff9a51f721296f",
+      "functions": [
+        {
+          "name": "sleep",
+          "params": [
+            "ms"
+          ],
+          "exported": false,
+          "lineCount": 2
+        },
+        {
+          "name": "nowUTC",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "SlowBlock",
+          "params": [
+            "{ ms, title }"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "BlockSkeleton",
+          "params": [
+            "{ title }"
+          ],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "StreamingTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 87
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "StreamingTopic"
+      ],
+      "totalLines": 178,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rendering/view-transition/index.tsx": {
+      "filePath": "topics/rendering/view-transition/index.tsx",
+      "contentHash": "52ee1a7d8522462e9f1fb0c8eb4435c9913d7f7d5ee5d0854ea089757d0d52a9",
+      "functions": [
+        {
+          "name": "ViewTransitionTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 127
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "ViewTransitionTopic"
+      ],
+      "totalLines": 205,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/conventions/index.tsx": {
+      "filePath": "topics/router/conventions/index.tsx",
+      "contentHash": "c786a5f72be901868b5f6619984fd32d8ec27955a946c1f21b29d04a0ae72878",
+      "functions": [
+        {
+          "name": "ConventionsTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 168
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "ConventionsTopic"
+      ],
+      "totalLines": 231,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/dynamic-routes/index.tsx": {
+      "filePath": "topics/router/dynamic-routes/index.tsx",
+      "contentHash": "4aac87e7e161695071917587fb2bd5c7508bdec57a45942bc5a9eab4f3b9a0c4",
+      "functions": [
+        {
+          "name": "DynamicRoutesTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 111
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "@/data/user",
+          "specifiers": [
+            "users"
+          ]
+        }
+      ],
+      "exports": [
+        "DynamicRoutesTopic"
+      ],
+      "totalLines": 129,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/dynamic-routes/UserDetail.tsx": {
+      "filePath": "topics/router/dynamic-routes/UserDetail.tsx",
+      "contentHash": "1d7dc1a1d4ba5f061fc3a1e74d5bce00cf6766ec025268dd29e8926fc815ab9a",
+      "functions": [
+        {
+          "name": "UserDetail",
+          "params": [
+            "{ user }"
+          ],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/image",
+          "specifiers": [
+            "Image"
+          ]
+        },
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/types/user",
+          "specifiers": [
+            "User"
+          ]
+        }
+      ],
+      "exports": [
+        "UserDetail"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/errors/index.tsx": {
+      "filePath": "topics/router/errors/index.tsx",
+      "contentHash": "98a44b497e6ec07b598b236f0f275b02afff6afbfdc6d40d14318ecc69397f75",
+      "functions": [
+        {
+          "name": "ErrorsTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 183
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./TriggerError",
+          "specifiers": [
+            "TriggerError"
+          ]
+        }
+      ],
+      "exports": [
+        "ErrorsTopic"
+      ],
+      "totalLines": 205,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/errors/TriggerError.tsx": {
+      "filePath": "topics/router/errors/TriggerError.tsx",
+      "contentHash": "102fdcb278fdc405d3620df1c0473cfdaa6df6007ca83fc5ce621783bdef3901",
+      "functions": [
+        {
+          "name": "TriggerError",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "TriggerError"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/i18n/dictionaries.ts": {
+      "filePath": "topics/router/i18n/dictionaries.ts",
+      "contentHash": "b793b33e9f34390630c32f7ca8e0402746d1f39e9451705ab9d8751903e93e18",
+      "functions": [
+        {
+          "name": "getDictionary",
+          "params": [
+            "lang"
+          ],
+          "returnType": "Dictionary | undefined",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "getOtherLocale",
+          "params": [
+            "lang"
+          ],
+          "returnType": "Locale",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "LOCALES",
+        "getDictionary",
+        "getOtherLocale"
+      ],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/i18n/index.tsx": {
+      "filePath": "topics/router/i18n/index.tsx",
+      "contentHash": "4f722d61215c572489f850ba04a73a90b4eeecbc4284ce9446f7a3f06fae0854",
+      "functions": [
+        {
+          "name": "I18nTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 162
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "I18nTopic"
+      ],
+      "totalLines": 223,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/navigation/components/NavigationPlayground.tsx": {
+      "filePath": "topics/router/navigation/components/NavigationPlayground.tsx",
+      "contentHash": "7155cb470af8ea29c8fab455c2eff7bc096c3ff252c18927e4b2262d3c90a184",
+      "functions": [
+        {
+          "name": "NavigationPlayground",
+          "params": [],
+          "exported": true,
+          "lineCount": 84
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "usePathname",
+            "useRouter"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "NavigationPlayground"
+      ],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/navigation/index.tsx": {
+      "filePath": "topics/router/navigation/index.tsx",
+      "contentHash": "37b6ce8db542ff696a21b02d0c1825b70fe5264ed277e14f10d651b7ec336b28",
+      "functions": [
+        {
+          "name": "NavigationTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 161
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/NavigationPlayground",
+          "specifiers": [
+            "NavigationPlayground"
+          ]
+        }
+      ],
+      "exports": [
+        "NavigationTopic"
+      ],
+      "totalLines": 188,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/parallel/components/ShotPageContent.tsx": {
+      "filePath": "topics/router/parallel/components/ShotPageContent.tsx",
+      "contentHash": "e8f3720e1e92ff1abfb1307c9640349fe30e78109175ae8f997580a2d2972a3a",
+      "functions": [
+        {
+          "name": "ShotPageContent",
+          "params": [
+            "{ shot }"
+          ],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "../shots",
+          "specifiers": [
+            "Shot"
+          ]
+        }
+      ],
+      "exports": [
+        "ShotPageContent"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/parallel/index.tsx": {
+      "filePath": "topics/router/parallel/index.tsx",
+      "contentHash": "9fa9ac359d8a9e673973fea063e8b640f1f5e1112c3846d563e769090357e93e",
+      "functions": [
+        {
+          "name": "ParallelTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 51
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./shots",
+          "specifiers": [
+            "SHOTS"
+          ]
+        }
+      ],
+      "exports": [
+        "ParallelTopic"
+      ],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/parallel/ShotModal.tsx": {
+      "filePath": "topics/router/parallel/ShotModal.tsx",
+      "contentHash": "2577e0c2e2b9ac86d70c0a6c9c2d6d83f6490d435e8f021f4b1e93293bfd7861",
+      "functions": [
+        {
+          "name": "ShotModal",
+          "params": [
+            "{ shot }"
+          ],
+          "exported": true,
+          "lineCount": 106
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            "useRouter"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "./shots",
+          "specifiers": [
+            "Shot"
+          ]
+        }
+      ],
+      "exports": [
+        "ShotModal"
+      ],
+      "totalLines": 137,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/parallel/shots.ts": {
+      "filePath": "topics/router/parallel/shots.ts",
+      "contentHash": "f889f6380e5a583a47c4af5af090448c303ab4e448ad6ada1e087de0164096a3",
+      "functions": [
+        {
+          "name": "getShot",
+          "params": [
+            "id"
+          ],
+          "returnType": "Shot | undefined",
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "SHOTS",
+        "getShot"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "topics/router/route-groups/index.tsx": {
+      "filePath": "topics/router/route-groups/index.tsx",
+      "contentHash": "14d8e1133d750a4d5590f2a25674e311b612f149802bd2a63fe742d700b79498",
+      "functions": [
+        {
+          "name": "RouteGroupsTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 142
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "RouteGroupsTopic"
+      ],
+      "totalLines": 200,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/check/index.tsx": {
+      "filePath": "topics/rsc-boundary/check/index.tsx",
+      "contentHash": "e3d04529b94c16c8f358b821b213b02704052f776907d2086377f3ff5b1a9459",
+      "functions": [
+        {
+          "name": "RscBoundaryCheckTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/CheckList",
+          "specifiers": [
+            "CheckGroup",
+            "CheckList"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "RscBoundaryCheckTopic"
+      ],
+      "totalLines": 161,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/guide/index.tsx": {
+      "filePath": "topics/rsc-boundary/guide/index.tsx",
+      "contentHash": "64b0928c8d572f5c1e67c60a33cbaf7b15db5b868280b3f33ef67fa52252a037",
+      "functions": [
+        {
+          "name": "RscGuideTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 134
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/link",
+          "specifiers": [
+            "Link"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        }
+      ],
+      "exports": [
+        "RscGuideTopic"
+      ],
+      "totalLines": 207,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/props-boundary/index.tsx": {
+      "filePath": "topics/rsc-boundary/props-boundary/index.tsx",
+      "contentHash": "3e8e0fa4ac4656c92463e367b1ae3793e878be2e40c8d8855dbd902e91d08afa",
+      "functions": [
+        {
+          "name": "loadBoundaryNote",
+          "params": [],
+          "returnType": "Promise<string>",
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "PropsBoundaryTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 74
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Suspense"
+          ]
+        },
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "@/components/UserListClient",
+          "specifiers": [
+            "UserListClient"
+          ]
+        },
+        {
+          "source": "@/data/user",
+          "specifiers": [
+            "users"
+          ]
+        },
+        {
+          "source": "./PromiseSlot",
+          "specifiers": [
+            "PromiseSlot"
+          ]
+        }
+      ],
+      "exports": [
+        "PropsBoundaryTopic"
+      ],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/props-boundary/PromiseSlot.tsx": {
+      "filePath": "topics/rsc-boundary/props-boundary/PromiseSlot.tsx",
+      "contentHash": "c45fea747a9ee23c3cc9e88bee9e58146db4764933c753b54f9789055af404be",
+      "functions": [
+        {
+          "name": "PromiseSlot",
+          "params": [
+            "{ note }"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "use"
+          ]
+        }
+      ],
+      "exports": [
+        "PromiseSlot"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/server-actions/actions.ts": {
+      "filePath": "topics/rsc-boundary/server-actions/actions.ts",
+      "contentHash": "d0779a352bc7f86052eda0b4079ef10bfcf7b6e5f15b0d45a0feb5e892b1cafc",
+      "functions": [
+        {
+          "name": "postMessage",
+          "params": [
+            "prevState",
+            "formData"
+          ],
+          "returnType": "Promise<MessageActionState>",
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "next/cache",
+          "specifiers": [
+            "revalidatePath"
+          ]
+        },
+        {
+          "source": "./store",
+          "specifiers": [
+            "appendMessage",
+            "MESSAGE_MAX_LENGTH",
+            "MessageActionState"
+          ]
+        }
+      ],
+      "exports": [
+        "postMessage"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/server-actions/components/GuestbookForm.tsx": {
+      "filePath": "topics/rsc-boundary/server-actions/components/GuestbookForm.tsx",
+      "contentHash": "ac7c894dd271dbb1eeecb1b4d602a0f6fe0bee0208ae71a123cba10a281c38a3",
+      "functions": [
+        {
+          "name": "SubmitButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "formatTime",
+          "params": [
+            "iso"
+          ],
+          "returnType": "string",
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "GuestbookForm",
+          "params": [
+            "{ messages }"
+          ],
+          "exported": true,
+          "lineCount": 122
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useActionState",
+            "useEffect",
+            "useOptimistic",
+            "useRef",
+            "useSyncExternalStore"
+          ]
+        },
+        {
+          "source": "react-dom",
+          "specifiers": [
+            "useFormStatus"
+          ]
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            "cn"
+          ]
+        },
+        {
+          "source": "../actions",
+          "specifiers": [
+            "postMessage"
+          ]
+        },
+        {
+          "source": "../store",
+          "specifiers": [
+            "Message",
+            "MESSAGE_MAX_LENGTH",
+            "MessageActionState"
+          ]
+        }
+      ],
+      "exports": [
+        "GuestbookForm"
+      ],
+      "totalLines": 201,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/server-actions/index.tsx": {
+      "filePath": "topics/rsc-boundary/server-actions/index.tsx",
+      "contentHash": "d2905bfb93607c4dd45c0c6855fc43202cb3f8b57154c19bd7ea4f3808f712f6",
+      "functions": [
+        {
+          "name": "ServerActionsTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 90
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./components/GuestbookForm",
+          "specifiers": [
+            "GuestbookForm"
+          ]
+        },
+        {
+          "source": "./store",
+          "specifiers": [
+            "listMessages"
+          ]
+        }
+      ],
+      "exports": [
+        "ServerActionsTopic"
+      ],
+      "totalLines": 117,
+      "hasStructuralAnalysis": true
+    },
+    "topics/rsc-boundary/server-actions/store.ts": {
+      "filePath": "topics/rsc-boundary/server-actions/store.ts",
+      "contentHash": "f8c192cdf88caf4472e8561d96df31b6febbd9de2c11b7961c0314155a17c9e9",
+      "functions": [
+        {
+          "name": "listMessages",
+          "params": [],
+          "returnType": "Message[]",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "appendMessage",
+          "params": [
+            "input"
+          ],
+          "returnType": "Message",
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "MESSAGE_MAX_LENGTH",
+        "listMessages",
+        "appendMessage"
+      ],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
+    "topics/security/boundaries/ClientEnvCells.tsx": {
+      "filePath": "topics/security/boundaries/ClientEnvCells.tsx",
+      "contentHash": "2e08e7c3e0bb5b1734b4a2e021614f4f2c6e51549550a13448eb9258372cf4a0",
+      "functions": [
+        {
+          "name": "ClientValue",
+          "params": [
+            "{ value }"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "ClientServerOnlyValue",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "ClientPublicValue",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ClientServerOnlyValue",
+        "ClientPublicValue"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "topics/security/boundaries/index.tsx": {
+      "filePath": "topics/security/boundaries/index.tsx",
+      "contentHash": "cdc303974477d332e05189dd6b652f22b23f127fb5c2135e595123eed337bfee",
+      "functions": [
+        {
+          "name": "SecurityBoundariesTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 175
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "./ClientEnvCells",
+          "specifiers": [
+            "ClientPublicValue",
+            "ClientServerOnlyValue"
+          ]
+        }
+      ],
+      "exports": [
+        "SecurityBoundariesTopic"
+      ],
+      "totalLines": 272,
+      "hasStructuralAnalysis": true
+    },
+    "topics/security/headers/index.tsx": {
+      "filePath": "topics/security/headers/index.tsx",
+      "contentHash": "35a835bf5bfc4cdf8c205bc011f5fdf05958aa6484170c374e2e142cf54630dc",
+      "functions": [
+        {
+          "name": "SecurityHeadersTopic",
+          "params": [],
+          "exported": true,
+          "lineCount": 128
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/components/topic/TopicPage",
+          "specifiers": [
+            "TopicPage",
+            "TopicSection"
+          ]
+        },
+        {
+          "source": "@/lib/security-headers",
+          "specifiers": [
+            "SECURITY_HEADERS"
+          ]
+        },
+        {
+          "source": "./LiveHeaders",
+          "specifiers": [
+            "LiveHeaders"
+          ]
+        }
+      ],
+      "exports": [
+        "SecurityHeadersTopic"
+      ],
+      "totalLines": 223,
+      "hasStructuralAnalysis": true
+    },
+    "topics/security/headers/LiveHeaders.tsx": {
+      "filePath": "topics/security/headers/LiveHeaders.tsx",
+      "contentHash": "642f760f7368a72cd4d0b4f091e2e19d15d84bc1ebada2f8eafbe06f1e1ff4a1",
+      "functions": [
+        {
+          "name": "LiveHeaders",
+          "params": [],
+          "exported": true,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "LiveHeaders"
+      ],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.json": {
+      "filePath": "tsconfig.json",
+      "contentHash": "be18523b23b78b6e1a876ddd107d330f0168bddf09d751b57e0b5edce69c66f3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    },
+    "types/user.ts": {
+      "filePath": "types/user.ts",
+      "contentHash": "a57dca0f8e7f8fb20f2e5d11ed7a8b120d141817bb8d9f450f49b5839dc5cd31",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "vitest.config.mts": {
+      "filePath": "vitest.config.mts",
+      "contentHash": "f468648dae085af784a370347e60705a3ab570ab8deb755e31d16adf2f500ac5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": false
+    }
+  }
+}
