@@ -200,6 +200,7 @@ Client 文件
   └─ import Server 组件          不可以。构建直接失败`}
                     </Diagram>
                     <CodeBlock
+                        language="tsx"
                         title="Server 父组件把推荐填进客户端壳"
                         code={`// page.tsx — Server Component
 import { FilterShell } from './filter-shell';
@@ -214,6 +215,7 @@ export default async function Page({ id }: { id: string }) {
 }`}
                     />
                     <CodeBlock
+                        language="tsx"
                         title="filter-shell.tsx — 只有壳进入客户端包"
                         code={`'use client';
 
@@ -407,6 +409,7 @@ FilterShell.tsx  'use client'
                         设计接口时先写「这次点击要不要新的授权数据」。不要,就把已有数据放进 props,后面的派生放在 Client。要,就让点击改变 URL 或调用 Server Action,由服务器重算,而不是让客户端持有一个永远不会再执行的 async 组件引用。
                     </P>
                     <CodeBlock
+                        language="tsx"
                         title="需要新查询时,把条件放进地址"
                         code={`'use client';
 
@@ -463,6 +466,7 @@ export function SizePicker({ sizes }: { sizes: string[] }) {
                         Suspense 的边界按「用户能单独理解的一块」来画,和性能专题里的区域表是同一件事。推荐的骨架可以晚一点换成列表,不应当把标题和购买按钮一起藏进同一个 fallback。fallback 本身要轻,不要在 fallback 里再发请求。
                     </P>
                     <CodeBlock
+                        language="tsx"
                         title="壳不 await;两块慢数据各管各的"
                         code={`import { Suspense } from 'react';
 
@@ -545,6 +549,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                         <code className="font-mono text-[11px]">productId</code>。Action 的参数同样会被客户端看见和伪造,不能把「调用方是自己人」写进参数里信任。
                     </P>
                     <CodeBlock
+                        language="ts"
                         title="鉴权写在 Action 里面"
                         code={`'use server';
 

@@ -209,6 +209,7 @@ UI 组件             只渲染 + 转发用户意图,零请求细节`}
                 note="见 composition/useUserSearch.ts —— 注意它没有任何定时器、AbortController 或订阅代码,全部能力来自组合"
             >
                 <CodeBlock
+                    language="ts"
                     title="composition/useUserSearch.ts(节选)"
                     code={`const [keyword, setKeyword] = useState('');            // ① 输入框原始状态
 const debouncedKeyword = useDebouncedValue(keyword, 400); // ② 击键流 → 请求信号

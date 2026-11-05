@@ -157,6 +157,7 @@ const ComponentCommGuide = memo(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="tsx"
                         title="子组件上报意图,不直接改父级 state"
                         code={`function FilterBar({ keyword, onKeywordChange }: Props) {
     return <input value={keyword} onChange={(e) => onKeywordChange(e.target.value)} />;
@@ -207,6 +208,7 @@ function Page() {
             >
                 <Stack>
                     <CodeBlock
+                        language="tsx"
                         title="提升,而不是兄弟互相同步"
                         code={`// ✓ 父级是唯一事实
 function Bench() {
@@ -247,6 +249,7 @@ function List({ onSelect }: { onSelect: (id: string) => void }) {
             >
                 <Stack>
                     <CodeBlock
+                        language="tsx"
                         title="Shell 不认识 theme,叶子自己在 Page 里拿到"
                         code={`// ✗ 钻探:Shell / Panel 都要声明 theme,却从不使用
 <Shell theme={theme}>
@@ -289,6 +292,7 @@ function List({ onSelect }: { onSelect: (id: string) => void }) {
                 note="讲解要点:筛选、分页、当前 tab 这类「用户希望复制链接还能看到同一屏」的状态,属于 URL,不属于 Context。会话级选中项、未提交草稿通常不应进 URL。searchParams 是数据源,组件只是它的视图。"
             >
                 <CodeBlock
+                    language="ts"
                     title="过滤条件以 URL 为事实"
                     code={`const [params, setParams] = useSearchParams();
 const status = params.get('status') ?? 'all';
@@ -352,6 +356,7 @@ function setStatus(next: string) {
                 note="讲解要点:模块级 EventTarget、window 自定义事件、在 effect 里把 props 写回父级,都会把数据流变成隐性的。第三方非 React 插件是少数例外,接进来也要在边界处翻译成 props 或 Store,不要让事件总线穿过整棵树。"
             >
                 <CodeBlock
+                    language="tsx"
                     title="三条红线"
                     code={`// ① 用 effect 把子 state 同步给父 / 兄弟
 useEffect(() => { onChange(value); }, [value]); // 多一次渲染,还容易环
@@ -371,6 +376,7 @@ bus.dispatchEvent(new Event('cart:add')); // 谁在听?类型在哪?如何取消
             >
                 <Stack>
                     <CodeBlock
+                        language="text"
                         title="评审清单"
                         code={`□ 谁是唯一可以改它的人?
 □ 中间层是否根本不该看见它? → 组合

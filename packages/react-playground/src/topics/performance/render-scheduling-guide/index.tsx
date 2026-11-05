@@ -111,6 +111,7 @@ INP(Interaction to Next Paint)衡量的正是
                         非紧急,晚几百毫秒无所谓,只要别卡住前者。
                     </P>
                     <CodeBlock
+                        language="tsx"
                         title="transition-deferred/components/InputLagDemo.tsx(节选)"
                         code={`markInput();
 setKeyword(value);                       // 紧急:输入回显
@@ -128,6 +129,7 @@ if (mode === 'transition') {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         code={`const [isPending, startTransition] = useTransition();
 
 startTransition(() => {
@@ -152,6 +154,7 @@ startTransition(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         code={`const deferredKeyword = useDeferredValue(keyword);
 // 紧急渲染中 deferredKeyword 先返回旧值,
 // React 在后台用新值重试渲染,就绪后提交;
@@ -320,12 +323,14 @@ startTransition(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="① 把 transition 当银弹:渲染本身昂贵时,memo / 虚拟列表才是解"
                         code={`// ✗ 错误:10 万行列表指望 transition 救命 —— 工作量没变,只是挪了时机
 startTransition(() => setShowHugeList(true));
 // ✓ 正确:先减工作量(虚拟列表),再谈调度;两轴正交(第 8 节)`}
                     />
                     <CodeBlock
+                        language="tsx"
                         title="② 把 deferred 用在受控输入本身:输入回显必须同步"
                         code={`// ✗ 错误:输入框绑定 deferred 值,打字会「慢半拍」
 <input value={deferredKeyword} />
@@ -333,18 +338,21 @@ startTransition(() => setShowHugeList(true));
 <input value={keyword} /> <SlowList keyword={deferredKeyword} />`}
                     />
                     <CodeBlock
+                        language="js"
                         title="③ 在 transition 回调里做昂贵计算:它只调度渲染,不调度计算"
                         code={`// ✗ 错误:昂贵同步计算照样阻塞 —— startTransition 不搬运 CPU 工作
 startTransition(() => { const r = heavyCompute(data); setResult(r); });
 // ✓ 正确:计算移出(Web Worker / 分片 / 缓存),transition 只管渲染提交`}
                     />
                     <CodeBlock
+                        language="js"
                         title="④ 指望 transition 降低外部 Store 更新优先级(回扣 Agent 专题)"
                         code={`// ✗ 误解:useSyncExternalStore 订阅的更新可以包进 transition 延后
 // ✓ 事实:为保证一致性,React 会把相关 transition 回退为阻塞更新;
 //   外部 Store 的降频要做在发布节奏上(见 Agent 专题梳理页第 8 节)`}
                     />
                     <CodeBlock
+                        language="js"
                         title="⑤ 以为 deferred / transition 能保护首挂载:它们只调度「更新」"
                         code={`// ✗ 后果:页面进入时同步挂载 5000 项昂贵列表,首屏本身卡死
 //   (本专题 InputLagDemo 曾真实踩过:deferred 模式下进入页面依然卡)
@@ -386,6 +394,7 @@ useEffect(() => {
                         「中间态与终态」而非内部实现:
                     </P>
                     <CodeBlock
+                        language="tsx"
                         title="transition-deferred/index.test.tsx(节选)"
                         code={`// 渲染序列中必然存在「输入已变、deferred 值未追上」的中间态
 const lagFrame = snapshots.find((s) => s.keyword === 'ab' && s.listKeyword === '');
@@ -394,6 +403,7 @@ expect(lagFrame).toBeTruthy();
 expect(snapshots.at(-1)).toEqual({ keyword: 'ab', listKeyword: 'ab' });`}
                     />
                     <CodeBlock
+                        language="tsx"
                         title="suspense-ui/index.test.tsx(节选)"
                         code={`// transition 模式:更新期间旧内容保持,fallback 不出现
 fireEvent.click(screen.getByText('查询「render」'));

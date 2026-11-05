@@ -100,6 +100,7 @@ const ComponentCommPlayground = memo(() => {
                 <div className="space-y-4">
                     <WrongSyncDemo />
                     <CodeBlock
+                        language="tsx"
                         title="不要用 effect 当通道"
                         code={`// ✗ 子组件是第二份事实
 useEffect(() => { onDraftChange(draft); }, [draft, onDraftChange]);

@@ -37,6 +37,7 @@ const ActionsTopic = memo(() => {
                 <div className="space-y-4">
                     <FormActionBasic />
                     <CodeBlock
+                        language="tsx"
                         title="同一个需求,两种写法"
                         code={`// ❌ 手动版:四件样板,漏一件就是一个 bug
 const [email, setEmail] = useState('');
@@ -74,6 +75,7 @@ const subscribeAction = async (formData: FormData) => {
                 <div className="space-y-4">
                     <ActionStateForm />
                     <CodeBlock
+                        language="tsx"
                         title="错误回显的标准姿势"
                         code={`const [state, formAction, isPending] = useActionState(
     async (prev: CommentState, formData: FormData) => {
@@ -117,6 +119,7 @@ const subscribeAction = async (formData: FormData) => {
    真实值」,无缝衔接          = 免费回滚,只补一条提示`}
                     </Diagram>
                     <CodeBlock
+                        language="ts"
                         title="useOptimistic 的三件套"
                         code={`const [messages, setMessages] = useState(initial);
 const [optimisticMessages, applyOptimistic] = useOptimistic(
@@ -150,6 +153,7 @@ const like = (id: number) => {
                 <div className="space-y-4">
                     <FormStatusDemo />
                     <CodeBlock
+                        language="tsx"
                         title="必须拆成子组件"
                         code={`import { useFormStatus } from 'react-dom';
 
@@ -213,6 +217,7 @@ function FeedbackForm() {
                         </div>
                     </div>
                     <CodeBlock
+                        language="tsx"
                         title="速查:一次提交该选哪件"
                         code={`// Q1: 表单提交后要用「结果/错误」更新界面?
 //   → useActionState:返回值即新 state,错误回显走 return 不走 throw

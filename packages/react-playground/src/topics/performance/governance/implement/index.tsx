@@ -54,6 +54,7 @@ const ImplementLab = memo(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="边界(不要记反)"
                         code={`setKeyword(value);                    // 紧急:受控输入
 startTransition(() => setList(value)); // 非紧急:昂贵 UI 更新

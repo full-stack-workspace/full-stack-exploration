@@ -113,6 +113,7 @@ const ErrorBoundaryTopic = memo(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="tsx"
                         title="topics/advanced/error-boundary/components/DemoErrorBoundary.tsx"
                         code={`class DemoErrorBoundary extends Component<Props, { error: Error | null }> {
     static getDerivedStateFromError(error: Error) {
@@ -201,6 +202,7 @@ const ErrorBoundaryTopic = memo(() => {
                 <Stack>
                     <CatchScopeDemo />
                     <CodeBlock
+                        language="tsx"
                         title="事件处理必须自己接,不能指望边界"
                         code={`// ✗ 边界看不见这次 throw,组件也不会被降级
 <button onClick={() => { throw new Error('boom'); }} />
@@ -222,6 +224,7 @@ const ErrorBoundaryTopic = memo(() => {
                 <Stack>
                     <RethrowDemo />
                     <CodeBlock
+                        language="tsx"
                         title="catch → state → render 再 throw"
                         code={`function Panel() {
     const [error, setError] = useState<Error | null>(null);
@@ -267,6 +270,7 @@ const ErrorBoundaryTopic = memo(() => {
                 <Stack>
                     <ResetRecoveryDemo />
                     <CodeBlock
+                        language="tsx"
                         title="重置 = 清边界 state + 让子树回到可渲染条件"
                         code={`// 边界内部:只负责退出 fallback
 handleReset() {
@@ -340,6 +344,7 @@ handleReset() {
                 note="讲解要点:createRoot 的 onCaughtError / onUncaughtError / onRecoverableError 是统一上报口,不是第二套 UI 通道。没有 Error Boundary,onCaughtError 不会因为你写了回调就凭空出现 fallback。本应用 src/index.tsx 目前只 createRoot(el),尚未接入这三项,上报仍分散在各边界的 componentDidCatch。"
             >
                 <CodeBlock
+                    language="tsx"
                     title="src/index.tsx 可对照添加(本仓库暂未接入)"
                     code={`createRoot(rootEl, {
     onCaughtError(error, errorInfo) {
@@ -365,6 +370,7 @@ handleReset() {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="速查清单"
                         code={`// 1. 分层,而不是二选一
 //    壳层:保导航(本仓库 AppErrorBoundary 包 Routes,不包 Header)
@@ -411,6 +417,7 @@ handleReset() {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="五条高频事故"
                         code={`// ① 以为 onClick throw 会被边界接住
 //    事实:事件在 React 调用栈外,走 onUncaughtError,UI 原地不动

@@ -37,6 +37,7 @@ const ViewTransitionActivityTopic = memo(() => {
                 <div className="space-y-4">
                     <ManualTransitionDemo />
                     <CodeBlock
+                        language="tsx"
                         title="ViewTransition 写法示意(react@experimental,19.2 stable 未导出)"
                         code={`// ⚠️ 以下 import 在当前 19.2.4 stable 中会得到 undefined,
 //    仅在 react@experimental 通道可用:
@@ -71,6 +72,7 @@ startTransition(() => setTab('detail'));
                 <div className="space-y-4">
                     <TransitionTypePlayground />
                     <CodeBlock
+                        language="ts"
                         title="addTransitionType 写法示意(react@experimental,19.2 stable 未导出)"
                         code={`import { unstable_addTransitionType as addTransitionType, startTransition } from 'react';
 

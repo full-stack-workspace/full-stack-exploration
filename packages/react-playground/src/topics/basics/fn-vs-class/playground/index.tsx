@@ -40,6 +40,7 @@ const FnVsClassPlayground = memo(() => {
                 <div className="space-y-4">
                     <SnapshotThisDemo />
                     <CodeBlock
+                        language="js"
                         title="读的不是同一种东西"
                         code={`setTimeout(() => this.setState({ later: this.state.count }), 800); // 盒子
 setTimeout(() => setLater(count), 800);                          // 快照`}

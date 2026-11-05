@@ -262,6 +262,7 @@ const ComponentCommPractice = memo(() => {
                 note="评论草稿是详情的内部 state。换工单时用 key 卸掉旧实例,避免把上一条的未提交文字带到下一条 —— 列表专题的「用 key 重置」。若草稿需要在切换后还在,所有权就该提升,而不是继续藏在详情里。"
             >
                 <CodeBlock
+                    language="tsx"
                     title="practice/index.tsx(通道归属)"
                     code={`const status = params.get('status') ?? 'all';     // URL:可分享的过滤
 const [selectedId, setSelectedId] = useState(...); // 页面:兄弟共用
