@@ -165,6 +165,7 @@ const FnVsClassGuide = memo(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="同一句「3 秒后读 count」"
                         code={`// class:读的是盒子里此刻的值
 handleLater() {
@@ -207,6 +208,7 @@ function handleLater() {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="订阅:class 三处 vs 一个 effect"
                         code={`// class:同一功能被撕成三块,还要自己对比 prevProps
 componentDidMount() { connect(this.props.roomId); }
@@ -255,6 +257,7 @@ useEffect(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="tsx"
                         title="派生 vs 抄一份"
                         code={`// ✗ 两份名字,还要用 gDSFP / didUpdate 对齐
 static getDerivedStateFromProps(props, state) {
@@ -297,6 +300,7 @@ const displayName = user.name.toUpperCase();
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="同一套时钟 + 请求,class 抽不干净"
                         code={`// class:要复用就得 withClock(withQuote(Panel)),props 从哪来的看不清
 
@@ -410,6 +414,7 @@ const { quote, status } = useQuote(selectedId);`}
             >
                 <Stack>
                     <CodeBlock
+                        language="tsx"
                         title="从 class 迁到函数时逐项打勾"
                         code={`□ render / 函数体没有订阅、没有 setState、没有写 DOM
 □ this.state.a 与 this.state.b 无关 → 拆成两个 useState

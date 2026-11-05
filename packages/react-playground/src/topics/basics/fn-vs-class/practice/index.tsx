@@ -51,6 +51,7 @@ const FnVsClassPractice = memo(() => {
             >
                 <div className="space-y-4">
                     <CodeBlock
+                        language="ts"
                         title="practice/hooks.ts(从实例上拆下来的两块)"
                         code={`function useClock(delayMs: number) {
     const [now, setNow] = useState(() => Date.now());

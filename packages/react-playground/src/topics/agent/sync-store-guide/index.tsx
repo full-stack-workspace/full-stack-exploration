@@ -97,6 +97,7 @@ React UI(本仓库 agent-chat/ 各组件)`}
                 <Stack>
                     <P>最直观的写法是在组件里 useState + useEffect 订阅:</P>
                     <CodeBlock
+                        language="js"
                         title="直觉写法(有缺陷)"
                         code={`function useRuntimeSnapshot(store) {
     const [snapshot, setSnapshot] = useState(store.getSnapshot());
@@ -148,6 +149,7 @@ React 继续渲染
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         code={`const snapshot = useSyncExternalStore(
     subscribe,        // 订阅 Store 更新,返回取消订阅函数
     getSnapshot,      // 读取客户端当前快照(必须引用稳定)
@@ -161,6 +163,7 @@ React 继续渲染
                         react-adapter/hooks.ts 的 useRuntimeSnapshot。
                     </P>
                     <CodeBlock
+                        language="ts"
                         title="react-adapter/hooks.ts(节选)"
                         code={`export function useRuntimeSnapshot(): RuntimeSnapshot {
     const store = useRuntimeStore();
@@ -187,6 +190,7 @@ React 继续渲染
                         cached」)。所以 Store 内部缓存一份不可变快照,只在有效更新时整体替换。
                     </P>
                     <CodeBlock
+                        language="ts"
                         title="runtime/RuntimeStore.ts(节选)"
                         code={`getSnapshot = (): RuntimeSnapshot => {
     // 无有效变化时永远返回同一引用
@@ -232,6 +236,7 @@ private publish(nextSnapshot: RuntimeSnapshot): boolean {
                         实例」,数据订阅交给 useSyncExternalStore。
                     </P>
                     <CodeBlock
+                        language="tsx"
                         title="react-adapter/RuntimeProvider.tsx(节选)"
                         code={`// useRef 惰性创建:实例引用跨渲染稳定
 const storeRef = useRef<RuntimeStore | null>(null);
@@ -267,6 +272,7 @@ UI 组件            只读快照、发命令(applyEvent / 播放控制)`}
                         配合结构共享,切片引用不变就跳过渲染。
                     </P>
                     <CodeBlock
+                        language="ts"
                         title="react-adapter/hooks.ts(节选,手写 Selector)"
                         code={`const getSelection = useCallback((): Selected => {
     const snapshot = store.getSnapshot();
@@ -288,6 +294,7 @@ UI 组件            只读快照、发命令(applyEvent / 播放控制)`}
 }, [store, isEqual]);`}
                     />
                     <CodeBlock
+                        language="ts"
                         title="runtime/reducer.ts(节选,结构共享)"
                         code={`case 'part.delta': {
     // 只有该 part 与 partsById 换引用,其余实体原样复用
@@ -376,6 +383,7 @@ UI 动画节奏    打字机 / 渐显属于展示层,用局部 state 实现`}
                 <Stack>
                     <P>useSyncExternalStore 不负责:</P>
                     <CodeBlock
+                        language="text"
                         code={`创建 Store · 发起 HTTP · 建立/重连 SSE · 事件排序与去重
 合并 delta · 游标恢复 · Snapshot 修复 · IndexedDB 持久化
 乐观更新 · 任务取消 · 订阅粒度选择 · Markdown 解析频率`}
@@ -400,6 +408,7 @@ UI 动画节奏    打字机 / 渐显属于展示层,用局部 state 实现`}
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="① getSnapshot 每次返回新对象 → React 认为 Store 一直在变"
                         code={`// ✗ 错误:Object.is(两次调用) === false,可能无限重渲染
 getSnapshot = () => ({ runs: this.runs, parts: this.parts });
@@ -407,6 +416,7 @@ getSnapshot = () => ({ runs: this.runs, parts: this.parts });
 getSnapshot = () => this.currentSnapshot;`}
                     />
                     <CodeBlock
+                        language="js"
                         title="② 原地修改快照 → 根引用不变,更新被跳过"
                         code={`// ✗ 错误:mutableState 还是同一个对象
 this.snapshot.runsById[id].status = 'completed';
@@ -414,6 +424,7 @@ this.snapshot.runsById[id].status = 'completed';
 this.currentSnapshot = reduceRuntimeEvent(this.currentSnapshot, event);`}
                     />
                     <CodeBlock
+                        language="js"
                         title="③ 每次渲染新建 Store → 状态丢失、反复重订阅"
                         code={`// ✗ 错误:组件函数体内 new,每次 render 都是新实例
 const store = new RuntimeStore();
@@ -422,6 +433,7 @@ const ref = useRef(null);
 if (ref.current === null) ref.current = new RuntimeStore();`}
                     />
                     <CodeBlock
+                        language="js"
                         title="④ subscribe 引用不稳定 → React 可能反复退订/重订"
                         code={`// ✗ 错误:内联箭头函数每次渲染都是新引用
 useSyncExternalStore((l) => store.subscribe(l), store.getSnapshot);
@@ -429,12 +441,14 @@ useSyncExternalStore((l) => store.subscribe(l), store.getSnapshot);
 useSyncExternalStore(store.subscribe, store.getSnapshot);`}
                     />
                     <CodeBlock
+                        language="js"
                         title="⑤ 在 getSnapshot 里做副作用 → 渲染期被多次调用,副作用失控"
                         code={`// ✗ 错误:getSnapshot 在渲染与一致性检查期间会被反复调用
 getSnapshot = () => { this.connectSSE(); return this.snapshot; };
 // ✓ 正确:getSnapshot 必须是纯读取;连接等副作用放命令层/Effect`}
                     />
                     <CodeBlock
+                        language="js"
                         title="⑥ 先通知后换快照 → 订阅者读到旧值"
                         code={`// ✗ 错误:listener 回调里 getSnapshot 拿到的还是旧快照
 for (const l of this.listeners) l();
@@ -442,18 +456,21 @@ this.currentSnapshot = next;
 // ✓ 正确:先替换,再统一通知(见 RuntimeStore.publish)`}
                     />
                     <CodeBlock
+                        language="js"
                         title="⑦ 每个 token 都全局渲染 → 流式输出拖垮整页"
                         code={`// ✗ 错误:所有组件 useRuntimeSnapshot 订整份快照
 // ✓ 正确:结构共享 + Selector 精准订阅 + 受控合并发布节奏
 const part = useRuntimeSelector((s) => s.partsById[partId]);`}
                     />
                     <CodeBlock
+                        language="js"
                         title="⑧ 让订阅值直接触发 Suspense → 已显示内容被 fallback 闪替"
                         code={`// ✗ 错误:外部 Store 更新无法标记为非阻塞 Transition
 const data = useRuntimeSelector((s) => s.resource.read()); // 可能抛 promise
 // ✓ 正确:异步资源走框架数据层;订阅值只表达「已就绪的事实」`}
                     />
                     <CodeBlock
+                        language="js"
                         title="⑨ 指望 startTransition 降低 Store 更新优先级 → 一致性优先"
                         code={`// ✗ 误解:外部更新可以被 Transition 延后
 // ✓ 事实:为保证一致性,React 会把相关 Transition 回退为阻塞更新;
@@ -473,6 +490,7 @@ const data = useRuntimeSelector((s) => s.resource.read()); // 可能抛 promise
                         本仓库 runtime/RuntimeStore.test.ts 覆盖:
                     </P>
                     <CodeBlock
+                        language="text"
                         title="runtime/RuntimeStore.test.ts(用例清单)"
                         code={`引用稳定     无更新时 getSnapshot 重复调用返回同一引用
 有效更新     有效事件产生新快照且 version + 1

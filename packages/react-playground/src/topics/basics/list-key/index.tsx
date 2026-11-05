@@ -54,6 +54,7 @@ const ListKeyTopic = memo(() => {
                     </Diagram>
                     <CodeBlock
                         title="规则 b / c 的正确写法"
+                        language="tsx"
                         code={`// 规则 b:key 不会传进组件,props.key 永远是 undefined
 <UserCard key={user.id} id={user.id} />
 // 组件内需要这个值?像上面一样把 id 作为普通 prop 再传一份
@@ -87,6 +88,7 @@ const ListKeyTopic = memo(() => {
                     <ResetStateDemo />
                     <CodeBlock
                         title="key 重置 vs effect 同步"
+                        language="tsx"
                         code={`// ✅ 范式:key 变化 → 卸载旧实例、挂载新实例,state 自动归零
 <UserForm key={selectedUser.id} user={selectedUser} />
 
@@ -116,6 +118,7 @@ function UserForm({ user }) {
                     <DynamicKeyDemo />
                     <CodeBlock
                         title="id 的生成时机"
+                        language="tsx"
                         code={`// ✅ 数据创建时生成一次,此后随数据稳定存在
 const createTodo = (text: string): Todo => ({
     id: crypto.randomUUID(),  // 或服务端入库后返回的 id
@@ -140,6 +143,7 @@ setTodos((prev) => [...prev, createTodo(input)]);
                 <div className="space-y-4">
                     <CodeBlock
                         title="速查清单"
+                        language="tsx"
                         code={`// Q1: index 什么时候可用作 key?—— 三个条件缺一不可
 //   ✔ 纯静态展示:子项没有输入框 / 开关等内部 state
 //   ✔ 列表永不重排、永不增删(或只在尾部追加)

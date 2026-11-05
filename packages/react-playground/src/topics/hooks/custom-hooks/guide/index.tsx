@@ -115,6 +115,7 @@ const CustomHooksGuide = memo(() => {
                         useState、useEffect……状态按调用顺序挂在组件的 Hook 链表上。
                     </P>
                     <CodeBlock
+                        language="js"
                         code={`function useUserSearch() {
     const [keyword, setKeyword] = useState('');   // React 看到的:第 1 个 Hook
     const debounced = useDebouncedValue(keyword); // 展开后:第 2、3 个 Hook…
@@ -136,6 +137,7 @@ const CustomHooksGuide = memo(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         code={`规则 1:只在顶层调用 Hook
   ✗ if (cond) { useState() } / for 循环里 / 回调里
   ✓ 无条件、固定顺序 —— React 靠「调用顺序」对号每个 Hook 的状态
@@ -186,6 +188,7 @@ const CustomHooksGuide = memo(() => {
                         (useDebouncedValue 的 delay = 300)。
                     </P>
                     <CodeBlock
+                        language="js"
                         title="tuple vs object 的选择依据"
                         code={`// tuple:消费者必然自行命名,且数量少而固定(对齐 useState 的习惯)
 const [value, actions] = useToggle();
@@ -213,6 +216,7 @@ const { data, loading, error, run, refresh, cancel } = useRequest(fn, options);`
                         本专题的对照样本是 lib/useToggle:
                     </P>
                     <CodeBlock
+                        language="ts"
                         title="lib/useToggle.ts(节选)"
                         code={`// 函数式更新 / 常量写入 → deps 为空 → 引用永远稳定
 const toggle = useCallback(() => setValue((v) => !v), []);
@@ -243,6 +247,7 @@ const actions = useMemo(() => ({ toggle, setTrue, setFalse }), [toggle, setTrue,
                         撒谎的 deps 是闭包旧值 bug 的根源。
                     </P>
                     <CodeBlock
+                        language="ts"
                         title="lib/useInterval.ts — 回调 ref 模式:既诚实又不断拍"
                         code={`const callbackRef = useRef(callback);
 useEffect(() => { callbackRef.current = callback; }, [callback]); // 同步最新回调
@@ -280,6 +285,7 @@ useEffect(() => {
 即使对方忽略 signal 正常返回,序号校验也兜底;反之亦然`}
                     </Diagram>
                     <CodeBlock
+                        language="ts"
                         title="lib/useRequest.ts(节选)"
                         code={`const requestId = ++requestSeqRef.current;
 abortRef.current?.abort();              // 防线一:让对方 promise 尽快 reject
@@ -340,6 +346,7 @@ UI 组件       Input / List / Alert / 日志面板 —— 零请求细节`}
                         消费方只认一个 import 路径,新增 Hook 只需补一行导出。
                     </P>
                     <CodeBlock
+                        language="tsx"
                         title="TS 类型设计三招(对照 lib/)"
                         code={`// ① 泛型保真:输入什么类型,输出什么类型
 function useDebouncedValue<T>(value: T, delay = 300): T
@@ -373,6 +380,7 @@ type UseRequestEvent =
                         Hook 用 vi.useFakeTimers 精确控制时间。
                     </P>
                     <CodeBlock
+                        language="tsx"
                         title="lib/useRequest.test.tsx(节选)—— 测的是「竞态契约」"
                         code={`// 连续发起 A、B;B 先返回生效,A 后返回必须被丢弃
 act(() => result.current.run('a'));
@@ -400,6 +408,7 @@ expect(events.map((e) => e.type)).toEqual(
             >
                 <Stack>
                     <CodeBlock
+                        language="js"
                         title="① 闭包旧值:定时器读到几个月前的 state"
                         code={`// ✗ 错误:interval 闭包固定在首次渲染,count 永远是 0
 useEffect(() => { setInterval(() => setCount(count + 1), 1000); }, []);
@@ -407,6 +416,7 @@ useEffect(() => { setInterval(() => setCount(count + 1), 1000); }, []);
 useInterval(() => setCount((c) => c + 1), 1000);`}
                     />
                     <CodeBlock
+                        language="js"
                         title="② 依赖数组撒谎:用了却没写,写了却没用"
                         code={`// ✗ 错误:effect 里用了 userId,deps 却是 []
 useEffect(() => { fetchUser(userId); }, []);
@@ -414,12 +424,14 @@ useEffect(() => { fetchUser(userId); }, []);
 useEffect(() => { fetchUser(userId); }, [userId]);`}
                     />
                     <CodeBlock
+                        language="js"
                         title="③ 无限循环:effect 里 setState 的对象依赖每次渲染都变"
                         code={`// ✗ 错误:options 每次渲染新对象 → effect 反复执行 → setState → 再渲染
 useEffect(() => { setX(compute(options)); }, [options]);
 // ✓ 正确:调用方 useMemo 稳定化 options,或 Hook 内部改用 ref 读取`}
                     />
                     <CodeBlock
+                        language="js"
                         title="④ StrictMode 双执行:effect 在开发环境挂载两次"
                         code={`// ✗ 错误:在 effect 里做「只该发生一次」的事(如上报、非幂等订阅)
 useEffect(() => { trackPageView(); }, []);
@@ -427,6 +439,7 @@ useEffect(() => { trackPageView(); }, []);
 //   订阅类副作用写成成对的 subscribe/unsubscribe(lib/useEventListener)`}
                     />
                     <CodeBlock
+                        language="js"
                         title="⑤ SSR 注意点:首次渲染就触碰浏览器 API"
                         code={`// ✗ 错误:渲染期读 window,服务端直接抛错
 const [w, setW] = useState(window.innerWidth);

@@ -43,6 +43,7 @@ const JsxRenderTopic = memo(() => {
                             不可变的 plain object,只是「描述」`}
                     </Diagram>
                     <CodeBlock
+                        language="tsx"
                         title="JSX 与编译产物对照"
                         code={`// 你写的 JSX
 const element = <Button type="primary">提交</Button>;
@@ -66,6 +67,7 @@ const element = jsx(Button, { type: 'primary', children: '提交' });
                 <div className="space-y-4">
                     <ExpressionDemo />
                     <CodeBlock
+                        language="tsx"
                         title="大括号里的能与不能"
                         code={`{/* {} 内是表达式插值:任何「有返回值」的 JS 表达式 */}
 <p>{user.name}</p>               {/* 字符串 / 数字:正常渲染 */}
@@ -92,6 +94,7 @@ const element = jsx(Button, { type: 'primary', children: '提交' });
                 <div className="space-y-4">
                     <ConditionalDemo />
                     <CodeBlock
+                        language="tsx"
                         title="四种写法与适用场景"
                         code={`// 1. && 短路 —— 简单开关;左侧必须是布尔
 {count > 0 && <Badge count={count} />}
@@ -122,6 +125,7 @@ return <section>{content}</section>;`}
                 <div className="space-y-4">
                     <ListRenderDemo />
                     <CodeBlock
+                        language="tsx"
                         title="列表渲染要点"
                         code={`{users.map((user) => (
     <UserCard key={user.id} user={user} />  // key 用稳定唯一的 id,不要用 index
@@ -145,6 +149,7 @@ return <section>{content}</section>;`}
                 <div className="space-y-4">
                     <AsyncStatusDemo />
                     <CodeBlock
+                        language="tsx"
                         title="状态机驱动渲染(节选)"
                         code={`// 判别联合:status 是互斥且完备的分支开关
 type FetchState =
@@ -175,6 +180,7 @@ switch (state.status) {
                 <div className="space-y-4">
                     <PermissionDemo />
                     <CodeBlock
+                        language="tsx"
                         title="权限表 + Guard 封装(节选)"
                         code={`// 权限表收敛到一处,是全部判断的唯一事实来源
 const PERMISSIONS: Record<Role, Action[]> = {
@@ -203,6 +209,7 @@ function Guard({ role, action, fallback = null, children }) {
                 <div className="space-y-4">
                     <ConfigDrivenDemo />
                     <CodeBlock
+                        language="tsx"
                         title="注册表 + 兜底(节选)"
                         code={`// 注册表:新增 widget 类型 = 注册一行,不改渲染逻辑
 const WIDGETS: Record<KnownType, ComponentType<WidgetProps>> = {

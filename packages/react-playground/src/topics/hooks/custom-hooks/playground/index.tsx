@@ -45,6 +45,7 @@ const CustomHooksPlayground = memo(() => {
                 <div className="space-y-4">
                     <ToggleDemo />
                     <CodeBlock
+                        language="ts"
                         title="lib/useToggle.ts(节选)"
                         code={`const toggle = useCallback(() => setValue((v) => !v), []);
 const setTrue = useCallback(() => setValue(true), []);
@@ -62,6 +63,7 @@ const actions = useMemo(() => ({ toggle, setTrue, setFalse }), [toggle, setTrue,
                 <div className="space-y-4">
                     <PreviousDemo />
                     <CodeBlock
+                        language="tsx"
                         title="lib/usePrevious.ts(节选)"
                         code={`const previousRef = useRef<T | undefined>(undefined);
 useEffect(() => {
@@ -79,6 +81,7 @@ return previousRef.current;`}
                 <div className="space-y-4">
                     <DebouncedDemo />
                     <CodeBlock
+                        language="ts"
                         title="lib/useDebouncedValue.ts(节选)"
                         code={`useEffect(() => {
     // 每次 value/delay 变化都重新计时,快速连续变化只有最后一次生效
@@ -96,6 +99,7 @@ return previousRef.current;`}
                 <div className="space-y-4">
                     <LocalStorageDemo />
                     <CodeBlock
+                        language="tsx"
                         title="lib/useLocalStorage.ts(节选)"
                         code={`const [value, setValue] = useState<T>(() => {
     try {
@@ -116,6 +120,7 @@ setValue((prev) => { ...localStorage.setItem(key, JSON.stringify(nextValue)); re
                 <div className="space-y-4">
                     <IntervalDemo />
                     <CodeBlock
+                        language="ts"
                         title="lib/useInterval.ts(节选)"
                         code={`const callbackRef = useRef(callback);
 useEffect(() => { callbackRef.current = callback; }, [callback]); // 只同步,不重建定时器
@@ -136,6 +141,7 @@ useEffect(() => {
                 <div className="space-y-4">
                     <EventListenerDemo />
                     <CodeBlock
+                        language="ts"
                         title="lib/useEventListener.ts(节选)"
                         code={`useEffect(() => { handlerRef.current = handler; }, [handler]);
 
@@ -157,6 +163,7 @@ useEffect(() => {
                 <div className="space-y-4">
                     <MediaQueryDemo />
                     <CodeBlock
+                        language="ts"
                         title="lib/useMediaQuery.ts(节选)"
                         code={`const subscribe = useCallback((onChange) => {
     const mql = window.matchMedia(query);
@@ -176,6 +183,7 @@ return useSyncExternalStore(subscribe, getSnapshot, () => false);`}
                 <div className="space-y-4">
                     <RequestDemo />
                     <CodeBlock
+                        language="ts"
                         title="lib/useRequest.ts(节选)"
                         code={`const requestId = ++requestSeqRef.current;   // 序号单调递增
 abortRef.current?.abort();                    // 取消上一次在途请求

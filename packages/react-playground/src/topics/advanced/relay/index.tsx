@@ -51,6 +51,7 @@ const RelayTopic = memo(() => {
             >
                 <div className="space-y-4">
                     <CodeBlock
+                        language="tsx"
                         title="components/UserCard.tsx(节选)—— 组件自己声明数据需求"
                         code={`// fragment 与组件同文件共存:字段需求就写在组件旁边
 export const UserCard = memo(({ user: userKey }: Props) => {
@@ -90,6 +91,7 @@ UserDirectory 的 query ─┐                  ┌─ 一次 POST,拿回全部�
             >
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                     <CodeBlock
+                        language="tsx"
                         title="❌ SWR / 直接 fetch:字段约定靠人肉同步"
                         code={`// api.ts —— 请求拿整个对象,字段是「隐式约定」
 const { data } = useSWR('/api/users/1', fetcher);
@@ -103,6 +105,7 @@ const { data } = useSWR('/api/users/1', fetcher);
 // 逐个排查;类型要靠手写 interface 维持`}
                     />
                     <CodeBlock
+                        language="graphql"
                         title="✅ Relay:fragment 是唯一真相源"
                         code={`// UserCard.tsx —— 请求字段与消费字段是同一个声明
 fragment UserCard_user on User {
@@ -127,6 +130,7 @@ fragment UserCard_user on User {
             >
                 <div className="space-y-4">
                     <CodeBlock
+                        language="js"
                         title="速查清单"
                         code={`// Q1: Relay 比 SWR / React Query 多了什么?
 //   缓存大家都有。独有的是:fragment colocation(数据需求与组件同文件)、

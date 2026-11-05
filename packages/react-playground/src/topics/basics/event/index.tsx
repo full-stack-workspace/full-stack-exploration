@@ -60,6 +60,7 @@ const EventTopic = memo(() => {
                 <div className="space-y-4">
                     <BubblingDemo />
                     <CodeBlock
+                        language="tsx"
                         title="两个「阻止」的正确姿势"
                         code={`// ❌ 错误:return false 在 React 中什么都不阻止
 <button onClick={() => false}>默认行为照常,冒泡照常</button>
@@ -89,6 +90,7 @@ const handleClick = (e: React.MouseEvent) => {
                 <div className="space-y-4">
                     <PoolingHistoryDemo />
                     <CodeBlock
+                        language="ts"
                         title="事件池化:新旧写法对比"
                         code={`// React 16 及以前:异步访问前必须先 persist,否则读到 null
 function handleClick(e) {
@@ -120,6 +122,7 @@ function handleClick(e) {
                 <div className="space-y-4">
                     <BatchingDemo />
                     <CodeBlock
+                        language="tsx"
                         title="工程范式速查"
                         code={`// 1. 语义化命名:组件内处理器 handleXxx,对外的 props onXxx
 const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); ... };

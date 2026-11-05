@@ -65,6 +65,7 @@ const FiberPage = memo(() => {
             >
                 <Stack>
                     <CodeBlock
+                        language="ts"
                         title="教学用的字段分组,不是完整类型定义"
                         code={`{
   // 身份:和 element 对得上才能复用

@@ -59,6 +59,7 @@ const ReactCompilerTopic = memo(() => {
 产物:行为不变,无关渲染被自动挡掉;运行时多一份缓存数组`}
                     </Diagram>
                     <CodeBlock
+                        language="tsx"
                         title="源码 vs 编译产物(示意)"
                         code={`// 源码:没有任何手写缓存
 function CartSummary({ items }) {
@@ -91,6 +92,7 @@ function CartSummary({ items }) {
                 <Stack>
                     <MemoNoiseDemo />
                     <CodeBlock
+                        language="tsx"
                         title="三种形态的代码差异"
                         code={`// ❌ 不做记忆化:父组件一渲染,面板无条件重跑
 <PricePanel options={{ showTax: true }} onReset={() => setQuantity(0)} />
@@ -134,6 +136,7 @@ const onReset = useCallback(() => setQuantity(0), []);
                         </li>
                     </ul>
                     <CodeBlock
+                        language="js"
                         title="逃逸舱与静默跳过"
                         code={`// 逃逸舱:文件或组件顶部声明,整块退出编译
 "use no memo";
